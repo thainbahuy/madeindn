@@ -58,3 +58,10 @@ Route::get('/project-detail', function () {
 Route::get('/project-search', function () {
     return view('web.project.project_search');
 });
+
+
+Route::prefix('admin/')->group( function() {
+    Route::get('/dashboard', function () {
+        return view('admin.dashboard');
+    });
+});
