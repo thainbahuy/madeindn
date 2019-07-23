@@ -20,10 +20,8 @@ Route::get('/', function () {
 });
 
 Route::namespace('Web')->group(function(){
-    // event and detail event
+    //show event and detail event
     Route::get('/event', 'EventController@index')->name('web.event.events');
-    Route::get('/event/ajax/loadmore', 'EventController@loadMoreEvent')->name('ajax.web.event.events');
-
 
 });
 

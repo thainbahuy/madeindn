@@ -15,15 +15,14 @@ class EventController extends Controller
         $this->eventModel = $eventModel;
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        $data['listEvent'] = $this->eventModel->getAllEvents(0);
-        return view('web.event.events',$data);
+        $listEvent = $this->eventModel->getAllEvents();
+        if ($request->ajax()) {
+            $view = view('data_event_loadmore',compact('listEvent'))->render();
+            return response()->json(['html'=>$view]);
+        }
+        return view('web.event.events',compact('listEvent'));
     }
 
-    public function loadMoreEvent(Request $request){
-        $pageIndex = $request->get('index');
-        $listEvent = $this->eventModel->getAllEvents($pageIndex);
-        return response()->json(['listEvent' =>$listEvent],200);
-    }
 }
