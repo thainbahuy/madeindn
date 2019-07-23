@@ -20,7 +20,7 @@
             <div class="c-section__technology__content">
                 <div class="c-section__technology__thumb">
                     <div class="c-thumbnail c-thumbnail__object-fit">
-                        <img src="images/4-3_1024x767.png" alt="">
+                        <img src="{{asset('web/')}}/images/4-3_1024x767.png" alt="">
                     </div>
                 </div>
                 <div class="c-section__technology__profile main-banner__slick2">
@@ -30,7 +30,7 @@
                         </div>
                         <div class="profile">
                             <div class="avatar c-thumbnail c-thumbnail__object-fit">
-                                <img src="images/4-3_1024x767.png" alt="">
+                                <img src="{{asset('web/')}}/images/4-3_1024x767.png" alt="">
                             </div>
                             <div class="name">
                                 <p><span>By</span>Robert Hung</p>
@@ -47,7 +47,7 @@
                         </div>
                         <div class="profile">
                             <div class="avatar c-thumbnail c-thumbnail__object-fit">
-                                <img src="images/4-3_1024x767.png" alt="">
+                                <img src="{{asset('web/')}}/images/4-3_1024x767.png" alt="">
                             </div>
                             <div class="name">
                                 <p><span>By</span>Robert Hung</p>
@@ -64,7 +64,7 @@
                         </div>
                         <div class="profile">
                             <div class="avatar c-thumbnail c-thumbnail__object-fit">
-                                <img src="images/4-3_1024x767.png" alt="">
+                                <img src="{{asset('web/')}}/images/4-3_1024x767.png" alt="">
                             </div>
                             <div class="name">
                                 <p><span>By</span>Robert Hung</p>
@@ -86,7 +86,7 @@
                 <div class="c-list__project">
                     <div class="c-list__project__item">
                         <div class="c-thumbnail">
-                            <img src="images/4-3_1024x767.png" alt="">
+                            <img src="{{asset('web/')}}/images/4-3_1024x767.png" alt="">
                         </div>
                         <div class="c-list__project__item__content">
                             <div class="c-list__project__item__sub">
@@ -98,7 +98,7 @@
                             </div>
                             <div class="c-list__project__item__profile">
                                 <div class="avatar">
-                                    <img src="images/4-3_1024x767.png" alt="">
+                                    <img src="{{asset('web/')}}/images/4-3_1024x767.png" alt="">
                                 </div>
                                 <div class="name">
                                     <p><span>By</span>Robert Hung</p>
@@ -108,7 +108,7 @@
                     </div>
                     <div class="c-list__project__item">
                         <div class="c-thumbnail">
-                            <img src="images/4-3_1024x767.png" alt="">
+                            <img src="{{asset('web/')}}/images/4-3_1024x767.png" alt="">
                         </div>
                         <div class="c-list__project__item__content">
                             <div class="c-list__project__item__sub">
@@ -120,7 +120,7 @@
                             </div>
                             <div class="c-list__project__item__profile">
                                 <div class="avatar">
-                                    <img src="images/4-3_1024x767.png" alt="">
+                                    <img src="{{asset('web/')}}/images/4-3_1024x767.png" alt="">
                                 </div>
                                 <div class="name">
                                     <p><span>By</span>Robert Hung</p>
@@ -130,7 +130,7 @@
                     </div>
                     <div class="c-list__project__item">
                         <div class="c-thumbnail">
-                            <img src="images/4-3_1024x767.png" alt="">
+                            <img src="{{asset('web/')}}/images/4-3_1024x767.png" alt="">
                         </div>
                         <div class="c-list__project__item__content">
                             <div class="c-list__project__item__sub">
@@ -142,7 +142,7 @@
                             </div>
                             <div class="c-list__project__item__profile">
                                 <div class="avatar">
-                                    <img src="images/4-3_1024x767.png" alt="">
+                                    <img src="{{asset('web/')}}/images/4-3_1024x767.png" alt="">
                                 </div>
                                 <div class="name">
                                     <p><span>By</span>Robert Hung</p>
@@ -152,7 +152,7 @@
                     </div>
                     <div class="c-list__project__item">
                         <div class="c-thumbnail">
-                            <img src="images/4-3_1024x767.png" alt="">
+                            <img src="{{asset('web/')}}/images/4-3_1024x767.png" alt="">
                         </div>
                         <div class="c-list__project__item__content">
                             <div class="c-list__project__item__sub">
@@ -164,7 +164,7 @@
                             </div>
                             <div class="c-list__project__item__profile">
                                 <div class="avatar">
-                                    <img src="images/4-3_1024x767.png" alt="">
+                                    <img src="{{asset('web/')}}/images/4-3_1024x767.png" alt="">
                                 </div>
                                 <div class="name">
                                     <p><span>By</span>Robert Hung</p>
@@ -174,7 +174,7 @@
                     </div>
                     <div class="c-list__project__item">
                         <div class="c-thumbnail">
-                            <img src="images/4-3_1024x767.png" alt="">
+                            <img src="{{asset('web/')}}/images/4-3_1024x767.png" alt="">
                         </div>
                         <div class="c-list__project__item__content">
                             <div class="c-list__project__item__sub">
@@ -186,7 +186,7 @@
                             </div>
                             <div class="c-list__project__item__profile">
                                 <div class="avatar">
-                                    <img src="images/4-3_1024x767.png" alt="">
+                                    <img src="{{asset('web/')}}/images/4-3_1024x767.png" alt="">
                                 </div>
                                 <div class="name">
                                     <p><span>By</span>Robert Hung</p>
@@ -196,7 +196,7 @@
                     </div>
                     <div class="c-list__project__item">
                         <div class="c-thumbnail">
-                            <img src="images/4-3_1024x767.png" alt="">
+                            <img src="{{asset('web/')}}/images/4-3_1024x767.png" alt="">
                         </div>
                         <div class="c-list__project__item__content">
                             <div class="c-list__project__item__sub">
@@ -208,7 +208,7 @@
                             </div>
                             <div class="c-list__project__item__profile">
                                 <div class="avatar">
-                                    <img src="images/4-3_1024x767.png" alt="">
+                                    <img src="{{asset('web/')}}/images/4-3_1024x767.png" alt="">
                                 </div>
                                 <div class="name">
                                     <p><span>By</span>Robert Hung</p>
@@ -233,7 +233,7 @@
     @include('web.common_layouts.footer')
 </footer>
     <!-- END FOOTER -->
-    <!-- <a id="go-top" href="javascript:;" title="Go Top" class="c-btn__go-top"><img src="images/icons/go_top.png" alt="Go Top" /></a> -->
+    <!-- <a id="go-top" href="javascript:;" title="Go Top" class="c-btn__go-top"><img src="{{asset('web/')}}/images/icons/go_top.png" alt="Go Top" /></a> -->
     <!-- ======== JAVASCRIPT ======== -->
 @include('web.common_layouts.script_footer')
     <!-- endbuild -->

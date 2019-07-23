@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <title>About</title>
     @include('web.common_layouts.head')
@@ -32,7 +32,7 @@
                     <div class="c-list">
                         <div class="c-list__item">
                             <div class="c-thumbnail">
-                                <img src="images/4-3_1024x767.png" alt="">
+                                <img src="{{asset('web/')}}/images/4-3_1024x767.png" alt="">
                             </div>
                             <div class="c-list__item__content">
                                 <div class="c-list__item__title">
@@ -42,7 +42,7 @@
                         </div>
                         <div class="c-list__item">
                             <div class="c-thumbnail">
-                                <img src="images/4-3_1024x767.png" alt="">
+                                <img src="{{asset('web/')}}/images/4-3_1024x767.png" alt="">
                             </div>
                             <div class="c-list__item__content">
                                 <div class="c-list__item__title">
@@ -52,7 +52,7 @@
                         </div>
                         <div class="c-list__item">
                             <div class="c-thumbnail">
-                                <img src="images/4-3_1024x767.png" alt="">
+                                <img src="{{asset('web/')}}/images/4-3_1024x767.png" alt="">
                             </div>
                             <div class="c-list__item__content">
                                 <div class="c-list__item__title">
@@ -62,7 +62,7 @@
                         </div>
                         <div class="c-list__item">
                             <div class="c-thumbnail">
-                                <img src="images/4-3_1024x767.png" alt="">
+                                <img src="{{asset('web/')}}/images/4-3_1024x767.png" alt="">
                             </div>
                             <div class="c-list__item__content">
                                 <div class="c-list__item__title">
@@ -72,7 +72,7 @@
                         </div>
                         <div class="c-list__item">
                             <div class="c-thumbnail">
-                                <img src="images/4-3_1024x767.png" alt="">
+                                <img src="{{asset('web/')}}/images/4-3_1024x767.png" alt="">
                             </div>
                             <div class="c-list__item__content">
                                 <div class="c-list__item__title">
@@ -82,7 +82,7 @@
                         </div>
                         <div class="c-list__item">
                             <div class="c-thumbnail">
-                                <img src="images/4-3_1024x767.png" alt="">
+                                <img src="{{asset('web/')}}/images/4-3_1024x767.png" alt="">
                             </div>
                             <div class="c-list__item__content">
                                 <div class="c-list__item__title">

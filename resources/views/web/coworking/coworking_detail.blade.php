@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <title>Top Page</title>
     @include('web.common_layouts.head')
@@ -53,7 +53,7 @@
                             $50,000 in total prizes. The Grand Challenge is organized by Kambria in collaboration with
                             the Ministry of Science and Technology and the Ministry of Planning and Investment of
                             Vietnam.</p>
-                        <img src="images/post/coworking_img1.png" alt="">
+                        <img src="{{asset('web/')}}/images/post/coworking_img1.png" alt="">
                     </div>
                 </div>
                 <div class="c-section__content__right">
@@ -75,27 +75,27 @@
                             <ul class="c-sidebar__sharing__list">
                                 <li>
                                     <a href="#">
-                                        <img src="images/icons/fb.png" alt="">
+                                        <img src="{{asset('web/')}}/images/icons/fb.png" alt="">
                                     </a>
                                 </li>
                                 <li>
                                     <a href="#">
-                                        <img src="images/icons/ms.png" alt="">
+                                        <img src="{{asset('web/')}}/images/icons/ms.png" alt="">
                                     </a>
                                 </li>
                                 <li>
                                     <a href="#">
-                                        <img src="images/icons/share.png" alt="">
+                                        <img src="{{asset('web/')}}/images/icons/share.png" alt="">
                                     </a>
                                 </li>
                                 <li>
                                     <a href="#">
-                                        <img src="images/icons/twice.png" alt="">
+                                        <img src="{{asset('web/')}}/images/icons/twice.png" alt="">
                                     </a>
                                 </li>
                                 <li>
                                     <a href="#">
-                                        <img src="images/icons/in.png" alt="">
+                                        <img src="{{asset('web/')}}/images/icons/in.png" alt="">
                                     </a>
                                 </li>
                             </ul>
@@ -125,7 +125,7 @@
     @include('web.common_layouts.footer')
 </footer>
 <!-- END FOOTER -->
-<!-- <a id="go-top" href="javascript:;" title="Go Top" class="c-btn__go-top"><img src="images/icons/go_top.png" alt="Go Top" /></a> -->
+<!-- <a id="go-top" href="javascript:;" title="Go Top" class="c-btn__go-top"><img src="{{asset('web/')}}/images/icons/go_top.png" alt="Go Top" /></a> -->
 <!-- ======== JAVASCRIPT ======== -->
 @include('web.common_layouts.script_footer')
 <!-- endbuild -->

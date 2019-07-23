@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <title>Top Page</title>
     @include('web.common_layouts.head')
@@ -33,7 +33,7 @@
                         <p>We can all see that artificial intelligence is red hot. But what lies beyond the hype? And how can Vietnam step onto the world stage to conquer AI technology?</p>       
                         <p>The Fourth Industrial Revolution is here and Vietnam is committed to leveraging this new techno-economic paradigm to deliver major changes across sectors using advanced technology. Vietnam is ready to compete with its Asian counterparts to emerge as an AI leader in Southeast Asia. Very soon there will be many opportunities for talented developers, corporations and startups in Vietnam to participate in creating an AI-friendly ecosystem.</p>       
                         <p>Please join McKinsey, Kambria, and our Knowledge Partners at our next upcoming Info Seminars to learn more about the impact of AI in the world and how Vietnam can sync up with this world trend. Vietnamese AI talents and corporates from VietAI and Vietnam Innovation Network will share the current landscape of the local AI ecosystem, as well as our support for the future AI movement of our country. Finally, we will introduce the Vietnam AI Grand Challenge 2019, a new government-backed initiative that offers developers a unique opportunity to win $50,000 in total prizes. The Grand Challenge is organized by Kambria in collaboration with the Ministry of Science and Technology and the Ministry of Planning and Investment of Vietnam.</p>
-                        <img src="images/post/img_event.png" alt="">
+                        <img src="{{asset('web/')}}/images/post/img_event.png" alt="">
                     </div>
                 </div>
                 <div class="c-section__content__right">
@@ -64,27 +64,27 @@
                             <ul class="c-sidebar__sharing__list">
                                 <li>
                                     <a href="#">
-                                        <img src="images/icons/fb.png" alt="">
+                                        <img src="{{asset('web/')}}/images/icons/fb.png" alt="">
                                     </a>
                                 </li>
                                 <li>
                                     <a href="#">
-                                        <img src="images/icons/ms.png" alt="">
+                                        <img src="{{asset('web/')}}/images/icons/ms.png" alt="">
                                     </a>
                                 </li>
                                 <li>
                                     <a href="#">
-                                        <img src="images/icons/share.png" alt="">
+                                        <img src="{{asset('web/')}}/images/icons/share.png" alt="">
                                     </a>
                                 </li>
                                 <li>
                                     <a href="#">
-                                        <img src="images/icons/twice.png" alt="">
+                                        <img src="{{asset('web/')}}/images/icons/twice.png" alt="">
                                     </a>
                                 </li>
                                 <li>
                                     <a href="#">
-                                        <img src="images/icons/in.png" alt="">
+                                        <img src="{{asset('web/')}}/images/icons/in.png" alt="">
                                     </a>
                                 </li>
                             </ul>
@@ -112,7 +112,7 @@
     @include('web.common_layouts.footer')
 </footer>
     <!-- END FOOTER -->
-    <!-- <a id="go-top" href="javascript:;" title="Go Top" class="c-btn__go-top"><img src="images/icons/go_top.png" alt="Go Top" /></a> -->
+    <!-- <a id="go-top" href="javascript:;" title="Go Top" class="c-btn__go-top"><img src="{{asset('web/')}}/images/icons/go_top.png" alt="Go Top" /></a> -->
     <!-- ======== JAVASCRIPT ======== -->
 @include('web.common_layouts.script_footer')
     <!-- endbuild -->

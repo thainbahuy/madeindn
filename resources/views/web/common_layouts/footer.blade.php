@@ -5,24 +5,24 @@
                 <a href="#">madeinDaNang</a>
             </div>
             <div class="c-footer__left__text">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vel tortor vitae dolor eleifend mollis. Donec ultricies in urna eget tristique. </p>
+                <p>{{__('message.SOLOGAN')}}</p>
             </div>
             <div class="c-footer__left__social">
                 <ul>
                     <li>
-                        <a href="#" title="#"><img src="images/icons/ic_fb.png" alt=""></a>
+                        <a href="#" title="#"><img src="{{asset('web/')}}/images/icons/ic_fb.png" alt=""></a>
                     </li>
                     <li>
-                        <a href="#" title="#"><img src="images/icons/ic_tw.png" alt=""></a>
+                        <a href="#" title="#"><img src="{{asset('web/')}}/images/icons/ic_tw.png" alt=""></a>
                     </li>
                     <li>
-                        <a href="#" title="#"><img src="images/icons/ic_inter.png" alt=""></a>
+                        <a href="#" title="#"><img src="{{asset('web/')}}/images/icons/ic_inter.png" alt=""></a>
                     </li>
                     <li>
-                        <a href="#" title="#"><img src="images/icons/ic_print.png" alt=""></a>
+                        <a href="#" title="#"><img src="{{asset('web/')}}/images/icons/ic_print.png" alt=""></a>
                     </li>
                     <li>
-                        <a href="#" title="#"><img src="images/icons/ic_ig.png" alt=""></a>
+                        <a href="#" title="#"><img src="{{asset('web/')}}/images/icons/ic_ig.png" alt=""></a>
                     </li>
                 </ul>
             </div>
@@ -78,7 +78,7 @@
         </div>
         <div class="c-footer__right">
             <div class="text">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vel tortor vitae dolor eleifend mollis. Donec ultricies in urna eget tristique.</p>
+                <p>{{__('message.SOLOGAN')}}</p>
             </div>
         </div>
     </div>

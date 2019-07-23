@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <title>How can we help you</title>
 @include('web.common_layouts.head')
@@ -65,7 +65,7 @@
                     </p>
                 </div>
                 <div class="c-section__content__thumb">
-                    <img src="images/post/about01.png" alt="">
+                    <img src="{{asset('web/')}}/images/post/about01.png" alt="">
                 </div>
                 <div class="c-section__content__text">
                     <p>
@@ -76,7 +76,7 @@
                     </p>
                 </div>
                 <div class="c-section__content__thumb">
-                    <img src="images/post/about01.png" alt="">
+                    <img src="{{asset('web/')}}/images/post/about01.png" alt="">
                 </div>
             </div>
         </div>
@@ -89,7 +89,7 @@
     @include('web.common_layouts.footer')
 </footer>
     <!-- END FOOTER -->
-    <!-- <a id="go-top" href="javascript:;" title="Go Top" class="c-btn__go-top"><img src="images/icons/go_top.png" alt="Go Top" /></a> -->
+    <!-- <a id="go-top" href="javascript:;" title="Go Top" class="c-btn__go-top"><img src="{{asset('web/')}}/images/icons/go_top.png" alt="Go Top" /></a> -->
     <!-- ======== JAVASCRIPT ======== -->
 @include('web.common_layouts.script_footer')
     <!-- endbuild -->

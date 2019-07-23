@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <title>About</title>
 @include('web.common_layouts.head')
@@ -51,19 +51,19 @@
                     <div class="c-list__groupthumb__left">
                         <div class="c-list__groupthumb__item">
                             <div class="c-thumbnail c-thumbnail__object-fit">
-                                <img src="images/4-3_1024x767.png" alt="">
+                                <img src="{{asset('web/')}}/images/4-3_1024x767.png" alt="">
                             </div>
                         </div>
                     </div>
                     <div class="c-list__groupthumb__right">
                         <div class="c-list__groupthumb__item">
                             <div class="c-thumbnail c-thumbnail__object-fit">
-                                <img src="images/4-3_1024x767.png" alt="">
+                                <img src="{{asset('web/')}}/images/4-3_1024x767.png" alt="">
                             </div>
                         </div>
                         <div class="c-list__groupthumb__item">
                             <div class="c-thumbnail c-thumbnail__object-fit">
-                                <img src="images/4-3_1024x767.png" alt="">
+                                <img src="{{asset('web/')}}/images/4-3_1024x767.png" alt="">
                             </div>
                         </div>
                     </div>
@@ -113,7 +113,7 @@
     @include('web.common_layouts.footer')
 </footer>
 <!-- END FOOTER -->
-<!-- <a id="go-top" href="javascript:;" title="Go Top" class="c-btn__go-top"><img src="images/icons/go_top.png" alt="Go Top" /></a> -->
+<!-- <a id="go-top" href="javascript:;" title="Go Top" class="c-btn__go-top"><img src="{{asset('web/')}}/images/icons/go_top.png" alt="Go Top" /></a> -->
 <!-- ======== JAVASCRIPT ======== -->
 @include('web.common_layouts.script_footer')
 <!-- endbuild -->
