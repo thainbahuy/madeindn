@@ -9,11 +9,12 @@ function loadMoreEvent(urlAjax) {
         })
         .done(function (data) {
             console.log(data);
-            if (data.html == "") {
-                console.log('no more');
+            if ($.trim(data.html) != "") {
+                $(".c-post").append(data.html);
+                indexPage++
+                console.log($('body').height());
             }
-            $(".c-post").append(data.html);
-            indexPage++
+
         })
         .fail(function (jqXHR, ajaxOptions, thrownError) {
             alert('server not responding...');

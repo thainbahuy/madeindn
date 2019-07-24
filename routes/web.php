@@ -10,7 +10,9 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('language/{locale}', function ($locale){
+Session::put('locale', 'en');
+
+Route::get('language/{locale}', function ($locale) {
     Session::put('locale', $locale);
     return redirect()->back();
 });
@@ -19,9 +21,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::namespace('Web')->group(function(){
+Route::namespace('Web')->group(function () {
     //show event and detail event
     Route::get('/event', 'EventController@index')->name('web.event.events');
+    Route::get('/event/{eventSlug}', 'EventController@loadEventDetail')->name('web.event.events_detail');
 
 });
 
@@ -39,9 +42,9 @@ Route::namespace('Web')->group(function(){
 //
 //
 //
-//Route::get('/event-detail', function () {
-//    return view('web.event.events_detail');
-//});
+Route::get('/event-detail', function () {
+    return view('web.event.events_detail');
+});
 //
 //Route::get('/about', function () {
 //    return view('web.more.about');
@@ -68,7 +71,7 @@ Route::namespace('Web')->group(function(){
 //});
 
 
-Route::prefix('admin/')->group( function() {
+Route::prefix('admin/')->group(function () {
     Route::get('/dashboard', function () {
         return view('admin.dashboard');
     });
