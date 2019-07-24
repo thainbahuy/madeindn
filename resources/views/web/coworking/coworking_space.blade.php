@@ -30,66 +30,20 @@
                 </div>
                 <div class="c-section__coworking__content__list">
                     <div class="c-list">
-                        <div class="c-list__item">
-                            <div class="c-thumbnail">
-                                <img src="{{asset('web/')}}/images/4-3_1024x767.png" alt="">
-                            </div>
-                            <div class="c-list__item__content">
-                                <div class="c-list__item__title">
-                                    <p>Cozy Coworking</p>
+                        @foreach($listCoworking as $items)
+                            <div class="c-list__item">
+                                <div class="c-thumbnail">
+                                    <a href="{{route('web.coworking.coworking_detail',['name' => str_slug($items->name),'id'=>$items->id])}}">
+                                        <img src="{{$items->image_link}}" alt="{{$items->name}}">
+                                    </a>
+                                </div>
+                                <div class="c-list__item__content">
+                                    <div class="c-list__item__title">
+                                        <p>{{Helpers::changeLanguage($items->name,$items->jp_name)}}</p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="c-list__item">
-                            <div class="c-thumbnail">
-                                <img src="{{asset('web/')}}/images/4-3_1024x767.png" alt="">
-                            </div>
-                            <div class="c-list__item__content">
-                                <div class="c-list__item__title">
-                                    <p>IOT Coworking Space</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="c-list__item">
-                            <div class="c-thumbnail">
-                                <img src="{{asset('web/')}}/images/4-3_1024x767.png" alt="">
-                            </div>
-                            <div class="c-list__item__content">
-                                <div class="c-list__item__title">
-                                    <p>Coworking DNC- Danang</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="c-list__item">
-                            <div class="c-thumbnail">
-                                <img src="{{asset('web/')}}/images/4-3_1024x767.png" alt="">
-                            </div>
-                            <div class="c-list__item__content">
-                                <div class="c-list__item__title">
-                                    <p>How we can help</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="c-list__item">
-                            <div class="c-thumbnail">
-                                <img src="{{asset('web/')}}/images/4-3_1024x767.png" alt="">
-                            </div>
-                            <div class="c-list__item__content">
-                                <div class="c-list__item__title">
-                                    <p>Why partners with us</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="c-list__item">
-                            <div class="c-thumbnail">
-                                <img src="{{asset('web/')}}/images/4-3_1024x767.png" alt="">
-                            </div>
-                            <div class="c-list__item__content">
-                                <div class="c-list__item__title">
-                                    <p>Your benefits for community</p>
-                                </div>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>

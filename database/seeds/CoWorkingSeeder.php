@@ -11,6 +11,6 @@ class CoWorkingSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Models\CoWorking::class, 10)->create();
+        factory(App\Models\Web\CoWorking::class, 10)->create();
     }
 }

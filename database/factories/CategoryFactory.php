@@ -4,8 +4,8 @@
 
 
 
-use App\Models;
-use App\Models\Category;
+use App\Models\Web;
+use App\Models\Web\Category;
 use Faker\Generator as Faker;
 use Illuminate\Support\Str;
 
