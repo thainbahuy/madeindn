@@ -24,7 +24,17 @@ Route::namespace('Web')->group( function() {
     // Co-working
     Route::get('/co-working-space', 'CoWorkingController@index')->name('web.coworking.coworking_space');
     Route::get('/co-working-space/{name}-{id}', 'CoWorkingController@showDetailCoworking')->name('web.coworking.coworking_detail');
+
+    // event
+    Route::get('/event', 'EventController@index')->name('web.event.events');
+    Route::get('/event/{eventSlug}', 'EventController@loadEventDetail')->name('web.event.events_detail');
 });
+
+Route::get('/', function () {
+    return view('welcome');
+});
+
+
 
 Route::prefix('admin/')->group( function() {
     Route::get('/dashboard', function () {
