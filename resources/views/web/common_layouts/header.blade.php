@@ -1,32 +1,28 @@
 <div class="o-container__fluid u-flex u-flex__align-items--center">
     <h1 class="c-header__logo">
-        <a href="index.html" title="madeindanang"><img src="{{asset('web/images/logo.png')}}" alt="Motokurakai" /></a>
+        <a href="{{route('web.index')}}" title="madeindanang"><img src="{{asset('web/images/logo.png')}}" alt="Motokurakai" /></a>
     </h1>
     <button id="menu-button" class="c-navbar__button only_sp"><span></span></button>
     <div class="c-header__menu">
         <!-- <a href="#" title="情報公開" class="c-btn__contact only_pc"><span class="c-icon"></span> 情報公開</a> -->
         <ul class="c-navbar">
-            <li class="active"><a href="#" title="">{{__('message.HOME')}}</a></li>
+            <li class="active"><a href="{{route('web.index')}}" title="">{{__('message.HOME')}}</a></li>
             <li><a href="#" title="">{{__('message.ABOUTS')}}</a></li>
             <li class="c-navbar__dropdown">
                 <a href="#" title="活動内容" class="c-navbar__dropdown__link">{{__('message.PROJECTS')}}</a>
                 <ul class="c-navbar__dropdown__content">
-                    <li><a href="#" title="">1</a></li>
-                    <li><a href="#" title="">2</a></li>
-                    <li><a href="#" title="">3</a></li>
-                    <li><a href="#" title="">4</a></li>
-                    <li><a href="#" title="">5</a></li>
+                    @foreach($getAllCategories as $value)
+                        <li><a href="#" title="">{{Helpers::changeLanguage($value->name,$value->jp_name)}}</a></li>
+                    @endforeach
                 </ul>
             </li>
-            <li><a href="#" title="">{{__('message.EVENTS')}}</a></li>
+            <li><a href="{{route('web.event.events')}}" title="">{{__('message.EVENTS')}}</a></li>
             <li class="c-navbar__dropdown">
-                <a href="#" title="" class="c-navbar__dropdown__link">{{__('message.CO-SPACE')}}</a>
+                <a href="{{route('web.coworking.coworking_space')}}" title="" class="c-navbar__dropdown__link">{{__('message.CO-SPACE')}}</a>
                 <ul class="c-navbar__dropdown__content">
-                    <li><a href="#" title="1">1</a></li>
-                    <li><a href="#" title="2">2</a></li>
-                    <li><a href="#" title="3">3</a></li>
-                    <li><a href="#" title="4">4</a></li>
-                    <li><a href="#" title="5">5</a></li>
+                    @foreach($getAllCoworking as $value)
+                        <li><a href="{{route('web.coworking.coworking_detail',['name'=>str_slug($value->name),'id'=>$value->id])}}" title="{{Helpers::changeLanguage($value->name,$value->jp_name)}}">{{Helpers::changeLanguage($value->name,$value->jp_name)}}</a></li>
+                    @endforeach
                 </ul>
             </li>
             <li><a href="#" title="">Contact Us</a></li>

@@ -15,10 +15,21 @@ class ShowHomeController extends Controller
         $this->project = $project;
     }
 
-    public function index()
+    /**
+     * Load Our Project by ajax
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\JsonResponse|\Illuminate\View\View
+     * @throws \Throwable
+     */
+    public function index(Request $request)
     {
         $listCategory = $this->category->getAllCategory();
-        $listProject = $this->project->getAllProject();
-        return view('web.index', compact('listCategory', 'listProject'));
+        if ($request->ajax()) {
+            $valueCategory = $request->category_id;
+            $listProjects = Project::where('category_id', $valueCategory)->paginate(6);
+            $view = view('data_projectIndex_loadmore', compact('listCategory', 'listProjects', 'valueCategory'))->render();
+            return response()->json(['html' => $view]);
+        }
+        return view('web.index', compact('listCategory'));
     }
 }

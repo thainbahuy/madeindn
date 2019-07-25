@@ -5,19 +5,21 @@
     @include('web.common_layouts.head')
 </head>
 <body>
-    <header id="header" class="c-header c-header__border">
-        @include('web.common_layouts.header')
-    </header>
-    <!-- END HEADER -->
-
-    <main class="c-main">
+<header id="header" class="c-header c-header__border">
+    @include('web.common_layouts.header')
+</header>
+<!-- END HEADER -->
+@php
+    use App\Models\Web\Project;
+@endphp
+<main class="c-main">
     <div class="c-banner">
         <div class="c-banner__inner">
             <div class="c-banner__inner__sub-title">
                 welcome to danang's startup community
             </div>
             <div class="c-banner__inner__title">
-                    Aliquam malesuada
+                Aliquam malesuada
             </div>
             <div class="c-banner__inner__search">
                 <div class="search-tabs search-form">
@@ -37,12 +39,9 @@
                             <div class="form-group">
                                 <select name="" id="">
                                     <option value="">Sort by category</option>
-                                    <option value="">1</option>
-                                    <option value="">1</option>
-                                    <option value="">1</option>
-                                    <option value="">1</option>
-                                    <option value="">1</option>
-                                    <option value="">1</option>
+                                    @foreach($listCategory as $value)
+                                        <option value="{{$value->id}}">{{Helpers::changeLanguage($value->name,$value->jp_name)}}</option>
+                                    @endforeach
                                 </select>
                             </div>
                             <button type="submit" class="btn-search-all">
@@ -67,7 +66,9 @@
                     </div>
                     <div class="c-section__community__content__top__text">
                         <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vel tortor vitae dolor eleifend mollis. Donec ultricies in urna eget tristique. Cras arcu dolor, iaculis ut est vestibulum, elementum aliquet est. 
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vel tortor vitae dolor
+                            eleifend mollis. Donec ultricies in urna eget tristique. Cras arcu dolor, iaculis ut est
+                            vestibulum, elementum aliquet est.
                         </p>
                     </div>
                 </div>
@@ -122,177 +123,50 @@
         <div class="o-container">
             <h2 class="c-section__heading"><p>Our Projects </p></h2>
             <div class="tabs">
-                    <ul class="tabs-list">
-                        <li class="active" data-value="value 1" style="display: list-item"><a href="#tab1">Technology</a></li>
-                        <li data-value="value 2"><a href="#tab2">Crafts</a></li>
-                        <li data-value="value 3"><a href="#tab3">Dance</a></li>
-                        <li data-value="value 4"><a href="#tab4">Design </a></li>
-                        <li data-value="value 5"><a href="#tab5">Fashion</a></li>
-                        <li data-value="value 6"><a href="#tab6">Food</a></li>
-                        <li data-value="value 7"><a href="#tab7">Games</a></li>
-                        <li data-value="value 8"><a href="#tab8">Film And Video</a></li>
-                        <li data-value="value 9"><a href="#tab9">Journalism</a></li>
-                        <li data-value="value 10"><a href="#tab10">Music</a></li>
-                    </ul>
+                <ul class="tabs-list">
+                    @foreach($listCategory as $index => $value)
+                        @php
+                            if($index == 0) {
+                                $active = "class=active";
+                                $style  = "display: list-item";
+                            } else {
+                                $active = "";
+                                $style ="";
+                            }
+                        @endphp
+                        <li {{$active}} data-value="{{$value->id}}" style="{{$style}}">
+                            <a
+                                    href="#tab{{$value->id}}">{{Helpers::changeLanguage($value->name,$value->jp_name)}}
+                            </a>
+                        </li>
+                    @endforeach
                 </ul>
-            </div>                                                                                               
+                </ul>
+            </div>
             <div class="c-section__content">
                 <div class="tabs-content">
-                    <div id="tab1" class="tab active">
-                        <div class="c-list__project">
-                            <div class="c-list__project__item">
-                                <div class="c-thumbnail">
-                                    <img src="{{asset('web/')}}/images/4-3_1024x767.png" alt="">
-                                </div>
-                                <div class="c-list__project__item__content">
-                                    <div class="c-list__project__item__sub">
-                                        <p>TECHNOLOGY</p>
-                                        <p>start-up</p>
-                                    </div>
-                                    <div class="c-list__project__item__title">
-                                        <p>Lorem ipsum dolor sit amet, elit consectetur adipiscing elit</p>
-                                    </div>
-                                    <div class="c-list__project__item__profile">
-                                        <div class="avatar">
-                                            <img src="{{asset('web/')}}/images/4-3_1024x767.png" alt="">
-                                        </div>
-                                        <div class="name">
-                                            <p><span>By</span>Robert Hung</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="c-list__project__item">
-                                <div class="c-thumbnail">
-                                    <img src="{{asset('web/')}}/images/4-3_1024x767.png" alt="">
-                                </div>
-                                <div class="c-list__project__item__content">
-                                    <div class="c-list__project__item__sub">
-                                        <p>TECHNOLOGY</p>
-                                        <p>start-up</p>
-                                    </div>
-                                    <div class="c-list__project__item__title">
-                                        <p>Lorem ipsum dolor sit amet, elit consectetur adipiscing elit</p>
-                                    </div>
-                                    <div class="c-list__project__item__profile">
-                                        <div class="avatar">
-                                            <img src="{{asset('web/')}}/images/4-3_1024x767.png" alt="">
-                                        </div>
-                                        <div class="name">
-                                            <p><span>By</span>Robert Hung</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="c-list__project__item">
-                                <div class="c-thumbnail">
-                                    <img src="{{asset('web/')}}/images/4-3_1024x767.png" alt="">
-                                </div>
-                                <div class="c-list__project__item__content">
-                                    <div class="c-list__project__item__sub">
-                                        <p>TECHNOLOGY</p>
-                                        <p>start-up</p>
-                                    </div>
-                                    <div class="c-list__project__item__title">
-                                        <p>Lorem ipsum dolor sit amet, elit consectetur adipiscing elit</p>
-                                    </div>
-                                    <div class="c-list__project__item__profile">
-                                        <div class="avatar">
-                                            <img src="{{asset('web/')}}/images/4-3_1024x767.png" alt="">
-                                        </div>
-                                        <div class="name">
-                                            <p><span>By</span>Robert Hung</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="c-list__project__item">
-                                <div class="c-thumbnail">
-                                    <img src="{{asset('web/')}}/images/4-3_1024x767.png" alt="">
-                                </div>
-                                <div class="c-list__project__item__content">
-                                    <div class="c-list__project__item__sub">
-                                        <p>TECHNOLOGY</p>
-                                        <p>start-up</p>
-                                    </div>
-                                    <div class="c-list__project__item__title">
-                                        <p>Lorem ipsum dolor sit amet, elit consectetur adipiscing elit</p>
-                                    </div>
-                                    <div class="c-list__project__item__profile">
-                                        <div class="avatar">
-                                            <img src="{{asset('web/')}}/images/4-3_1024x767.png" alt="">
-                                        </div>
-                                        <div class="name">
-                                            <p><span>By</span>Robert Hung</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="c-list__project__item">
-                                <div class="c-thumbnail">
-                                    <img src="{{asset('web/')}}/images/4-3_1024x767.png" alt="">
-                                </div>
-                                <div class="c-list__project__item__content">
-                                    <div class="c-list__project__item__sub">
-                                        <p>TECHNOLOGY</p>
-                                        <p>start-up</p>
-                                    </div>
-                                    <div class="c-list__project__item__title">
-                                        <p>Lorem ipsum dolor sit amet, elit consectetur adipiscing elit</p>
-                                    </div>
-                                    <div class="c-list__project__item__profile">
-                                        <div class="avatar">
-                                            <img src="{{asset('web/')}}/images/4-3_1024x767.png" alt="">
-                                        </div>
-                                        <div class="name">
-                                            <p><span>By</span>Robert Hung</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="c-list__project__item">
-                                <div class="c-thumbnail">
-                                    <img src="{{asset('web/')}}/images/4-3_1024x767.png" alt="">
-                                </div>
-                                <div class="c-list__project__item__content">
-                                    <div class="c-list__project__item__sub">
-                                        <p>TECHNOLOGY</p>
-                                        <p>start-up</p>
-                                    </div>
-                                    <div class="c-list__project__item__title">
-                                        <p>Lorem ipsum dolor sit amet, elit consectetur adipiscing elit</p>
-                                    </div>
-                                    <div class="c-list__project__item__profile">
-                                        <div class="avatar">
-                                            <img src="{{asset('web/')}}/images/4-3_1024x767.png" alt="">
-                                        </div>
-                                        <div class="name">
-                                            <p><span>By</span>Robert Hung</p>
-                                        </div>
-                                    </div>
-                                </div>
+                    @foreach($listCategory as $index => $value)
+                        @php
+                            if($index == 0) {
+                                $active = "tab active";
+                            } else {
+                                $active = "tab";
+                            }
+                        @endphp
+                        <div id="tab{{$value->id}}" class="{{$active}}">
+                            <div class="c-list__project" id="project_{{$value->id}}">
+                                @php
+                                    $valueCategory  = $value->id;
+                                    $listProjects   = Project::where('category_id',$valueCategory)->paginate(6);
+                                @endphp
+                                @include('data_projectIndex_loadmore')
                             </div>
                         </div>
-                    </div>
-                    <div id="tab2" class="tab">
-                        <p>
-                            A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. I am alone, and feel the charm of existence in this spot, which was created for the bliss of souls like mine. I am so happy, my
-                        </p>
-                    </div>
-                    <div id="tab3" class="tab">
-                        <p>
-                            A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. I am alone, and feel the charm of existence in this spot, which was created for the bliss of souls like mine. I am so happy, my
-                        </p>
-                    </div>
-                    <div id="tab4" class="tab">
-                        <p>
-                            A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. I am alone, and feel the charm of existence in this spot, which was created for the bliss of souls like mine. I am so happy, my
-                        </p>
-                    </div>
+                    @endforeach
                 </div>
                 <div class="btn-view-more">
-                    <a href="#">
-                        VIEW MORE
+                    <a id="loadmore_btn" href="javascript:loadMoreProjectIndex('{{route('web.index')}}');">
+                        <span>VIEW MORE</span>
                     </a>
                 </div>
             </div>
@@ -311,7 +185,9 @@
                     </div>
                     <div class="c-section__community__content__top__text">
                         <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vel tortor vitae dolor eleifend mollis. Donec ultricies in urna eget tristique. Cras arcu dolor, iaculis ut est vestibulum, elementum aliquet est. 
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vel tortor vitae dolor
+                            eleifend mollis. Donec ultricies in urna eget tristique. Cras arcu dolor, iaculis ut est
+                            vestibulum, elementum aliquet est.
                         </p>
                     </div>
                 </div>
@@ -400,10 +276,12 @@
                                 <a href="#">Lorem ipsum dolor sit amet, elit consectetur adipiscing elit</a>
                             </div>
                             <div class="c-post__item__content__text">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vel tortor vitae dolor 
-                                    eleifend mollis. Donec ultricies in urna eget tristique. Cras arcu dolor, iaculis ut est vestibulum, 
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vel tortor vitae
+                                    dolor
+                                    eleifend mollis. Donec ultricies in urna eget tristique. Cras arcu dolor, iaculis ut
+                                    est vestibulum,
                                     elementum aliquet est. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                     Suspendisse vel tortor vitae dolor eleifend mollis. </p>
+                                    Suspendisse vel tortor vitae dolor eleifend mollis. </p>
                             </div>
                             <div class="c-post__item__content__date">
                                 <p>05 Feb 2019</p>
@@ -422,10 +300,12 @@
                                 <a href="#">Lorem ipsum dolor sit amet, elit consectetur adipiscing elit</a>
                             </div>
                             <div class="c-post__item__content__text">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vel tortor vitae dolor 
-                                    eleifend mollis. Donec ultricies in urna eget tristique. Cras arcu dolor, iaculis ut est vestibulum, 
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vel tortor vitae
+                                    dolor
+                                    eleifend mollis. Donec ultricies in urna eget tristique. Cras arcu dolor, iaculis ut
+                                    est vestibulum,
                                     elementum aliquet est. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                        Suspendisse vel tortor vitae dolor eleifend mollis. </p>
+                                    Suspendisse vel tortor vitae dolor eleifend mollis. </p>
                             </div>
                             <div class="c-post__item__content__date">
                                 <p>05 Feb 2019</p>
@@ -444,10 +324,12 @@
                                 <a href="#">Lorem ipsum dolor sit amet, elit consectetur adipiscing elit</a>
                             </div>
                             <div class="c-post__item__content__text">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vel tortor vitae dolor 
-                                    eleifend mollis. Donec ultricies in urna eget tristique. Cras arcu dolor, iaculis ut est vestibulum, 
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vel tortor vitae
+                                    dolor
+                                    eleifend mollis. Donec ultricies in urna eget tristique. Cras arcu dolor, iaculis ut
+                                    est vestibulum,
                                     elementum aliquet est. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                        Suspendisse vel tortor vitae dolor eleifend mollis. </p>
+                                    Suspendisse vel tortor vitae dolor eleifend mollis. </p>
                             </div>
                             <div class="c-post__item__content__date">
                                 <p>05 Feb 2019</p>
@@ -466,10 +348,12 @@
                                 <a href="#">Lorem ipsum dolor sit amet, elit consectetur adipiscing elit</a>
                             </div>
                             <div class="c-post__item__content__text">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vel tortor vitae dolor 
-                                    eleifend mollis. Donec ultricies in urna eget tristique. Cras arcu dolor, iaculis ut est vestibulum, 
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vel tortor vitae
+                                    dolor
+                                    eleifend mollis. Donec ultricies in urna eget tristique. Cras arcu dolor, iaculis ut
+                                    est vestibulum,
                                     elementum aliquet est. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                        Suspendisse vel tortor vitae dolor eleifend mollis. </p>
+                                    Suspendisse vel tortor vitae dolor eleifend mollis. </p>
                             </div>
                             <div class="c-post__item__content__date">
                                 <p>05 Feb 2019</p>
@@ -535,17 +419,22 @@
             </div>
         </div>
     </div>
-    </main>
-    <!-- END MAIN -->
+</main>
+<!-- END MAIN -->
 
-    <footer id="footer" class="c-footer">
-        @include('web.common_layouts.footer')
-    </footer>
-    <!-- END FOOTER -->
-    <!-- <a id="go-top" href="javascript:;" title="Go Top" class="c-btn__go-top"><img src="{{asset('web/')}}/images/icons/go_top.png" alt="Go Top" /></a> -->
-    <!-- ======== JAVASCRIPT ======== -->
-    @include('web.common_layouts.script_footer')
-    <!-- endbuild -->
-    <!-- ======== END JAVASCRIPT ======== -->
+<footer id="footer" class="c-footer">
+    @include('web.common_layouts.footer')
+</footer>
+<!-- END FOOTER -->
+<!-- <a id="go-top" href="javascript:;" title="Go Top" class="c-btn__go-top"><img src="{{asset('web/')}}/images/icons/go_top.png" alt="Go Top" /></a> -->
+<!-- ======== JAVASCRIPT ======== -->
+@include('web.common_layouts.script_footer')
+<script src="{{asset('web/js/loadmore.js')}}"></script>
+
+<script>
+
+</script>
+<!-- endbuild -->
+<!-- ======== END JAVASCRIPT ======== -->
 </body>
 </html>

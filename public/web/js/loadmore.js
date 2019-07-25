@@ -20,3 +20,31 @@ function loadMoreEvent(urlAjax) {
             alert('server not responding...');
         });
 }
+
+
+var pageIndexProject = 1;
+var lastCategories = {};
+function loadMoreProjectIndex(urlAjax) {
+    var category_id = $('ul.tabs-list').find('li.active').data('value');
+
+    if (!lastCategories[category_id]) {
+        lastCategories[category_id] = 1;
+        pageIndexProject = 1;
+    } else {
+        pageIndexProject = lastCategories[category_id];
+    }
+
+    $.ajax(
+        {
+            url: urlAjax,
+            type: "get",
+            data: {'page': indexPage, 'category_id': category_id},
+        })
+        .done(function (data) {
+            if ($.trim(data.html) != "") {
+                $("#project_" + category_id).append(data.html);
+                lastCategories[category_id]++;
+            }
+        });
+}
+
