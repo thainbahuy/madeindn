@@ -21,16 +21,21 @@ Route::get('language/{locale}', function ($locale){
 });
 
 Route::namespace('Web')->group( function() {
-    // Co-working
+
+    //Home page
+    Route::get('/home', 'ShowHomeController@index')->name('web.index');
+    Route::get('/', 'ShowHomeController@index')->name('web.index');
+
+    // Co-working page
     Route::get('/co-working-space', 'CoWorkingController@index')->name('web.coworking.coworking_space');
     Route::get('/co-working-space/{name}-{id}', 'CoWorkingController@showDetailCoworking')->name('web.coworking.coworking_detail');
 
-    // event
+    // event page
     Route::get('/event', 'EventController@index')->name('web.event.events');
     Route::get('/event/{eventSlug}', 'EventController@loadEventDetail')->name('web.event.events_detail');
 });
 
-Route::get('/', function () {
+Route::get('/test', function () {
     return view('welcome');
 });
 
