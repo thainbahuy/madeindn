@@ -13,7 +13,8 @@ class Event extends Model
     {
         return DB::table($this->table)
             ->select('id', 'jp_name', 'name', 'image_link', 'sort_description', 'jp_sort_description', 'date_time')
-            ->paginate(5);
+            ->orderByDesc('id')
+            ->paginate(10);
     }
 
     public function getEventById($id)

@@ -8,6 +8,8 @@ use App\Http\Controllers\Controller;
 
 class CoWorkingController extends Controller
 {
+    private $coWorking;
+
     public function __construct(CoWorking $coWorking)
     {
         $this->coWorking = $coWorking;
@@ -29,9 +31,9 @@ class CoWorkingController extends Controller
      * @param $id
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function showDetailCoworking($name,$id)
+    public function showDetailCoworking($name, $id)
     {
         $objCoworking = $this->coWorking->getCoworking($id);
-        return view('web.coworking.coworking_detail',compact('objCoworking'));
+        return view('web.coworking.coworking_detail', compact('objCoworking'));
     }
 }
