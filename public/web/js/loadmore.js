@@ -21,17 +21,16 @@ function loadMoreEvent(urlAjax) {
         });
 }
 
-
-var pageIndexProject = 1;
 var lastCategories = {};
+
 function loadMoreProjectIndex(urlAjax) {
     var category_id = $('ul.tabs-list').find('li.active').data('value');
 
     if (!lastCategories[category_id]) {
-        lastCategories[category_id] = 1;
-        pageIndexProject = 1;
+        lastCategories[category_id] = 2;
+        indexPage = 2;
     } else {
-        pageIndexProject = lastCategories[category_id];
+        indexPage = lastCategories[category_id];
     }
 
     $.ajax(

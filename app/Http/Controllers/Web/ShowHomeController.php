@@ -26,7 +26,7 @@ class ShowHomeController extends Controller
         $listCategory = $this->category->getAllCategory();
         if ($request->ajax()) {
             $valueCategory = $request->category_id;
-            $listProjects = Project::where('category_id', $valueCategory)->paginate(6);
+            $listProjects = $this->project->where('category_id', $valueCategory)->paginate(6);
             $view = view('data_projectIndex_loadmore', compact('listCategory', 'listProjects', 'valueCategory'))->render();
             return response()->json(['html' => $view]);
         }
