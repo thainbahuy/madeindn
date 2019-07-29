@@ -38,8 +38,11 @@
             </div>
             <div class="c-navbar__right__language">
                 <ul>
-                    <li><a href="{{url('language/jp')}}">JP</a></li>
-                    <li><a href="{{url('language/en')}}">EN</a></li>
+                    @if (Session::get('locale') == 'en')
+                        <li><a href="{{url('language/jp')}}">JP</a></li>
+                    @else
+                        <li><a href="{{url('language/en')}}">EN</a></li>
+                    @endif
                 </ul>
             </div>
         </div>
