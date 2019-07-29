@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
-    <title>Top Page</title>
+    <title>{{$title}}</title>
     @include('web.common_layouts.head')
 </head>
 <body>
@@ -49,31 +49,17 @@
                                 <p>Sharing</p>
                             </div>
                             <ul class="c-sidebar__sharing__list">
-                                <li>
-                                    <a href="#">
-                                        <img src="{{asset('web/')}}/images/icons/fb.png" alt="">
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <img src="{{asset('web/')}}/images/icons/ms.png" alt="">
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <img src="{{asset('web/')}}/images/icons/share.png" alt="">
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <img src="{{asset('web/')}}/images/icons/twice.png" alt="">
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <img src="{{asset('web/')}}/images/icons/in.png" alt="">
-                                    </a>
-                                </li>
+                                @if($configurations != null)
+                                    @foreach($configurations as $key => $value)
+                                        @if($value != '')
+                                            <li>
+                                                <a href="{{$value}}">
+                                                    <img src="{{asset('web/')}}/images/icons/{{$key}}" alt="">
+                                                </a>
+                                            </li>
+                                        @endif
+                                    @endforeach
+                                @endif
                             </ul>
                         </div>
                     </div>

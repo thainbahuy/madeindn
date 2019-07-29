@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Web;
 
 use App\Models\Web\CoWorking;
+use Helpers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -34,6 +35,8 @@ class CoWorkingController extends Controller
     public function showDetailCoworking($name, $id)
     {
         $objCoworking = $this->coWorking->getCoworking($id);
-        return view('web.coworking.coworking_detail', compact('objCoworking'));
+        $title = Helpers::changeLanguage($objCoworking->name, $objCoworking->jp_name);
+        $configurations = Helpers::showJsonSocial($objCoworking->social_link);
+        return view('web.coworking.coworking_detail', compact('objCoworking', 'configurations', 'title'));
     }
 }

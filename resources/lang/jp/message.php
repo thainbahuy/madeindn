@@ -1,5 +1,8 @@
 <?php
 return [
+    //Head
+    'COWORKING_TITLE' => "Coworking Space JP",
+
     // Header
     'HOME'          => 'Home',
     'ABOUTS'        => "About Us JP",

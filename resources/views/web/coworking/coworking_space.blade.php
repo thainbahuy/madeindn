@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
-    <title>About</title>
+    <title>{{@trans('message.COWORKING_TITLE')}}</title>
     @include('web.common_layouts.head')
 </head>
 <body>

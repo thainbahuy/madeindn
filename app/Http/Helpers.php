@@ -21,6 +21,11 @@ class Helpers
     {
         return json_decode(Helpers::changeLanguage($name_en, $jp_name), true);
     }
+
+    public static  function showJsonSocial($social_link) {
+        return json_decode($social_link, true);
+
+    }
 }
 
 ?>

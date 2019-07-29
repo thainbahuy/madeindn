@@ -19,7 +19,7 @@ class CoWorking extends Model
     public function getCoworking($id)
     {
         return DB::table($this->table)
-            ->select('id', 'overview', 'jp_overview', 'image_link','location','jp_location')
+            ->select('id', 'overview', 'jp_overview', 'image_link','location','jp_location','social_link','name', 'jp_name')
             ->where('id',$id)
             ->first();
     }
