@@ -35,7 +35,7 @@
                             </div>
                             <div class="c-sidebar__location__text">
                                 @php
-                                    $location = Helpers::showJsonAddress($objCoworking->location,$objCoworking->jp_location);
+                                    $location = Helpers::convertToJson(Helpers::changeLanguage($objCoworking->location,$objCoworking->jp_location));
                                 @endphp
                                 @if($location != null)
                                     @foreach($location as $key => $value)

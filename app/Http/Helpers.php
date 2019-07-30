@@ -17,10 +17,9 @@ class Helpers
 
     }
 
-    public static function showJsonAddress($name_en, $jp_name)
+    public static function convertToJson($jsonVarible)
     {
-        return json_decode(Helpers::changeLanguage($name_en, $jp_name), true);
+        return json_decode($jsonVarible, true);
     }
 }
 
-?>

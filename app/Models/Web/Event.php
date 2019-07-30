@@ -12,7 +12,8 @@ class Event extends Model
     public function getAllEvents()
     {
         return DB::table($this->table)
-            ->select('id', 'jp_name', 'name', 'image_link', 'sort_description', 'jp_sort_description', 'date_time')
+            ->select('id', 'jp_name', 'name', 'image_link', 'sort_description', 'jp_sort_description', 'date_time', 'position')
+            ->orderByRaw('ISNULL(position), position ASC')
             ->orderByDesc('id')
             ->paginate(10);
     }
@@ -20,7 +21,7 @@ class Event extends Model
     public function getEventById($id)
     {
         return DB::table($this->table)
-            ->select('date_time', 'overview', 'image_link', 'jp_overview', 'location', 'jp_location', 'begin_time', 'end_time')
+            ->select('jp_name', 'name', 'date_time', 'overview', 'image_link', 'jp_overview', 'location', 'jp_location', 'begin_time', 'end_time', 'social_link')
             ->where('id', $id)
             ->first();
     }

@@ -1,5 +1,8 @@
 <?php
 return [
+    //Head Title
+    'EVENT'         => 'Event',
+
     // Header
     'HOME'          => 'Home',
     'ABOUTS'        => "About Us",
