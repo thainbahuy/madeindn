@@ -86,13 +86,15 @@
         <div class="c-section__map__content">
             <div class="mapouter">
                 <div class="gmap_canvas">
-                    <iframe width="100%" height="490" id="gmap_canvas"
-                            @php
-                                $map      = json_decode($objCoworking->location, true);
-                                $address  = urlencode($map[0].'-'.$map[1].'-'.$map[2]);
-                            @endphp
-                            src="https://maps.google.com/maps?q={{$address}}&t=&z=13&ie=UTF8&iwloc=&output=embed"
-                            frameborder="0" scrolling="no" marginheight="0" marginwidth="0">
+                    @php
+                        $map = json_decode($objCoworking->location, true);
+                        $address  = urlencode($map[1].'-'.$map[2]);
+                    @endphp
+                    <iframe id="map"
+                            width="100%"
+                            height="550"
+                            frameborder="0" style="border:0"
+                            src="" allowfullscreen>
                     </iframe>
                 </div>
             </div>
@@ -109,8 +111,22 @@
 @include('web.common_layouts.script_footer')
 <script>
     $urlImage = '{{$objCoworking->image_link}}'
+
     $(document).ready(function () {
         $('.c-banner__coworking').css('background-image', 'url(' + $urlImage + ')');
+
+        $.ajax(
+            {
+                type: "POST",
+                url: 'https://maps.googleapis.com/maps/api/geocode/json?address={{$address}}&key=AIzaSyBqORBqnokRCmGGt3XqEWl21Ih6TCY38_A',
+            })
+            .done(function (data) {
+                $('#map').attr('src', 'https://www.google.com/maps/embed/v1/place?key=AIzaSyBqORBqnokRCmGGt3XqEWl21Ih6TCY38_A&zoom=18&q=place_id:' + data.results[0].place_id)
+
+            })
+            .fail(function (jqXHR, ajaxOptions, thrownError) {
+                alert('server not responding...');
+            });
     });
 </script>
 <!-- endbuild -->
