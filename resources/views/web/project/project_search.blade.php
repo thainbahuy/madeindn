@@ -22,7 +22,7 @@
                         <div class="form-group">
                             <select name="category" id="category">
                                 <option value="">Sort by category</option>
-                                @foreach($getAllCategories as $value)
+                                @foreach($listCategory as $value)
                                     <option @if( app('request')->input('category') == $value->id) selected @endif value="{{$value->id}}">{{Helpers::changeLanguage($value->name,$value->jp_name)}}</option>
                                 @endforeach
                             </select>
