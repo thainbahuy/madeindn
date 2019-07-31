@@ -1,0 +1,8 @@
+{
+  "HomePage": {
+    "listEventPaginate": 10
+  },
+  "EventPage": {
+    "listEventPaginate": 10
+  }
+}

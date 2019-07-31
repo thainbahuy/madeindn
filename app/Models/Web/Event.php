@@ -9,13 +9,13 @@ class Event extends Model
 {
     protected $table = 'Event';
 
-    public function getAllEvents()
+    public function getAllEvents($limit)
     {
         return DB::table($this->table)
             ->select('id', 'jp_name', 'name', 'image_link', 'sort_description', 'jp_sort_description', 'date_time', 'position')
             ->orderByRaw('ISNULL(position), position ASC')
             ->orderByDesc('id')
-            ->paginate(10);
+            ->paginate($limit);
     }
 
     public function getEventById($id)
