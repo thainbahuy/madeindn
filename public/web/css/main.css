@@ -3005,6 +3005,12 @@ li > ol {
   -webkit-transition: all 0.2s ease-in;
   transition: all 0.2s ease-in;
 }
+
+.input-form{
+  width: 100%;
+  height: 4.375rem;
+  border:none;
+}
 @media (max-width: 600px) {
   .c-section__search .search-form .form-group .select-styled {
     width: 100%;

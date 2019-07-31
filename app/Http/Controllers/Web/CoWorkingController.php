@@ -36,7 +36,7 @@ class CoWorkingController extends Controller
     {
         $objCoworking = $this->coWorking->getCoworking($id);
         $title = Helpers::changeLanguage($objCoworking->name, $objCoworking->jp_name);
-        $configurations = Helpers::showJsonSocial($objCoworking->social_link);
+        $configurations = Helpers::convertToJson($objCoworking->social_link);
         return view('web.coworking.coworking_detail', compact('objCoworking', 'configurations', 'title'));
     }
 }

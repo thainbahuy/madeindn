@@ -25,6 +25,7 @@ Route::namespace('Web')->group( function() {
     //Home page
     Route::get('/home', 'ShowHomeController@index')->name('web.index');
     Route::get('/', 'ShowHomeController@index')->name('web.index');
+    Route::get('/search','ShowHomeController@searchProject')->name('web.project.project_search');
 
     // Co-working page
     Route::get('/co-working-space', 'CoWorkingController@index')->name('web.coworking.coworking_space');
@@ -33,6 +34,13 @@ Route::namespace('Web')->group( function() {
     // event page
     Route::get('/event', 'EventController@index')->name('web.event.events');
     Route::get('/event/{eventSlug}', 'EventController@loadEventDetail')->name('web.event.events_detail');
+
+    // project page
+    Route::get('project/{name}-{id}.html', 'ProjectController@showDetailProject')->name('web.project.project_detail');
+    Route::get('/project/{name}', 'ProjectController@showProjectByCategory')->name('web.project.project_category');
+
+
+
 });
 
 Route::get('/test', function () {

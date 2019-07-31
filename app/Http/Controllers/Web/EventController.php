@@ -4,15 +4,17 @@ namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
 use App\Models\Web\Event;
+use Helpers;
 use Illuminate\Http\Request;
 
 class EventController extends Controller
 {
-    private $eventModel;
+    private $eventModel, $config;
 
     function __construct(Event $eventModel)
     {
         $this->eventModel = $eventModel;
+        $this->config = Helpers::getConfig()['EventPage'];
     }
 
     /**
@@ -23,7 +25,7 @@ class EventController extends Controller
      */
     public function index(Request $request)
     {
-        $listEvent = $this->eventModel->getAllEvents();
+        $listEvent = $this->eventModel->getAllEvents($this->config['listEventPaginate']);
         if ($request->ajax()) {
             $view = view('data_event_loadmore', compact('listEvent'))->render();
             return response()->json(['html' => $view]);
@@ -41,8 +43,7 @@ class EventController extends Controller
         $eventSlug = explode('-', $eventSlug);
         $idEvent = $eventSlug[sizeof($eventSlug) - 1];
         $event = $this->eventModel->getEventById($idEvent);
-        return view('web.event.events_detail', compact('event'));
+        $socical_link = Helpers::convertToJson($event->social_link);
+        return view('web.event.events_detail', compact('event', 'socical_link'));
     }
-
-
 }

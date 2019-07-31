@@ -44,7 +44,7 @@
                                 <p>Location</p>
                             </div>
                             @php
-                                $location = Helpers::showJsonAddress($event->location, $event->jp_location);
+                                $location = Helpers::convertToJson(Helpers::changeLanguage($event->location, $event->jp_location));
                             @endphp
                             @if ($location != null)
                                 <div class="c-sidebar__location__text">

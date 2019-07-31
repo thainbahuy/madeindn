@@ -13,14 +13,16 @@ class CoWorking extends Model
     {
         return DB::table($this->table)
             ->select('id', 'name', 'jp_name', 'image_link')
+            ->orderByRaw('ISNULL(position), position ASC')
+            ->orderBy('id','DESC')
             ->get();
     }
 
     public function getCoworking($id)
     {
         return DB::table($this->table)
-            ->select('id', 'overview', 'jp_overview', 'image_link','location','jp_location','social_link','name', 'jp_name')
-            ->where('id',$id)
+            ->select('id', 'overview', 'jp_overview', 'image_link', 'location', 'jp_location', 'social_link', 'name', 'jp_name')
+            ->where('id', $id)
             ->first();
     }
 }

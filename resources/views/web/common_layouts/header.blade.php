@@ -11,8 +11,8 @@
             <li class="c-navbar__dropdown">
                 <a href="#" title="活動内容" class="c-navbar__dropdown__link">{{__('message.PROJECTS')}}</a>
                 <ul class="c-navbar__dropdown__content">
-                    @foreach($getAllCategories as $value)
-                        <li><a href="#" title="">{{Helpers::changeLanguage($value->name,$value->jp_name)}}</a></li>
+                    @foreach($listCategory as $value)
+                        <li><a href="{{route('web.project.project_category',['name'=>str_slug($value->name)])}}" title="">{{Helpers::changeLanguage($value->name,$value->jp_name)}}</a></li>
                     @endforeach
                 </ul>
             </li>

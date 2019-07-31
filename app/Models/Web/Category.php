@@ -14,11 +14,4 @@ class Category extends Model
     {
         return $this->hasMany('App\Models\Web\Project');
     }
-
-    public function getAllCategory()
-    {
-        return DB::table($this->table)
-            ->select('name', 'jp_name', 'id')
-            ->get();
-    }
 }

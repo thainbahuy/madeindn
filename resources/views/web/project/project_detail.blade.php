@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Top Page</title>
+    <title>{{$title}}</title>
     @include('web.common_layouts.head')
 </head>
 <body>
@@ -19,11 +19,11 @@
                             <img src="{{asset('web/')}}/images/4-3_1024x767.png" alt="">
                         </div>
                         <div class="name">
-                            <p><span>By</span>Robert Hung</p>
+                            <p><span>By</span>{{$getProject->author_name}}</p>
                         </div>
                     </div>
                     <div class="c-section__project__banner__title">
-                        <p>Narwal: World's First Self-Cleaning Robot Mop & Vacuum</p>
+                        <p>{{Helpers::changeLanguage($getProject->name,$getProject->jp_name)}}</p>
                     </div>
                 </div>
                 <div class="c-section__project__banner__bot">
@@ -40,22 +40,7 @@
                             <p>Overview</p>
                         </div>
                         <div class="text">
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sit amet molestie lacus, sit amet posuere lorem. Mauris in bibendum dui, quis luctus turpis. Maecenas nec hendrerit massa. Nullam in fermentum lorem. Nunc ac metus varius, egestas dolor at, scelerisque justo. Sed lacus leo, dignissim eget consectetur in, tincidunt in ex. Nam posuere, enim at pulvinar lacinia, nisl turpis sodales dui, in tincidunt felis tellus consequat mauris. Praesent suscipit eros finibus, consequat mauris sed, tempor urna. Ut hendrerit purus et ex accumsan, id tincidunt tortor mattis. Ut sit amet magna libero.
-                            </p>
-                            <p>
-                                Morbi elit urna, auctor et suscipit et, elementum eget mauris. Duis sollicitudin, libero ac semper dictum, enim diam facilisis turpis, malesuada egestas eros felis in justo. Aliquam erat volutpat. Duis luctus erat non dolor porttitor commodo. Mauris vitae aliquet nulla. Aliquam accumsan eleifend risus. Vivamus id risus gravida, tincidunt orci id, luctus magna. Maecenas vehicula ipsum quis neque vehicula, ac commodo lorem scelerisque.
-                            </p>
-                            <p><img src="{{asset('web/')}}/images/post/img_detail02.png" alt=""></p>
-                            <p>
-                                Porem ipsum dolor sit amet, consectetur adipiscing elit. Nam sit amet molestie lacus, sit amet posuere lorem. Mauris in bibendum dui, quis luctus turpis. Maecenas nec hendrerit massa. Nullam in fermentum lorem. Nunc ac metus varius, egestas dolor at, scelerisque justo.
-                            </p>
-                        </div>
-                        <div class="c-section__project__detail__title">
-                            <p>Team</p>
-                        </div>
-                        <div class="text">
-                            <p><img src="{{asset('web/')}}/images/post/img_detail03.png" alt=""></p>
+                            {!! Helpers::changeLanguage($getProject->overview,$getProject->jp_overview) !!}
                         </div>
                     </div>
                     <div class="c-section__content__right">
@@ -68,13 +53,12 @@
                                 </div>
                                 <div class="c-sidebar__profile__name">
                                     <p>Founder</p>
-                                    <p>Robert Hung</p>
+                                    <p>{{$getProject->author_name}}</p>
                                 </div>
                             </div>
                             <div class="c-sidebar__profile__bot">
                                 <div class="text">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sit amet molestie lacus, sit amet posuere lorem. Mauris in bibendum dui, quis luctus turpis. Maecenas nec hendrerit massa. neque vehicula, ac commodo lorem scelerisque.</p>
-
+                                    <p>{{ Helpers::changeLanguage($getProject->author_description,$getProject->author_description_jp)}}</p>
                                 </div>
                                 <div class="c-form">
                                     <div class="c-form__body">
@@ -99,7 +83,7 @@
             </div>
         </div>
         <!-- END SECTION -->
-        
+
     </main>
     <!-- END MAIN -->
 

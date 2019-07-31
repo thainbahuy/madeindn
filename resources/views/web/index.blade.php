@@ -24,20 +24,12 @@
             <div class="c-banner__inner__search">
                 <div class="search-tabs search-form">
                     <div class="tab-content">
-                        <form action="">
+                        <form action="{{route('web.project.project_search')}}" method="GET">
                             <div class="form-group">
-                                <select name="" id="">
-                                    <option value="">Sort by category</option>
-                                    <option value="">1</option>
-                                    <option value="">13</option>
-                                    <option value="">14</option>
-                                    <option value="">15</option>
-                                    <option value="">16</option>
-                                    <option value="">1</option>
-                                </select>
+                                <input type="text" name="key_word" class="input-form" placeholder="Key word Search">
                             </div>
                             <div class="form-group">
-                                <select name="" id="">
+                                <select name="category" id="category">
                                     <option value="">Sort by category</option>
                                     @foreach($listCategory as $value)
                                         <option value="{{$value->id}}">{{Helpers::changeLanguage($value->name,$value->jp_name)}}</option>
@@ -135,9 +127,7 @@
                             }
                         @endphp
                         <li {{$active}} data-value="{{$value->id}}" style="{{$style}}">
-                            <a
-                                    href="#tab{{$value->id}}">{{Helpers::changeLanguage($value->name,$value->jp_name)}}
-                            </a>
+                            <a href="#tab{{$value->id}}">{{Helpers::changeLanguage($value->name,$value->jp_name)}}</a>
                         </li>
                     @endforeach
                 </ul>
@@ -157,7 +147,7 @@
                             <div class="c-list__project" id="project_{{$value->id}}">
                                 @php
                                     $valueCategory  = $value->id;
-                                    $listProjects   = Project::where('category_id',$valueCategory)->paginate(6);
+                                    $listProjects   = Project::where('category_id',$valueCategory)->where('status', 1)->orderByRaw('ISNULL(position), position ASC')->paginate(Helpers::getConfig()['ProjectPage']['listProjectPaginate']);
                                 @endphp
                                 @include('data_projectIndex_loadmore')
                             </div>
@@ -193,66 +183,18 @@
                 </div>
                 <div class="c-section__community__content__list main-banner">
                     <div class="c-list main-banner__slick">
-                        <div class="c-list__item item">
-                            <div class="c-thumbnail">
-                                <img src="{{asset('web/')}}/images/4-3_1024x767.png" alt="">
-                            </div>
-                            <div class="c-list__item__content">
-                                <div class="c-list__item__title">
-                                    <p>How we can help</p>
+                        @foreach($listCoworking as $valueCoWorking)
+                            <div class="c-list__item item">
+                                <div class="c-thumbnail">
+                                    <img src="{{$valueCoWorking->image_link}}" alt="">
+                                </div>
+                                <div class="c-list__item__content">
+                                    <div class="c-list__item__title">
+                                        <p>{{Helpers::changeLanguage($valueCoWorking->name,$valueCoWorking->jp_name)}}</p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="c-list__item item">
-                            <div class="c-thumbnail">
-                                <img src="{{asset('web/')}}/images/4-3_1024x767.png" alt="">
-                            </div>
-                            <div class="c-list__item__content">
-                                <div class="c-list__item__title">
-                                    <p>Why partners with us</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="c-list__item item">
-                            <div class="c-thumbnail">
-                                <img src="{{asset('web/')}}/images/4-3_1024x767.png" alt="">
-                            </div>
-                            <div class="c-list__item__content">
-                                <div class="c-list__item__title">
-                                    <p>Your benefits for community</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="c-list__item item">
-                            <div class="c-thumbnail">
-                                <img src="{{asset('web/')}}/images/4-3_1024x767.png" alt="">
-                            </div>
-                            <div class="c-list__item__content">
-                                <div class="c-list__item__title">
-                                    <p>How we can help</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="c-list__item item">
-                            <div class="c-thumbnail">
-                                <img src="{{asset('web/')}}/images/4-3_1024x767.png" alt="">
-                            </div>
-                            <div class="c-list__item__content">
-                                <div class="c-list__item__title">
-                                    <p>Why partners with us</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="c-list__item item">
-                            <div class="c-thumbnail">
-                                <img src="{{asset('web/')}}/images/4-3_1024x767.png" alt="">
-                            </div>
-                            <div class="c-list__item__content">
-                                <div class="c-list__item__title">
-                                    <p>Your benefits for community</p>
-                                </div>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>

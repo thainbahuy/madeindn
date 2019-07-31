@@ -17,14 +17,20 @@ class Helpers
 
     }
 
-    public static function showJsonAddress($name_en, $jp_name)
+    public static function convertToJson($jsonVarible)
     {
-        return json_decode(Helpers::changeLanguage($name_en, $jp_name), true);
+        return json_decode($jsonVarible, true);
     }
 
-    public static  function showJsonSocial($social_link) {
-        return json_decode($social_link, true);
+    public static function getConfig()
+    {
+        $content = file_get_contents(Helpers::getFileFromStorage('config.json'));
+        return Helpers::convertToJson($content);
+    }
 
+    public static function getFileFromStorage($patch)
+    {
+        return storage_path($patch);
     }
 }
 

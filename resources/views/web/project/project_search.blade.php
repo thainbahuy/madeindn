@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>About</title>
+    <title>Kết quả tìm kiếm "{{app('request')->input('key_word')}}"| Madein Đà Nẵng</title>
     @include('web.common_layouts.head')
 </head>
 <body>
@@ -15,27 +15,16 @@
         <div class="c-section__search__content">
             <div class="search-tabs search-form">
                 <div class="tab-content">
-                    <form action="">
+                    <form action="{{route('web.project.project_search')}}" method="GET">
                         <div class="form-group">
-                            <select name="" id="">
-                                <option value="">Sort by category</option>
-                                <option value="">1</option>
-                                <option value="">13</option>
-                                <option value="">14</option>
-                                <option value="">15</option>
-                                <option value="">16</option>
-                                <option value="">1</option>
-                            </select>
+                            <input type="text" name="key_word" class="input-form" placeholder="Key word Search" value="{{app('request')->input('key_word')}}">
                         </div>
                         <div class="form-group">
-                            <select name="" id="">
+                            <select name="category" id="category">
                                 <option value="">Sort by category</option>
-                                <option value="">1</option>
-                                <option value="">1</option>
-                                <option value="">1</option>
-                                <option value="">1</option>
-                                <option value="">1</option>
-                                <option value="">1</option>
+                                @foreach($getAllCategories as $value)
+                                    <option @if( app('request')->input('category') == $value->id) selected @endif value="{{$value->id}}">{{Helpers::changeLanguage($value->name,$value->jp_name)}}</option>
+                                @endforeach
                             </select>
                         </div>
                         <button type="submit" class="btn-search-all">
@@ -51,7 +40,7 @@
         <div class="o-container">
             <div class="number-all">
                 <p>
-                    <span>Explore</span> 441,942 projects
+                    <span>Explore</span> {{$listProjects->total()}} projects
                 </p>
             </div>
         </div>
@@ -60,142 +49,12 @@
         <div class="o-container">
             <div class="c-section__project-category__content">
                 <div class="c-list__project">
-                    <div class="c-list__project__item">
-                        <div class="c-thumbnail">
-                            <img src="{{asset('web/')}}/images/4-3_1024x767.png" alt="">
-                        </div>
-                        <div class="c-list__project__item__content">
-                            <div class="c-list__project__item__sub">
-                                <p>TECHNOLOGY</p>
-                                <p>start-up</p>
-                            </div>
-                            <div class="c-list__project__item__title">
-                                <p>Lorem ipsum dolor sit amet, elit consectetur adipiscing elit</p>
-                            </div>
-                            <div class="c-list__project__item__profile">
-                                <div class="avatar">
-                                    <img src="{{asset('web/')}}/images/4-3_1024x767.png" alt="">
-                                </div>
-                                <div class="name">
-                                    <p><span>By</span>Robert Hung</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="c-list__project__item">
-                        <div class="c-thumbnail">
-                            <img src="{{asset('web/')}}/images/4-3_1024x767.png" alt="">
-                        </div>
-                        <div class="c-list__project__item__content">
-                            <div class="c-list__project__item__sub">
-                                <p>TECHNOLOGY</p>
-                                <p>start-up</p>
-                            </div>
-                            <div class="c-list__project__item__title">
-                                <p>Lorem ipsum dolor sit amet, elit consectetur adipiscing elit</p>
-                            </div>
-                            <div class="c-list__project__item__profile">
-                                <div class="avatar">
-                                    <img src="{{asset('web/')}}/images/4-3_1024x767.png" alt="">
-                                </div>
-                                <div class="name">
-                                    <p><span>By</span>Robert Hung</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="c-list__project__item">
-                        <div class="c-thumbnail">
-                            <img src="{{asset('web/')}}/images/4-3_1024x767.png" alt="">
-                        </div>
-                        <div class="c-list__project__item__content">
-                            <div class="c-list__project__item__sub">
-                                <p>TECHNOLOGY</p>
-                                <p>start-up</p>
-                            </div>
-                            <div class="c-list__project__item__title">
-                                <p>Lorem ipsum dolor sit amet, elit consectetur adipiscing elit</p>
-                            </div>
-                            <div class="c-list__project__item__profile">
-                                <div class="avatar">
-                                    <img src="{{asset('web/')}}/images/4-3_1024x767.png" alt="">
-                                </div>
-                                <div class="name">
-                                    <p><span>By</span>Robert Hung</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="c-list__project__item">
-                        <div class="c-thumbnail">
-                            <img src="{{asset('web/')}}/images/4-3_1024x767.png" alt="">
-                        </div>
-                        <div class="c-list__project__item__content">
-                            <div class="c-list__project__item__sub">
-                                <p>TECHNOLOGY</p>
-                                <p>start-up</p>
-                            </div>
-                            <div class="c-list__project__item__title">
-                                <p>Lorem ipsum dolor sit amet, elit consectetur adipiscing elit</p>
-                            </div>
-                            <div class="c-list__project__item__profile">
-                                <div class="avatar">
-                                    <img src="{{asset('web/')}}/images/4-3_1024x767.png" alt="">
-                                </div>
-                                <div class="name">
-                                    <p><span>By</span>Robert Hung</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="c-list__project__item">
-                        <div class="c-thumbnail">
-                            <img src="{{asset('web/')}}/images/4-3_1024x767.png" alt="">
-                        </div>
-                        <div class="c-list__project__item__content">
-                            <div class="c-list__project__item__sub">
-                                <p>TECHNOLOGY</p>
-                                <p>start-up</p>
-                            </div>
-                            <div class="c-list__project__item__title">
-                                <p>Lorem ipsum dolor sit amet, elit consectetur adipiscing elit</p>
-                            </div>
-                            <div class="c-list__project__item__profile">
-                                <div class="avatar">
-                                    <img src="{{asset('web/')}}/images/4-3_1024x767.png" alt="">
-                                </div>
-                                <div class="name">
-                                    <p><span>By</span>Robert Hung</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="c-list__project__item">
-                        <div class="c-thumbnail">
-                            <img src="{{asset('web/')}}/images/4-3_1024x767.png" alt="">
-                        </div>
-                        <div class="c-list__project__item__content">
-                            <div class="c-list__project__item__sub">
-                                <p>TECHNOLOGY</p>
-                                <p>start-up</p>
-                            </div>
-                            <div class="c-list__project__item__title">
-                                <p>Lorem ipsum dolor sit amet, elit consectetur adipiscing elit</p>
-                            </div>
-                            <div class="c-list__project__item__profile">
-                                <div class="avatar">
-                                    <img src="{{asset('web/')}}/images/4-3_1024x767.png" alt="">
-                                </div>
-                                <div class="name">
-                                    <p><span>By</span>Robert Hung</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    @include('data_projectIndex_loadmore')
                 </div>
                 <div class="btn-view-more">
-                    <a href="#">
-                        VIEW MORE
+                    <a id="loadmore_btn"
+                       href="javascript:loadMoreSearchProject('{{route('web.project.project_search')}}','{{app('request')->input('key_word') }}','{{app('request')->input('category')}}');">
+                        <span>VIEW MORE</span>
                     </a>
                 </div>
             </div>
@@ -204,7 +63,6 @@
     <!-- END SECTION -->
 </main>
 <!-- END MAIN -->
-
 <footer id="footer" class="c-footer">
     @include('web.common_layouts.footer')
 </footer>
@@ -212,6 +70,13 @@
 <!-- <a id="go-top" href="javascript:;" title="Go Top" class="c-btn__go-top"><img src="images/icons/go_top.png" alt="Go Top" /></a> -->
 <!-- ======== JAVASCRIPT ======== -->
 @include('web.common_layouts.script_footer')
+<script src="{{asset('web/js/loadmore.js')}}"></script>
+<script>
+    $(document).ready(function(){
+        var e = document.getElementById("category");
+        $('.select-styled').text(e.options[e.selectedIndex].text);
+    })
+</script>
 <!-- endbuild -->
 <!-- ======== END JAVASCRIPT ======== -->
 </body>
