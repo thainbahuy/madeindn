@@ -7,11 +7,12 @@ use App\Models\Web\Category;
 use App\Models\Web\CoWorking;
 use App\Models\Web\Event;
 use App\Models\Web\Project;
+use Helpers;
 use Illuminate\Http\Request;
 
 class ShowHomeController extends Controller
 {
-    private $category, $project, $event, $coWorking;
+    private $category, $project, $event, $config, $coWorking;
 
     public function __construct(Event $event, Category $category, Project $project, CoWorking $coWorking)
     {
@@ -19,6 +20,8 @@ class ShowHomeController extends Controller
         $this->project = $project;
         $this->event = $event;
         $this->coWorking = $coWorking;
+        $this->config = Helpers::getConfig()['HomePage'];
+
     }
 
     /**
@@ -30,7 +33,7 @@ class ShowHomeController extends Controller
     public function index(Request $request)
     {
         $listCoworking = $this->coWorking->getAllCoworking();
-        $listEvent = $this->event->getAllEvents();
+        $listEvent = $this->event->getAllEvents($this->config['listEventPaginate']);
         if ($request->ajax()) {
             $valueCategory = $request->get('category_id');
             $listProjects = $this->project->getProjectByCategory($valueCategory);

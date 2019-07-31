@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
-    <title>Top Page</title>
+    <title>{{__('message.EVENT')}}</title>
     @include('web.common_layouts.head')
 
 

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
-    <title>Top Page</title>
+    <title>{{Helpers::changeLanguage($event->name, $event->jp_name)}}</title>
     @include('web.common_layouts.head')
 </head>
 <body>
@@ -58,33 +58,21 @@
                             <div class="c-sidebar__sharing__title">
                                 <p>Sharing</p>
                             </div>
-                            <ul class="c-sidebar__sharing__list">
-                                <li>
-                                    <a href="#">
-                                        <img src="{{asset('web/images/icons/fb.png')}}" alt="">
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <img src="{{asset('web/images/icons/ms.png')}}" alt="">
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <img src="{{asset('web/images/icons/share.png')}}" alt="">
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <img src="{{asset('web/images/icons/twice.png')}}" alt="">
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <img src="{{asset('web/images/icons/in.png')}}" alt="">
-                                    </a>
-                                </li>
-                            </ul>
+                            @if ($socical_link != null)
+                                <ul class="c-sidebar__sharing__list">
+                                    @foreach($socical_link as $image => $link)
+                                        @if (!empty($link))
+                                            <li>
+                                                <a href="{{$link}}">
+                                                    <img src="{{asset('web/images/icons/'.$image)}}" alt="">
+                                                </a>
+                                            </li>
+                                        @endif
+                                    @endforeach
+
+                                </ul>
+                            @endif
+
                         </div>
                     </div>
                 </div>

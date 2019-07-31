@@ -2,6 +2,7 @@
 return [
     //Head
     'COWORKING_TITLE' => "Coworking Space",
+    'EVENT'           => 'Event',
 
     // Header
     'HOME'          => 'Home',

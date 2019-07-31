@@ -2289,7 +2289,7 @@ li > ol {
     height: 3.125rem;
   }
 }
-.c-post__item__content__date p {
+.c-post__item__content__date p,span {
   font-family: "sailec-medium", sans-serif;
   font-size: 1.25rem;
   color: #041C57;
@@ -4419,4 +4419,29 @@ li > ol {
   background-color: #FF3220;
 }
 
+.c-post__item__content__date {
+  display: flex;
+}
+.upcoming , .expired {
+  text-align: center;
+  width : max-content;
+  margin-left: 14px;
+  padding: 0 4px;
+  border-radius: 5px;
+}
+.upcoming {
+  background: green;
+}
+.expired {
+  background: red;
+}
+.label_upcoming , .label_expired{
+  color: white;
+  font-size: 1rem;
+}
+@media (max-width: 600px) {
+  .c-post__item__content__date p, span {
+    font-size: 2.5rem;
+  }
+}
 /*# sourceMappingURL=main.css.map */
