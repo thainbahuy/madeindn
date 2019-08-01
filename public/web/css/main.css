@@ -18,6 +18,10 @@
   font-family: 'SF-UI-R';
   src: url("../fonts/SF-UI-Text-Regular.otf") format("truetype");
 }
+@font-face {
+  font-family: 'SF-UI-B';
+  src: url("../fonts/SF-UI-Text-Semibold.otf") format("truetype");
+}
 html {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -2289,7 +2293,7 @@ li > ol {
     height: 3.125rem;
   }
 }
-.c-post__item__content__date p,span {
+.c-post__item__content__date p {
   font-family: "sailec-medium", sans-serif;
   font-size: 1.25rem;
   color: #041C57;
@@ -3005,12 +3009,6 @@ li > ol {
   -webkit-transition: all 0.2s ease-in;
   transition: all 0.2s ease-in;
 }
-
-.input-form{
-  width: 100%;
-  height: 4.375rem;
-  border:none;
-}
 @media (max-width: 600px) {
   .c-section__search .search-form .form-group .select-styled {
     width: 100%;
@@ -3199,6 +3197,297 @@ li > ol {
 }
 .c-section__contact__content .item .text p span {
   margin-right: 1.25rem;
+}
+.c-section__contact-info {
+  padding-bottom: 3.125rem;
+}
+.c-section__contact-info iframe {
+  height: 37.8125rem !important;
+  margin-bottom: -0.625rem;
+}
+@media (max-width: 600px) {
+  .c-section__contact-info iframe {
+    margin-bottom: -1.25rem;
+  }
+}
+.c-section__contact-info__content {
+  display: flex;
+}
+@media (max-width: 600px) {
+  .c-section__contact-info__content {
+    flex-wrap: wrap;
+  }
+}
+.c-section__contact-info .mapouter {
+  width: calc(100% - (470 * 1rem/16) - (100 * 1rem/16));
+}
+@media (max-width: 600px) {
+  .c-section__contact-info .mapouter {
+    width: 100%;
+  }
+}
+.c-section .contact__form {
+  width: 29.375rem;
+  margin: 0 3.125rem;
+}
+@media (max-width: 600px) {
+  .c-section .contact__form {
+    width: 100%;
+    margin: 3.125rem 2.5rem;
+  }
+}
+.c-section .contact__form__row {
+  display: flex;
+  flex-direction: column;
+}
+.c-section .contact__form__label {
+  width: 100%;
+}
+.c-section .contact__form__label p {
+  font-family: "SF-UI-R", sans-serif;
+  font-weight: 600;
+  font-size: 0.8125rem;
+  text-transform: uppercase;
+  color: #333333;
+}
+
+.error {
+  font-family: "SF-UI-R", sans-serif;
+  font-weight: 600;
+  font-size: 0.8125rem;
+  text-transform: uppercase;
+  color: red;
+}
+@media (max-width: 600px) {
+  .c-section .contact__form__label p {
+    font-size: 1.625rem;
+  }
+
+  .error {
+    font-size: 1.625rem;
+  }
+}
+.c-section .contact__form__controll {
+  width: 100%;
+  margin-bottom: 2.375rem;
+  text-align: center;
+}
+@media (max-width: 600px) {
+  .c-section .contact__form__controll {
+    font-size: 3.125rem;
+  }
+}
+.c-section .contact__form__controll input {
+  width: 100%;
+  padding: 0.5rem 0;
+  border: 0;
+  outline: none;
+  border-bottom: 1px solid #D9D9D9;
+}
+@media (max-width: 600px) {
+  .c-section .contact__form__controll input {
+    font-size: 1.875rem;
+  }
+}
+.c-section .contact__form__controll ::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  font-size: 0.9375rem;
+  color: #9A9A9A;
+}
+@media (max-width: 600px) {
+  .c-section .contact__form__controll ::placeholder {
+    font-size: 1.875rem;
+  }
+}
+.c-section .contact__form__controll :-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  font-size: 0.9375rem;
+  color: #9A9A9A;
+}
+@media (max-width: 600px) {
+  .c-section .contact__form__controll :-ms-input-placeholder {
+    font-size: 1.875rem;
+  }
+}
+.c-section .contact__form__controll ::-ms-input-placeholder {
+  /* Microsoft Edge */
+  font-size: 0.9375rem;
+  color: #9A9A9A;
+}
+@media (max-width: 600px) {
+  .c-section .contact__form__controll ::-ms-input-placeholder {
+    font-size: 1.875rem;
+  }
+}
+.c-section .contact__form .submit {
+  width: 100%;
+  padding: 1.125rem;
+  background-color: #02194E;
+  font-family: "SF-UI-B", sans-serif;
+  border: 1px solid #02194E;
+  color: #FFF;
+  font-size: 0.9375rem;
+}
+@media (max-width: 600px) {
+  .c-section .contact__form .submit {
+    font-size: 1.875rem;
+  }
+}
+.c-section .contact__form .submit:hover {
+  background-color: #FFF;
+  color: #02194E;
+}
+.c-section__submit-your-project {
+  padding-top: 3.75rem;
+  padding-bottom: 3.125rem;
+}
+.c-section__submit-your-project .contact__form {
+  margin: 4.375rem auto;
+}
+.c-section__submit-your-project .form-upload {
+  display: flex;
+  align-items: center;
+}
+@media (max-width: 600px) {
+  .c-section__submit-your-project .form-upload {
+    flex-wrap: wrap;
+  }
+}
+.c-section__submit-your-project .form-upload p {
+  font-size: 0.9375rem;
+}
+@media (max-width: 600px) {
+  .c-section__submit-your-project .form-upload p {
+    font-size: 1.875rem;
+  }
+}
+.c-section__submit-your-project .input-file-container {
+  position: relative;
+  width: 16.125rem;
+  margin-right: 0.9375rem;
+}
+@media (max-width: 600px) {
+  .c-section__submit-your-project .input-file-container {
+    width: 100%;
+  }
+}
+.c-section__submit-your-project .input-file-trigger {
+  display: block;
+  padding: 0.625rem 1.25rem;
+  color: #041C57;
+  font-weight: 600;
+  font-size: 1em;
+  transition: all .4s;
+  cursor: pointer;
+  border: 1px solid rgba(4, 28, 87, 0.2);
+  border-radius: 1.375rem;
+  font-size: 0.75rem;
+  letter-spacing: 0;
+}
+.c-section__submit-your-project .input-file-trigger img {
+  width: 1.25rem;
+  margin-right: 0.625rem;
+}
+@media (max-width: 600px) {
+  .c-section__submit-your-project .input-file-trigger img {
+    width: 2.5rem;
+  }
+}
+@media (max-width: 600px) {
+  .c-section__submit-your-project .input-file-trigger {
+    margin-bottom: 1.25rem;
+    padding: 1.25rem 2.5rem;
+    border-radius: 2.75rem;
+    font-size: 1.5rem;
+  }
+}
+.c-section__submit-your-project .input-file {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 225px;
+  opacity: 0;
+  padding: 14px 0;
+  cursor: pointer;
+}
+.c-section__submit-your-project .file-return {
+  margin: 0;
+}
+.c-section__submit-your-project .file-return:not(:empty) {
+  margin: 1em 0;
+}
+.c-section__submit-your-project .file-return {
+  font-style: italic;
+  font-size: .9em;
+  font-weight: bold;
+}
+.c-section__submit-your-project .file-return:not(:empty):before {
+  content: "Selected file: ";
+  font-style: normal;
+  font-weight: normal;
+}
+.c-section__submit-your-project .upload-content {
+  position: relative;
+  margin-top: 1.25rem;
+}
+.c-section__submit-your-project .upload-content .upload-content-item {
+  margin-top: 0.3125rem;
+  display: flex;
+  align-items: baseline;
+  position: relative;
+}
+.c-section__submit-your-project .upload-content .upload-content-item .img {
+  margin-right: 0.9375rem;
+}
+.c-section__submit-your-project .upload-content .upload-content-item .img img {
+  width: 1.25rem;
+}
+@media (max-width: 600px) {
+  .c-section__submit-your-project .upload-content .upload-content-item .img img {
+    width: 2.5rem;
+  }
+}
+.c-section__submit-your-project .upload-content .upload-content-item .text p {
+  font-size: 0.75rem;
+  color: #041C57;
+}
+@media (max-width: 600px) {
+  .c-section__submit-your-project .upload-content .upload-content-item .text p {
+    font-size: 1.5rem;
+  }
+}
+.c-section__submit-your-project .upload-content .upload-content-item .close {
+  margin-left: 0.625rem;
+  width: 0.5rem;
+  height: 0.5rem;
+}
+@media (max-width: 600px) {
+  .c-section__submit-your-project .upload-content .upload-content-item .close {
+    width: 1rem;
+    height: 1rem;
+    margin-left: 1.25rem;
+  }
+}
+.c-section__submit-your-project .upload-content .upload-content-item .close:hover {
+  opacity: 1;
+}
+.c-section__submit-your-project .upload-content .upload-content-item .close:before, .c-section__submit-your-project .upload-content .upload-content-item .close:after {
+  position: absolute;
+  content: ' ';
+  height: 0.5rem;
+  width: 1px;
+  background-color: #000000;
+}
+@media (max-width: 600px) {
+  .c-section__submit-your-project .upload-content .upload-content-item .close:before, .c-section__submit-your-project .upload-content .upload-content-item .close:after {
+    height: 1rem;
+  }
+}
+.c-section__submit-your-project .upload-content .upload-content-item .close:before {
+  transform: rotate(45deg);
+}
+.c-section__submit-your-project .upload-content .upload-content-item .close:after {
+  transform: rotate(-45deg);
 }
 
 .c-sidebar {
@@ -4453,5 +4742,11 @@ li > ol {
   color: red;
   font-weight: bold;
   text-align: center;
+}
+
+.input-form{
+  width: 100%;
+  height: 4.375rem;
+  border:none;
 }
 /*# sourceMappingURL=main.css.map */

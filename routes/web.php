@@ -40,6 +40,8 @@ Route::namespace('Web')->group( function() {
     Route::get('project/{name}-{id}.html', 'ProjectController@showDetailProject')->name('web.project.project_detail');
     Route::post('project/{name}-{id}.html', 'ProjectController@store')->name('web.project.project_detail');
     Route::get('/project/{name}', 'ProjectController@showProjectByCategory')->name('web.project.project_category');
+    Route::get('/project/', 'ProjectController@showProjectSubmit')->name('web.project.project_submit');
+    Route::post('/project/', 'ProjectController@postProjectSubmit')->name('web.project.project_submit');
 
 
 

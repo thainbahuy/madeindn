@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>{{$title}}</title>
+    <title>{{Helpers::changeLanguage($getProject->name,$getProject->jp_name)}}</title>
     @include('web.common_layouts.head')
 </head>
 <body>
@@ -111,30 +111,37 @@
     <!-- ======== END JAVASCRIPT ======== -->
 <script>
     function validateForm(){
-        var email_check = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-        var phone_check = /^[0-9]{9,10}$/;
-        var content_check = /^[a-zA-Z0-9]{1,}$/;
+         email_check = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+         phone_check = /^[0-9]{9,10}$/;
+         content_check = /^[a-zA-Z0-9]{1,}$/;
 
+         check_error_email = false;
+         check_error_phone = false;
+         check_error_content = false;
         if (!email_check.test(document.myForm.email.value)){
             $('.email_error').html('Lỗi Email');
-            return false;
+            check_error_email = false;
         } else {
             $('.email_error').empty();
+            check_error_email = true;
         }
         if (!phone_check.test(document.myForm.phone.value)){
             $('.phone_error').html('Lỗi định dạng số điện thoại');
-            return false;
+            check_error_phone = false;
         } else {
             $('.phone_error').empty();
+            check_error_phone = true;
         }
 
         if (!content_check.test($('textarea#content_message').val())){
             $('.content_message_error').html('Nội dung tối thiểu 100 ký tự');
-            return false;
+            check_error_content = false;
         } else {
             $('.content_message_error').empty();
+            check_error_content = true;
         }
-        return true;
+
+        return check_error_email && check_error_phone && check_error_content;
     }
     $(function() {
         $('#contactForm1').submit(function(event) {

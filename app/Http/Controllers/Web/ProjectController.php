@@ -1,23 +1,28 @@
 <?php
 
 namespace App\Http\Controllers\Web;
+
 use App\Models\Web\Category;
 use App\Models\Web\Customer;
 use App\Models\Web\Project;
+use App\Models\Web\ProjectSubmit;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Jobs\SendWelcomeEmail;
 use Carbon\Carbon;
+use App\Http\Requests\SubmitProjectRequest;
 
 
 class ProjectController extends Controller
 {
     private $projectModel, $category;
 
-    function __construct(Project $projectModel, Category $category)
+    function __construct(Project $projectModel, Category $category, ProjectSubmit $projectSubmit)
     {
         $this->projectModel = $projectModel;
         $this->category = $category;
+        $this->category = $category;
+        $this->projectSubmit = $projectSubmit;
     }
 
     /**
@@ -52,10 +57,11 @@ class ProjectController extends Controller
     public function showDetailProject($name, $id)
     {
         $getProject = $this->projectModel->getProjectById($id);
-        return view('web.project.project_detail', compact('getProject'))->with('title', ucwords($name));
+        return view('web.project.project_detail', compact('getProject'));
     }
 
-    public function store($name, $id,Request $request) {
+    public function store($name, $id, Request $request)
+    {
         $info_customer = new Customer;
         $info_customer->email_customer = $request->email;
         $info_customer->mobile_customer = $request->phone;
@@ -63,7 +69,7 @@ class ProjectController extends Controller
         $info_customer->product_id = $id;
 
         if ($request->ajax()) {
-            if($info_customer->save()) {
+            if ($info_customer->save()) {
                 $emailJob = (new SendWelcomeEmail($info_customer))->delay(Carbon::now()->addSeconds(1));
                 dispatch($emailJob);
                 return response()->json(['html' => true]);
@@ -71,6 +77,15 @@ class ProjectController extends Controller
                 return response()->json(['html' => false]);
             }
         };
+    }
 
+    public function showProjectSubmit()
+    {
+        return view('web.project.project_submit');
+    }
+
+    public function postProjectSubmit(SubmitProjectRequest $request)
+    {
+        $this->projectSubmit->addProject($request);
     }
 }
