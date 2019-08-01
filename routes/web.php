@@ -10,6 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 route::pattern('name' ,'(.*)');
 route::pattern('id', '([0-9]*)');
 
@@ -37,6 +38,7 @@ Route::namespace('Web')->group( function() {
 
     // project page
     Route::get('project/{name}-{id}.html', 'ProjectController@showDetailProject')->name('web.project.project_detail');
+    Route::post('project/{name}-{id}.html', 'ProjectController@store')->name('web.project.project_detail');
     Route::get('/project/{name}', 'ProjectController@showProjectByCategory')->name('web.project.project_category');
 
 
