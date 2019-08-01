@@ -15,6 +15,7 @@ class AddAttributeLinkDriverProjectSubmitTable extends Migration
     {
         Schema::table('project_submit', function (Blueprint $table) {
             $table->text('link_driver')->nullable();
+            $table->text('content_link')->nullable()->change();
         });
     }
 
