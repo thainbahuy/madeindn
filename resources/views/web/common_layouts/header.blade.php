@@ -30,10 +30,13 @@
         </ul>
         <div class="c-navbar__right">
             <div class="c-navbar__right__search">
-                <form action="" autocomplete="on">
-                    <input id="search" name="search" type="text" placeholder="{{__('message.Looking')}}">
+                <form action="http://www.google.com/cse" id='cse-search-box' autocomplete="on">
+                    <input name='cx' type='hidden' value='012591587860186451794:w2fih6c6dug'/>
+                    <input id="search" name="q" type="text" placeholder="{{__('message.Looking')}}">
+                    <input name='ie' type='hidden' value='ISO-8859-1'/>
                     <input id="search_submit" value="Rechercher" type="submit">
                     <span class="c-icon__search"></span>
+                    <script type="text/javascript" src="http://www.google.com/cse?form=cse-search-box&amp;lang=en"></script>
                 </form>
             </div>
             <div class="c-navbar__right__language">

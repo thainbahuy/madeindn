@@ -8,12 +8,12 @@
 <header id="header" class="c-header c-header__border">
     @include('web.common_layouts.header')
 </header>
-    <!-- END HEADER -->
+<!-- END HEADER -->
 
-    <main class="c-main">
+<main class="c-main">
     <div class="c-banner__events">
         <div class="c-banner__events__inner">
-            
+
         </div>
     </div>
     <!-- END BANNER -->
@@ -25,7 +25,7 @@
                         <p>Overview</p>
                     </div>
                     <div class="text">
-                       {!!Helpers::changeLanguage($event->overview,$event->jp_overview) !!}
+                        {!!Helpers::changeLanguage($event->overview,$event->jp_overview) !!}
                     </div>
                 </div>
                 <div class="c-section__content__right">
@@ -36,7 +36,8 @@
                             </div>
                             <div class="c-sidebar__date__text">
                                 <p>{{ date_format(date_create($event->date_time),'d-m-Y')}}</p>
-                                <p> {{date_format(date_create($event->begin_time),'G:i A')}} – {{date_format(date_create($event->end_time),'G:i A')}}</p>
+                                <p> {{date_format(date_create($event->begin_time),'G:i A')}}
+                                    – {{date_format(date_create($event->end_time),'G:i A')}}</p>
                             </div>
                         </div>
                         <div class="c-sidebar__location">
@@ -83,35 +84,53 @@
     <div class="c-section c-section__map">
         <div class="c-section__map__content">
             <div class="mapouter">
-                <div class="gmap_canvas">
+                <div id="gmap_canvas">
                     @php
                         $map = json_decode($event->location, true);
-                        $address  = urlencode($map[0].'-'.$map[1].'-'.$map[2]);
+                        $address  = urlencode($map[1].'-'.$map[2]);
                     @endphp
-                    <iframe width="100%" height="490" id="gmap_canvas" src="https://maps.google.com/maps?q={{$address}}&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0">
+                    <iframe id="map"
+                            width="100%"
+                            height="550"
+                            frameborder="0" style="border:0"
+                            src="" allowfullscreen>
                     </iframe>
                 </div>
             </div>
         </div>
     </div>
-    </main>
-    <!-- END MAIN -->
+</main>
+<!-- END MAIN -->
 
 <footer id="footer" class="c-footer">
     @include('web.common_layouts.footer')
 </footer>
-    <!-- END FOOTER -->
-    <!-- <a id="go-top" href="javascript:;" title="Go Top" class="c-btn__go-top"><img src="{{asset('web/')}}/images/icons/go_top.png" alt="Go Top" /></a> -->
-    <!-- ======== JAVASCRIPT ======== -->
+<!-- END FOOTER -->
+<!-- <a id="go-top" href="javascript:;" title="Go Top" class="c-btn__go-top"><img src="{{asset('web/')}}/images/icons/go_top.png" alt="Go Top" /></a> -->
+<!-- ======== JAVASCRIPT ======== -->
 @include('web.common_layouts.script_footer')
+<script>
 
+</script>
 <script>
     $urlImage = '{{$event->image_link}}'
-    $( document ).ready(function() {
+    $(document).ready(function () {
         $('.c-banner__events').css('background-image', 'url(' + $urlImage + ')');
+
+        $.ajax(
+            {
+                type: "POST",
+                url: 'https://maps.googleapis.com/maps/api/geocode/json?address={{$address}}&key=AIzaSyBqORBqnokRCmGGt3XqEWl21Ih6TCY38_A',
+            })
+            .done(function (data) {
+                $('#map').attr('src', 'https://www.google.com/maps/embed/v1/place?key=AIzaSyBqORBqnokRCmGGt3XqEWl21Ih6TCY38_A&zoom=18&q=place_id:' + data.results[0].place_id)
+
+            })
+            .fail(function (jqXHR, ajaxOptions, thrownError) {
+                alert('server not responding...');
+            });
     });
 </script>
-    <!-- endbuild -->
-    <!-- ======== END JAVASCRIPT ======== -->
+
 </body>
 </html>
