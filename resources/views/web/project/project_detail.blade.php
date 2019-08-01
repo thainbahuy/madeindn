@@ -62,17 +62,29 @@
                                 </div>
                                 <div class="c-form">
                                     <div class="c-form__body">
-                                        <form action="">
+                                        <form id="contactForm1" name="myForm" action="{{route('web.project.project_detail',['name'=>str_slug($getProject->name),'id'=>$getProject->id])}}" method="POST">
+                                            {{csrf_field()}}
                                             <div class="c-form__row">
-                                                <input type="text" placeholder="Your email">
+                                                <input type="text" placeholder="Your email" name="email" id="email">
+                                            </div>
+                                            <div class="c-form-error">
+                                                <span class="email_error"></span>
                                             </div>
                                             <div class="c-form__row">
-                                                <input type="phone" placeholder="Your moblie">
+                                                <input type="phone" placeholder="Your moblie" name="phone">
+                                            </div>
+                                            <div class="c-form-error">
+                                                <span class="phone_error"></span>
                                             </div>
                                             <div class="c-form__row">
-                                                <textarea placeholder="Type something..."></textarea>
+                                                <textarea id="content_message" name="content_message" placeholder="Type something..."></textarea>
                                             </div>
-                                            <button>SEND</button>
+                                            <div class="c-form-error">
+                                                <span class="content_message_error"></span>
+                                            </div>
+                                            <div style="text-align: center;" class="c-form_submit">
+                                                <button class="submit">SEND</button>
+                                            </div>
                                         </form>
                                     </div>
                                 </div>
@@ -90,11 +102,64 @@
 <footer id="footer" class="c-footer">
     @include('web.common_layouts.footer')
 </footer>
+
     <!-- END FOOTER -->
     <!-- <a id="go-top" href="javascript:;" title="Go Top" class="c-btn__go-top"><img src="{{asset('web/')}}/images/icons/go_top.png" alt="Go Top" /></a> -->
     <!-- ======== JAVASCRIPT ======== -->
 @include('web.common_layouts.script_footer')
     <!-- endbuild -->
     <!-- ======== END JAVASCRIPT ======== -->
+<script>
+    function validateForm(){
+        var email_check = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        var phone_check = /^[0-9]{9,10}$/;
+        var content_check = /^[a-zA-Z0-9]{1,}$/;
+
+        if (!email_check.test(document.myForm.email.value)){
+            $('.email_error').html('Lỗi Email');
+            return false;
+        } else {
+            $('.email_error').empty();
+        }
+        if (!phone_check.test(document.myForm.phone.value)){
+            $('.phone_error').html('Lỗi định dạng số điện thoại');
+            return false;
+        } else {
+            $('.phone_error').empty();
+        }
+
+        if (!content_check.test($('textarea#content_message').val())){
+            $('.content_message_error').html('Nội dung tối thiểu 100 ký tự');
+            return false;
+        } else {
+            $('.content_message_error').empty();
+        }
+        return true;
+    }
+    $(function() {
+        $('#contactForm1').submit(function(event) {
+            if(!validateForm()){
+                return false;
+            }
+            event.preventDefault(); // Prevent the form from submitting via the browser
+            var form = $(this);
+            var data = form.serialize();
+            $.ajax({
+                type: form.attr('method'),
+                url: form.attr('action'),
+                data: form.serialize()
+            }).done(function(data) {
+                $(".submit").remove();
+                $('.c-form_submit').empty();
+                $(".c-form_submit").append("<img style='max-width: 25%;' src='https://icon-library.net/images/check-icon-small/check-icon-small-16.jpg' alt=''>");
+            }).fail(function(data) {
+                alert("Vui lòng thử lại");
+                $('#img_fail').remove();
+                $(".c-form_submit").append("<div id='img_fail'><img style='max-width: 25%;' src='https://icon-library.net/images/fail-icon/fail-icon-3.jpg' alt='' ></div>");
+            });
+        });
+    });
+</script>
+
 </body>
 </html>
