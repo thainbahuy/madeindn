@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
-    <title>Top Page</title>
+    <title>Home</title>
     @include('web.common_layouts.head')
 </head>
 <body>

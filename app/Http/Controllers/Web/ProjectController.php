@@ -117,21 +117,23 @@ class ProjectController extends Controller
 
         //Handler Upload Files StartUp
         $files_startup = $request->file('files_startup');
-        $this->uploadFiles($request, $files_startup);
-
+        if ($files_startup) {
+            $this->uploadFiles($request, $files_startup);
+        }
         try {
             if ($this->projectSubmit->addProject($request)) {
                 $image_startup->move(Helpers::getFileFromStorage("project_submit/image_project"), $request->new_name);
-                foreach ($files_startup as $key => $valueFiles) {
-                    $valueFiles->move(Helpers::getFileFromStorage("project_submit/link_project"), Helpers::convertToJson($request->content_link)[$key]);
+                if ($files_startup) {
+                    foreach ($files_startup as $key => $valueFiles) {
+                        $valueFiles->move(Helpers::getFileFromStorage("project_submit/link_project"), Helpers::convertToJson($request->content_link)[$key]);
+                    }
                 }
             }
-            $request->session()->flash('msg','success');
+            $request->session()->flash('msg', 'success');
             return redirect()->route('web.project.project_submit');
         } catch (\Exception $e) {
-            $request->session()->flash('msg','danger');
+            $request->session()->flash('msg', 'danger');
             return redirect()->route('web.project.project_submit');
         }
-
     }
 }
