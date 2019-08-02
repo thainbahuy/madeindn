@@ -59,7 +59,7 @@ return [
     |
     */
 
-    'project_submit' => storage_path('framework/sessions'),
+    'files' => storage_path('framework/sessions'),
 
     /*
     |--------------------------------------------------------------------------

@@ -6,11 +6,13 @@ use App\Models\Web\Category;
 use App\Models\Web\Customer;
 use App\Models\Web\Project;
 use App\Models\Web\ProjectSubmit;
+use Helpers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Jobs\SendWelcomeEmail;
 use Carbon\Carbon;
 use App\Http\Requests\SubmitProjectRequest;
+use Illuminate\Support\Facades\DB;
 
 
 class ProjectController extends Controller
@@ -84,8 +86,52 @@ class ProjectController extends Controller
         return view('web.project.project_submit');
     }
 
+
+    private function uploadImage(Request $request, $image_startup)
+    {
+        if (!is_null($image_startup)) {
+            $request->new_name = rand(1, 5000) . $image_startup->getClientOriginalName();
+        }
+        return $request->new_name;
+    }
+
+    private function uploadFiles(Request $request, $files_startup)
+    {
+        $arry_link = array();
+        if ($files_startup) {
+            foreach ($files_startup as $key => $valueFiles) {
+                $name_file = rand(10000, 50000) . $valueFiles->getClientOriginalName();
+                array_push($arry_link, $name_file);
+            }
+            $request->content_link = $arry_link;
+        }
+
+        return $request->content_link;
+    }
+
     public function postProjectSubmit(SubmitProjectRequest $request)
     {
-        $this->projectSubmit->addProject($request);
+        //Handler Upload Image Startup
+        $image_startup = $request->file('image_startup');
+        $this->uploadImage($request, $image_startup);
+
+        //Handler Upload Files StartUp
+        $files_startup = $request->file('files_startup');
+        $this->uploadFiles($request, $files_startup);
+
+        try {
+            if ($this->projectSubmit->addProject($request)) {
+                $image_startup->move(Helpers::getFileFromStorage("project_submit/image_project"), $request->new_name);
+                foreach ($files_startup as $key => $valueFiles) {
+                    $valueFiles->move(Helpers::getFileFromStorage("project_submit/link_project"), Helpers::convertToJson($request->content_link)[$key]);
+                }
+            }
+            $request->session()->flash('msg','success');
+            return redirect()->route('web.project.project_submit');
+        } catch (\Exception $e) {
+            $request->session()->flash('msg','danger');
+            return redirect()->route('web.project.project_submit');
+        }
+
     }
 }

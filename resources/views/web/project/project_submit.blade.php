@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>123</title>
+    <title>Submit Your Project</title>
 @include('web.common_layouts.head')
 <!-- endbuild -->
 </head>
@@ -17,6 +17,10 @@
             <h3 class="c-section__heading">
                 <p>Submit your project</p>
             </h3>
+            @if(Session::has('msg'))
+                <div class="alert alert-{{Session::get('msg')}}" role="alert">
+                </div>
+            @endif
             <div class="c-section__submit-your-project__content">
                 <div class="contact__form">
                     <form action="{{route('web.project.project_submit')}}" method="POST" enctype="multipart/form-data">
@@ -35,7 +39,8 @@
                                 <p>Email</p>
                             </div>
                             <div class="contact__form__controll">
-                                <input type="text" name="email" value="{{old('email')}}" placeholder="Nhập địa chỉ email">
+                                <input type="text" name="email" value="{{old('email')}}"
+                                       placeholder="Nhập địa chỉ email">
                                 <span class="error">{{ $errors->first('email') }}</span>
                             </div>
                         </div>
@@ -44,7 +49,8 @@
                                 <p>Số điện thoại</p>
                             </div>
                             <div class="contact__form__controll">
-                                <input type="text" name="phone" value="{{old('phone')}}" placeholder="Nhập số điện thoại">
+                                <input type="text" name="phone" value="{{old('phone')}}"
+                                       placeholder="Nhập số điện thoại">
                                 <span class="error">{{ $errors->first('phone') }}</span>
                             </div>
                         </div>
@@ -53,7 +59,8 @@
                                 <p>ĐỊA CHỈ</p>
                             </div>
                             <div class="contact__form__controll">
-                                <input type="text" name="address" value="{{old('address')}}" placeholder="Nhập địa chỉ startup đang làm việc">
+                                <input type="text" name="address" value="{{old('address')}}"
+                                       placeholder="Nhập địa chỉ startup đang làm việc">
                                 <span class="error">{{ $errors->first('address') }}</span>
                             </div>
                         </div>
@@ -62,7 +69,8 @@
                                 <p>TÊN STARTUP</p>
                             </div>
                             <div class="contact__form__controll">
-                                <input type="text" name="name_startup" value="{{old('name_startup')}}" placeholder="Nội dung...">
+                                <input type="text" name="name_startup" value="{{old('name_startup')}}"
+                                       placeholder="Nội dung...">
                                 <span class="error">{{ $errors->first('name_startup') }}</span>
                             </div>
                         </div>
@@ -71,7 +79,8 @@
                                 <p>Nội dung</p>
                             </div>
                             <div class="contact__form__controll">
-                                <input type="text" name="content" value="{{old('content')}}" placeholder="Viết về Startup của bạn....">
+                                <input type="text" name="content" value="{{old('content')}}"
+                                       placeholder="Viết về Startup của bạn....">
                                 <span class="error">{{ $errors->first('content') }}</span>
                             </div>
                         </div>
@@ -81,7 +90,8 @@
                                 <p>Link Driver (Nếu có)</p>
                             </div>
                             <div class="contact__form__controll">
-                                <input type="text" name="link_driver" value="{{old('link_driver')}}" placeholder="Link driver của bạn (nếu có)....">
+                                <input type="text" name="link_driver" value="{{old('link_driver')}}"
+                                       placeholder="Link driver của bạn (nếu có)....">
                             </div>
                         </div>
 
@@ -92,7 +102,9 @@
                             <div class="contact__form__controll">
                                 <div class="form-upload">
                                     <div class="input-file-container">
-                                        <input class="input-file" multiple="multiple" name="files_startup[]" accept="application/pdf,application/msword" id="files_startup" type="file" >
+                                        <input class="input-file" multiple="multiple" name="files_startup[]"
+                                               accept="application/pdf,application/msword" id="files_startup"
+                                               type="file">
                                         <label tabindex="0" for="my-file" class="input-file-trigger">
                                             <img src="{{asset('web/images/')}}/icons/icon-upload.png">
                                             TẢI FILE VĂN BẢN GIỚI THIỆU
@@ -120,7 +132,7 @@
                             <div class="contact__form__controll">
                                 <div class="form-upload">
                                     <div class="input-file-container">
-                                        <input class="input-file" name="image_startup" id="image_startup" type="file">
+                                        <input class="input-file" accept="image/gif, image/jpeg, image/png" name="image_startup" id="image_startup" type="file">
                                         <label tabindex="0" for="my-file" class="input-file-trigger">
                                             <img src="{{asset('web/images/')}}/icons/icon-upload.png">
                                             TẢI HÌNH ẢNH VỀ STARTUP
@@ -159,63 +171,7 @@
 <!-- <a id="go-top" href="javascript:;" title="Go Top" class="c-btn__go-top"><img src="{{asset('web/')}}/images/icons/go_top.png" alt="Go Top" /></a> -->
 <!-- ======== JAVASCRIPT ======== -->
 @include('web.common_layouts.script_footer')
-<script>
-    var input = $('#image_startup');
-    $('#image_startup').change(function (event) {
-        var blnValid = false;
-        if ($(this).length > 0) {
-            sFileName = this.files[0].name;
-            var _validFileExtensions = [".jpg", ".jpeg", ".png",];
-            for (var j = 0; j < _validFileExtensions.length; j++) {
-                var sCurExtension = _validFileExtensions[j];
-                if (sFileName.substr(sFileName.length - sCurExtension.length, sCurExtension.length).toLowerCase() == sCurExtension.toLowerCase()) {
-                    blnValid = true;
-                    break;
-                }
-            }
-            if (!blnValid) {
-                alert("Ảnh sai định dạng");
-                input.replaceWith(input.val('').clone(true));
-            } else {
-                $(".text-image").empty();
-                $("a.fileupload-exists").show();
-                $(".text-image").append("<span>" + sFileName + "</span>");
-            }
-        }
-    });
-    $('.fileupload-exists').click(function (event) {
-        $('.text-image').empty();
-        input.replaceWith(input.val('').clone(true));
-        $(this).hide("");
-    });
-
-
-    var inputFileStartup = $('#files_startup');
-    var filesStartup = document.getElementById('files_startup')
-    filesList = [];
-    $('#files_startup').change(function () {
-        var size = 0;
-        for (var i = 0; i < filesStartup.files.length; i++) {
-            sFileName = this.files[i].name;
-            size += this.files[i].size;
-        }
-        if (size / (1024 * 1024).toFixed(2) > 10) {
-            inputFileStartup.replaceWith(inputFileStartup.val('').clone(true));
-            alert("Dung lượng file quá lớn");
-        } else {
-            $(".text-file").empty();
-            for (var i = 0; i < filesStartup.files.length; i++) {
-                $(".text-file").append("<div id='files_" + i + "'><span>" + this.files[i].name + "</span><a href='javascript:deletFiles(" + i + ")' style='display: inline-block' class='close fileupload-exists'></a></div>");
-            }
-        }
-    });
-
-    function deletFiles(key) {
-        console.log(filesList);
-    }
-
-
-</script>
+<script src="{{asset('web/js/project.js')}}"></script>
 <!-- endbuild -->
 <!-- ======== END JAVASCRIPT ======== -->
 </body>

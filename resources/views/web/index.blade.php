@@ -186,11 +186,15 @@
                         @foreach($listCoworking as $valueCoWorking)
                             <div class="c-list__item item">
                                 <div class="c-thumbnail">
-                                    <img src="{{$valueCoWorking->image_link}}" alt="">
+                                    <a href="{{route('web.coworking.coworking_detail',['name'=> str_slug($valueCoWorking->name), 'id'=>$valueCoWorking->id])}}">
+                                        <img src="{{$valueCoWorking->image_link}}" alt="">
+                                    </a>
                                 </div>
                                 <div class="c-list__item__content">
                                     <div class="c-list__item__title">
-                                        <p>{{Helpers::changeLanguage($valueCoWorking->name,$valueCoWorking->jp_name)}}</p>
+                                        <a href="{{route('web.coworking.coworking_detail',['name'=> str_slug($valueCoWorking->name), 'id'=>$valueCoWorking->id])}}">
+                                            <p>{{Helpers::changeLanguage($valueCoWorking->name,$valueCoWorking->jp_name)}}</p>
+                                        </a>
                                     </div>
                                 </div>
                             </div>

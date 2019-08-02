@@ -26,7 +26,7 @@
                 </ul>
             </li>
             <li><a href="#" title="">Contact Us</a></li>
-            <li><a href="#" title="" class="btn-submit">{{__('message.SUBMIT-PJ')}}</a></li>
+            <li><a href="{{route('web.project.project_submit')}}" title="" class="btn-submit">{{__('message.SUBMIT-PJ')}}</a></li>
         </ul>
         <div class="c-navbar__right">
             <div class="c-navbar__right__search">

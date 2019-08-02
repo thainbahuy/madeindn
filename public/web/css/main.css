@@ -4749,4 +4749,31 @@ li > ol {
   height: 4.375rem;
   border:none;
 }
+
+ .alert {
+   position: relative;
+   padding: .75rem 1.25rem;
+   margin-bottom: 1rem;
+   border: 1px solid transparent;
+   border-radius: .25rem;
+   text-align: center;
+   text-transform: uppercase;
+   font-weight: bold;
+   font-size: 1.2em;
+ }
+
+.alert-success {
+  color: #155724;
+  background-color: #d4edda;
+  border-color: #c3e6cb;
+}
+
+.alert-danger {
+  color: #721c24;
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+}
+.text-file{
+  text-align: left;
+}
 /*# sourceMappingURL=main.css.map */
