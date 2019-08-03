@@ -9,6 +9,7 @@ use App\Models\Web\Event;
 use App\Models\Web\Project;
 use Helpers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ShowHomeController extends Controller
 {
@@ -34,13 +35,14 @@ class ShowHomeController extends Controller
     {
         $listCoworking = $this->coWorking->getAllCoworking();
         $listEvent = $this->event->getAllEvents($this->config['listEventPaginate']);
+        $listCategoryProject = $this->category->getCategoryProject();
         if ($request->ajax()) {
             $valueCategory = $request->get('category_id');
             $listProjects = $this->project->getProjectByCategory($valueCategory);
-            $view = view('data_projectIndex_loadmore', compact('listCategory', 'listProjects', 'valueCategory'))->render();
+            $view = view('data_projectIndex_loadmore', compact('listCategoryProject', 'listProjects', 'valueCategory'))->render();
             return response()->json(['html' => $view]);
         }
-        return view('web.index', compact('listEvent', 'listCoworking'));
+        return view('web.index', compact('listEvent', 'listCoworking','listCategoryProject'));
     }
 
     /**

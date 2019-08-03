@@ -116,7 +116,7 @@
             <h2 class="c-section__heading"><p>Our Projects </p></h2>
             <div class="tabs">
                 <ul class="tabs-list">
-                    @foreach($listCategory as $index => $value)
+                    @foreach($listCategoryProject as $index => $value)
                         @php
                             if($index == 0) {
                                 $active = "class=active";
@@ -135,7 +135,7 @@
             </div>
             <div class="c-section__content">
                 <div class="tabs-content">
-                    @foreach($listCategory as $index => $value)
+                    @foreach($listCategoryProject as $index => $value)
                         @php
                             if($index == 0) {
                                 $active = "tab active";
@@ -153,6 +153,9 @@
                             </div>
                         </div>
                     @endforeach
+                </div>
+                <div class="alert alert-danger" style="display: none;">
+                    <strong>Notice!</strong> Không tìm thấy sản phẩm.
                 </div>
                 <div class="btn-view-more">
                     <a id="loadmore_btn" href="javascript:loadMoreProjectIndex('{{route('web.index')}}');">
