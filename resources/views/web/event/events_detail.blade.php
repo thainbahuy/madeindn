@@ -35,7 +35,7 @@
                                 <p>Date and Time</p>
                             </div>
                             <div class="c-sidebar__date__text">
-                                <p>{{ date_format(date_create($event->date_time),'d-m-Y')}}</p>
+                                <p> {{date_format(date_create($event->date_time),'d-m-Y')}}</p>
                                 <p> {{date_format(date_create($event->begin_time),'G:i A')}}
                                     – {{date_format(date_create($event->end_time),'G:i A')}}</p>
                             </div>
@@ -86,7 +86,7 @@
             <div class="mapouter">
                 <div id="gmap_canvas">
                     @php
-                        $map = json_decode($event->location, true);
+                        $map = json_decode($event->location, $event->jp_location, true);
                         $address  = urlencode($map[1].'-'.$map[2]);
                     @endphp
                     <iframe id="map"
