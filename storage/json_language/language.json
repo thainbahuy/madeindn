@@ -1,0 +1,42 @@
+{
+    "EN": {
+        "HEADER": {
+            "COWORKING_TITLE": "\u3053\u3093\u306b\u3061\u306f",
+            "EVENT": "Event",
+            "HOME": "\u3053\u3093\u306b\u3061\u306f",
+            "ABOUTS": "About Us",
+            "PROJECTS": "Projects",
+            "EVENTS": "Events",
+            "CO-SPACE": "Coworking Space",
+            "CONTACT": "Contact Us",
+            "SUBMIT-PJ": "Submit Your Project",
+            "Looking": "What're we looking for ?"
+        },
+        "BODY": {
+            "BD_TITLE": "Nghu0129a 123"
+        },
+        "FOOTER": {
+            "SOLOGAN": "Nghu0129a 123"
+        }
+    },
+    "JP": {
+        "HEADER": {
+            "COWORKING_TITLE": "Nghu0129a 123456",
+            "EVENT": "123",
+            "HOME": "123",
+            "ABOUTS": "123 Us",
+            "PROJECTS": "123",
+            "EVENTS": "123",
+            "CO-SPACE": "123 Space",
+            "CONTACT": "123 Us",
+            "SUBMIT-PJ": "123 Your Project",
+            "Looking": "123're we looking for ?"
+        },
+        "BODY": {
+            "BD_TITLE": "Nghu0129a 123"
+        },
+        "FOOTER": {
+            "SOLOGAN": "Nghu0129a 123456"
+        }
+    }
+}

@@ -12,17 +12,15 @@ use App\Http\Controllers\Controller;
 use App\Jobs\SendWelcomeEmail;
 use Carbon\Carbon;
 use App\Http\Requests\SubmitProjectRequest;
-use Illuminate\Support\Facades\DB;
 
 
 class ProjectController extends Controller
 {
-    private $projectModel, $category;
+    private $projectModel, $category,$projectSubmit, $customer;
 
     function __construct(Project $projectModel, Category $category, ProjectSubmit $projectSubmit)
     {
         $this->projectModel = $projectModel;
-        $this->category = $category;
         $this->category = $category;
         $this->projectSubmit = $projectSubmit;
     }
@@ -62,21 +60,13 @@ class ProjectController extends Controller
         return view('web.project.project_detail', compact('getProject'));
     }
 
-    public function store($name, $id, Request $request)
+    public function postCustomer($name, $id, Request $request)
     {
-        $info_customer = new Customer;
-        $info_customer->email_customer = $request->email;
-        $info_customer->mobile_customer = $request->phone;
-        $info_customer->content_customer = $request->content_message;
-        $info_customer->product_id = $id;
-
+        $info_customer = new Customer();
         if ($request->ajax()) {
-            if ($info_customer->save()) {
+            if ($info_customer->postCustomer($request, $id)) {
                 $emailJob = (new SendWelcomeEmail($info_customer))->delay(Carbon::now()->addSeconds(1));
                 dispatch($emailJob);
-                return response()->json(['html' => true]);
-            } else {
-                return response()->json(['html' => false]);
             }
         };
     }
