@@ -21,18 +21,34 @@
                 @php
                     $date = date_format(date_create($item->date_time),'Y-m-d');
                     $today = date("Y-m-d");
+                    date_default_timezone_set('Asia/Ho_Chi_Minh');
+                    $time_today = date('H:i:s');
+                    $time_begin = date_format(date_create($item->begin_time),'H:i:s');
+                    $time_end = date_format(date_create($item->end_time),'H:i:s');
                 @endphp
-                @if (strtotime($today) <= strtotime($date))
+                @if (strtotime($today) < strtotime($date))
                     <div class="upcoming">
                         <span class="label_upcoming">Upcoming</span>
                     </div>
-                @else
+                @elseif (strtotime($today) > strtotime($date))
                     <div class="expired">
                         <span class="label_expired">Expired</span>
                     </div>
+                @else
+                    @if (strtotime($time_today) < strtotime($time_begin))
+                        <div class="upcoming">
+                            <span class="label_upcoming">Upcoming</span>
+                        </div>
+                    @elseif (strtotime($time_today) > strtotime($time_end))
+                        <div class="expired">
+                            <span class="label_expired">Expired</span>
+                        </div>
+                    @else
+                        <div class="now">
+                            <span class="label_now">Now</span>
+                        </div>
+                    @endif
                 @endif
-
-
             </div>
         </div>
     </div>

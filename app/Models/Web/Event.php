@@ -12,7 +12,7 @@ class Event extends Model
     public function getAllEvents($limit)
     {
         return DB::table($this->table)
-            ->select('id', 'jp_name', 'name', 'image_link', 'sort_description', 'jp_sort_description', 'date_time', 'position')
+            ->select('id', 'jp_name', 'name', 'image_link', 'sort_description', 'jp_sort_description', 'date_time','begin_time', 'end_time', 'position')
             ->orderByRaw('ISNULL(position), position ASC')
             ->orderByDesc('id')
             ->paginate($limit);

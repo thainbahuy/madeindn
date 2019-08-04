@@ -4711,7 +4711,7 @@ li > ol {
 .c-post__item__content__date {
   display: flex;
 }
-.upcoming , .expired {
+.upcoming , .now , .expired {
   text-align: center;
   width : max-content;
   margin-left: 14px;
@@ -4721,10 +4721,13 @@ li > ol {
 .upcoming {
   background: green;
 }
+.now {
+  background: blue;
+}
 .expired {
   background: red;
 }
-.label_upcoming , .label_expired{
+.label_upcoming , .label_now , .label_expired{
   color: white;
   font-size: 1rem;
 }
