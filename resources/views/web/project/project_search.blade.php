@@ -51,9 +51,6 @@
                 <div class="c-list__project">
                     @include('data_projectIndex_loadmore')
                 </div>
-                <div class="alert alert-danger" style="display: none;">
-                    <strong>Notice!</strong> Không tìm thấy sản phẩm.
-                </div>
                 <div class="btn-view-more">
                     <a id="loadmore_btn"
                        href="javascript:loadMoreSearchProject('{{route('web.project.project_search')}}','{{app('request')->input('key_word') }}','{{app('request')->input('category')}}');">

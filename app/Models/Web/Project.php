@@ -13,7 +13,7 @@ class Project extends Model
 
     function __construct()
     {
-        $this->config = Helpers::getConfig()['ProjectPage'];
+        $this->config = Helpers::getConfig()['HomePage'];
     }
 
     public function activeProject($q)

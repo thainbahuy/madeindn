@@ -147,15 +147,12 @@
                             <div class="c-list__project" id="project_{{$value->id}}">
                                 @php
                                     $valueCategory  = $value->id;
-                                    $listProjects   = Project::where('category_id',$valueCategory)->where('status', 1)->orderByRaw('ISNULL(position), position ASC')->paginate(Helpers::getConfig()['ProjectPage']['listProjectPaginate']);
+                                    $listProjects   = Project::where('category_id',$valueCategory)->where('status', 1)->orderByRaw('ISNULL(position), position ASC')->paginate(Helpers::getConfig()['HomePage']['listProjectPaginate']);
                                 @endphp
                                 @include('data_projectIndex_loadmore')
                             </div>
                         </div>
                     @endforeach
-                </div>
-                <div class="alert alert-danger" style="display: none;">
-                    <strong>Notice!</strong> Không tìm thấy sản phẩm.
                 </div>
                 <div class="btn-view-more">
                     <a id="loadmore_btn" href="javascript:loadMoreProjectIndex('{{route('web.index')}}');">
