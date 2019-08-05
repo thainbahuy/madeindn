@@ -55,9 +55,15 @@ Route::get('/test', function () {
 
 Route::namespace('Admin')->prefix('admin/')->group( function() {
     Route::get('/dashboard', function () {
-        return view('admin.dashboard');
+        return view('view.admin.dashboard');
     });
 
-    Route::get('/config', 'ConfigController@index')->name('admin.config.index');
+    Route::post('/upLoadImage', 'ImageController@upLoadImage');
+
+    Route::post('/deleteImage',function(){
+        dd( Helpers::deleteImageFromCDN('madeindn/captain-america--the-winter-soldier-wallpapers-29442-177995.jpg'));
+    });
+
+    Route::get('/config', 'ConfigController@index')->name('view.admin.config.index');
     Route::post('/config', 'ConfigController@postLanguageJson')->name('admin.config.index');
 });

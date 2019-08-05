@@ -7,6 +7,7 @@
 # PhpStorm
 .idea
 .env.backup
+madein-ggkey.json
 .phpunit.result.cache
 Homestead.json
 Homestead.yaml
