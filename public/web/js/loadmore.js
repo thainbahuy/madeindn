@@ -8,7 +8,6 @@ function loadMoreEvent(urlAjax) {
             data: {'page': indexPage},
         })
         .done(function (data) {
-            console.log(data);
             if ($.trim(data.html) != "") {
                 $(".c-post").append(data.html);
                 indexPage++
@@ -22,6 +21,7 @@ function loadMoreEvent(urlAjax) {
 }
 
 var lastCategories = {};
+var projectByCatrgory = [];
 
 function loadMoreProjectIndex(urlAjax) {
     var category_id = $('ul.tabs-list').find('li.active').data('value');
@@ -31,7 +31,6 @@ function loadMoreProjectIndex(urlAjax) {
         indexPage = 2;
     } else {
         indexPage = lastCategories[category_id];
-        $('.alert-danger').show();
     }
 
     $.ajax(
@@ -44,9 +43,34 @@ function loadMoreProjectIndex(urlAjax) {
             if ($.trim(data.html) != "") {
                 $("#project_" + category_id).append(data.html);
                 lastCategories[category_id]++;
+
+                $('#loadmore_btn').show();
+                projectByCatrgory[category_id] = {
+                    'data': true,
+                }
+            } else {
+                $('#loadmore_btn').hide();
+                projectByCatrgory[category_id] = {
+                    'data': false,
+                }
+
             }
         });
 }
+
+function checkDataIsExist(categoryId) {
+    $('#loadmore_btn').show();
+    if (projectByCatrgory[categoryId]) {
+        if (projectByCatrgory[categoryId].data == true) {
+            $('#loadmore_btn').show();
+        } else {
+            $('#loadmore_btn').hide();
+        }
+    }
+
+
+}
+
 function loadMoreProjectByCategory(urlAjax) {
     $.ajax(
         {
@@ -60,6 +84,8 @@ function loadMoreProjectByCategory(urlAjax) {
                 $(".c-list__project").append(data.html);
                 indexPage++
                 console.log($('body').height());
+            } else {
+                $('#loadmore_btn').hide();
             }
         })
         .fail(function (jqXHR, ajaxOptions, thrownError) {
@@ -67,12 +93,12 @@ function loadMoreProjectByCategory(urlAjax) {
         });
 }
 
-function loadMoreSearchProject(urlAjax,key_word,category) {
+function loadMoreSearchProject(urlAjax, key_word, category) {
     $.ajax(
         {
             url: urlAjax,
             type: "get",
-            data: {'key_word':key_word , 'category':category , 'page': indexPage},
+            data: {'key_word': key_word, 'category': category, 'page': indexPage},
         })
         .done(function (data) {
             console.log(data);
@@ -80,6 +106,8 @@ function loadMoreSearchProject(urlAjax,key_word,category) {
                 $(".c-list__project").append(data.html);
                 indexPage++
                 console.log($('body').height());
+            } else {
+                $('#loadmore_btn').hide();
             }
         })
         .fail(function (jqXHR, ajaxOptions, thrownError) {

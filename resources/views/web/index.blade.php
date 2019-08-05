@@ -127,7 +127,7 @@
                             }
                         @endphp
                         <li {{$active}} data-value="{{$value->id}}" style="{{$style}}">
-                            <a href="#tab{{$value->id}}">{{Helpers::changeLanguage($value->name,$value->jp_name)}}</a>
+                            <a onclick="checkDataIsExist({{$value->id}})" href="#tab{{$value->id}}">{{Helpers::changeLanguage($value->name,$value->jp_name)}}</a>
                         </li>
                     @endforeach
                 </ul>
@@ -143,19 +143,16 @@
                                 $active = "tab";
                             }
                         @endphp
-                        <div id="tab{{$value->id}}" class="{{$active}}">
+                        <div  id="tab{{$value->id}}" class="{{$active}}">
                             <div class="c-list__project" id="project_{{$value->id}}">
                                 @php
                                     $valueCategory  = $value->id;
-                                    $listProjects   = Project::where('category_id',$valueCategory)->where('status', 1)->orderByRaw('ISNULL(position), position ASC')->paginate(Helpers::getConfig()['ProjectPage']['listProjectPaginate']);
+                                    $listProjects   = Project::where('category_id',$valueCategory)->where('status', 1)->orderByRaw('ISNULL(position), position ASC')->paginate(Helpers::getConfig()['HomePage']['listProjectPaginate']);
                                 @endphp
                                 @include('data_projectIndex_loadmore')
                             </div>
                         </div>
                     @endforeach
-                </div>
-                <div class="alert alert-danger" style="display: none;">
-                    <strong>Notice!</strong> Không tìm thấy sản phẩm.
                 </div>
                 <div class="btn-view-more">
                     <a id="loadmore_btn" href="javascript:loadMoreProjectIndex('{{route('web.index')}}');">
