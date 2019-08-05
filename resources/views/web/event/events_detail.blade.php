@@ -86,7 +86,7 @@
             <div class="mapouter">
                 <div id="gmap_canvas">
                     @php
-                        $map = json_decode($event->location, $event->jp_location, true);
+                        $map = json_decode(Helpers::changeLanguage($event->location, $event->jp_location), true);
                         $address  = urlencode($map[1].'-'.$map[2]);
                     @endphp
                     <iframe id="map"

@@ -73,7 +73,7 @@
             <div class="mapouter">
                 <div class="gmap_canvas">
                     @php
-                        $map = json_decode($objCoworking->location, true);
+                        $map = json_decode(Helpers::changeLanguage($objCoworking->location, $objCoworking->jp_location), true);
                         $address  = urlencode($map[1].'-'.$map[2]);
                     @endphp
                     <iframe id="map"
