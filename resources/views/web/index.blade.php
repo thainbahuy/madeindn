@@ -127,7 +127,7 @@
                             }
                         @endphp
                         <li {{$active}} data-value="{{$value->id}}" style="{{$style}}">
-                            <a href="#tab{{$value->id}}">{{Helpers::changeLanguage($value->name,$value->jp_name)}}</a>
+                            <a onclick="checkDataIsExist({{$value->id}})" href="#tab{{$value->id}}">{{Helpers::changeLanguage($value->name,$value->jp_name)}}</a>
                         </li>
                     @endforeach
                 </ul>
@@ -143,7 +143,7 @@
                                 $active = "tab";
                             }
                         @endphp
-                        <div id="tab{{$value->id}}" class="{{$active}}">
+                        <div  id="tab{{$value->id}}" class="{{$active}}">
                             <div class="c-list__project" id="project_{{$value->id}}">
                                 @php
                                     $valueCategory  = $value->id;

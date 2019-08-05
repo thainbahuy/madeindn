@@ -6,6 +6,6 @@
         "listEventPaginate": 10
     },
     "ProjectPage": {
-        "listProjectPaginate": 10
+        "listProjectPaginate": 2
     }
 }
