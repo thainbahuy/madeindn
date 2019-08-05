@@ -38,7 +38,7 @@ Route::namespace('Web')->group( function() {
 
     // project page
     Route::get('project/{name}-{id}.html', 'ProjectController@showDetailProject')->name('web.project.project_detail');
-    Route::post('project/{name}-{id}.html', 'ProjectController@store')->name('web.project.project_detail');
+    Route::post('project/{name}-{id}.html', 'ProjectController@postCustomer')->name('web.project.project_detail');
     Route::get('/project/{name}', 'ProjectController@showProjectByCategory')->name('web.project.project_category');
     Route::get('/project/', 'ProjectController@showProjectSubmit')->name('web.project.project_submit');
     Route::post('/project/', 'ProjectController@postProjectSubmit')->name('web.project.project_submit');
@@ -53,8 +53,11 @@ Route::get('/test', function () {
 
 
 
-Route::prefix('admin/')->group( function() {
+Route::namespace('Admin')->prefix('admin/')->group( function() {
     Route::get('/dashboard', function () {
         return view('admin.dashboard');
     });
+
+    Route::get('/config', 'ConfigController@index')->name('admin.config.index');
+    Route::post('/config', 'ConfigController@postLanguageJson')->name('admin.config.index');
 });

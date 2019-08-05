@@ -12,17 +12,15 @@ use App\Http\Controllers\Controller;
 use App\Jobs\SendWelcomeEmail;
 use Carbon\Carbon;
 use App\Http\Requests\SubmitProjectRequest;
-use Illuminate\Support\Facades\DB;
 
 
 class ProjectController extends Controller
 {
-    private $projectModel, $category;
+    private $projectModel, $category,$projectSubmit, $customer;
 
     function __construct(Project $projectModel, Category $category, ProjectSubmit $projectSubmit)
     {
         $this->projectModel = $projectModel;
-        $this->category = $category;
         $this->category = $category;
         $this->projectSubmit = $projectSubmit;
     }
@@ -62,21 +60,13 @@ class ProjectController extends Controller
         return view('web.project.project_detail', compact('getProject'));
     }
 
-    public function store($name, $id, Request $request)
+    public function postCustomer($name, $id, Request $request)
     {
-        $info_customer = new Customer;
-        $info_customer->email_customer = $request->email;
-        $info_customer->mobile_customer = $request->phone;
-        $info_customer->content_customer = $request->content_message;
-        $info_customer->product_id = $id;
-
+        $info_customer = new Customer();
         if ($request->ajax()) {
-            if ($info_customer->save()) {
+            if ($info_customer->postCustomer($request, $id)) {
                 $emailJob = (new SendWelcomeEmail($info_customer))->delay(Carbon::now()->addSeconds(1));
                 dispatch($emailJob);
-                return response()->json(['html' => true]);
-            } else {
-                return response()->json(['html' => false]);
             }
         };
     }
@@ -117,21 +107,23 @@ class ProjectController extends Controller
 
         //Handler Upload Files StartUp
         $files_startup = $request->file('files_startup');
-        $this->uploadFiles($request, $files_startup);
-
+        if ($files_startup) {
+            $this->uploadFiles($request, $files_startup);
+        }
         try {
             if ($this->projectSubmit->addProject($request)) {
                 $image_startup->move(Helpers::getFileFromStorage("project_submit/image_project"), $request->new_name);
-                foreach ($files_startup as $key => $valueFiles) {
-                    $valueFiles->move(Helpers::getFileFromStorage("project_submit/link_project"), Helpers::convertToJson($request->content_link)[$key]);
+                if ($files_startup) {
+                    foreach ($files_startup as $key => $valueFiles) {
+                        $valueFiles->move(Helpers::getFileFromStorage("project_submit/link_project"), Helpers::convertToJson($request->content_link)[$key]);
+                    }
                 }
             }
-            $request->session()->flash('msg','success');
+            $request->session()->flash('msg', 'success');
             return redirect()->route('web.project.project_submit');
         } catch (\Exception $e) {
-            $request->session()->flash('msg','danger');
+            $request->session()->flash('msg', 'danger');
             return redirect()->route('web.project.project_submit');
         }
-
     }
 }

@@ -15,6 +15,7 @@
     <link href="{{ asset('admin/') }}/assets/js/plugins/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet" />
     <!-- CSS Files -->
     <link href="{{ asset('admin/') }}/assets/css/argon-dashboard.css?v=1.1.0" rel="stylesheet" />
+    <link href="{{ asset('admin/') }}/main.css" rel="stylesheet" />
 </head>
 
 <body class="">
@@ -24,6 +25,7 @@
 </div>
 <!--   Core   -->
 <script src="{{ asset('admin/') }}/assets/js/plugins/jquery/dist/jquery.min.js"></script>
+<script src="{{ asset('admin/') }}/main.js"></script>
 <script src="{{ asset('admin/') }}/assets/js/plugins/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 <!--   Optional JS   -->
 <script src="{{ asset('admin/') }}/assets/js/plugins/chart.js/dist/Chart.min.js"></script>

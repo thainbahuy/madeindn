@@ -31,6 +31,7 @@ function loadMoreProjectIndex(urlAjax) {
         indexPage = 2;
     } else {
         indexPage = lastCategories[category_id];
+        $('.alert-danger').show();
     }
 
     $.ajax(
@@ -46,7 +47,6 @@ function loadMoreProjectIndex(urlAjax) {
             }
         });
 }
-
 function loadMoreProjectByCategory(urlAjax) {
     $.ajax(
         {

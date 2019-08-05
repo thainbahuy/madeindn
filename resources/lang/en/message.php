@@ -1,21 +1,13 @@
 <?php
-return [
-    //Head
-    'COWORKING_TITLE' => "Coworking Space",
-    'EVENT'           => 'Event',
+$json = file_get_contents(storage_path('json_language/language.json'));
+$json_data = json_decode($json, true);
+$resultMessage = [];
 
-    // Header
-    'HOME'          => 'Home',
-    'ABOUTS'        => "About Us",
-    'PROJECTS'      => 'Projects',
-    'EVENTS'        => 'Events',
-    'CO-SPACE'      => 'Coworking Space',
-    'CONTACT'       => 'Contact Us',
-    'SUBMIT-PJ'     => 'Submit Your Project',
-    'Looking'       => 'What\'re we looking for ?',
+foreach ($json_data['EN'] as $key => $value) {
+    foreach ($json_data['EN'][$key] as $keyTitle => $valueTitle) {
+        $resultMessage[$keyTitle] = $valueTitle;
+    }
+}
+return $resultMessage;
 
-    // Footer
-    'SOLOGAN'       => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vel tortor vitae dolor eleifend mollis. Donec ultricies in urna eget tristique.',
-
-];
 ?>
