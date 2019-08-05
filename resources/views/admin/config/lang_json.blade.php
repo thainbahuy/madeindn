@@ -52,7 +52,7 @@
                         </div>
                     </div>
                 </div>
-                <form method="POST" action="{{route('admin.config.index')}}">
+                <form method="POST" action="{{route('admin.config.lang_json')}}">
                     {{csrf_field()}}
                     @foreach($jsonDataLanguage as $keyLang => $valueLang)
                         <div class="form-group row setup-content" id="step-{{$step++}}">
@@ -63,12 +63,12 @@
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <span>{{$titleProperties}}</span>
+                                                    <span style="color:red; font-weight:bold; vertical-align: -webkit-baseline-middle;">{{$titleProperties}}</span>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <input type="text"
+                                                    <input required type="text"
                                                            name="{{$keyLang}}[{{$title}}][{{$titleProperties}}]"
                                                            class="form-control"
                                                            value="{{$valueProperties}}">

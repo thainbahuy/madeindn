@@ -58,6 +58,10 @@ Route::namespace('Admin')->prefix('admin/')->group( function() {
         return view('admin.dashboard');
     });
 
-    Route::get('/config', 'ConfigController@index')->name('admin.config.index');
-    Route::post('/config', 'ConfigController@postLanguageJson')->name('admin.config.index');
+    // Config
+    Route::get('/config_language', 'ConfigController@showLanngJson')->name('admin.config.lang_json');
+    Route::post('/config_language', 'ConfigController@postLanguageJson')->name('admin.config.lang_json');
+
+    Route::get('/config_paginate', 'ConfigController@showPaginateJson')->name('admin.config.paginate_json');
+    Route::post('/config_paginate', 'ConfigController@postPaginateJson')->name('admin.config.paginate_json');
 });
