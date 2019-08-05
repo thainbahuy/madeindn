@@ -1,7 +1,7 @@
 {
     "HomePage": {
         "listEventPaginate": 10,
-        "listProjectPaginate": 6
+        "listProjectPaginate": 3
     },
     "EventPage": {
         "listEventPaginate": 10

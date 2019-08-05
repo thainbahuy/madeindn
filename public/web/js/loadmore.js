@@ -21,6 +21,7 @@ function loadMoreEvent(urlAjax) {
 }
 
 var lastCategories = {};
+var projectByCatrgory = [];
 
 function loadMoreProjectIndex(urlAjax) {
     var category_id = $('ul.tabs-list').find('li.active').data('value');
@@ -42,18 +43,32 @@ function loadMoreProjectIndex(urlAjax) {
             if ($.trim(data.html) != "") {
                 $("#project_" + category_id).append(data.html);
                 lastCategories[category_id]++;
+
+                $('#loadmore_btn').show();
+                projectByCatrgory[category_id] = {
+                    'data': true,
+                }
             } else {
                 $('#loadmore_btn').hide();
+                projectByCatrgory[category_id] = {
+                    'data': false,
+                }
 
             }
         });
 }
 
 function checkDataIsExist(categoryId) {
-
-    if (!lastCategories[categoryId]) {
-        $('#loadmore_btn').show();
+    $('#loadmore_btn').show();
+    if (projectByCatrgory[categoryId]) {
+        if (projectByCatrgory[categoryId].data == true) {
+            $('#loadmore_btn').show();
+        } else {
+            $('#loadmore_btn').hide();
+        }
     }
+
+
 }
 
 function loadMoreProjectByCategory(urlAjax) {
@@ -69,7 +84,7 @@ function loadMoreProjectByCategory(urlAjax) {
                 $(".c-list__project").append(data.html);
                 indexPage++
                 console.log($('body').height());
-            }else{
+            } else {
                 $('#loadmore_btn').hide();
             }
         })
@@ -91,7 +106,7 @@ function loadMoreSearchProject(urlAjax, key_word, category) {
                 $(".c-list__project").append(data.html);
                 indexPage++
                 console.log($('body').height());
-            }else{
+            } else {
                 $('#loadmore_btn').hide();
             }
         })
