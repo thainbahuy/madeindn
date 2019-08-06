@@ -43,7 +43,9 @@ Route::namespace('Web')->group( function() {
     Route::get('/project/', 'ProjectController@showProjectSubmit')->name('web.project.project_submit');
     Route::post('/project/', 'ProjectController@postProjectSubmit')->name('web.project.project_submit');
 
-
+    // contact page
+    Route::get('/contact', 'ContactController@showContact')->name('web.contact.contact');
+    Route::post('/contact', 'ContactController@insertContact')->name('web.contact.contact');
 
 });
 
@@ -55,13 +57,17 @@ Route::get('/test', function () {
 
 Route::namespace('Admin')->prefix('admin/')->group( function() {
     Route::get('/dashboard', function () {
-        return view('admin.dashboard');
+        return view('view.admin.dashboard');
     });
 
     // Config
     Route::get('/config_language', 'ConfigController@showLanngJson')->name('admin.config.lang_json');
     Route::post('/config_language', 'ConfigController@postLanguageJson')->name('admin.config.lang_json');
-
     Route::get('/config_paginate', 'ConfigController@showPaginateJson')->name('admin.config.paginate_json');
     Route::post('/config_paginate', 'ConfigController@postPaginateJson')->name('admin.config.paginate_json');
+
+   // Test API CDN
+    Route::post('/upLoadImage', 'ImageController@upLoadImage');
+    Route::post('/deleteImage', 'ImageController@deletImage');
+
 });

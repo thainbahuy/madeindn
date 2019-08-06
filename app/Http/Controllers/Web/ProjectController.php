@@ -135,10 +135,10 @@ class ProjectController extends Controller
         }
         try {
             if ($this->projectSubmit->addProject($request)) {
-                $image_startup->move(Helpers::getFileFromStorage("project_submit/image_project"), $request->new_name);
+                $image_startup->move(Helpers::getFilePathFromStorage("project_submit/image_project"), $request->new_name);
                 if ($files_startup) {
                     foreach ($files_startup as $key => $valueFiles) {
-                        $valueFiles->move(Helpers::getFileFromStorage("project_submit/link_project"), Helpers::convertToJson($request->content_link)[$key]);
+                        $valueFiles->move(Helpers::getFilePathFromStorage("project_submit/link_project"), Helpers::convertToJson($request->content_link)[$key]);
                     }
                 }
             }
