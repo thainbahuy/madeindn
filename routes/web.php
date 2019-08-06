@@ -43,7 +43,9 @@ Route::namespace('Web')->group( function() {
     Route::get('/project/', 'ProjectController@showProjectSubmit')->name('web.project.project_submit');
     Route::post('/project/', 'ProjectController@postProjectSubmit')->name('web.project.project_submit');
 
-
+    // contact page
+    Route::get('/contact', 'ContactController@showContact')->name('web.contact.contact');
+    Route::post('/contact', 'ContactController@insertContact')->name('web.contact.contact');
 
 });
 
