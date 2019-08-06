@@ -50,6 +50,7 @@ function deleteEvent(urlAjax, id) {
         }).done(function (response) {
         if (response.status == "success") {
             $('#rowEvent' + id).remove();
+            $('.message').show();
         }
     }).fail(function (response) {
         alert('server not responding...');

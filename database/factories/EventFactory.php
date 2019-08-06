@@ -18,6 +18,7 @@ $factory->define(Event::class, function (Faker $faker) {
         'jp_sort_description' => 'Well there are a few little functions here that may help you. But I\'m not sure what kind of behavior you\'re expecting. You have to decide, for instance, if you are looking for Posts in a category, do you expect to also find Posts in a proper sub-category of that category',
         'jp_overview' => 'Well there are a few little functions here that may help you. But I\'m not sure what kind of behavior you\'re expecting. You have to decide, for instance, if you are looking for Posts in a category, do you expect to also find Posts in a proper sub-category of that category',
         'jp_location' => '["Duy Tan University JP ","100 Quang Trung","Da Nang"]',
+        'social_link' => '{"fb.png":"","ms.png":"https:\/\/www.google.com\/","share.png":"https:\/\/www.facebook.com\/","twice.png":"https:\/\/www.facebook.com\/","in.png":"https:\/\/www.facebook.com\/"}',
         'created_at' => new DateTime,
         'updated_at' => new DateTime,
         'begin_time' => new DateTime,
