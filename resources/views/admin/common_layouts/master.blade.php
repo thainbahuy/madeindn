@@ -33,6 +33,7 @@
 <!--   Argon JS   -->
 <script src="{{ asset('admin/') }}/assets/js/argon-dashboard.min.js?v=1.1.0"></script>
 <script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
+@yield('myscript')
 <script>
     window.TrackJS &&
     TrackJS.install({

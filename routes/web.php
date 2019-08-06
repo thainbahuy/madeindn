@@ -55,12 +55,18 @@ Route::get('/test', function () {
 
 Route::namespace('Admin')->prefix('admin/')->group( function() {
     Route::get('/dashboard', function () {
-        return view('view.admin.dashboard');
+        return view('admin.dashboard');
     });
 
+    Route::get('/event', 'EventController@showListEvent')->name('view.admin.event.event_list');
+    Route::get('/event/delete', 'EventController@deleteEventById')->name('admin.event.event_list.delete');
+
+
+
+
+
+//      test cdn
     Route::post('/upLoadImage', 'ImageController@upLoadImage');
-
-
     Route::post('/deleteImage', 'ImageController@deletImage');
 
 
