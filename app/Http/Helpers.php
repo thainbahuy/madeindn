@@ -48,15 +48,12 @@ class Helpers
 
     }
 
-    public static function deleteImageFromCDN($url)
+    public static function deleteImageFromCDN($name)
     {
-        $disk = Storage::disk('gcs');
-
         try {
             // verify if exists files inside object
-            return $disk->deleteDir($disk->files($url)); //delete all files and object in GCS
-
-
+            Storage::disk('gcs')->delete($name);
+            Log::info('Photos deleted: '.$name );
         } catch (Exception $e) {
             Log::info('Exception delete image');
             Log::info($e);

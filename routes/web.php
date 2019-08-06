@@ -60,9 +60,9 @@ Route::namespace('Admin')->prefix('admin/')->group( function() {
 
     Route::post('/upLoadImage', 'ImageController@upLoadImage');
 
-    Route::post('/deleteImage',function(){
-        dd( Helpers::deleteImageFromCDN('madeindn/captain-america--the-winter-soldier-wallpapers-29442-177995.jpg'));
-    });
+
+    Route::post('/deleteImage', 'ImageController@deletImage');
+
 
     Route::get('/config', 'ConfigController@index')->name('view.admin.config.index');
     Route::post('/config', 'ConfigController@postLanguageJson')->name('admin.config.index');
