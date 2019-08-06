@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers\Web;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\ContactRequest;
 use App\Models\Web\Contact;
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use Session;
 
 class ContactController extends Controller
@@ -19,8 +18,7 @@ class ContactController extends Controller
 
     /**
      * Show contact page
-     * @param $name
-     * @param $id
+     * 
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
 
@@ -31,10 +29,9 @@ class ContactController extends Controller
 
     /**
      * Insert contact_form into table 'Contact' in Database.
-     *
-     * @return array
+     * @param ContactRequest $request
+     * @return \Illuminate\Http\RedirectResponse
      */
-
     public function insertContact(ContactRequest $request)
     {
         $request = $request->all();
