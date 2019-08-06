@@ -49,15 +49,10 @@ Route::namespace('Web')->group( function() {
 
 });
 
-Route::get('/test', function () {
-    return view('welcome');
-});
-
-
 
 Route::namespace('Admin')->prefix('admin/')->group( function() {
     Route::get('/dashboard', function () {
-        return view('view.admin.dashboard');
+        return view('admin.dashboard');
     });
 
     // Config
