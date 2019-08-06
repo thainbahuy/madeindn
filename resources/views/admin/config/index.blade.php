@@ -94,3 +94,6 @@
         </div>
     </div>
 @endsection
+@section('myscript')
+    <script src="{{ asset('admin') }}/configJson.js"></script>
+@endsection

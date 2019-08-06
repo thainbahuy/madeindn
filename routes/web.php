@@ -66,4 +66,12 @@ Route::namespace('Admin')->prefix('admin/')->group( function() {
 
     Route::get('/config', 'ConfigController@index')->name('view.admin.config.index');
     Route::post('/config', 'ConfigController@postLanguageJson')->name('admin.config.index');
+
+    // Project
+    Route::get('/project/customer_project', 'CustomerProjectController@showCustomerProject')->name('view.admin.project.project_customer');
+    Route::get('/project/customer_project/view_{id}', 'CustomerProjectController@showCustomerProjectById')->name('view.admin.project.detail_project_submit');
+    Route::get('/project/customer_project/delete', 'CustomerProjectController@deleteProjectSubmit')->name('admin.project.project_customer.delete');
+
+    Route::get('/contact/contact_project', 'ContactController@showContactProject')->name('view.admin.contact.project_customer');
+    Route::get('/contact/contact_project/delete', 'ContactController@deleteInfoCustomerProject')->name('admin.contact.project_customer_delete');
 });
