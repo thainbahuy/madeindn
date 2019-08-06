@@ -4,7 +4,7 @@
     <nav class="navbar navbar-top navbar-expand-md navbar-dark" id="navbar-main">
         <div class="container-fluid">
             <!-- Brand -->
-            <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" href="./index.html">Dashboard</a>
+            <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block">Config Language</a>
             <!-- Form -->
         </div>
     </nav>
@@ -58,12 +58,12 @@
                         <div class="form-group row setup-content" id="step-{{$step++}}">
                             @foreach($jsonDataLanguage[$keyLang] as $title =>$value)
                                 <div class="col-md-4" style="text-align: center;">
-                                    <span>{{$title}}</span>
+                                    <span style="color:red; font-weight:bold;">{{$title}}</span>
                                     @foreach($value as $titleProperties =>$valueProperties)
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <span style="color:red; font-weight:bold; vertical-align: -webkit-baseline-middle;">{{$titleProperties}}</span>
+                                                    <span style="vertical-align: -webkit-baseline-middle;">{{$titleProperties}}</span>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">

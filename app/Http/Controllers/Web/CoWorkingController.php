@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers\Web;
 
+use App\Http\Controllers\Controller;
 use App\Models\Web\CoWorking;
 use Helpers;
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 
 class CoWorkingController extends Controller
 {
