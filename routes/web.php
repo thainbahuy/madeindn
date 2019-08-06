@@ -57,9 +57,15 @@ Route::get('/test', function () {
 
 Route::namespace('Admin')->prefix('admin/')->group( function() {
     Route::get('/dashboard', function () {
-        return view('admin.dashboard');
+        return view('view.admin.dashboard');
     });
 
-    Route::get('/config', 'ConfigController@index')->name('admin.config.index');
+    Route::post('/upLoadImage', 'ImageController@upLoadImage');
+
+
+    Route::post('/deleteImage', 'ImageController@deletImage');
+
+
+    Route::get('/config', 'ConfigController@index')->name('view.admin.config.index');
     Route::post('/config', 'ConfigController@postLanguageJson')->name('admin.config.index');
 });
