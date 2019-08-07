@@ -112,7 +112,6 @@ class CoworkingController extends Controller
         $data = $request->all();
         $oldCoworking = $this->coWorking->getCoworking($id);
 
-        // Tạo
         if ($request->file('imageCoworking')) {
             $newNameImage = \Helpers::createNewNameImage($data["imageCoworking"]->getClientOriginalName());
             $linkImage = "https://storage.googleapis.com/madeindn/" . $newNameImage;
