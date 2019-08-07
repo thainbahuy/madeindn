@@ -33,6 +33,15 @@ class EventController extends Controller
         return view('admin.event.event_list', compact('listEvent'));
     }
 
+    public function showAddNewEvent(){
+        return view('admin.event.addnew');
+    }
+
+    /**
+     * Delete event by id
+     * @param Request $request id event
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function deleteEventById(Request $request){
         $id = $request->get('id');
         if ($this->event->deleteEventById($id) == 1) {

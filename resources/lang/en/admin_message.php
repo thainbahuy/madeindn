@@ -2,9 +2,8 @@
 
 return [
 
-    //notification for event page list
-    'delete_success' => 'Delete Event Successful',
-
+    //notification header
+    'delete_success' => 'Delete Successful',
 
 
 

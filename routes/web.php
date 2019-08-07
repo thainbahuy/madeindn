@@ -60,7 +60,7 @@ Route::namespace('Admin')->prefix('admin/')->group( function() {
 
     Route::get('/event', 'EventController@showListEvent')->name('view.admin.event.event_list');
     Route::get('/event/delete', 'EventController@deleteEventById')->name('admin.event.event_list.delete');
-
+    Route::get('/event/add', 'EventController@showAddNewEvent')->name('view.admin.event.addnew');
 
 
 

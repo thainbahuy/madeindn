@@ -1,12 +1,12 @@
 <?php
 
 return [
-    //notification for event page list
-    'delete_success' => 'Delete Event Successful JP',
+    //notification header
+    'delete_success' => 'Delete Successful',
 
     //for modal delete
-    'modal-header' => 'Delete JP',
-    'modal-body' => 'Are you sure want to delete this JP?',
-    'modal-footer-btn-close' => 'Close JP',
-    'modal-footer-btn-yes' => 'Yes JP',
+    'modal-header' => 'Delete',
+    'modal-body' => 'Are you sure want to delete this ?',
+    'modal-footer-btn-close' => 'Close',
+    'modal-footer-btn-yes' => 'Yes',
 ];
