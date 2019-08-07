@@ -58,28 +58,25 @@ class Helpers
         return storage_path($patch);
     }
 
-    public static function upLoadImageToCDN($file, $nameImage)
     /**
      * Upload image to CDN
-     * @param $file, $nameImage
+     * @param $file
      * @return url
      */
+
     public static function upLoadImageToCDN($file)
     {
         $disk = Storage::disk('gcs');
-        $nameImage = $nameImage;
         try {
-            $disk->put($nameImage, file_get_contents($file));
-            $urlImage = $disk->url($nameImage);
+            $disk->put($file->getClientOriginalName(), file_get_contents($file));
+            $urlImage = $disk->url($file->getClientOriginalName());
+            Log::info('Photos uploaded: '.$file->getClientOriginalName() );
             return $urlImage;
-
         } catch (Exception $e) {
             Log::info('Exception upload image');
             Log::info($e);
         }
-
     }
-
     /**
      * delete file from CDN
      * @param $name
@@ -104,6 +101,22 @@ class Helpers
 
     public static function createNewNameImage($nameImage){
         return rand(10000000, 99999999) . "_" . rand(10000000, 99999999) . "_" . rand(10000000, 99999999) . "_" .$nameImage;
+    }
+
+    public static function upLoadImageToCDN_N ($file,$nameImage)
+    {
+        $disk = Storage::disk('gcs');
+        $nameImage = $nameImage;
+        try {
+            $disk->put($nameImage, file_get_contents($file));
+            $urlImage = $disk->url($nameImage);
+            Log::info('Photos uploaded: '.$nameImage);
+            return $urlImage;
+
+        } catch (Exception $e) {
+            Log::info('Exception upload image');
+            Log::info($e);
+        }
     }
 }
 

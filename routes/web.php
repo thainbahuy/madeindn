@@ -67,10 +67,6 @@ Route::namespace('Admin')->prefix('admin/')->group(function () {
     Route::post('/upLoadImage', 'ImageController@upLoadImage');
     Route::post('/deleteImage', 'ImageController@deletImage');
 
-
-    Route::get('/config', 'ConfigController@index')->name('view.admin.config.index');
-    Route::post('/config', 'ConfigController@postLanguageJson')->name('admin.config.index');
-
     // Project
     Route::get('/project/customer_project', 'CustomerProjectController@showCustomerProject')->name('view.admin.project.project_customer');
     Route::get('/project/customer_project/view_{id}', 'CustomerProjectController@showCustomerProjectById')->name('view.admin.project.detail_project_submit');

@@ -53,7 +53,7 @@ class CustomerProjectController extends Controller
             $files = Helpers::convertToJson($this->projectSubmit->showDetailProjectById($id)->content_link, true);
             if ($files != null) {
                 foreach ($files as $key => $value) {
-                    File::delete(Helpers::getFileFromStorage('project_submit/link_project/' . $value));
+                    File::delete(Helpers::getFilePathFromStorage('project_submit/link_project/' . $value));
                 }
             }
             $deleteProjectSubmit = $this->projectSubmit->deleteProjectSubmit($id);

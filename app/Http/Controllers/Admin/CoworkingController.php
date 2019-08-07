@@ -82,7 +82,7 @@ class CoworkingController extends Controller
 
         if ($resultAddCowork) {
             Log::info('You just added coworking named: ' . $data['name']);
-            \Helpers::upLoadImageToCDN($data['imageCoworking'], $newNameImage);
+            \Helpers::upLoadImageToCDN_N($data['imageCoworking'], $newNameImage);
             $request->session()->flash('msg', 'Success !');
             return redirect()->route('view.admin.coworking.coworking_space');
         } else {
@@ -133,7 +133,7 @@ class CoworkingController extends Controller
             if ($request->file('imageCoworking')) {
                 $nameImage = \Helpers::getNameImage($oldCoworking->image_link);
                 \Helpers::deleteImageFromCDN($nameImage);
-                \Helpers::upLoadImageToCDN($data['imageCoworking'], $newNameImage);
+                \Helpers::upLoadImageToCDN_N($data['imageCoworking'], $newNameImage);
             }
             $request->session()->flash('msg', "Success");
             return redirect()->route('view.admin.coworking.coworking_space');
