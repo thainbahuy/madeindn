@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Web\About;
 use App\Models\Web\Category;
 use App\Models\Web\CoWorking;
 use Illuminate\Support\Facades\View;
@@ -30,6 +31,9 @@ class AppServiceProvider extends ServiceProvider
     {
         View::Share('getAllCoworking',CoWorking::select('id','name','jp_name')->orderByRaw('ISNULL(position), position ASC')->orderBy('id','DESC')->get());
         View::Share('listCategory',Category::select('id','name','jp_name')->orderByRaw('ISNULL(position), position ASC')->orderBy('id','DESC')->get());
+        View::Share('listAllAbout',About::orderByRaw('ISNULL(position), position ASC')->orderBy('id','DESC')->get());
+
+
         Schema::defaultStringLength(191);
     }
 }

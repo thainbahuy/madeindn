@@ -16,17 +16,17 @@ route::pattern('id', '([0-9]*)');
 
 
 Session::put('locale', 'en');
-Route::get('language/{locale}', function ($locale) {
+Route::get('language/{locale}', function ($locale){
     Session::put('locale', $locale);
     return redirect()->back();
 });
 
-Route::namespace('Web')->group(function () {
+Route::namespace('Web')->group( function() {
 
     //Home page
     Route::get('/home', 'ShowHomeController@index')->name('web.index');
     Route::get('/', 'ShowHomeController@index')->name('web.index');
-    Route::get('/search', 'ShowHomeController@searchProject')->name('web.project.project_search');
+    Route::get('/search','ShowHomeController@searchProject')->name('web.project.project_search');
 
     // Co-working page
     Route::get('/co-working-space', 'CoWorkingController@index')->name('web.coworking.coworking_space');
@@ -43,11 +43,12 @@ Route::namespace('Web')->group(function () {
     Route::get('/project/', 'ProjectController@showProjectSubmit')->name('web.project.project_submit');
     Route::post('/project/', 'ProjectController@postProjectSubmit')->name('web.project.project_submit');
 
+    // contact page
+    Route::get('/contact', 'ContactController@showContact')->name('web.contact.contact');
+    Route::post('/contact', 'ContactController@insertContact')->name('web.contact.contact');
 
-});
-
-Route::get('/test', function () {
-    return view('welcome');
+    // About us
+    Route::get('/about/{name}-{id}', 'AboutController@index')->name('web.more.about');
 });
 
 
@@ -56,9 +57,14 @@ Route::namespace('Admin')->prefix('admin/')->group(function () {
         return view('admin.dashboard');
     });
 
+    // Config
+    Route::get('/config_language', 'ConfigController@showLanngJson')->name('admin.config.lang_json');
+    Route::post('/config_language', 'ConfigController@postLanguageJson')->name('admin.config.lang_json');
+    Route::get('/config_paginate', 'ConfigController@showPaginateJson')->name('admin.config.paginate_json');
+    Route::post('/config_paginate', 'ConfigController@postPaginateJson')->name('admin.config.paginate_json');
+
+   // Test API CDN
     Route::post('/upLoadImage', 'ImageController@upLoadImage');
-
-
     Route::post('/deleteImage', 'ImageController@deletImage');
 
 

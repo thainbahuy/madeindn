@@ -107,6 +107,21 @@
                 </li>
             </ul>
             <!-- Divider -->
+            <hr class="my-3">
+            <!-- Heading -->
+            <h6 class="navbar-heading text-muted">CONFIG</h6>
+            <ul class="navbar-nav mb-md-3">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{route('admin.config.lang_json')}}">
+                        <i class="ni ni-spaceship"></i> Config Language
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{route('admin.config.paginate_json')}}">
+                        <i class="ni ni-palette"></i> Config Page
+                    </a>
+                </li>
+            </ul>
         </div>
     </div>
 </nav>

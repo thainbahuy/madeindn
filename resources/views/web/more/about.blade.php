@@ -18,7 +18,7 @@
                 Our Projects
             </div>
             <div class="c-banner__page__title">
-                <img src="{{asset('web/images/madeinDaNang.png')}}" alt=madeinDaNang">
+                <img src="{{asset('web/')}}/images/madeinDaNang.png" alt=madeinDaNang">
             </div>
         </div>
     </div>
@@ -27,80 +27,20 @@
         <div class="o-container">
             <div class="c-section__menutab__content">
                 <ul>
-                    <li class="active">
-                        <a href="#">Overview</a>
-                    </li>
-                    <li>
-                        <a href="#">How we can help </a>
-                    </li>
-                    <li>
-                        <a href="#">Why partners with us</a>
-                    </li>
-                    <li>
-                        <a href="#">Your benefits for community</a>
-                    </li>
+                    @foreach($listAbout as $key => $value)
+                        <li id= "active_{{$value->id}}">
+                            <a href="{{route('web.more.about',['name'=> str_slug($value->name),'id'=>$value->id])}}">{{Helpers::changeLanguage($value->name,$value->jp_name)}}</a>
+                        </li>
+                    @endforeach
                 </ul>
             </div>
         </div>
     </div>
-    <!-- END SECTION -->
-    <div class="c-section c-section__groupthumb">
-        <div class="o-container">
-            <div class="c-section__groupthumb__content">
-                <div class="c-list__groupthumb">
-                    <div class="c-list__groupthumb__left">
-                        <div class="c-list__groupthumb__item">
-                            <div class="c-thumbnail c-thumbnail__object-fit">
-                                <img src="{{asset('web/')}}/images/4-3_1024x767.png" alt="">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="c-list__groupthumb__right">
-                        <div class="c-list__groupthumb__item">
-                            <div class="c-thumbnail c-thumbnail__object-fit">
-                                <img src="{{asset('web/')}}/images/4-3_1024x767.png" alt="">
-                            </div>
-                        </div>
-                        <div class="c-list__groupthumb__item">
-                            <div class="c-thumbnail c-thumbnail__object-fit">
-                                <img src="{{asset('web/')}}/images/4-3_1024x767.png" alt="">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- END SECTION -->
     <div class="c-section c-section__about">
         <div class="o-container">
-            <h3 class="c-section__heading">
-                <p>We work with Top Coworking Space</p>
-            </h3>
-            <div class="sub-title">
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vel<br/>
-                    tortor vitae dolor eleifend mollis. Donec ultricies in urna eget tristique. Cras.
-                </p>
-            </div>
             <div class="c-section__content">
                 <div class="c-section__content__text">
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sit amet molestie lacus, sit amet
-                        posuere lorem. Mauris in bibendum dui, quis luctus turpis. Maecenas nec hendrerit massa. Nullam
-                        in fermentum lorem. Nunc ac metus varius, egestas dolor at, scelerisque justo. Sed lacus leo,
-                        dignissim eget consectetur in, tincidunt in ex. Nam posuere, enim at pulvinar lacinia, nisl
-                        turpis sodales dui, in tincidunt felis tellus consequat mauris. Praesent suscipit eros finibus,
-                        consequat mauris sed, tempor urna. Ut hendrerit purus et ex accumsan, id tincidunt tortor
-                        mattis. Ut sit amet magna libero.
-                    </p>
-                    <p>
-                        Morbi elit urna, auctor et suscipit et, elementum eget mauris. Duis sollicitudin, libero ac
-                        semper dictum, enim diam facilisis turpis, malesuada egestas eros felis in justo. Aliquam erat
-                        volutpat. Duis luctus erat non dolor porttitor commodo. Mauris vitae aliquet nulla. Aliquam
-                        accumsan eleifend risus. Vivamus id risus gravida, tincidunt orci id, luctus magna. Maecenas
-                        vehicula ipsum quis neque vehicula, ac commodo lorem scelerisque.
-                    </p>
+                    <p>{{Helpers::changeLanguage($listFirstAbout->description,$listFirstAbout->jp_description)}}</p>
                 </div>
             </div>
         </div>
@@ -108,7 +48,7 @@
     <!-- END SECTION -->
 </main>
 <!-- END MAIN -->
-
+<!-- END MAIN -->
 <footer id="footer" class="c-footer">
     @include('web.common_layouts.footer')
 </footer>
@@ -116,6 +56,9 @@
 <!-- <a id="go-top" href="javascript:;" title="Go Top" class="c-btn__go-top"><img src="{{asset('web/')}}/images/icons/go_top.png" alt="Go Top" /></a> -->
 <!-- ======== JAVASCRIPT ======== -->
 @include('web.common_layouts.script_footer')
+<script>
+    $('#active_'+{{$id}}).addClass('active');
+</script>
 <!-- endbuild -->
 <!-- ======== END JAVASCRIPT ======== -->
 </body>

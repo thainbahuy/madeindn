@@ -2,21 +2,21 @@
 
 namespace App\Http\Controllers\Web;
 
+use App\Http\Controllers\Controller;
+use App\Http\Requests\SubmitProjectRequest;
+use App\Jobs\SendWelcomeEmail;
 use App\Models\Web\Category;
 use App\Models\Web\Customer;
 use App\Models\Web\Project;
 use App\Models\Web\ProjectSubmit;
+use Carbon\Carbon;
 use Helpers;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use App\Jobs\SendWelcomeEmail;
-use Carbon\Carbon;
-use App\Http\Requests\SubmitProjectRequest;
 
 
 class ProjectController extends Controller
 {
-    private $projectModel, $category,$projectSubmit, $customer;
+    private $projectModel, $category, $projectSubmit, $customer;
 
     function __construct(Project $projectModel, Category $category, ProjectSubmit $projectSubmit)
     {
@@ -60,6 +60,12 @@ class ProjectController extends Controller
         return view('web.project.project_detail', compact('getProject'));
     }
 
+    /**
+     * Save customer information in the database and shoot mail to the administrator
+     * @param $name
+     * @param $id
+     * @param Request $request
+     */
     public function postCustomer($name, $id, Request $request)
     {
         $info_customer = new Customer();
@@ -71,12 +77,19 @@ class ProjectController extends Controller
         };
     }
 
+    /**Display information of project entry form for customers
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function showProjectSubmit()
     {
         return view('web.project.project_submit');
     }
 
-
+    /**Upload Image
+     * @param Request $request
+     * @param $image_startup
+     * @return mixed|string
+     */
     private function uploadImage(Request $request, $image_startup)
     {
         if (!is_null($image_startup)) {
@@ -85,6 +98,12 @@ class ProjectController extends Controller
         return $request->new_name;
     }
 
+    /**
+     * Upload Files PDF , Word...
+     * @param Request $request
+     * @param $files_startup
+     * @return array|mixed
+     */
     private function uploadFiles(Request $request, $files_startup)
     {
         $arry_link = array();
@@ -99,6 +118,10 @@ class ProjectController extends Controller
         return $request->content_link;
     }
 
+    /**Save project information in the database
+     * @param SubmitProjectRequest $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function postProjectSubmit(SubmitProjectRequest $request)
     {
         //Handler Upload Image Startup
@@ -112,10 +135,10 @@ class ProjectController extends Controller
         }
         try {
             if ($this->projectSubmit->addProject($request)) {
-                $image_startup->move(Helpers::getFileFromStorage("project_submit/image_project"), $request->new_name);
+                $image_startup->move(Helpers::getFilePathFromStorage("project_submit/image_project"), $request->new_name);
                 if ($files_startup) {
                     foreach ($files_startup as $key => $valueFiles) {
-                        $valueFiles->move(Helpers::getFileFromStorage("project_submit/link_project"), Helpers::convertToJson($request->content_link)[$key]);
+                        $valueFiles->move(Helpers::getFilePathFromStorage("project_submit/link_project"), Helpers::convertToJson($request->content_link)[$key]);
                     }
                 }
             }
