@@ -10,7 +10,7 @@
             <li class="c-navbar__dropdown">
                 <a href="#" title="" class="c-navbar__dropdown__link">{{__('message.ABOUTS')}}</a>
                 <ul class="c-navbar__dropdown__content">
-                    @foreach($listAbout as $value)
+                    @foreach($listAllAbout as $value)
                         <li><a href="{{route('web.more.about',['name'=> str_slug($value->name),'id'=>$value->id])}}">{{Helpers::changeLanguage($value->name,$value->jp_name)}}</a></li>
                     @endforeach
                 </ul>

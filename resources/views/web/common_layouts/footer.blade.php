@@ -32,7 +32,7 @@
             <li>
                 <a href="">About</a>
                 <ul class="sub-menu">
-                    @foreach($listAbout as $key => $value)
+                    @foreach($listAllAbout as $key => $value)
                         <li id= "active_{{$value->id}}">
                             <a href="{{route('web.more.about',['name'=> str_slug($value->name),'id'=>$value->id])}}">{{Helpers::changeLanguage($value->name,$value->jp_name)}}</a>
                         </li>
