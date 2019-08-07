@@ -40,17 +40,17 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Xóa Project</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">{{ __('admin_message.modal-header') }}</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    Bạn có muốn xóa Project này không ?
+                    {{ __('admin_message.modal-body') }}
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" id="delete-save" class="btn btn-primary">Save changes</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ __('admin_message.modal-footer-btn-close') }}</button>
+                    <button type="button" id="delete-save" class="btn btn-primary">{{ __('admin_message.modal-footer-btn-yes') }}</button>
                 </div>
             </div>
         </div>

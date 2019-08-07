@@ -11,22 +11,22 @@
 |
 */
 
-route::pattern('name' ,'(.*)');
+route::pattern('name', '(.*)');
 route::pattern('id', '([0-9]*)');
 
 
 Session::put('locale', 'en');
-Route::get('language/{locale}', function ($locale){
+Route::get('language/{locale}', function ($locale) {
     Session::put('locale', $locale);
     return redirect()->back();
 });
 
-Route::namespace('Web')->group( function() {
+Route::namespace('Web')->group(function () {
 
     //Home page
     Route::get('/home', 'ShowHomeController@index')->name('web.index');
     Route::get('/', 'ShowHomeController@index')->name('web.index');
-    Route::get('/search','ShowHomeController@searchProject')->name('web.project.project_search');
+    Route::get('/search', 'ShowHomeController@searchProject')->name('web.project.project_search');
 
     // Co-working page
     Route::get('/co-working-space', 'CoWorkingController@index')->name('web.coworking.coworking_space');
@@ -44,7 +44,6 @@ Route::namespace('Web')->group( function() {
     Route::post('/project/', 'ProjectController@postProjectSubmit')->name('web.project.project_submit');
 
 
-
 });
 
 Route::get('/test', function () {
@@ -52,10 +51,9 @@ Route::get('/test', function () {
 });
 
 
-
-Route::namespace('Admin')->prefix('admin/')->group( function() {
+Route::namespace('Admin')->prefix('admin/')->group(function () {
     Route::get('/dashboard', function () {
-        return view('view.admin.dashboard');
+        return view('admin.dashboard');
     });
 
     Route::post('/upLoadImage', 'ImageController@upLoadImage');
@@ -74,4 +72,15 @@ Route::namespace('Admin')->prefix('admin/')->group( function() {
 
     Route::get('/contact/contact_project', 'ContactController@showContactProject')->name('view.admin.contact.project_customer');
     Route::get('/contact/contact_project/delete', 'ContactController@deleteInfoCustomerProject')->name('admin.contact.project_customer_delete');
+
+    //Coworking
+    Route::get('/coworking', 'CoworkingController@showAllCowroking')->name('view.admin.coworking.coworking_space');
+    Route::get('/coworking/delete', 'CoworkingController@deleteCoworking')->name('admin.coworking.coworking_space_delete');
+    Route::get('/coworking/add', 'CoworkingController@getAddCoworking')->name('view.admin.coworking.add_coworking_space');
+    Route::post('/coworking/add', 'CoworkingController@postAddCoworking')->name('admin.coworking.add_coworking_space');
+
+    Route::get('/coworking/edit/{id}', 'CoworkingController@getEditCoworking')->name('view.admin.coworking.edit_coworking_space');
+    Route::post('/coworking/edit/{id}', 'CoworkingController@postEditCoworking')->name('admin.coworking.edit_coworking_space');
+
+
 });

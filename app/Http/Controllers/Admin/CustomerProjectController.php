@@ -18,21 +18,34 @@ class CustomerProjectController extends Controller
         $this->projectSubmit = $projectSubmit;
     }
 
+    /**Dislay Show all customer submitted projects
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function showCustomerProject(Request $request)
     {
         $listCustomerProject = $this->projectSubmit->showAllProject()->paginate(10);
         if ($request->ajax()) {
-            return view('admin.project.ajax_project_customer',compact(['listCustomerProject']));
+            return view('admin.project.ajax_project_customer', compact(['listCustomerProject']));
         }
-        return view('admin.project.project_customer',compact('listCustomerProject'));
+        return view('admin.project.project_customer', compact('listCustomerProject'));
     }
 
+    /**Display info about project by ID
+     * @param $id
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function showCustomerProjectById($id, Request $request)
     {
         $viewCustomerProject = $this->projectSubmit->showDetailProjectById($id);
         return view('admin.project.detail_project_submit', compact('viewCustomerProject'));
     }
 
+    /** Delete Project by id
+     * @param Request $request
+     * @return mixed
+     */
     public function deleteProjectSubmit(Request $request)
     {
         $id = $request->get('id');
@@ -44,7 +57,7 @@ class CustomerProjectController extends Controller
                 }
             }
             $deleteProjectSubmit = $this->projectSubmit->deleteProjectSubmit($id);
-            if($deleteProjectSubmit){
+            if ($deleteProjectSubmit) {
                 return \Response::json(['msg' => 'DELETE SUCCESS']);
             } else {
                 return \Response::json(['msg' => 'NO DELETE SUCCESS']);

@@ -4,8 +4,7 @@
     <nav class="navbar navbar-top navbar-expand-md navbar-dark" id="navbar-main">
         <div class="container-fluid">
             <!-- Brand -->
-            <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" href="./index.html">INFO CONTACT
-                CUSTOMER</a>
+            <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" href="#">COWORKING SPACE</a>
             @include('admin.common_layouts.language')
         </div>
     </nav>
@@ -17,6 +16,7 @@
                 <!-- Card stats -->
                 <div class="row">
                     <div class="col-xl-12 message">
+                        {{Session::get('msg')}}
                     </div>
                 </div>
             </div>
@@ -28,7 +28,7 @@
                 <div class="row">
                     <div class="col">
                         <div id="content" class="card shadow">
-                            @include('admin.contact.ajax_info_contact_project')
+                            @include('admin.coworking.ajax_coworking_space')
                         </div>
                     </div>
                 </div>
@@ -41,7 +41,6 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">{{ __('admin_message.modal-header') }}</h5>
-
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -56,33 +55,14 @@
             </div>
         </div>
     </div>
-
-    <div class="modal fade" id="modal-info" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-         aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">{{__('admin_message.show')}}</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body" id="content_customer">
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ __('admin_message.modal-footer-btn-close') }}</button>
-                </div>
-            </div>
-        </div>
-    </div>
 @endsection
 @section('myscript')
     <script>
         var config = {
             routes: {
-                zone: "{{ route('admin.contact.project_customer_delete') }}"
+                zone: "{{ route('admin.coworking.coworking_space_delete') }}"
             }
         };
     </script>
-    <script src="{{ asset('admin') }}/contact.js"></script>
+    <script src="{{ asset('admin') }}/coworking.js"></script>
 @endsection

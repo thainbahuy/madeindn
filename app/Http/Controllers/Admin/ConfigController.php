@@ -27,10 +27,10 @@ class ConfigController extends Controller
         }
         $newJsonString = json_encode($resultMessage, JSON_PRETTY_PRINT);
         if (file_put_contents(storage_path('json_language/language.json'), $newJsonString)) {
-            $request->session()->flash('message','Cập nhật thành công !');
+            $request->session()->flash('message', 'Cập nhật thành công !');
             return redirect()->route('admin.config.index');
         } else {
-            $request->session()->flash('message','Cập nhật thất bại !');
+            $request->session()->flash('message', 'Cập nhật thất bại !');
             return redirect()->route('admin.config.index');
         }
     }
