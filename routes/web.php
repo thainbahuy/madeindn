@@ -43,9 +43,9 @@ Route::namespace('Web')->group( function() {
     Route::get('/project/', 'ProjectController@showProjectSubmit')->name('web.project.project_submit');
     Route::post('/project/', 'ProjectController@postProjectSubmit')->name('web.project.project_submit');
 
-
-
-});
+    // contact page
+    Route::get('/contact', 'ContactController@showContact')->name('web.contact.contact');
+    Route::post('/contact', 'ContactController@insertContact')->name('web.contact.contact');
 
 Route::get('/test', function () {
     return view('welcome');
@@ -58,10 +58,16 @@ Route::namespace('Admin')->prefix('admin/')->group( function() {
         return view('admin.dashboard');
     });
 
+    // Config
+    Route::get('/config_language', 'ConfigController@showLanngJson')->name('admin.config.lang_json');
+    Route::post('/config_language', 'ConfigController@postLanguageJson')->name('admin.config.lang_json');
+    Route::get('/config_paginate', 'ConfigController@showPaginateJson')->name('admin.config.paginate_json');
+    Route::post('/config_paginate', 'ConfigController@postPaginateJson')->name('admin.config.paginate_json');
+
+   // Test API CDN
     Route::get('/event', 'EventController@showListEvent')->name('view.admin.event.event_list');
     Route::get('/event/delete', 'EventController@deleteEventById')->name('admin.event.event_list.delete');
     Route::get('/event/add', 'EventController@showAddNewEvent')->name('view.admin.event.addnew');
-
 
 
 
@@ -69,7 +75,4 @@ Route::namespace('Admin')->prefix('admin/')->group( function() {
     Route::post('/upLoadImage', 'ImageController@upLoadImage');
     Route::post('/deleteImage', 'ImageController@deletImage');
 
-
-    Route::get('/config', 'ConfigController@index')->name('view.admin.config.index');
-    Route::post('/config', 'ConfigController@postLanguageJson')->name('admin.config.index');
 });
