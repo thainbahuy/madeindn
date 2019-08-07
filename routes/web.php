@@ -47,10 +47,8 @@ Route::namespace('Web')->group( function() {
     Route::get('/contact', 'ContactController@showContact')->name('web.contact.contact');
     Route::post('/contact', 'ContactController@insertContact')->name('web.contact.contact');
 
-Route::get('/test', function () {
-    return view('welcome');
-});
 
+});
 
 
 Route::namespace('Admin')->prefix('admin/')->group( function() {
@@ -64,14 +62,16 @@ Route::namespace('Admin')->prefix('admin/')->group( function() {
     Route::get('/config_paginate', 'ConfigController@showPaginateJson')->name('admin.config.paginate_json');
     Route::post('/config_paginate', 'ConfigController@postPaginateJson')->name('admin.config.paginate_json');
 
-   // Test API CDN
+
     Route::get('/event', 'EventController@showListEvent')->name('view.admin.event.event_list');
-    Route::get('/event/delete', 'EventController@deleteEventById')->name('admin.event.event_list.delete');
     Route::get('/event/add', 'EventController@showAddNewEvent')->name('view.admin.event.addnew');
+    Route::post('/event/add', 'EventController@addNewEvent')->name('admin.event.addnew');
+    Route::get('/event/delete', 'EventController@deleteEventById')->name('admin.event.event_list.delete');
 
 
 
-//      test cdn
+
+    // Test API CDN
     Route::post('/upLoadImage', 'ImageController@upLoadImage');
     Route::post('/deleteImage', 'ImageController@deletImage');
 
