@@ -47,6 +47,8 @@ Route::namespace('Web')->group( function() {
     Route::get('/contact', 'ContactController@showContact')->name('web.contact.contact');
     Route::post('/contact', 'ContactController@insertContact')->name('web.contact.contact');
 
+    // About us
+    Route::get('/about/{name}-{id}', 'AboutController@index')->name('web.more.about');
 });
 
 
