@@ -25,7 +25,9 @@
                 </td>
                 <td class="text-center">{{$value->created_at}}</td>
                 <td class="text-center">
-                    <a href="{{route('web.project.project_detail',['name'=>str_slug($value->project->name),'id'=>$value->project->id])}}">{{$value->project->id}}</a>
+                    @if($value->product_id <> null)
+                        <a href="{{route('web.project.project_detail',['name'=>str_slug($value->project->name),'id'=>$value->project->id])}}">{{$value->project->id}}</a>
+                    @endif
                 </td>
                 <td class="text-center">
                     <a onclick="showModalContact('{{$value->id}}')" href="javascript:">

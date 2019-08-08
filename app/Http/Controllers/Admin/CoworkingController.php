@@ -49,7 +49,6 @@ class CoworkingController extends Controller
                 return \Response::json(['msg' => 'NO DELETE SUCCESS']);
             }
         } catch (\Exception $e) {
-            \
             Log::info($e);
             return \Response::json(['msg' => 'NO DELETE SUCCESS']);
         }

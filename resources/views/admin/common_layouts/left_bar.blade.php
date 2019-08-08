@@ -73,7 +73,7 @@
                     </a>
                     <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-right" aria-labelledby="navbar-default_dropdown_1">
                         <a class="dropdown-item" href="{{route('view.admin.project.project_customer')}}">Project Customers Posted</a>
-                        <a class="dropdown-item" href="#">Project</a>
+                        <a class="dropdown-item" href="{{route('view.admin.project_admin.project')}}">Project</a>
                     </div>
                 </li>
                 <li class="nav-item dropdown">

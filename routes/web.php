@@ -84,5 +84,13 @@ Route::namespace('Admin')->prefix('admin/')->group(function () {
     Route::get('/coworking/edit/{id}', 'CoworkingController@getEditCoworking')->name('view.admin.coworking.edit_coworking_space');
     Route::post('/coworking/edit/{id}', 'CoworkingController@postEditCoworking')->name('admin.coworking.edit_coworking_space');
 
+    //Project Admin
+    Route::get('/project_admin', 'ProjectController@showAllProject')->name('view.admin.project_admin.project');
+    Route::get('/project_admin/delete', 'ProjectController@deleteProject')->name('admin.project_admin.project_delete');
+    Route::get('/project_admin/add', 'ProjectController@getAddProject')->name('view.admin.project_admin.add_project');
+    Route::post('/project_admin/add', 'ProjectController@postAddProject')->name('admin.project_admin.add_project');
+    Route::get('/project_admin/edit/{id}', 'ProjectController@getEditProject')->name('view.admin.project_admin.edit_project');
+    Route::post('/project_admin/edit/{id}', 'ProjectController@postEditProject')->name('admin.project_admin.edit_project');
+    Route::get('/project_admin/change_status', 'ProjectController@ajaxChangeStatus')->name('change_status_project');
 
 });
