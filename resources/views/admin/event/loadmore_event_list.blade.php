@@ -10,9 +10,11 @@
             <th class="text-center" scope="col">Image Cover</th>
             <th class="text-center" scope="col">Date</th>
             <th class="text-center" scope="col">Begin time - End time</th>
+            <th class="text-center" scope="col">Set Background Event</th>
             <th class="text-center" scope="col">
                 <a href="{{route('view.admin.event.addnew')}}" class="btn btn-sm btn-success">
                     <span class="ni ni-fat-add"></span>&nbsp;ADD
+                </a>
             </th>
         </tr>
         </thead>
@@ -25,6 +27,9 @@
                 </td>
                 <td style="width: 25%" class="text-center">{{date_format(date_create($value->date_time),'d-m-Y')}}</td>
                 <td style="width: 25%" class="text-center">{{date_format(date_create($value->begin_time),'G:i A')}} - {{date_format(date_create($value->end_time),'G:i A')}}</td>
+                <td>
+                    <input @php if($background->image_link == $value->image_link) echo 'checked' @endphp id="set_background" onclick="setImageBackground('{{$value->image_link}}','{{route('admin.event.event_list.setImage')}}')" name="event_background" value="{{$value->image_link}}" type="radio">
+                </td>
                 <td style="width: 25%" class="text-center">
                     <a onclick="showModelDeleteEvent('{{$value->id}}','{{route('admin.event.event_list.delete')}}')" href="#">
                         <img  style="width:30%; height:auto;"

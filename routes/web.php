@@ -63,13 +63,14 @@ Route::namespace('Admin')->prefix('admin/')->group( function() {
     Route::get('/config_paginate', 'ConfigController@showPaginateJson')->name('admin.config.paginate_json');
     Route::post('/config_paginate', 'ConfigController@postPaginateJson')->name('admin.config.paginate_json');
 
-
+    //event
     Route::get('/event', 'EventController@showListEvent')->name('view.admin.event.event_list');
     Route::get('/event/add', 'EventController@showAddNewEvent')->name('view.admin.event.addnew');
     Route::post('/event/add', 'EventController@addNewEvent')->name('admin.event.addnew');
     Route::post('/event/edit/{id}', 'EventController@updateEvent')->name('admin.event.edit');
     Route::get('/event/edit/{id}', 'EventController@showEditEvent')->name('view.admin.event.edit');
     Route::get('/event/delete', 'EventController@deleteEventById')->name('admin.event.event_list.delete');
+    Route::post('/event/setImage', 'EventController@setImageBackground')->name('admin.event.event_list.setImage');
 
 
 

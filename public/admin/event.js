@@ -15,7 +15,25 @@ $(document).ready(function () {
         loadMoreEvent(url);
     });
 
+
 });
+
+function setImageBackground(imageLink,urlAjax) {
+    $.ajax(
+        {
+            url: urlAjax,
+            type: "post",
+            data:{
+                'image_link' : imageLink,
+            }
+        })
+        .done(function (data) {
+
+        })
+        .fail(function (jqXHR, ajaxOptions, thrownError) {
+            alert('server not responding...');
+        });
+}
 
 function loadMoreEvent(urlAjax) {
     $.ajax(
@@ -56,3 +74,4 @@ function deleteEvent(urlAjax, id) {
     })
 
 }
+

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\EventRequest;
+use App\Models\Admin\Background;
 use App\Models\Admin\Event;
 use Helpers;
 use http\Exception;
@@ -12,11 +13,12 @@ use Illuminate\Http\Response;
 
 class EventController extends Controller
 {
-    private $event;
+    private $event,$background;
 
-    public function __construct(Event $event)
+    public function __construct(Event $event,Background $background)
     {
         $this->event = $event;
+        $this->background = $background;
     }
 
     /**
@@ -27,13 +29,13 @@ class EventController extends Controller
      */
     public function showListEvent(Request $request)
     {
-
+        $background = $this->background->getBackgroundEvent();
         $listEvent = $this->event->getAllEvents(5);
         if ($request->ajax()) {
-            $view = view('admin.event.loadmore_event_list', compact('listEvent'))->render();
+            $view = view('admin.event.loadmore_event_list', compact('listEvent','background'))->render();
             return response()->json(['html' => $view]);
         }
-        return view('admin.event.event_list', compact('listEvent'));
+        return view('admin.event.event_list', compact('listEvent','background'));
     }
 
     /**
@@ -207,6 +209,13 @@ class EventController extends Controller
 
         } else {
             return redirect()->back()->with('message', 'Update Event Failed');
+        }
+    }
+
+    public function setImageBackground(Request $request){
+        $image_link = $request->get('image_link');
+        if ($this->background->updateBackground($image_link) == 1){
+            return response()->json(['status' =>'set background success'],Response::HTTP_OK);
         }
     }
 

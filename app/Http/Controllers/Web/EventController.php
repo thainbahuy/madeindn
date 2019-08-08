@@ -3,17 +3,19 @@
 namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
+use App\Models\Web\Background;
 use App\Models\Web\Event;
 use Helpers;
 use Illuminate\Http\Request;
 
 class EventController extends Controller
 {
-    private $eventModel, $config;
+    private $eventModel, $config,$backgroundModel;
 
-    function __construct(Event $eventModel)
+    function __construct(Event $eventModel,Background $background)
     {
         $this->eventModel = $eventModel;
+        $this->backgroundModel = $background;
         $this->config = Helpers::getConfig()['EventPage'];
     }
 
@@ -25,12 +27,13 @@ class EventController extends Controller
      */
     public function index(Request $request)
     {
+        $background = $this->backgroundModel->getBackgroundEvent();
         $listEvent = $this->eventModel->getAllEvents($this->config['listEventPaginate']);
         if ($request->ajax()) {
             $view = view('data_event_loadmore', compact('listEvent'))->render();
             return response()->json(['html' => $view]);
         }
-        return view('web.event.events', compact('listEvent'));
+        return view('web.event.events', compact('listEvent','background'));
     }
 
     /**

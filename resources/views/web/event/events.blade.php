@@ -47,6 +47,11 @@
 
 
 <script src="{{asset('web/js/loadmore.js')}}"></script>
+<script>
+    $(function() {
+        $('.c-banner__events').css("background-image", "url({{$background->image_link}})");
+    });
+</script>
 <!-- endbuild -->
 <!-- ======== END JAVASCRIPT ======== -->
 

@@ -55,7 +55,7 @@
                             <input type="text" value="{{old('name')}}"  name="name" class="form-control" id="inputName" >
                         </div>
                         <div class="form-group col-md-6">
-                            <label for="inputPassword4">Name Jp</label>
+                            <label for="inputPassword4">名前</label>
                             <input type="text" value="{{old('jp_name')}}"  name="jp_name" class="form-control" id="inputPassword4">
                         </div>
                     </div>
@@ -65,7 +65,7 @@
                             <textarea rows="5" name="sort_description" class="form-control">{{old('sort_description')}}</textarea>
                         </div>
                         <div class="form-group col-md-6">
-                            <label for="inputPassword4">jp Sort description</label>
+                            <label for="inputPassword4">並べ替えの説明</label>
                             <textarea rows="5" name="jp_sort_description" class="form-control">{{old('jp_sort_description')}}</textarea>
                         </div>
                     </div>
@@ -75,7 +75,7 @@
                             <textarea rows="10" id="editor1" name="overview" class="form-control">{{old('overview')}}</textarea>
                         </div>
                         <div class="form-group col-md-6">
-                            <label for="inputPassword4">jp Overview	</label>
+                            <label for="inputPassword4">概要	</label>
                             <textarea rows="10" id="editor2" name="jp_overview" class="form-control">{{old('jp_overview')}}</textarea>
                         </div>
                     </div>
@@ -109,7 +109,7 @@
                         <div class="form-group col-md-6">
                             <div class="row">
                                 <div class="col-md-4">
-                                    <label for="inputEmail">Address jp</label>
+                                    <label for="inputEmail">アドレス</label>
                                 </div>
                                 <div class="col-md-8">
                                     <input type="text" value="{{old('jp_location')[0]}}"  name="jp_location[]" class="form-control" id="inputPassword4">
@@ -117,7 +117,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-4">
-                                    <label for="inputEmail">Number,Street jp</label>
+                                    <label for="inputEmail">番号、通り</label>
                                 </div>
                                 <div class="col-md-8">
                                     <input type="text" value="{{old('jp_location')[1]}}"  name="jp_location[]" class="form-control" id="inputPassword4">
@@ -125,7 +125,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-4">
-                                    <label for="inputEmail">City jp</label>
+                                    <label for="inputEmail">シティ</label>
                                 </div>
                                 <div class="col-md-8">
                                     <input type="text" value="{{old('jp_location')[2]}}"  name="jp_location[]" class="form-control" id="inputPassword4">
