@@ -22,6 +22,11 @@ class ProjectController extends Controller
         $this->category = $category;
     }
 
+    /**
+     * Display All Project by Admin submit
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function showAllProject(Request $request)
     {
         $listProject = $this->project->getAllProject()->paginate(10);
@@ -31,6 +36,10 @@ class ProjectController extends Controller
         return view('admin.project_admin.project', compact('listProject'));
     }
 
+    /** Delete Project by Id
+     * @param Request $request
+     * @return mixed
+     */
     public function deleteProject(Request $request)
     {
         $id = $request->get('id');
@@ -51,11 +60,18 @@ class ProjectController extends Controller
         }
     }
 
+    /**Display Form add new Project by Admin
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function getAddProject()
     {
         return view('admin.project_admin.add_project');
     }
 
+    /** Insert new Submit by ADmin into Database
+     * @param ProjectRequest $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function postAddProject(ProjectRequest $request)
     {
         $data = $request->all();
@@ -75,12 +91,21 @@ class ProjectController extends Controller
         }
     }
 
+    /** Display form edit pơroject by Id
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function getEditProject($id)
     {
         $infoProject = $this->project->getProjectById($id);
         return view('admin.project_admin.edit_project', compact('infoProject'));
     }
 
+    /** Update new information into Database
+     * @param $id
+     * @param ProjectRequest $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function postEditProject($id, ProjectRequest $request)
     {
         $data = $request->all();
@@ -111,23 +136,27 @@ class ProjectController extends Controller
         }
     }
 
-    public function ajaxChangeStatus(Request $request){
+    /** Change status HIDE SHOW in Project
+     * @param Request $request
+     * @return \Illuminate\Contracts\Routing\ResponseFactory|Response
+     */
+    public function ajaxChangeStatus(Request $request)
+    {
         $id = $request->get('id');
         $status = $request->get('status');
 
-        if($request->ajax()){
-            $resultChange = $this->project->changeStatus($id,$status);
-            if($resultChange){
-               if($status == 1){
-
-                   $data ="<a onclick=\"changeStatus('$id','2')\" href=\"javascript:void(0)\">
-                            <img src=\"http://madeindn.abc:8081/admin/assets/img/icons/active.gif\" alt=\"\">
+        if ($request->ajax()) {
+            $resultChange = $this->project->changeStatus($id, $status);
+            if ($resultChange) {
+                if ($status == 1) {
+                    $data = "<a onclick=\"changeStatus('$id','2')\" href=\"javascript:void(0)\">
+                            <img src=\"/admin/assets/img/icons/active.gif\" alt=\"\">
                         </a>";
-               } else {
-                   $data ="<a onclick=\"changeStatus('$id','1')\" href=\"javascript:void(0)\">
-                            <img src=\"http://madeindn.abc:8081/admin/assets/img/icons/deactive.gif\" alt=\"\">
+                } else {
+                    $data = "<a onclick=\"changeStatus('$id','1')\" href=\"javascript:void(0)\">
+                            <img src=\"/admin/assets/img/icons/deactive.gif\" alt=\"\">
                         </a>";
-               }
+                }
                 Log::info('You just change status of Project Code: ' . $id);
                 return Response($data);
             }
