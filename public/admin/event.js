@@ -13,7 +13,6 @@ $(document).ready(function () {
         e.preventDefault();
         var url = $(this).attr('href');
         loadMoreEvent(url);
-        window.history.pushState("", "", url);
     });
 
 });

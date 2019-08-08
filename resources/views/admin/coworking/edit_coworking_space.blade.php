@@ -113,19 +113,22 @@
                                     <div class="form-group">
                                         <label>Social Link</label><br/>
                                         <table class="table configuration">
-                                            @foreach($social_link as $key => $value)
-                                                <tr>
-                                                    <td width="200px">
-                                                        <input class="form-control"
-                                                               type="text" value="{{$key}}" name="social[key][]"
-                                                               readonly>
-                                                    </td>
-                                                    <td>
-                                                        <input class="form-control" name="social[value][]"
-                                                               type="text" value="{{$value}}">
-                                                    </td>
-                                                </tr>
-                                            @endforeach
+                                            @if (!empty($social_link))
+                                                @foreach($social_link as $key => $value)
+                                                    <tr>
+                                                        <td width="200px">
+                                                            <input class="form-control"
+                                                                   type="text" value="{{$key}}" name="social[key][]"
+                                                                   readonly>
+                                                        </td>
+                                                        <td>
+                                                            <input class="form-control" name="social[value][]"
+                                                                   type="text" value="{{$value}}">
+                                                        </td>
+                                                    </tr>
+                                                @endforeach
+                                            @endif
+
                                         </table>
                                     </div>
                                 </div>

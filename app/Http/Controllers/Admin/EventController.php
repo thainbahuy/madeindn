@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\EventRequest;
 use App\Models\Admin\Event;
 use Helpers;
+use http\Exception;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
@@ -44,11 +45,15 @@ class EventController extends Controller
         return view('admin.event.addnew');
     }
 
-    public function showEditEvent(Request $request)
+    public function showEditEvent($id)
     {
-        $id = $request->get('id');
-        $event = $this->event->getEventById($id);
-        return view('admin.event.edit', compact('event'));
+        try{
+            $event = $this->event->getEventById($id);
+            return view('admin.event.edit', compact('event'));
+        } catch (Exception $e){
+            return redirect()->route('view.admin.event.event_list');
+        }
+
     }
 
     /**
@@ -85,7 +90,7 @@ class EventController extends Controller
         $date_time = $request->get('date_time');
         $begin_time = $request->get('begin_time');
         $end_time = $request->get('end_time');
-        $image_link = $request->file('image_link');
+        $imageFile = $request->file('image_link');
         $position = $request->get('position');
 
         $facebook = $request->get('facebook');
@@ -116,8 +121,10 @@ class EventController extends Controller
         $begin_time = date_format(date_create($begin_time), 'Y-m-d H:i:s');
         $end_time = date_format(date_create($end_time), 'Y-m-d H:i:s');
 
+
         //upload image to cdn and get url
-        $imageLinkCDN = Helpers::upLoadImageToCDN($image_link);
+        $newNameImage = Helpers::createNewNameImage($imageFile->getClientOriginalName());
+        $imageLinkCDN = Helpers::upLoadImageToCDN_N($imageFile,$newNameImage);
 
         if ($this->event->addNewEvent($name, $jp_name, $sort_description, $jp_sort_description,
                 $overview, $jp_overview, $location_json, $location_json_jp,
@@ -132,7 +139,13 @@ class EventController extends Controller
 
     }
 
-    public function updateEvent(EventRequest $request)
+    /**
+     * update event by id
+     * @param EventRequest $request
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function updateEvent(EventRequest $request,$id)
     {
         $name = $request->get('name');
         $jp_name = $request->get('jp_name');
@@ -145,9 +158,7 @@ class EventController extends Controller
         $date_time = $request->get('date_time');
         $begin_time = $request->get('begin_time');
         $end_time = $request->get('end_time');
-        $image_link = $request->file('image_link');
         $position = $request->get('position');
-
         $facebook = $request->get('facebook');
         $messanger = $request->get('messanger');
         $telegram = $request->get('telegram');
@@ -176,18 +187,27 @@ class EventController extends Controller
         $begin_time = date_format(date_create($begin_time), 'Y-m-d H:i:s');
         $end_time = date_format(date_create($end_time), 'Y-m-d H:i:s');
 
+        $linkImageSaveSql = '';
         //upload image to cdn and get url
-        $imageLinkCDN = Helpers::upLoadImageToCDN($image_link);
+        if ($request->hasFile('image_link')){
+            $imageFile = $request->file('image_link');
+            $newNameImage = Helpers::createNewNameImage($imageFile->getClientOriginalName());
+            $linkImageSaveSql = Helpers::upLoadImageToCDN_N($imageFile,$newNameImage);
+        }else{
+            $image_old = $request->get('image_display');
+            $linkImageSaveSql = $image_old;
+        }
 
-//        if ($this->event->addNewEvent($name, $jp_name, $sort_description, $jp_sort_description,
-//                $overview, $jp_overview, $location_json, $location_json_jp,
-//                $date_time, $begin_time, $end_time, $imageLinkCDN, $position, $socical_link_json) == true) {
-//
-//            return redirect()->back()->with('message', 'Add New Event Success');
-//
-//        } else {
-//            return redirect()->back()->with('message', 'Add New Event Failed');
-//        }
+
+        if ($this->event->updateEvent($id,$name, $jp_name, $sort_description, $jp_sort_description,
+                $overview, $jp_overview, $location_json, $location_json_jp,
+                $date_time, $begin_time, $end_time, $linkImageSaveSql, $position, $socical_link_json) == true) {
+
+            return redirect()->back()->with('message', 'Update Event Success');
+
+        } else {
+            return redirect()->back()->with('message', 'Update Event Failed');
+        }
     }
 
 

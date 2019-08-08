@@ -24,6 +24,14 @@ class EventRequest extends FormRequest
      */
     public function rules(Request $request)
     {
+        if($request->get('image_display') == ''){
+            $ruleImage = 'required';
+        } else{
+            $ruleImage = '';
+        }
+
+
+
         if ($request->get('position') == null){
 
             return [
@@ -41,7 +49,7 @@ class EventRequest extends FormRequest
                 'date_time' => 'required',
                 'begin_time' => 'required',
                 'end_time' => 'required',
-                'image_link' => 'required',
+                'image_link' => $ruleImage,
             ];
 
 
@@ -62,8 +70,8 @@ class EventRequest extends FormRequest
                 'date_time' => 'required',
                 'begin_time' => 'required',
                 'end_time' => 'required',
-                'image_link' => 'required',
-                'position' => 'unique:Event,position',
+                'image_link' => $ruleImage,
+                'position' => 'unique:event,position,' . $request->id . ',id',
             ];
 
         }

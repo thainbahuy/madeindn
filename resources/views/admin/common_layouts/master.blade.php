@@ -37,7 +37,6 @@
 <script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
 <script src="{{ asset('admin/') }}/assets/js/jquery.dataTables.min.js"></script>
 <script src="{{ asset('admin/') }}/assets/js/dataTables.bootstrap4.min.js"></script>
-<script src="{{ asset('admin/') }}/main.js"></script>
 <script>
     window.TrackJS &&
     TrackJS.install({

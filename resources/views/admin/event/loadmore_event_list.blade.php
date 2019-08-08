@@ -10,7 +10,10 @@
             <th class="text-center" scope="col">Image Cover</th>
             <th class="text-center" scope="col">Date</th>
             <th class="text-center" scope="col">Begin time - End time</th>
-            <th class="text-center" scope="col">Action</th>
+            <th class="text-center" scope="col">
+                <a href="{{route('view.admin.event.addnew')}}" class="btn btn-sm btn-success">
+                    <span class="ni ni-fat-add"></span>&nbsp;ADD
+            </th>
         </tr>
         </thead>
         <tbody id="body">
@@ -28,7 +31,7 @@
                              src="https://image.flaticon.com/icons/png/128/61/61848.png"
                              alt="image">
                     </a> &nbsp;||
-                    <a href="{{route('view.admin.event.edit',['id' => $value->id])}}">
+                    <a href="{{route('view.admin.event.edit', $value->id)}}">
                         <img  style="width:30%; height:auto;"
                              src="https://png.pngtree.com/svg/20151211/af2c28659c.svg"
                              alt="">

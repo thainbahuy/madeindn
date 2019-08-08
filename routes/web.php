@@ -67,7 +67,8 @@ Route::namespace('Admin')->prefix('admin/')->group( function() {
     Route::get('/event', 'EventController@showListEvent')->name('view.admin.event.event_list');
     Route::get('/event/add', 'EventController@showAddNewEvent')->name('view.admin.event.addnew');
     Route::post('/event/add', 'EventController@addNewEvent')->name('admin.event.addnew');
-    Route::get('/event/edit', 'EventController@showEditEvent')->name('view.admin.event.edit');
+    Route::post('/event/edit/{id}', 'EventController@updateEvent')->name('admin.event.edit');
+    Route::get('/event/edit/{id}', 'EventController@showEditEvent')->name('view.admin.event.edit');
     Route::get('/event/delete', 'EventController@deleteEventById')->name('admin.event.event_list.delete');
 
 

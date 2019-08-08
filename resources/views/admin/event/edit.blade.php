@@ -4,7 +4,7 @@
     <nav class="navbar navbar-top navbar-expand-md navbar-dark" id="navbar-main">
         <div class="container-fluid">
             <!-- Brand -->
-            <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" href="./index.html">Dashboard</a>
+            <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" href="#">Edit Event({{$event->id}})</a>
             <!-- Form -->
         </div>
     </nav>
@@ -38,10 +38,9 @@
                 @endif
 
 
-                <form method="POST" action="#" enctype="multipart/form-data">
+                <form method="POST" action="{{route('admin.event.edit',$event->id)}}" enctype="multipart/form-data">
                     {{csrf_field()}}
                     <div class="form-row">
-                        <input type="text" style="display: none" value="{{$event->id}}" name="id" class="form-control" id="inputPassword4">
                         <div class="form-group col-md-1">
                             <label for="inputPassword4">Position</label>
                             <input type="number" value="{{$event->position}}" name="position" min="1" max="100" class="form-control" id="inputPassword4">
@@ -60,11 +59,11 @@
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="inputEmail">Sort description</label>
-                            <textarea rows="10" name="sort_description" class="form-control">{{$event->sort_description}}</textarea>
+                            <textarea rows="5" name="sort_description" class="form-control">{{$event->sort_description}}</textarea>
                         </div>
                         <div class="form-group col-md-6">
                             <label for="inputPassword4">jp Sort description</label>
-                            <textarea rows="10" name="jp_sort_description" class="form-control">{{$event->jp_sort_description}}</textarea>
+                            <textarea rows="5" name="jp_sort_description" class="form-control">{{$event->jp_sort_description}}</textarea>
                         </div>
                     </div>
                     <div class="form-row">
@@ -185,7 +184,7 @@
                     <div class="form-row">
                         <div class="form-group col-md-2">
                             <label for="inputPassword4">Date</label>
-                            <input type="text" value="{{$event->date_time}}" style="background-color: white" readonly  name="date_time" class="form-control" id="datepicker">
+                            <input type="text" value="{{date_format(date_create($event->date_time),'d-m-Y')}}" style="background-color: white" readonly  name="date_time" class="form-control" id="datepicker">
                         </div>
                         <div class="form-group col-md-2">
                             <label for="inputEmail">Begin time</label>
@@ -198,12 +197,18 @@
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            <div id="thumbnail"></div>
-                            <label for="upload-file">Image</label>
-                            <input type="file" name="image_link" class="form-control" id="upload-file" accept="image/*" >
-                            <input type="text" style="display: none" value="{{$event->image_link}}" name="image_display" class="form-control" id="image_display" >
-{{--                            <span>Hifnh cu</span>--}}
-{{--                            <img src="" alt="">--}}
+                            <label>Picture Coworking</label>
+                            <input type="file" style="display:none" id="upload-input"
+                                   name="image_link" accept="image/*">
+                            <div id="upload" class="form-control drop-area">
+                                <h3> Drag &amp; drop photos here! </h3>
+                                <button type="button" class="btn btn-primary btn-sm " id="btn_select">or
+                                    Click here to select a photo!
+                                </button>
+                                <div id="thumbnail"></div>
+                                <img style="width:200px" src="{{$event->image_link}}" alt="">
+                                <input style="display: none" type="text" value="{{$event->image_link}}" name="image_display">
+                            </div>
                         </div>
 
                     </div>
@@ -227,80 +232,4 @@
         } );
     </script>
 
-    <style>
-        .imgKLIK5 {
-            width:50%;
-            float: left;
-        }
-        .closeDiv {
-            width: 20px;
-            height: 21px;
-            background-color: rgb(35, 179, 119);
-            float: left;
-            cursor: pointer;
-            color: white;
-            box-shadow: 2px 2px 7px rgb(74, 72, 72);
-            text-align: center;
-            margin: 5px;
-        }
-        .pDiv {
-            float:left;
-            width:100%
-        }
-    </style>
-    <script>
-        jQuery(function ($) {
-            $('div').on('click', '.closeDiv', function () {
-                $(this).prev().remove();
-                $(this).remove();
-                $('#upload-file').val("");
-            });
-            var fileDiv = document.getElementById("upload");
-            var fileInput = document.getElementById("upload-file");
-
-            fileInput.addEventListener("change", function (e) {
-
-                var filesVAR = this.files;
-                $('.pDiv').remove();
-                showThumbnail(filesVAR);
-
-            }, false);
-
-
-
-            function showThumbnail(files) {
-                var file = files[0]
-                var thumbnail = document.getElementById("thumbnail");
-                var pDiv = document.createElement("div");
-                var image = document.createElement("img");
-                var div = document.createElement("div");
-
-
-                pDiv.setAttribute('class', 'pDiv');
-                thumbnail.appendChild(pDiv);
-
-
-                image.setAttribute('class', 'imgKLIK5');
-                pDiv.appendChild(image)
-
-                div.innerHTML = "X";
-                div.setAttribute('class', 'closeDiv');
-                pDiv.appendChild(div)
-
-                image.file = file;
-                var reader = new FileReader()
-                reader.onload = (function (aImg) {
-                    return function (e) {
-                        aImg.src = e.target.result;
-                    };
-                }(image))
-                var ret = reader.readAsDataURL(file);
-                var canvas = document.createElement("canvas");
-                ctx = canvas.getContext("2d");
-                image.onload = function () {
-                    ctx.drawImage(image, 100, 100);
-                }
-            }
-        });
-    </script>
 @endsection
