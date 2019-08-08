@@ -109,7 +109,8 @@
                                                             $files = Helpers::convertToJson($viewCustomerProject->content_link,true);
                                                         @endphp
                                                         @foreach($files as $key=>$value)
-                                                            <span> {{$value}} </span> <Br/>
+                                                            <a href="{{route('download_file',$value)}}">{{$value}}</a>
+                                                            <br/>
                                                         @endforeach
                                                     @endif
                                                 </div>

@@ -55,6 +55,8 @@ Route::namespace('Web')->group( function() {
 Route::namespace('Admin')->prefix('admin/')->group(function () {
     // Dashboard
     Route::get('/dashboard', 'DashboardController@showDashboard')->name('dashboard');
+    Route::POST('/dashboard/change_background', 'DashboardController@changeBackgroundHome')->name('change_background_home');
+
 
     // Config
     Route::get('/config_language', 'ConfigController@showLanngJson')->name('admin.config.lang_json');
@@ -70,7 +72,7 @@ Route::namespace('Admin')->prefix('admin/')->group(function () {
     Route::get('/project/customer_project', 'CustomerProjectController@showCustomerProject')->name('view.admin.project.project_customer');
     Route::get('/project/customer_project/view_{id}', 'CustomerProjectController@showCustomerProjectById')->name('view.admin.project.detail_project_submit');
     Route::get('/project/customer_project/delete', 'CustomerProjectController@deleteProjectSubmit')->name('admin.project.project_customer.delete');
-
+    Route::get('/project/customer_project/download/{name}', 'CustomerProjectController@downloadFile')->name('download_file');
 
     // Contact
     Route::get('/contact/contact_project', 'ContactController@showContactProject')->name('view.admin.contact.project_customer');

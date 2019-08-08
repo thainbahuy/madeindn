@@ -64,4 +64,16 @@ class CustomerProjectController extends Controller
             }
         }
     }
+
+    /** Download files
+     * @param $name
+     * @return \Symfony\Component\HttpFoundation\BinaryFileResponse
+     */
+    public function downloadFile($name)
+    {
+        $file = Helpers::getFilePathFromStorage('project_submit/link_project/' . $name);
+        $name = basename($file);
+        return response()->download($file, $name);
+    }
+
 }

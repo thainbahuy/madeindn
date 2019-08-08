@@ -109,7 +109,6 @@
         var config = {
             routes: {
                 zone: "{{ route('admin.category.delete_category') }}",
-                add: "{{ route('admin.category.add_category') }}",
             }
         };
     </script>
