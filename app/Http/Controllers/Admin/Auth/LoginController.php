@@ -1,6 +1,7 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers\Admin\Auth;
+
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
@@ -18,22 +19,15 @@ class LoginController extends Controller
     |
     */
 
-    use AuthenticatesUsers;
+//    use AuthenticatesUsers;
 
     /**
-     * Where to redirect users after login.
+     * Show the application's login form.
      *
-     * @var string
+     * @return \Illuminate\Http\Response
      */
-    protected $redirectTo = '/home';
-
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
+    public function showLoginForm()
     {
-        $this->middleware('guest')->except('logout');
+        return view('admin.Auth.login');
     }
 }

@@ -57,6 +57,9 @@ Route::namespace('Admin')->prefix('admin/')->group( function() {
         return view('admin.dashboard');
     });
 
+    //Auth
+    Route::get('/login', 'Auth\LoginController@showLoginForm')->name('view.admin.Auth.login');
+
     // Config
     Route::get('/config_language', 'ConfigController@showLanngJson')->name('admin.config.lang_json');
     Route::post('/config_language', 'ConfigController@postLanguageJson')->name('admin.config.lang_json');
