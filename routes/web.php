@@ -11,6 +11,8 @@
 |
 */
 
+use Illuminate\Support\Facades\Hash;
+
 route::pattern('name' ,'(.*)');
 route::pattern('id', '([0-9]*)');
 
@@ -59,6 +61,7 @@ Route::namespace('Admin')->prefix('admin/')->group( function() {
 
     //Auth
     Route::get('/login', 'Auth\LoginController@showLoginForm')->name('view.admin.Auth.login');
+    Route::post('/login', 'Auth\LoginController@login')->name('admin.Auth.login');
 
     // Config
     Route::get('/config_language', 'ConfigController@showLanngJson')->name('admin.config.lang_json');
@@ -101,3 +104,7 @@ Route::namespace('Admin')->prefix('admin/')->group( function() {
 
 
 });
+
+//Route::get('ABC',function(){
+//    echo Hash::make('thaibahuy');
+//});
