@@ -7,7 +7,14 @@
         <!-- <a href="#" title="情報公開" class="c-btn__contact only_pc"><span class="c-icon"></span> 情報公開</a> -->
         <ul class="c-navbar">
             <li class="active"><a href="{{route('web.index')}}" title="">{{__('message.HOME')}}</a></li>
-            <li><a href="#" title="">{{__('message.ABOUTS')}}</a></li>
+            <li class="c-navbar__dropdown">
+                <a href="#" title="" class="c-navbar__dropdown__link">{{__('message.ABOUTS')}}</a>
+                <ul class="c-navbar__dropdown__content">
+                    @foreach($listAllAbout as $value)
+                        <li><a href="{{route('web.more.about',['name'=> str_slug($value->name),'id'=>$value->id])}}">{{Helpers::changeLanguage($value->name,$value->jp_name)}}</a></li>
+                    @endforeach
+                </ul>
+            </li>
             <li class="c-navbar__dropdown">
                 <a href="#" title="活動内容" class="c-navbar__dropdown__link">{{__('message.PROJECTS')}}</a>
                 <ul class="c-navbar__dropdown__content">

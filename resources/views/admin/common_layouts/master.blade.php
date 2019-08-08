@@ -16,6 +16,8 @@
     <!-- CSS Files -->
     <link href="{{ asset('admin/') }}/assets/css/argon-dashboard.css?v=1.1.0" rel="stylesheet" />
     <link href="{{ asset('admin/') }}/main.css" rel="stylesheet" />
+    <link href="{{ asset('admin/') }}/assets/css/bootstrap.css" rel="stylesheet" />
+    <link href="{{ asset('admin/') }}/assets/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
 </head>
 
 <body class="">
@@ -33,7 +35,9 @@
 <!--   Argon JS   -->
 <script src="{{ asset('admin/') }}/assets/js/argon-dashboard.min.js?v=1.1.0"></script>
 <script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
-@yield('myscript')
+<script src="{{ asset('admin/') }}/assets/js/jquery.dataTables.min.js"></script>
+<script src="{{ asset('admin/') }}/assets/js/dataTables.bootstrap4.min.js"></script>
+<script src="{{ asset('admin/') }}/main.js"></script>
 <script>
     window.TrackJS &&
     TrackJS.install({
@@ -41,5 +45,6 @@
         application: "argon-dashboard-free"
     });
 </script>
+@yield('myscript')
 </body>
 </html>

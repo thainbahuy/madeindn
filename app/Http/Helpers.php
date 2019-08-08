@@ -36,6 +36,12 @@ class Helpers
      * get file config and convert to array
      * @return Array
      */
+    public static function convertArrayToJson($jsonVarible)
+    {
+        return json_encode($jsonVarible, true);
+    }
+
+
     public static function getConfig()
     {
         $content = file_get_contents(Helpers::getFilePathFromStorage('config.json'));
@@ -57,23 +63,20 @@ class Helpers
      * @param $file
      * @return url
      */
+
     public static function upLoadImageToCDN($file)
     {
         $disk = Storage::disk('gcs');
-
         try {
             $disk->put($file->getClientOriginalName(), file_get_contents($file));
             $urlImage = $disk->url($file->getClientOriginalName());
             Log::info('Photos uploaded: '.$file->getClientOriginalName() );
             return $urlImage;
-
         } catch (Exception $e) {
             Log::info('Exception upload image');
             Log::info($e);
         }
-
     }
-
     /**
      * delete file from CDN
      * @param $name
@@ -83,13 +86,37 @@ class Helpers
     {
         try {
             // verify if exists files inside object
-            return Storage::disk('gcs')->delete($name);
-            Log::info('Photos deleted: '.$name );
+            Storage::disk('gcs')->delete($name);
+            Log::info('Photos deleted: ' . $name);
         } catch (Exception $e) {
             Log::info('Exception delete image');
             Log::info($e);
         }
+    }
 
+    public static function getNameImage($image)
+    {
+        return explode("/", $image)[4];
+    }
+
+    public static function createNewNameImage($nameImage){
+        return rand(10000000, 99999999) . "_" . rand(10000000, 99999999) . "_" . rand(10000000, 99999999) . "_" .$nameImage;
+    }
+
+    public static function upLoadImageToCDN_N ($file,$nameImage)
+    {
+        $disk = Storage::disk('gcs');
+        $nameImage = $nameImage;
+        try {
+            $disk->put($nameImage, file_get_contents($file));
+            $urlImage = $disk->url($nameImage);
+            Log::info('Photos uploaded: '.$nameImage);
+            return $urlImage;
+
+        } catch (Exception $e) {
+            Log::info('Exception upload image');
+            Log::info($e);
+        }
     }
 }
 

@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class ConfigController extends Controller
 {
@@ -35,10 +35,10 @@ class ConfigController extends Controller
         }
         $newJsonString = json_encode($resultMessage, JSON_PRETTY_PRINT);
         if (file_put_contents(storage_path('json_language/language.json'), $newJsonString)) {
-            $request->session()->flash('message', 'Cập nhật thành công !');
+            $request->session()->flash('message', 'Updated Success !');
             return redirect()->route('admin.config.lang_json');
         } else {
-            $request->session()->flash('message', 'Cập nhật thất bại !');
+            $request->session()->flash('message', 'Updated Fail !');
             return redirect()->route('admin.config.lang_json');
         }
     }
@@ -69,10 +69,10 @@ class ConfigController extends Controller
         }
         $newJsonString = json_encode($resultMessage, JSON_PRETTY_PRINT);
         if (file_put_contents(storage_path('config.json'), $newJsonString)) {
-            $request->session()->flash('message', 'Cập nhật thành công !');
+            $request->session()->flash('message', 'Updated Success !');
             return redirect()->route('admin.config.paginate_json');
         } else {
-            $request->session()->flash('message', 'Cập nhật thất bại !');
+            $request->session()->flash('message', 'Updated Faild !');
             return redirect()->route('admin.config.paginate_json');
         }
     }

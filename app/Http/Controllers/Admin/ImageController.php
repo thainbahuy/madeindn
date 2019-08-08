@@ -10,7 +10,8 @@ class ImageController extends Controller
 {
     public function upLoadImage(Request $request){
         $path = $request->file('image');
-        dd(Helpers::upLoadImageToCDN($path));
+        $newNameImage = \Helpers::createNewNameImage($path->getClientOriginalName());
+        dd(Helpers::upLoadImageToCDN($path,$newNameImage));
     }
 
     public function deletImage(Request $request){

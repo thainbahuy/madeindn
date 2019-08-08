@@ -32,24 +32,11 @@
             <li>
                 <a href="">About</a>
                 <ul class="sub-menu">
-                    <li>
-                        <a href="#" title="#">About Us</a>
-                    </li>
-                    <li>
-                        <a href="#" title="#">How It Works</a>
-                    </li>
-                    <li>
-                        <a href="#" title="#">Careers</a>
-                    </li>
-                    <li>
-                        <a href="#" title="#">Press</a>
-                    </li>
-                    <li>
-                        <a href="#" title="#">Blog </a>
-                    </li>
-                    <li>
-                        <a href="#" title="#">Contact</a>
-                    </li>
+                    @foreach($listAllAbout as $key => $value)
+                        <li id= "active_{{$value->id}}">
+                            <a href="{{route('web.more.about',['name'=> str_slug($value->name),'id'=>$value->id])}}">{{Helpers::changeLanguage($value->name,$value->jp_name)}}</a>
+                        </li>
+                    @endforeach
                 </ul>
             </li>
             </ul>
