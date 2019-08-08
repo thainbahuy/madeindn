@@ -72,8 +72,13 @@ Route::namespace('Admin')->prefix('admin/')->group(function () {
     Route::get('/project/customer_project/view_{id}', 'CustomerProjectController@showCustomerProjectById')->name('view.admin.project.detail_project_submit');
     Route::get('/project/customer_project/delete', 'CustomerProjectController@deleteProjectSubmit')->name('admin.project.project_customer.delete');
 
+
+    // Contact
     Route::get('/contact/contact_project', 'ContactController@showContactProject')->name('view.admin.contact.project_customer');
     Route::get('/contact/contact_project/delete', 'ContactController@deleteInfoCustomerProject')->name('admin.contact.project_customer_delete');
+
+    Route::get('/contact/info_contact', 'ContactController@showContactCustomer')->name('view.admin.contact.contact_customer');
+    Route::get('/contact/info_contact/delete', 'ContactController@deleteInfoCustomer')->name('admin.contact.contact_customer_delete');
 
     //Coworking
     Route::get('/coworking', 'CoworkingController@showAllCowroking')->name('view.admin.coworking.coworking_space');

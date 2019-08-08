@@ -4,8 +4,7 @@
     <nav class="navbar navbar-top navbar-expand-md navbar-dark" id="navbar-main">
         <div class="container-fluid">
             <!-- Brand -->
-            <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" href="#">INFO CONTACT
-                CUSTOMER IN PROJECT DETAIL</a>
+            <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" href="#">CONTACT CUSTOMER</a>
             @include('admin.common_layouts.language')
         </div>
     </nav>
@@ -28,7 +27,7 @@
                 <div class="row">
                     <div class="col">
                         <div id="content" class="card shadow">
-                            @include('admin.contact.ajax_info_contact_project')
+                            @include('admin.contact.ajax_info_contact_customer')
                         </div>
                     </div>
                 </div>
@@ -47,7 +46,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                     {{ __('admin_message.modal-body') }}
+                    {{ __('admin_message.modal-body') }}
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ __('admin_message.modal-footer-btn-close') }}</button>
@@ -80,7 +79,7 @@
     <script>
         var config = {
             routes: {
-                zone: "{{ route('admin.contact.project_customer_delete') }}"
+                zone: "{{ route('admin.contact.contact_customer_delete') }}"
             }
         };
     </script>
