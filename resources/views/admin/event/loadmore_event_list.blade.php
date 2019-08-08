@@ -28,7 +28,7 @@
                              src="https://image.flaticon.com/icons/png/128/61/61848.png"
                              alt="image">
                     </a> &nbsp;||
-                    <a href="#">
+                    <a href="{{route('view.admin.event.edit',['id' => $value->id])}}">
                         <img  style="width:30%; height:auto;"
                              src="https://png.pngtree.com/svg/20151211/af2c28659c.svg"
                              alt="">
