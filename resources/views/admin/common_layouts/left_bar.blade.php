@@ -82,7 +82,7 @@
                     </a>
                     <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-right" aria-labelledby="navbar-default_dropdown_1">
                         <a class="dropdown-item" href="{{route('view.admin.contact.project_customer')}}">Contact in Detail Project</a>
-                        <a class="dropdown-item" href="#">Contact of Customer</a>
+                        <a class="dropdown-item" href="{{route('view.admin.contact.contact_customer')}}">Contact of Customer</a>
                     </div>
                 </li>
                 <li class="nav-item">
