@@ -53,9 +53,8 @@ Route::namespace('Web')->group( function() {
 
 
 Route::namespace('Admin')->prefix('admin/')->group(function () {
-    Route::get('/dashboard', function () {
-        return view('admin.dashboard');
-    });
+    // Dashboard
+    Route::get('/dashboard', 'DashboardController@showDashboard')->name('dashboard');
 
     // Config
     Route::get('/config_language', 'ConfigController@showLanngJson')->name('admin.config.lang_json');
@@ -97,5 +96,14 @@ Route::namespace('Admin')->prefix('admin/')->group(function () {
     Route::get('/project_admin/edit/{id}', 'ProjectController@getEditProject')->name('view.admin.project_admin.edit_project');
     Route::post('/project_admin/edit/{id}', 'ProjectController@postEditProject')->name('admin.project_admin.edit_project');
     Route::get('/project_admin/change_status', 'ProjectController@ajaxChangeStatus')->name('change_status_project');
+
+
+    //Category
+    Route::get('/category', 'CategoryController@showAllCategory')->name('view.admin.category.view_category');
+    Route::get('/category/delete', 'CategoryController@deleteCategory')->name('admin.category.delete_category');
+    Route::get('/category/add', 'CategoryController@getAddCategory')->name('view.admin.category.add_category');
+    Route::post('/category/add', 'CategoryController@postAddCategory')->name('admin.category.add_category');
+    Route::get('/category/edit/{id}', 'CategoryController@getEditCategory')->name('view.admin.category.edit_category');
+    Route::post('/category/edit/{id}', 'CategoryController@postEditCategory')->name('admin.category.edit_category');
 
 });

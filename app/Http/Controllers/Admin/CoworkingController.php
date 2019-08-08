@@ -7,6 +7,7 @@ use App\Models\Admin\CoWorking;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Log;
+use Helpers;
 
 class CoworkingController extends Controller
 {
@@ -38,11 +39,11 @@ class CoworkingController extends Controller
 
         $id = $request->get('id');
         $objCoworking = $this->coWorking->getCoworking($id);
-        $nameImage = \Helpers::getNameImage($objCoworking->image_link);
+        $nameImage = Helpers::getNameImage($objCoworking->image_link);
         try {
             if ($this->coWorking->deleteCoworking($id)) {
                 Log::info('Delete coworking titled: ' . $objCoworking->name);
-                \Helpers::deleteImageFromCDN($nameImage);
+                Helpers::deleteImageFromCDN($nameImage);
                 return \Response::json(['msg' => 'DELETE SUCCESS']);
             } else {
                 Log::info('The deleted coworking titled: ' . $objCoworking->name);
@@ -71,17 +72,17 @@ class CoworkingController extends Controller
         $data = $request->all();
         if (isset($data['location']) && isset($data['location_jp']) && isset($data['social'])) {
             $arrSocial = array_combine($data['social']['key'], $data['social']['value']);
-            $location = \Helpers::convertArrayToJson($data['location']);
-            $location_jp = \Helpers::convertArrayToJson($data['location_jp']);
-            $social = \Helpers::convertArrayToJson($arrSocial);
+            $location = Helpers::convertArrayToJson($data['location']);
+            $location_jp = Helpers::convertArrayToJson($data['location_jp']);
+            $social = Helpers::convertArrayToJson($arrSocial);
         }
-        $newNameImage = \Helpers::createNewNameImage($data["imageCoworking"]->getClientOriginalName());
+        $newNameImage = Helpers::createNewNameImage($data["imageCoworking"]->getClientOriginalName());
         $linkImage = "https://storage.googleapis.com/madeindn/" . $newNameImage;
         $resultAddCowork = $this->coWorking->addCoworking($data['name'], $data['name_jp'], $data['overview'], $data['overview_jp'], $location, $location_jp, $linkImage, $data['position'], $social);
 
         if ($resultAddCowork) {
             Log::info('You just added coworking named: ' . $data['name']);
-            \Helpers::upLoadImageToCDN_N($data['imageCoworking'], $newNameImage);
+            Helpers::upLoadImageToCDN_N($data['imageCoworking'], $newNameImage);
             $request->session()->flash('msg', 'Success !');
             return redirect()->route('view.admin.coworking.coworking_space');
         } else {
@@ -112,7 +113,7 @@ class CoworkingController extends Controller
         $oldCoworking = $this->coWorking->getCoworking($id);
 
         if ($request->file('imageCoworking')) {
-            $newNameImage = \Helpers::createNewNameImage($data["imageCoworking"]->getClientOriginalName());
+            $newNameImage = Helpers::createNewNameImage($data["imageCoworking"]->getClientOriginalName());
             $linkImage = "https://storage.googleapis.com/madeindn/" . $newNameImage;
         } else {
             $linkImage = $oldCoworking->image_link;
@@ -120,9 +121,9 @@ class CoworkingController extends Controller
 
         if (isset($data['location']) && isset($data['location_jp']) && isset($data['social'])) {
             $arrSocial = array_combine($data['social']['key'], $data['social']['value']);
-            $location = \Helpers::convertArrayToJson($data['location']);
-            $location_jp = \Helpers::convertArrayToJson($data['location_jp']);
-            $social = \Helpers::convertArrayToJson($arrSocial);
+            $location = Helpers::convertArrayToJson($data['location']);
+            $location_jp = Helpers::convertArrayToJson($data['location_jp']);
+            $social = Helpers::convertArrayToJson($arrSocial);
         }
 
         $resultAddCowork = $this->coWorking->editCoworking($id, $data['name'], $data['name_jp'], $data['overview'], $data['overview_jp'], $location, $location_jp, $linkImage, $data['position'], $social);
@@ -130,9 +131,9 @@ class CoworkingController extends Controller
         if ($resultAddCowork) {
             Log::info('You just edited coworking named: ' . $oldCoworking->name);
             if ($request->file('imageCoworking')) {
-                $nameImage = \Helpers::getNameImage($oldCoworking->image_link);
-                \Helpers::deleteImageFromCDN($nameImage);
-                \Helpers::upLoadImageToCDN_N($data['imageCoworking'], $newNameImage);
+                $nameImage = Helpers::getNameImage($oldCoworking->image_link);
+                Helpers::deleteImageFromCDN($nameImage);
+                Helpers::upLoadImageToCDN_N($data['imageCoworking'], $newNameImage);
             }
             $request->session()->flash('msg', "Success");
             return redirect()->route('view.admin.coworking.coworking_space');
