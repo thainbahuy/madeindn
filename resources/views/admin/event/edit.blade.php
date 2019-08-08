@@ -1,4 +1,7 @@
 @extends("admin.common_layouts.master")
+@section('myheadscript')
+    <script src="{{asset('admin/libraries/ckeditor/ckeditor.js')}}"></script>
+@endsection
 @section("content")
     <!-- Navbar -->
     <nav class="navbar navbar-top navbar-expand-md navbar-dark" id="navbar-main">
@@ -69,11 +72,11 @@
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="inputEmail">Overview</label>
-                            <textarea rows="10" name="overview" class="form-control">{{$event->overview}}</textarea>
+                            <textarea rows="10" id="editor1" name="overview" class="form-control">{{$event->overview}}</textarea>
                         </div>
                         <div class="form-group col-md-6">
                             <label for="inputPassword4">jp Overview	</label>
-                            <textarea rows="10" name="jp_overview" class="form-control">{{$event->jp_overview}}</textarea>
+                            <textarea rows="10" id="editor2" name="jp_overview" class="form-control">{{$event->jp_overview}}</textarea>
                         </div>
                     </div>
                     <div class="form-row">
@@ -219,6 +222,7 @@
     </div>
 @endsection
 @section('myscript')
+    <script src = "{{asset('admin/libraries/ckfinder/ckfinder.js')}}"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
@@ -228,7 +232,9 @@
             $( "#datepicker" ).datepicker({
                 dateFormat: "dd-mm-yy"
             });
-
+            var editor = CKEDITOR.replace( 'editor1' );
+            CKFinder.setupCKEditor( editor ,'{{asset('admin/libraries/ckfinder/ckfinder.js')}}' );
+            CKEDITOR.replace( 'editor2' );
         } );
     </script>
 

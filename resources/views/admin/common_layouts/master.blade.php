@@ -18,6 +18,8 @@
     <link href="{{ asset('admin/') }}/main.css" rel="stylesheet" />
     <link href="{{ asset('admin/') }}/assets/css/bootstrap.css" rel="stylesheet" />
     <link href="{{ asset('admin/') }}/assets/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
+    @yield('myheadscript')
+
 </head>
 
 <body class="">
