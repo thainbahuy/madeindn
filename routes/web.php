@@ -62,6 +62,8 @@ Route::namespace('Admin')->prefix('admin/')->group( function() {
     //Auth
     Route::get('/login', 'Auth\LoginController@showLoginForm')->name('view.admin.Auth.login');
     Route::post('/login', 'Auth\LoginController@login')->name('admin.Auth.login');
+    Route::get('/forgot-password', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('view.admin.Auth.forgotpass');
+    Route::post('/forgot-password', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('admin.Auth.forgotpass');
 
     // Config
     Route::get('/config_language', 'ConfigController@showLanngJson')->name('admin.config.lang_json');
