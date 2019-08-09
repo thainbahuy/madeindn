@@ -21,7 +21,7 @@
             <div class="c-section__content">
                 <div class="c-section__content__left">
                     <div class="c-section__events__detail__title">
-                        <p>Overview</p>
+                        <p>{{__('message.BD_OVERVIEW')}}</p>
                     </div>
                     <div class="text">
                         {{Helpers::changeLanguage($objCoworking->overview,$objCoworking->jp_overview)}}
@@ -31,7 +31,7 @@
                     <div class="c-sidebar">
                         <div class="c-sidebar__location">
                             <div class="c-sidebar__location__title">
-                                <p>Location</p>
+                                <p>{{__('message.BD_LOCATION')}}</p>
                             </div>
                             <div class="c-sidebar__location__text">
                                 @php
@@ -46,7 +46,7 @@
                         </div>
                         <div class="c-sidebar__sharing">
                             <div class="c-sidebar__sharing__title">
-                                <p>Sharing</p>
+                                <p>{{__('message.BD_SHARE')}}</p>
                             </div>
                             <ul class="c-sidebar__sharing__list">
                                 @if($configurations != null)

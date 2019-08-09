@@ -1,10 +1,8 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
-    <title>{{__('message.EVENT')}}</title>
+    <title>{{__('message.TITLE_EVENT')}}</title>
     @include('web.common_layouts.head')
-
-
 </head>
 <body>
 <header id="header" class="c-header c-header__border">

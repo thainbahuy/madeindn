@@ -18,7 +18,7 @@ class Project extends Model
 
     public function activeProject($q)
     {
-        return $q->where('status', 1);
+        return $q->where('status', 1)->where('category_id', '<>', null);
     }
 
     public function category()

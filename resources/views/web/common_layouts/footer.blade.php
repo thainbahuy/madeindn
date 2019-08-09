@@ -2,10 +2,10 @@
     <div class="c-footer__content">
         <div class="c-footer__left">
             <div class="c-footer__logo">
-                <a href="#">madeinDaNang</a>
+                <a href="#">{{__('message.FT_TITLE')}}</a>
             </div>
             <div class="c-footer__left__text">
-                <p>{{__('message.SOLOGAN')}}</p>
+                <p>{{__('message.FT_SOLOGAN')}}</p>
             </div>
             <div class="c-footer__left__social">
                 <ul>
@@ -30,7 +30,7 @@
         <div class="c-footer__middle">
             <ul class="menu"">
             <li>
-                <a href="">About</a>
+                <a href="">{{__('message.FT_ABOUT')}}</a>
                 <ul class="sub-menu">
                     @foreach($listAllAbout as $key => $value)
                         <li id= "active_{{$value->id}}">
@@ -42,7 +42,7 @@
             </ul>
             <ul class="menu">
                 <li>
-                    <a href="">Help</a>
+                    <a href="">{{__('message.FT_HELP')}}</a>
                     <ul class="sub-menu">
                         <li>
                             <a href="#" title="#">FAQ</a>
@@ -65,13 +65,13 @@
         </div>
         <div class="c-footer__right">
             <div class="text">
-                <p>{{__('message.SOLOGAN')}}</p>
+                <p>{{__('message.FT_SOLOGAN')}}</p>
             </div>
         </div>
     </div>
 </div>
 <div class="o-container__fluid">
     <div class="o-container c-footer__copyright">
-        <p>Copyright © 2019 - MADE IN DA NANG</p>
+        <p>{{__('message.FT_COPYRIGHT')}}</p>
     </div>
 </div>

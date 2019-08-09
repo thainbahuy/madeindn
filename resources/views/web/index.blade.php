@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
-    <title>Home</title>
+    <title>{{__('message.TITLE_HOME')}}</title>
     @include('web.common_layouts.head')
 </head>
 <body>
@@ -16,28 +16,28 @@
     <div class="c-banner">
         <div class="c-banner__inner">
             <div class="c-banner__inner__sub-title">
-                welcome to danang's startup community
+                {{__('message.HOME_BACKGROUND_1')}}
             </div>
             <div class="c-banner__inner__title">
-                Aliquam malesuada
+                {{__('message.HOME_BACKGROUND_2')}}
             </div>
             <div class="c-banner__inner__search">
                 <div class="search-tabs search-form">
                     <div class="tab-content">
                         <form action="{{route('web.project.project_search')}}" method="GET">
                             <div class="form-group">
-                                <input type="text" name="key_word" class="input-form" placeholder="Key word Search">
+                                <input type="text" name="key_word" class="input-form" placeholder="{{__('message.HOME_BACKGROUND_3')}}">
                             </div>
                             <div class="form-group">
                                 <select name="category" id="category">
-                                    <option value="">Sort by category</option>
+                                    <option value="">{{__('message.HOME_BACKGROUND_4')}}</option>
                                     @foreach($listCategory as $value)
                                         <option value="{{$value->id}}">{{Helpers::changeLanguage($value->name,$value->jp_name)}}</option>
                                     @endforeach
                                 </select>
                             </div>
                             <button type="submit" class="btn-search-all">
-                                SEARCH
+                                {{__('message.HOME_BACKGROUND_5')}}
                             </button>
                         </form>
                     </div>
@@ -51,16 +51,14 @@
             <div class="c-section__community__content">
                 <div class="c-section__community__content__top">
                     <div class="c-section__community__content__top__title">
-                        <p class="sub-title">OUR community</p>
+                        <p class="sub-title"> {{__('message.HOME_BACKGROUND_6')}}</p>
                         <h3 class="title">
-                            <p>Welcome to MID</p>
+                            <p> {{__('message.HOME_BACKGROUND_7')}}</p>
                         </h3>
                     </div>
                     <div class="c-section__community__content__top__text">
                         <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vel tortor vitae dolor
-                            eleifend mollis. Donec ultricies in urna eget tristique. Cras arcu dolor, iaculis ut est
-                            vestibulum, elementum aliquet est.
+                            {{__('message.HOME_BACKGROUND_8')}}
                         </p>
                     </div>
                 </div>
@@ -113,7 +111,7 @@
     <!-- END SECTION -->
     <div class="c-section c-section__project">
         <div class="o-container">
-            <h2 class="c-section__heading"><p>Our Projects </p></h2>
+            <h2 class="c-section__heading"><p>{{__('message.HOME_PROJECT')}}</p></h2>
             <div class="tabs">
                 <ul class="tabs-list">
                     @foreach($listCategoryProject as $index => $value)
@@ -168,16 +166,14 @@
             <div class="c-section__community__content">
                 <div class="c-section__community__content__top">
                     <div class="c-section__community__content__top__title">
-                        <p class="sub-title">OUR community</p>
+                        <p class="sub-title">{{__('message.HOME_COWK_1')}}</p>
                         <h3 class="title">
-                            <p>We work with Top Coworking Space</p>
+                            <p>{{__('message.HOME_COWK_2')}}</p>
                         </h3>
                     </div>
                     <div class="c-section__community__content__top__text">
                         <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vel tortor vitae dolor
-                            eleifend mollis. Donec ultricies in urna eget tristique. Cras arcu dolor, iaculis ut est
-                            vestibulum, elementum aliquet est.
+                            {{__('message.HOME_COWK_3')}}
                         </p>
                     </div>
                 </div>
@@ -207,7 +203,7 @@
     <!-- END SECTION -->
     <div class="c-section c-section__events">
         <div class="o-container">
-            <h2 class="c-section__heading"><p>You can join in Speacial Events</p></h2>
+            <h2 class="c-section__heading"><p>{{__('message.HOME_EVENT')}}</p></h2>
             <div class="c-section__content">
                 <div class="c-post">
                     @include('data_event_loadmore')
@@ -218,7 +214,7 @@
     <!-- END SECTION -->
     <div class="c-section c-section__trust">
         <div class="o-container">
-            <h2 class="c-section__heading"><p>Trusted by the biggest nonprofits,<br/> companies in the world.</p></h2>
+            <h2 class="c-section__heading"><p>{{__('message.HOME_COMPANY1')}} <br/> {{__('message.HOME_COMPANY2')}}</p></h2>
             <div class="c-section__content">
                 <div class="c-list__company">
                     <div class="c-list__company__item">

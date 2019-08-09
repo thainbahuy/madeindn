@@ -1,42 +1,92 @@
 {
     "EN": {
         "HEADER": {
-            "COWORKING_TITLE": "\u3053\u3093\u306b\u3061\u306f",
-            "EVENT": "Event",
-            "HOME": "\u3053\u3093\u306b\u3061\u306f",
-            "ABOUTS": "About Us",
-            "PROJECTS": "Projects",
-            "EVENTS": "Events",
-            "CO-SPACE": "Coworking Space",
-            "CONTACT": "Contact Us",
-            "SUBMIT-PJ": "Submit Your Project",
-            "Looking": "What're we looking for ?"
+            "TITLE_HOME": "HOME",
+            "TITLE_COWORKING": "COWORKING",
+            "TITLE_CONTACT": "CONTACT",
+            "TITLE_EVENT": "EVENT",
+            "TITLE_SUBMIT_PROJECT": "SUBMIT PROJECT",
+            "HD_HOME": "Home",
+            "HD_ABOUT": "About Us",
+            "HD_PROJECT": "Projects",
+            "HD_EVENT": "Events",
+            "HD_CO-SPACE": "Coworking Space",
+            "HD_CONTACT": "Contact Us",
+            "HD_SUBMIT": "Submit Your Project",
+            "HD_SEARCH": "What're we looking for ?"
         },
         "BODY": {
-            "BD_TITLE": "Nghu0129a 123"
+            "HOME_BACKGROUND_1": "welcome to danang's startup community",
+            "HOME_BACKGROUND_2": "Aliquam malesuada",
+            "HOME_BACKGROUND_3": "KeyWord",
+            "HOME_BACKGROUND_4": "Sort by category",
+            "HOME_BACKGROUND_5": "Search",
+            "HOME_BACKGROUND_6": "OUR COMMUNITY",
+            "HOME_BACKGROUND_7": "Welcome to MID",
+            "HOME_BACKGROUND_8": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vel tortor vitae dolor eleifend mollis. Donec ultricies in urna eget tristique. Cras arcu dolor, iaculis ut est vestibulum, elementum aliquet est.",
+            "HOME_PROJECT": "Our Projects",
+            "HOME_COWK_1": "OUR COMMUNITY",
+            "HOME_COWK_2": "Welcome to MID",
+            "HOME_COWK_3": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vel tortor vitae dolor eleifend mollis. Donec ultricies in urna eget tristique. Cras arcu dolor, iaculis ut est vestibulum, elementum aliquet est",
+            "HOME_EVENT": "You can join in Speacial Events",
+            "HOME_COMPANY1": "Trusted by the biggest nonprofits,",
+            "HOME_COMPANY2": "companies in the world.",
+            "BD_OVERVIEW": "Overview",
+            "BD_LOCATION": "Location",
+            "BD_SHARE": "Shareing",
+            "BD_DATE_TIME": "Date and Time"
         },
         "FOOTER": {
-            "SOLOGAN": "Nghu0129a 123"
+            "FT_TITLE" : "madeinDaNang",
+            "FT_SOLOGAN": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vel tortor vitae dolor eleifend mollis. Donec ultricies in urna eget tristique.",
+            "FT_ABOUT" : "About",
+            "FT_HELP" : "Help",
+            "FT_COPYRIGHT" : "Copyright © 2019 - MADE IN DA NANG"
         }
     },
     "JP": {
         "HEADER": {
-            "COWORKING_TITLE": "Nghu0129a 123456",
-            "EVENT": "123",
-            "HOME": "123",
-            "ABOUTS": "123 Us",
-            "PROJECTS": "123",
-            "EVENTS": "123",
-            "CO-SPACE": "123 Space",
-            "CONTACT": "123 Us",
-            "SUBMIT-PJ": "123 Your Project",
-            "Looking": "123're we looking for ?"
+            "TITLE_HOME": "HOME JP",
+            "TITLE_COWORKING": "COWORKING JP",
+            "TITLE_CONTACT": "CONTACT JP",
+            "TITLE_EVENT": "EVENT JP",
+            "TITLE_SUBMIT_PROJECT": "SUBMIT PROJECT JP",
+            "HD_HOME": "Home JP",
+            "HD_ABOUT": "About Us JP",
+            "HD_PROJECT": "Projects JP",
+            "HD_EVENT": "Events JP",
+            "HD_CO-SPACE": "Coworking Space JP",
+            "HD_CONTACT": "Contact Us JP",
+            "HD_SUBMIT": "Submit Your Project JP",
+            "HD_SEARCH": "What're we looking for ? JP"
         },
         "BODY": {
-            "BD_TITLE": "Nghu0129a 123"
+            "HOME_BACKGROUND_1": "welcome to danang's startup community JP",
+            "HOME_BACKGROUND_2": "Aliquam malesuada JP",
+            "HOME_BACKGROUND_3": "KeyWord JP",
+            "HOME_BACKGROUND_4": "Sort by category JP",
+            "HOME_BACKGROUND_5": "Search JP",
+            "HOME_BACKGROUND_6": "OUR COMMUNITY JP",
+            "HOME_BACKGROUND_7": "Welcome to MID JP",
+            "HOME_BACKGROUND_8": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vel tortor vitae dolor eleifend mollis. Donec ultricies in urna eget tristique. Cras arcu dolor, iaculis ut est vestibulum, elementum aliquet est JP",
+            "HOME_PROJECT": "Our Projects JP",
+            "HOME_COWK_1": "OUR COMMUNITY JP",
+            "HOME_COWK_2": "Welcome to MID JP",
+            "HOME_COWK_3": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vel tortor vitae dolor eleifend mollis. Donec ultricies in urna eget tristique. Cras arcu dolor, iaculis ut est vestibulum, elementum aliquet est JP",
+            "HOME_EVENT": "You can join in Speacial Events JP",
+            "HOME_COMPANY1": "Trusted by the biggest nonprofits JP,",
+            "HOME_COMPANY2": "companies in the world JP.",
+            "BD_OVERVIEW": "Overview JP",
+            "BD_LOCATION": "Location JP",
+            "BD_SHARE": "Shareing JP",
+            "BD_DATE_TIME": "Date and Time JP"
         },
         "FOOTER": {
-            "SOLOGAN": "Nghu0129a 123456"
+            "FT_TITLE" : "madeinDaNang JP",
+            "FT_SOLOGAN": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vel tortor vitae dolor eleifend mollis. Donec ultricies in urna eget tristique JP",
+            "FT_ABOUT" : "About JP",
+            "FT_HELP" : "Help JP",
+            "FT_COPYRIGHT" : "Copyright © 2019 - MADE IN DA NANG"
         }
     }
 }

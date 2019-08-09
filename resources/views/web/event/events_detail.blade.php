@@ -22,7 +22,7 @@
             <div class="c-section__content">
                 <div class="c-section__content__left">
                     <div class="c-section__events__detail__title">
-                        <p>Overview</p>
+                        <p>{{__('message.BD_OVERVIEW')}}</p>
                     </div>
                     <div class="text">
                         {!!Helpers::changeLanguage($event->overview,$event->jp_overview) !!}
@@ -32,7 +32,7 @@
                     <div class="c-sidebar">
                         <div class="c-sidebar__date">
                             <div class="c-sidebar__date__title">
-                                <p>Date and Time</p>
+                                <p>{{__('message.BD_DATE_TIME')}}</p>
                             </div>
                             <div class="c-sidebar__date__text">
                                 <p> {{date_format(date_create($event->date_time),'d-m-Y')}}</p>
@@ -42,7 +42,7 @@
                         </div>
                         <div class="c-sidebar__location">
                             <div class="c-sidebar__location__title">
-                                <p>Location</p>
+                                <p>{{__('message.BD_LOCATION')}}</p>
                             </div>
                             @php
                                 $location = Helpers::convertToJson(Helpers::changeLanguage($event->location, $event->jp_location));
@@ -57,7 +57,7 @@
                         </div>
                         <div class="c-sidebar__sharing">
                             <div class="c-sidebar__sharing__title">
-                                <p>Sharing</p>
+                                <p>{{__('message.BD_SHARE')}}</p>
                             </div>
                             @if ($socical_link != null)
                                 <ul class="c-sidebar__sharing__list">

@@ -17,18 +17,18 @@
                 <div class="tab-content">
                     <form action="{{route('web.project.project_search')}}" method="GET">
                         <div class="form-group">
-                            <input type="text" name="key_word" class="input-form" placeholder="Key word Search" value="{{app('request')->input('key_word')}}">
+                            <input type="text" name="key_word" class="input-form" placeholder="{{__('message.HOME_BACKGROUND_3')}}" value="{{app('request')->input('key_word')}}">
                         </div>
                         <div class="form-group">
                             <select name="category" id="category">
-                                <option value="">Sort by category</option>
+                                <option value="">{{__('message.HOME_BACKGROUND_4')}}</option>
                                 @foreach($listCategory as $value)
                                     <option @if( app('request')->input('category') == $value->id) selected @endif value="{{$value->id}}">{{Helpers::changeLanguage($value->name,$value->jp_name)}}</option>
                                 @endforeach
                             </select>
                         </div>
                         <button type="submit" class="btn-search-all">
-                            SEARCH
+                            {{__('message.HOME_BACKGROUND_5')}}
                         </button>
                     </form>
                 </div>

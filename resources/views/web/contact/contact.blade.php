@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Submit Your Project</title>
+    <title>{{@trans('message.TITLE_CONTACT')}}</title>
 @include('web.common_layouts.head')
 <!-- endbuild -->
 </head>
