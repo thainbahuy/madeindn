@@ -19,6 +19,13 @@
                     <div style="display: none" class="col-xl-12 message">
                         {{__('admin_message.delete_success')}}
                     </div>
+
+                        <div class="col-xl-12 message text-center">
+                            @if(Session::has('message'))
+                                {{Session::get('message')}}
+                            @endif
+                        </div>
+
                 </div>
             </div>
         </div>

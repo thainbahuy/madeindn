@@ -54,19 +54,10 @@ Route::namespace('Web')->group( function() {
 });
 
 
-Route::namespace('Admin')->prefix('admin/')->group( function() {
+Route::namespace('Admin')->middleware('guest')->prefix('admin/')->group( function() {
     Route::get('/dashboard', function () {
         return view('admin.dashboard');
     });
-
-    //Auth
-    Route::get('/login', 'Auth\LoginController@showLoginForm')->name('view.admin.Auth.login');
-    Route::post('/login', 'Auth\LoginController@login')->name('admin.Auth.login');
-    Route::get('/forgot-password', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('view.admin.Auth.forgotpass');
-    Route::post('/forgot-password', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('admin.Auth.forgotpass');
-    Route::post('/forgot-password', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('admin.Auth.forgotpass');
-    Route::get('/reset-password/{token}', 'Auth\ResetPasswordController@showResetForm')->name('view.admin.Auth.resetpass');
-    Route::post('/reset-password', 'Auth\ResetPasswordController@reset')->name('admin.Auth.resetpass');
 
     // Config
     Route::get('/config_language', 'ConfigController@showLanngJson')->name('admin.config.lang_json');
@@ -109,6 +100,16 @@ Route::namespace('Admin')->prefix('admin/')->group( function() {
 
 
 });
+
+//Auth
+Route::get('account/login', 'Admin\Auth\LoginController@showLoginForm')->name('view.admin.Auth.login');
+Route::post('account/login', 'Admin\Auth\LoginController@login')->name('admin.Auth.login');
+Route::get('account/logout', 'Admin\Auth\LoginController@logout')->name('logout');
+Route::get('account/forgot-password', 'Admin\Auth\ForgotPasswordController@showLinkRequestForm')->name('view.admin.Auth.forgotpass');
+Route::post('account/forgot-password', 'Admin\Auth\ForgotPasswordController@sendResetLinkEmail')->name('admin.Auth.forgotpass');
+Route::post('account/forgot-password', 'Admin\Auth\ForgotPasswordController@sendResetLinkEmail')->name('admin.Auth.forgotpass');
+Route::get('account/reset-password/{token}', 'Admin\Auth\ResetPasswordController@showResetForm')->name('resetpass');
+Route::post('account/reset-password', 'Admin\Auth\ResetPasswordController@reset')->name('admin.Auth.resetpass');
 
 Route::get('ABC',function(){
     echo Hash::make('thaibahuy');

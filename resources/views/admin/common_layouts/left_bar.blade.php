@@ -53,7 +53,7 @@
             <!-- Form -->
             <!-- Navigation -->
             <ul class="navbar-nav">
-                <li class="nav-item  class=" active" ">
+                <li class="nav-item"  class=" active ">
                 <a class=" nav-link active " href=""> <i class="ni ni-tv-2 text-primary"></i> Dashboard
                 </a>
                 </li>
@@ -119,6 +119,11 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{route('admin.config.paginate_json')}}">
                         <i class="ni ni-palette"></i> Config Page
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{route('logout')}}">
+                        <i class="ni ni-palette"></i> Logout
                     </a>
                 </li>
             </ul>

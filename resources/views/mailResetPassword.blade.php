@@ -5,7 +5,7 @@
 <body>
 <div>
     Dear {{$mail}}
-    <p>Please click here to reset your password. </p><p><a href="{{route('view.admin.Auth.resetpass',['token' => $token,'email'=>$mail])}}"></a>{{route('view.admin.Auth.resetpass',['token' => $token,'email'=>$mail])}}</p>
+    <p>Please click here to reset your password. </p><p><a href="{{route('resetpass',['token' => $token,'email'=>$mail])}}"></a>{{route('resetpass',['token' => $token,'email'=>$mail])}}</p>
     Sincerely,
     <br/>
     MadeinDN Support Team<br>

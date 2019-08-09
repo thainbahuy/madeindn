@@ -10,6 +10,7 @@ use Helpers;
 use http\Exception;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Log;
 
 class EventController extends Controller
 {
@@ -131,11 +132,12 @@ class EventController extends Controller
         if ($this->event->addNewEvent($name, $jp_name, $sort_description, $jp_sort_description,
                 $overview, $jp_overview, $location_json, $location_json_jp,
                 $date_time, $begin_time, $end_time, $imageLinkCDN, $position, $socical_link_json) == true) {
-
-            return redirect()->back()->with('message', 'Add New Event Success');
+            Log::info('add event success');
+            return redirect()->route('view.admin.event.event_list')->with('message', 'Add New Event Success');
 
         } else {
-            return redirect()->back()->with('message', 'Add New Event Failed');
+            Log::info('add event failed');
+            return redirect()->route('view.admin.event.event_list')->with('message', 'Add New Event Failed');
         }
 
 
@@ -204,11 +206,12 @@ class EventController extends Controller
         if ($this->event->updateEvent($id,$name, $jp_name, $sort_description, $jp_sort_description,
                 $overview, $jp_overview, $location_json, $location_json_jp,
                 $date_time, $begin_time, $end_time, $linkImageSaveSql, $position, $socical_link_json) == true) {
-
-            return redirect()->back()->with('message', 'Update Event Success');
+            Log::info('update event success');
+            return redirect()->route('view.admin.event.event_list')->with('message', 'Update Event Success');
 
         } else {
-            return redirect()->back()->with('message', 'Update Event Failed');
+            Log::info('update event failed');
+            return redirect()->route('view.admin.event.event_list')->with('message', 'Update Event Failed');
         }
     }
 
