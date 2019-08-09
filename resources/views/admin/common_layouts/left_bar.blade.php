@@ -47,9 +47,7 @@
                         </a>
                     </div>
                     <div class="col-6 collapse-close">
-                        <button type="button" class="navbar-toggler" data-toggle="collapse"
-                                data-target="#sidenav-collapse-main" aria-controls="sidenav-main" aria-expanded="false"
-                                aria-label="Toggle sidenav">
+                        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#sidenav-collapse-main" aria-controls="sidenav-main" aria-expanded="false" aria-label="Toggle sidenav">
                             <span></span>
                             <span></span>
                         </button>
@@ -104,8 +102,8 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="./examples/tables.html">
-                        <i class="ni ni-bullet-list-67 text-red"></i> Tables
+                    <a class="nav-link " href="{{route('view.admin.event.event_list')}}">
+                        <i class="ni ni-bullet-list-67 text-red"></i> Event
                     </a>
                 </li>
                 <li class="nav-item">
@@ -132,6 +130,11 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{route('admin.config.paginate_json')}}">
                         <i class="ni ni-palette"></i> Config Page
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{route('logout')}}">
+                        <i class="ni ni-palette"></i> Logout
                     </a>
                 </li>
             </ul>

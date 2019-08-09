@@ -59,7 +59,7 @@
                             <div class="c-sidebar__sharing__title">
                                 <p>{{__('message.BD_SHARE')}}</p>
                             </div>
-                            @if ($socical_link != null)
+                            @if ($socical_link != '')
                                 <ul class="c-sidebar__sharing__list">
                                     @foreach($socical_link as $image => $link)
                                         @if (!empty($link))

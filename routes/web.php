@@ -11,7 +11,9 @@
 |
 */
 
-route::pattern('name', '(.*)');
+use Illuminate\Support\Facades\Hash;
+
+route::pattern('name' ,'(.*)');
 route::pattern('id', '([0-9]*)');
 
 
@@ -52,11 +54,10 @@ Route::namespace('Web')->group( function() {
 });
 
 
-Route::namespace('Admin')->prefix('admin/')->group(function () {
-    // Dashboard
-    Route::get('/dashboard', 'DashboardController@showDashboard')->name('dashboard');
-    Route::POST('/dashboard/change_background', 'DashboardController@changeBackgroundHome')->name('change_background_home');
-
+Route::namespace('Admin')->middleware('guest')->prefix('admin/')->group( function() {
+    Route::get('/dashboard', function () {
+        return view('admin.dashboard');
+    });
 
     // Config
     Route::get('/config_language', 'ConfigController@showLanngJson')->name('admin.config.lang_json');
@@ -64,7 +65,19 @@ Route::namespace('Admin')->prefix('admin/')->group(function () {
     Route::get('/config_paginate', 'ConfigController@showPaginateJson')->name('admin.config.paginate_json');
     Route::post('/config_paginate', 'ConfigController@postPaginateJson')->name('admin.config.paginate_json');
 
-   // Test API CDN
+    //event
+    Route::get('/event', 'EventController@showListEvent')->name('view.admin.event.event_list');
+    Route::get('/event/add', 'EventController@showAddNewEvent')->name('view.admin.event.addnew');
+    Route::post('/event/add', 'EventController@addNewEvent')->name('admin.event.addnew');
+    Route::post('/event/edit/{id}', 'EventController@updateEvent')->name('admin.event.edit');
+    Route::get('/event/edit/{id}', 'EventController@showEditEvent')->name('view.admin.event.edit');
+    Route::get('/event/delete', 'EventController@deleteEventById')->name('admin.event.event_list.delete');
+    Route::post('/event/setImage', 'EventController@setImageBackground')->name('admin.event.event_list.setImage');
+
+
+
+
+    // Test API CDN
     Route::post('/upLoadImage', 'ImageController@upLoadImage');
     Route::post('/deleteImage', 'ImageController@deletImage');
 
@@ -108,4 +121,18 @@ Route::namespace('Admin')->prefix('admin/')->group(function () {
     Route::get('/category/edit/{id}', 'CategoryController@getEditCategory')->name('view.admin.category.edit_category');
     Route::post('/category/edit/{id}', 'CategoryController@postEditCategory')->name('admin.category.edit_category');
 
+});
+
+//Auth
+Route::get('account/login', 'Admin\Auth\LoginController@showLoginForm')->name('view.admin.Auth.login');
+Route::post('account/login', 'Admin\Auth\LoginController@login')->name('admin.Auth.login');
+Route::get('account/logout', 'Admin\Auth\LoginController@logout')->name('logout');
+Route::get('account/forgot-password', 'Admin\Auth\ForgotPasswordController@showLinkRequestForm')->name('view.admin.Auth.forgotpass');
+Route::post('account/forgot-password', 'Admin\Auth\ForgotPasswordController@sendResetLinkEmail')->name('admin.Auth.forgotpass');
+Route::post('account/forgot-password', 'Admin\Auth\ForgotPasswordController@sendResetLinkEmail')->name('admin.Auth.forgotpass');
+Route::get('account/reset-password/{token}', 'Admin\Auth\ResetPasswordController@showResetForm')->name('resetpass');
+Route::post('account/reset-password', 'Admin\Auth\ResetPasswordController@reset')->name('admin.Auth.resetpass');
+
+Route::get('ABC',function(){
+    echo Hash::make('thaibahuy');
 });

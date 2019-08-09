@@ -3,10 +3,11 @@
 namespace App\Jobs;
 
 use Illuminate\Bus\Queueable;
-use Illuminate\Queue\SerializesModels;
-use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
+use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\Log;
 use Mail;
 
 class SendMailJob implements ShouldQueue
@@ -25,14 +26,14 @@ class SendMailJob implements ShouldQueue
      * @param $name
      * @param $to
      */
-    public function __construct($template, $params, $subject, $from ,$name ,$to)
+    public function __construct($template, $params, $subject, $from, $name, $to)
     {
         $this->data = [
             'template' => $template,
             'params' => $params,
             'subject' => $subject,
-            'from' =>$from,
-            'name' =>$name,
+            'from' => $from,
+            'name' => $name,
             'to' => $to,
         ];
     }
@@ -44,9 +45,11 @@ class SendMailJob implements ShouldQueue
      */
     public function handle()
     {
-        Mail::send($this->data['template'], $this->data['params'], function($message){
-            $message->from($this->data['from'],$this->data['name']);
+        Mail::send($this->data['template'], $this->data['params'], function ($message) {
+            $message->from($this->data['from'], $this->data['name']);
             $message->to($this->data['to'], $this->data['subject'])->subject($this->data['subject']);
         });
+
+        Log::info('send mail reset password');
     }
 }

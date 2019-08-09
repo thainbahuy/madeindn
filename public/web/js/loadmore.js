@@ -11,7 +11,6 @@ function loadMoreEvent(urlAjax) {
             if ($.trim(data.html) != "") {
                 $(".c-post").append(data.html);
                 indexPage++
-                console.log($('body').height());
             }
 
         })

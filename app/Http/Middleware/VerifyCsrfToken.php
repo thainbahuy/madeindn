@@ -21,6 +21,7 @@ class VerifyCsrfToken extends Middleware
     protected $except = [
         'admin/upLoadImage',
         'admin/deleteImage',
+        'admin/event/setImage',
 
     ];
 }

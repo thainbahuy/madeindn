@@ -40,7 +40,7 @@
             <div class="c-section__content">
                 <div class="c-section__content__left">
                     <div class="c-section__project__detail__title">
-                        <p>{{__('message.BD_OVERVIEW')}}</p>
+                        <p>Overview</p>
                     </div>
                     <div class="text">
                         {!! Helpers::changeLanguage($getProject->overview,$getProject->jp_overview) !!}

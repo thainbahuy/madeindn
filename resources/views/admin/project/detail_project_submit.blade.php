@@ -122,7 +122,7 @@
                                         <textarea rows="4" class="form-control form-control-alternative"
                                                   placeholder="A few words about you ...">{{$viewCustomerProject->content}}</textarea>
                                     </div>
-                                </div
+                                </div>
 
                                 <hr class="my-4">
                                 <!-- Description -->
