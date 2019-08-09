@@ -3,14 +3,15 @@
 namespace App\Http\Controllers\Admin\Auth;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
+use App\Jobs\SendMailJob;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Password;
+use Session;
 
 class ForgotPasswordController extends Controller
 {
 
-//    use SendsPasswordResetEmails;
+    //use SendsPasswordResetEmails;
 
 
     /**
@@ -32,6 +33,7 @@ class ForgotPasswordController extends Controller
     protected function validateEmail(Request $request)
     {
         $request->validate(['email' => 'required|email']);
+
     }
 
     /**
@@ -64,6 +66,18 @@ class ForgotPasswordController extends Controller
     public function sendResetLinkEmail(Request $request)
     {
         $this->validateEmail($request);
+        $user = $this->broker()->getUser($this->credentials($request));
+        if ($user != null){
+            $token = $this->broker()->createToken($user);
+            $email = $request->get('email');
+            $Job = (new SendMailJob('mailResetPassword',array('token' => $token,'mail'=>$email), 'Forgot Password',
+                'congthongtindue@gmail.com','MadeinDN team',$email));
+            $this->dispatch($Job);
+            return redirect()->back()->with('success', 'We sent link reset password to your email');
+        }else{
+            return redirect()->back()->withErrors(['This email not exist !']);
+        }
+
 
     }
 }

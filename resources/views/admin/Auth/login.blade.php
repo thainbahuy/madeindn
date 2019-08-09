@@ -113,7 +113,7 @@
     <!-- Page content -->
     <div class="container mt--8 pb-5">
       <div class="row justify-content-center">
-        <div class="col-lg-5 col-md-7">
+        <div class="col-lg-7 col-md-10">
           <div class="card bg-secondary shadow border-0">
             <div class="card-body px-lg-5 py-lg-5">
               @if (count($errors) > 0)
@@ -125,6 +125,13 @@
                   </ul>
                 </div>
               @endif
+                @if(Session::has('success'))
+                  <div class="alert alert-success">
+                    <ul>
+                      <li>{{Session::get('success') }}</li>
+                    </ul>
+                  </div>
+                @endif
               <form method="post" action="{{route('admin.Auth.login')}}" role="form">
                 @csrf
                 <div class="form-group mb-3">

@@ -64,6 +64,9 @@ Route::namespace('Admin')->prefix('admin/')->group( function() {
     Route::post('/login', 'Auth\LoginController@login')->name('admin.Auth.login');
     Route::get('/forgot-password', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('view.admin.Auth.forgotpass');
     Route::post('/forgot-password', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('admin.Auth.forgotpass');
+    Route::post('/forgot-password', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('admin.Auth.forgotpass');
+    Route::get('/reset-password/{token}', 'Auth\ResetPasswordController@showResetForm')->name('view.admin.Auth.resetpass');
+    Route::post('/reset-password', 'Auth\ResetPasswordController@reset')->name('admin.Auth.resetpass');
 
     // Config
     Route::get('/config_language', 'ConfigController@showLanngJson')->name('admin.config.lang_json');
@@ -107,6 +110,6 @@ Route::namespace('Admin')->prefix('admin/')->group( function() {
 
 });
 
-//Route::get('ABC',function(){
-//    echo Hash::make('thaibahuy');
-//});
+Route::get('ABC',function(){
+    echo Hash::make('thaibahuy');
+});
