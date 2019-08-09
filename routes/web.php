@@ -55,9 +55,10 @@ Route::namespace('Web')->group( function() {
 
 
 Route::namespace('Admin')->middleware('guest')->prefix('admin/')->group( function() {
-    Route::get('/dashboard', function () {
-        return view('admin.dashboard');
-    });
+
+    //Dashboard
+    Route::get('/dashboard', 'DashboardController@showDashboard')->name('dashboard');
+    Route::POST('/dashboard/change_background', 'DashboardController@changeBackgroundHome')->name('change_background_home');
 
     // Config
     Route::get('/config_language', 'ConfigController@showLanngJson')->name('admin.config.lang_json');

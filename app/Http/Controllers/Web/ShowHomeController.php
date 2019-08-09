@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
+use App\Models\Web\Background;
 use App\Models\Web\Category;
 use App\Models\Web\CoWorking;
 use App\Models\Web\Event;
@@ -15,14 +16,14 @@ class ShowHomeController extends Controller
 {
     private $category, $project, $event, $config, $coWorking;
 
-    public function __construct(Event $event, Category $category, Project $project, CoWorking $coWorking)
+    public function __construct(Event $event, Category $category, Project $project, CoWorking $coWorking, Background $background)
     {
         $this->category = $category;
         $this->project = $project;
         $this->event = $event;
         $this->coWorking = $coWorking;
         $this->config = Helpers::getConfig()['HomePage'];
-
+        $this->background = $background;
     }
 
     /**
@@ -33,16 +34,18 @@ class ShowHomeController extends Controller
      */
     public function index(Request $request)
     {
+
         $listCoworking = $this->coWorking->getAllCoworking();
         $listEvent = $this->event->getAllEvents($this->config['listEventPaginate']);
         $listCategoryProject = $this->category->getCategoryProject();
+        $listBackground = $this->background->getBackgroundHome();
         if ($request->ajax()) {
             $valueCategory = $request->get('category_id');
             $listProjects = $this->project->getProjectByCategory($valueCategory);
             $view = view('data_projectIndex_loadmore', compact('listCategoryProject', 'listProjects', 'valueCategory'))->render();
             return response()->json(['html' => $view]);
         }
-        return view('web.index', compact('listEvent', 'listCoworking','listCategoryProject'));
+        return view('web.index', compact('listEvent', 'listCoworking', 'listCategoryProject','listBackground'));
     }
 
     /**

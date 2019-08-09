@@ -8,9 +8,19 @@ use Illuminate\Support\Facades\DB;
 class Background extends Model
 {
     protected $table = 'background';
-    public function getBackgroundEvent(){
+
+    public function getBackgroundEvent()
+    {
         return DB::table($this->table)
-            ->where('event','1')
+            ->where('event', '1')
+            ->select('image_link')
+            ->first();
+    }
+
+    public function getBackgroundHome()
+    {
+        return DB::table($this->table)
+            ->where('home', '1')
             ->select('image_link')
             ->first();
     }

@@ -1,4 +1,7 @@
 @extends("admin.common_layouts.master")
+@section('myheadscript')
+    <script src="{{asset('admin/libraries/ckeditor/ckeditor.js')}}"></script>
+@endsection
 @section("content")
     <!-- Navbar -->
     <nav class="navbar navbar-top navbar-expand-md navbar-dark" id="navbar-main">
@@ -157,7 +160,7 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label>Overview</label> <br/>
-                                <textarea style="width: 100%" name="overview">{{$infoProject->overview}}</textarea>
+                                <textarea id="editor1" style="width: 100%" name="overview">{{$infoProject->overview}}</textarea>
                             </div>
                         </div>
                         <div class="col-md-12">
@@ -205,7 +208,7 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label>概要</label> <br/>
-                                <textarea style="width: 100%"
+                                <textarea id="editor2" style="width: 100%"
                                           name="overview_jp">{{$infoProject->jp_overview}}</textarea>
                             </div>
                         </div>
@@ -228,4 +231,12 @@
             margin-left: 1em;
         }
     </style>
+@endsection
+@section("myscript")
+    <script src = "{{asset('admin/libraries/ckfinder/ckfinder.js')}}"></script>
+    <script>
+        var editor = CKEDITOR.replace('editor1');
+        CKFinder.setupCKEditor(editor, '{{asset('admin/libraries/ckfinder/ckfinder.js')}}');
+        CKEDITOR.replace('editor2');
+    </script>
 @endsection

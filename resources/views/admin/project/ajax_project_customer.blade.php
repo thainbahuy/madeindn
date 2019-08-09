@@ -23,12 +23,11 @@
                 <td class="text-center">{{$value->created_at}}</td>
                 <td class="text-center">
                     <a onclick="showModalProject('{{$value->id}}')" href="javascript:">
-                        <img src="https://image.flaticon.com/icons/png/128/61/61848.png" width="10%" alt="">
-                        </image>
-                    </a> &nbsp;
+                        <img src="https://image.flaticon.com/icons/png/128/61/61848.png" style="width: 25px; height: 25px;" alt="">
+                    </a> &nbsp
                     || &nbsp;
                     <a href="{{route('view.admin.project.detail_project_submit',$value->id)}}">
-                        <img style="width: 10%;"
+                        <img style="width: 25px; height: 25px;"
                              src="https://png.pngtree.com/svg/20151211/af2c28659c.svg"
                              alt="">
                     </a>

@@ -273,13 +273,13 @@
     @include('web.common_layouts.footer')
 </footer>
 <!-- END FOOTER -->
-<!-- <a id="go-top" href="javascript:;" title="Go Top" class="c-btn__go-top"><img src="{{asset('web/')}}/images/icons/go_top.png" alt="Go Top" /></a> -->
 <!-- ======== JAVASCRIPT ======== -->
 @include('web.common_layouts.script_footer')
 <script src="{{asset('web/js/loadmore.js')}}"></script>
-
 <script>
-
+    $(function() {
+        $('.c-banner').css("background-image", "url({{$listBackground->image_link}})");
+    });
 </script>
 <!-- endbuild -->
 <!-- ======== END JAVASCRIPT ======== -->

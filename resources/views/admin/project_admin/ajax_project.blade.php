@@ -16,8 +16,7 @@
             <th class="text-center sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
                 aria-label="ADD">
                 <a href="{{route('view.admin.project_admin.add_project')}}" class="btn btn-sm btn-success">
-                    <span class="ni ni-fat-add"></span>&nbsp;ADD
-
+                    <span class="ni ni-fat-add"></span>&nbsp; ADD
                 </a>
             </th>
         </tr>
