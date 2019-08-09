@@ -4,15 +4,13 @@ namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\SubmitProjectRequest;
-use App\Jobs\SendWelcomeEmail;
+use App\Jobs\SendMailJob;
 use App\Models\Web\Category;
 use App\Models\Web\Customer;
 use App\Models\Web\Project;
 use App\Models\Web\ProjectSubmit;
-use Carbon\Carbon;
 use Helpers;
 use Illuminate\Http\Request;
-
 
 class ProjectController extends Controller
 {
@@ -60,21 +58,32 @@ class ProjectController extends Controller
         return view('web.project.project_detail', compact('getProject'));
     }
 
-    /**
-     * Save customer information in the database and shoot mail to the administrator
+    /**Save customer information in the database and shoot mail to the administrator
      * @param $name
      * @param $id
      * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
      */
     public function postCustomer($name, $id, Request $request)
     {
         $info_customer = new Customer();
-        if ($request->ajax()) {
-            if ($info_customer->postCustomer($request, $id)) {
-                $emailJob = (new SendWelcomeEmail($info_customer))->delay(Carbon::now()->addSeconds(1));
-                dispatch($emailJob);
-            }
-        };
+        $validator = \Validator::make($request->all(), [
+            'email' => 'required|email|max:255',
+            'phone' => 'required|max:15',
+            'content_message' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+//            response()->json(['errors' => $validator->errors()->all()]);
+            return redirect()->route('web.project.project_detail',['name'=>$name,'id'=>$id]);
+        } else {
+            if ($request->ajax()) {
+                if ($info_customer->postCustomer($request, $id)) {
+                    $emailJob = (new SendMailJob('mail', array('email' => $request->email, 'mobile' => $request->phone, 'content_text' => $request->content_message, 'product_id' => $id, 'date' => date("d-m-Y H:i:s")), "Khách Hàng Liên Lạc", "congthongtindue@gmail.com", "TEST", "nghia97dn@gmail.com"));
+                    dispatch($emailJob);
+                }
+            };
+        }
     }
 
     /**Display information of project entry form for customers

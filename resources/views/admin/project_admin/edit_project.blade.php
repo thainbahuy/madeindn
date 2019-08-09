@@ -66,7 +66,8 @@
                                                 <option value="" selected>==== Category was deleted ====</option>
                                             @endif
                                             @foreach($listCategory as $value)
-                                                <option value="{{$value->id}}" @if($infoProject->category_id == $value->id) selected @endif>
+                                                <option value="{{$value->id}}"
+                                                        @if($infoProject->category_id == $value->id) selected @endif>
                                                     {{Helpers::changeLanguage($value->name,$value->jp_name)}}
                                                 </option>
                                             @endforeach
@@ -84,16 +85,21 @@
                                     </div>
                                     <div class="form-group">
                                         <label>Author description</label>
-                                        <textarea class="form-control" name="author_description">{{$infoProject->author_description}}</textarea>
+                                        <textarea class="form-control"
+                                                  name="author_description">{{$infoProject->author_description}}</textarea>
                                     </div>
                                     <div class="form-group">
                                         <div class="row">
                                             <div class="custom-control custom-radio mb-3">
-                                                <input checked @if($infoProject->status == 1) checked @endif type="radio" value="1" id="customRadio1" name="status" class="custom-control-input">
+                                                <input checked @if($infoProject->status == 1) checked
+                                                       @endif type="radio" value="1" id="customRadio1" name="status"
+                                                       class="custom-control-input">
                                                 <label class="custom-control-label" for="customRadio1">SHOW</label>
                                             </div>
                                             <div class="custom-control custom-radio">
-                                                <input type="radio" @if($infoProject->status == 2) checked @endif value="2" id="customRadio2" name="status" class="custom-control-input">
+                                                <input type="radio" @if($infoProject->status == 2) checked
+                                                       @endif value="2" id="customRadio2" name="status"
+                                                       class="custom-control-input">
                                                 <label class="custom-control-label" for="customRadio2">HIDE</label>
                                             </div>
                                         </div>
@@ -135,6 +141,16 @@
                                             </tr>
                                         </table>
                                     </div>
+                                    <div class="form-group">
+                                        <div class="form-group">
+                                            <label>Author Image</label> <br/>
+                                            <input type="file" name="author_image" accept="image/*"> <Br/>
+                                            <span>Ảnh cũ</span> <Br/>
+                                            <img style="max-width: 120px !important; max-height: 120px !important;"
+                                                 class="img-thumbnail  listimage-edit"
+                                                 src="{{$infoProject->author_avatar}}">
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -162,7 +178,8 @@
                                     </div>
                                     <div class="form-group">
                                         <label>Author description JP</label>
-                                        <textarea class="form-control" name="author_description_jp">{{$infoProject->author_description_jp}}</textarea>
+                                        <textarea class="form-control"
+                                                  name="author_description_jp">{{$infoProject->author_description_jp}}</textarea>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -188,7 +205,8 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label>概要</label> <br/>
-                                <textarea style="width: 100%" name="overview_jp">{{$infoProject->jp_overview}}</textarea>
+                                <textarea style="width: 100%"
+                                          name="overview_jp">{{$infoProject->jp_overview}}</textarea>
                             </div>
                         </div>
                         <div class="col-md-12">
@@ -206,8 +224,8 @@
         </div>
     </div>
     <style>
-        .custom-radio{
-            margin-left:1em;
+        .custom-radio {
+            margin-left: 1em;
         }
     </style>
 @endsection

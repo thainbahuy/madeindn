@@ -131,6 +131,10 @@
                                             </tr>
                                         </table>
                                     </div>
+                                    <div class="form-group">
+                                        <label>Author Image</label> <br/>
+                                        <input type="file" name="author_image" accept="image/*">
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -163,7 +167,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>Picture Coworking</label>
+                                        <label>Picture Project</label>
                                         <input type="file" style="display:none" id="upload-input"
                                                name="imageProject" accept="image/*">
                                         <div id="upload" class="form-control drop-area">

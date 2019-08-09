@@ -1,5 +1,5 @@
 <div class="card-header border-0">
-    <h3 class="mb-0">{{__('message_coworking.listCoworking')}}</h3>
+    <h3 class="mb-0">List Project</h3>
 </div>
 <div class="table-responsive">
     <table class="table align-items-center ">
@@ -8,9 +8,9 @@
             <th class="text-center" scope="col">ID</th>
             <th class="text-center" scope="col">Name</th>
             <th class="text-center" scope="col">Author name</th>
-            <th class="text-center" scope="col">Image</th>
+            <th class="text-center" scope="col">Project Image</th>
             <th class="text-center" scope="col">Category</th>
-            <th class="text-center" scope="col">position</th>
+            <th class="text-center" scope="col">Position</th>
             <th class="text-center" scope="col">Status</th>
             <th class="text-center" scope="col">Created at</th>
             <th class="text-center sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"

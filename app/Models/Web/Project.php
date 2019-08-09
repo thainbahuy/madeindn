@@ -9,7 +9,7 @@ use Helpers;
 class Project extends Model
 {
     protected $table = 'project';
-    protected $fillable = ['name', 'overview', 'author_name', 'author_email', 'author_phone', 'status', 'jp_name', 'jp_overview', 'category_id', 'position'];
+    protected $fillable = ['name', 'overview', 'author_name', 'author_email', 'author_phone', 'status', 'jp_name', 'jp_overview', 'category_id', 'position', 'author_avatar'];
 
     function __construct()
     {
@@ -28,7 +28,7 @@ class Project extends Model
 
     public function getAllProject()
     {
-        return Project::select('id', 'name', 'author_name', 'image_link', 'status', 'jp_name', 'category_id')
+        return Project::select('id', 'name', 'author_name', 'image_link', 'status', 'jp_name', 'category_id', 'author_avatar')
             ->where(function ($q) {
                 $this->activeProject($q);
             })
@@ -36,24 +36,24 @@ class Project extends Model
                 $this->activeProject($q);
             })
             ->orderByRaw('ISNULL(position), position ASC')
-            ->orderBy('id','DESC')
+            ->orderBy('id', 'DESC')
             ->paginate(10);
     }
 
     public function getProjectByCategory($id)
     {
-        return Project::select('id', 'name', 'author_name', 'image_link', 'status', 'jp_name', 'category_id')
+        return Project::select('id', 'name', 'author_name', 'image_link', 'status', 'jp_name', 'category_id', 'author_avatar')
             ->where('category_id', $id)
             ->where(function ($q) {
                 $this->activeProject($q);
             })->orderByRaw('ISNULL(position), position ASC')
-            ->orderBy('id','DESC')
+            ->orderBy('id', 'DESC')
             ->paginate($this->config['listProjectPaginate']);
     }
 
     public function getProjectById($id)
     {
-        return Project::select('id', 'name', 'author_name', 'image_link', 'status', 'jp_name', 'overview', 'jp_overview', 'author_description', 'author_description_jp')
+        return Project::select('id', 'name', 'author_name', 'image_link', 'status', 'jp_name', 'overview', 'jp_overview', 'author_description', 'author_description_jp', 'author_avatar')
             ->where('id', $id)
             ->where(function ($q) {
                 $this->activeProject($q);
@@ -84,7 +84,7 @@ class Project extends Model
                 $this->activeProject($q);
             })
             ->orderByRaw('ISNULL(position), position ASC')
-            ->orderBy('id','DESC')
+            ->orderBy('id', 'DESC')
             ->paginate($this->config['listProjectPaginate']);
     }
 }

@@ -15,7 +15,11 @@
             <div class="c-section__project__banner__top">
                 <div class="c-section__project__banner__profile">
                     <div class="avatar c-thumbnail c-thumbnail__object-fit">
-                        <img src="{{asset('web/')}}/images/4-3_1024x767.png" alt="">
+                        @if($getProject->author_avatar == null)
+                            <img src="{{asset('web/')}}/images/4-3_1024x767.png" alt="">
+                        @else
+                            <img src="{{$getProject->author_avatar}}" alt="">
+                        @endif
                     </div>
                     <div class="name">
                         <p><span>By</span>{{$getProject->author_name}}</p>
@@ -47,7 +51,11 @@
                         <div class="c-sidebar__profile__top">
                             <div class="c-sidebar__profile__avatar">
                                 <div class="avatar c-thumbnail c-thumbnail__object-fit">
-                                    <img src="{{asset('web/')}}/images/4-3_1024x767.png" alt="">
+                                    @if($getProject->author_avatar == null)
+                                        <img src="{{asset('web/')}}/images/4-3_1024x767.png" alt="">
+                                    @else
+                                        <img src="{{$getProject->author_avatar}}" alt="">
+                                    @endif
                                 </div>
                             </div>
                             <div class="c-sidebar__profile__name">

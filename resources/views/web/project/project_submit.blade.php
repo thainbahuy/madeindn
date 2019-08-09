@@ -103,7 +103,7 @@
                                 <div class="form-upload">
                                     <div class="input-file-container">
                                         <input class="input-file" multiple="multiple" name="files_startup[]"
-                                               accept="application/pdf,application/msword" id="files_startup"
+                                               accept="" id="files_startup"
                                                type="file">
                                         <label tabindex="0" for="my-file" class="input-file-trigger">
                                             <img src="{{asset('web/images/')}}/icons/icon-upload.png">
@@ -121,6 +121,7 @@
                                         </div>
                                     </div>
                                 </div>
+                                <span class="error">{{ $errors->first('files_startup') }}</span>
                                 <!-- <p class="file-return"></p> -->
                             </div>
                         </div>
@@ -132,7 +133,8 @@
                             <div class="contact__form__controll">
                                 <div class="form-upload">
                                     <div class="input-file-container">
-                                        <input class="input-file" accept="image/gif, image/jpeg, image/png" name="image_startup" id="image_startup" type="file">
+                                        <input class="input-file" accept="image/gif, image/jpeg, image/png"
+                                               name="image_startup" id="image_startup" type="file">
                                         <label tabindex="0" for="my-file" class="input-file-trigger">
                                             <img src="{{asset('web/images/')}}/icons/icon-upload.png">
                                             TẢI HÌNH ẢNH VỀ STARTUP
@@ -172,6 +174,14 @@
 <!-- ======== JAVASCRIPT ======== -->
 @include('web.common_layouts.script_footer')
 <script src="{{asset('web/js/project.js')}}"></script>
+<script>
+    if ($('.alert-success').length > 0) {
+        $('.alert-success').append("{{__('message_submit_project.success')}}");
+    }
+    if ($('.alert-danger').length > 0) {
+        $('.alert-danger').append("{{__('message_submit_project.fail')}}");
+    }
+</script>
 <!-- endbuild -->
 <!-- ======== END JAVASCRIPT ======== -->
 </body>

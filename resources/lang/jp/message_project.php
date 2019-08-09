@@ -23,5 +23,5 @@ return [
     'overview.required'               => 'The Overview  field is required. JP JP JP',
     'overview_jp.required'            => 'The Overview JP  field is required. JP JP JP',
 
-    'imageCoworking.required'         => 'The Image Project field is required. JP JP JP',
+    'imageProject.required'           => 'The Image Project field is required. JP JP JP',
 ];

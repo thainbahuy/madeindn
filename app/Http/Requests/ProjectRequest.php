@@ -42,6 +42,8 @@ class ProjectRequest extends FormRequest
             } else {
                 $rule_category = 'required';
             }
+        } else {
+            $rule_category = 'required';
         }
 
 
@@ -61,7 +63,7 @@ class ProjectRequest extends FormRequest
 
             'overview' => 'required',
             'overview_jp' => 'required',
-            'imageCoworking' => $rule_image,
+            'imageProject' => $rule_image,
         ];
     }
 
@@ -90,7 +92,7 @@ class ProjectRequest extends FormRequest
             'overview.required' => __('message_project.overview.required'),
             'overview_jp.required' => __('message_project.overview_jp.required'),
 
-            'imageCoworking.required' => __('message_project.imageCoworking.required'),
+            'imageProject.required' => __('message_project.imageProject.required'),
         ];
     }
 }

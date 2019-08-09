@@ -52,10 +52,3 @@ function deletFiles(key) {
     console.log(filesList);
 }
 
-if ($('.alert-success').length > 0) {
-    $('.alert-success').append("BẠN ĐÃ SUBMIT THÀNH CÔNG !!!");
-}
-
-if ($('.alert-danger').length > 0) {
-    $('.alert-danger').append("BẠN ĐÃ SUBMIT THẤT BẠI !!! VUI LÒNG THỬ LẠI");
-}

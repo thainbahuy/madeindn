@@ -30,7 +30,7 @@ class Project extends Model
 
     public function getProjectById($id)
     {
-        return Project::select('id', 'name', 'author_name', 'author_email', 'author_phone', 'image_link', 'status', 'jp_name', 'overview', 'jp_overview', 'author_description', 'author_description_jp', 'category_id', 'position')
+        return Project::select('id', 'name', 'author_name', 'author_email', 'author_phone', 'image_link', 'status', 'jp_name', 'overview', 'jp_overview', 'author_description', 'author_description_jp', 'category_id', 'position','author_avatar')
             ->where('id', $id)
             ->first();
     }
@@ -42,7 +42,7 @@ class Project extends Model
             ->delete();
     }
 
-    public function addProject($name, $overview, $author_name, $author_email, $author_phone, $status, $name_jp, $overview_jp, $category_id, $image_link, $author_description, $author_description_jp, $position)
+    public function addProject($name, $overview, $author_name, $author_email, $author_phone, $status, $name_jp, $overview_jp, $category_id, $image_link, $author_description, $author_description_jp, $position,$author_image)
     {
         $this->name = $name;
         $this->overview = $overview;
@@ -57,29 +57,31 @@ class Project extends Model
         $this->author_description = $author_description;
         $this->author_description_jp = $author_description_jp;
         $this->position = $position;
+        $this->author_avatar = $author_image;
 
         return $this->save();
     }
 
-    public function editProject($id, $name, $overview, $author_name, $author_email, $author_phone, $status, $name_jp, $overview_jp, $category_id, $image_link, $author_description, $author_description_jp, $position)
+    public function editProject($id, $name, $overview, $author_name, $author_email, $author_phone, $status, $name_jp, $overview_jp, $category_id, $image_link, $author_description, $author_description_jp, $position,$author_image)
     {
-        $infoCoworking = $this->findOrfail($id);
+        $infoProject = $this->findOrfail($id);
 
-        $infoCoworking->name = $name;
-        $infoCoworking->overview = $overview;
-        $infoCoworking->author_name = $author_name;
-        $infoCoworking->author_email = $author_email;
-        $infoCoworking->author_phone = $author_phone;
-        $infoCoworking->status = $status;
-        $infoCoworking->jp_name = $name_jp;
-        $infoCoworking->jp_overview = $overview_jp;
-        $infoCoworking->category_id = $category_id;
-        $infoCoworking->image_link = $image_link;
-        $infoCoworking->author_description = $author_description;
-        $infoCoworking->author_description_jp = $author_description_jp;
-        $infoCoworking->position = $position;
+        $infoProject->name = $name;
+        $infoProject->overview = $overview;
+        $infoProject->author_name = $author_name;
+        $infoProject->author_email = $author_email;
+        $infoProject->author_phone = $author_phone;
+        $infoProject->status = $status;
+        $infoProject->jp_name = $name_jp;
+        $infoProject->jp_overview = $overview_jp;
+        $infoProject->category_id = $category_id;
+        $infoProject->image_link = $image_link;
+        $infoProject->author_description = $author_description;
+        $infoProject->author_description_jp = $author_description_jp;
+        $infoProject->position = $position;
+        $infoProject->author_avatar = $author_image;
 
-        return $infoCoworking->save();
+        return $infoProject->save();
     }
 
     public function changeStatus($id, $status)
