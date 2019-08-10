@@ -24,7 +24,7 @@
                         <p>{{__('message.BD_OVERVIEW')}}</p>
                     </div>
                     <div class="text">
-                        {{Helpers::changeLanguage($objCoworking->overview,$objCoworking->jp_overview)}}
+                        {!! Helpers::changeLanguage($objCoworking->overview,$objCoworking->jp_overview) !!}
                     </div>
                 </div>
                 <div class="c-section__content__right">

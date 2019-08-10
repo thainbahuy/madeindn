@@ -40,7 +40,7 @@
         <div class="o-container">
             <div class="c-section__content">
                 <div class="c-section__content__text">
-                    <p>{{Helpers::changeLanguage($listFirstAbout->description,$listFirstAbout->jp_description)}}</p>
+                    <p>{!! Helpers::changeLanguage($listFirstAbout->description,$listFirstAbout->jp_description) !!}</p>
                 </div>
             </div>
         </div>
