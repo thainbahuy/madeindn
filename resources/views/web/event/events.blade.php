@@ -45,11 +45,13 @@
 
 
 <script src="{{asset('web/js/loadmore.js')}}"></script>
+@if($background != null)
 <script>
     $(function() {
         $('.c-banner__events').css("background-image", "url({{$background->image_link}})");
     });
 </script>
+@endif
 <!-- endbuild -->
 <!-- ======== END JAVASCRIPT ======== -->
 

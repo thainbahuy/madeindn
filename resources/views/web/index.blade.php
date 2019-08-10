@@ -253,11 +253,13 @@
 <!-- ======== JAVASCRIPT ======== -->
 @include('web.common_layouts.script_footer')
 <script src="{{asset('web/js/loadmore.js')}}"></script>
+@if($listBackground != null)
 <script>
     $(function() {
         $('.c-banner').css("background-image", "url({{$listBackground->image_link}})");
     });
 </script>
+@endif
 <!-- endbuild -->
 <!-- ======== END JAVASCRIPT ======== -->
 </body>
