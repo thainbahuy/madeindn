@@ -7,7 +7,7 @@
     <nav class="navbar navbar-top navbar-expand-md navbar-dark" id="navbar-main">
         <div class="container-fluid">
             <!-- Brand -->
-            <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" href="#">ADD COWORKING</a>
+            <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" href="#">ADD NEW COWORKING</a>
             <!-- Form -->
             @include("admin.common_layouts.language")
         </div>
@@ -64,12 +64,12 @@
                                     <div class="form-group">
                                         <label>Name Coworking</label>
                                         <input class="form-control" type="text" name="name"
-                                               placeholder="" value="{{old('name')}}">
+                                               placeholder="Please enter a value in this field" value="{{old('name')}}">
                                     </div>
                                     <div class="form-group">
                                         <label>Location appears</label>
                                         <input class="form-control" type="number" name="position"
-                                               placeholder="" value="{{old('position')}}">
+                                               placeholder="This field may be blank" value="{{old('position')}}">
                                     </div>
                                     <div class="form-group">
                                         <label>Location Coworking</label>
@@ -80,6 +80,7 @@
                                                            type="text" value="Location name" readonly></td>
                                                 <td>
                                                     <input class="form-control" name="location[]"
+                                                           placeholder="Please enter a value in this field"
                                                            type="text" value="{{old('location')[0]}}">
                                                 </td>
                                             </tr>
@@ -89,6 +90,7 @@
                                                            type="text" value="Location address" readonly></td>
                                                 <td>
                                                     <input class="form-control" name="location[]"
+                                                           placeholder="Please enter a value in this field"
                                                            type="text" value="{{old('location')[1]}}">
                                                 </td>
                                             </tr>
@@ -98,6 +100,7 @@
                                                            type="text" value="City" readonly></td>
                                                 <td>
                                                     <input class="form-control" name="location[]"
+                                                           placeholder="Please enter a value in this field"
                                                            type="text" value="{{old('location')[2]}}">
                                                 </td>
                                             </tr>
@@ -115,6 +118,7 @@
                                                 </td>
                                                 <td>
                                                     <input class="form-control" name="social[value][]"
+                                                           placeholder="This field may be blank"
                                                            type="text" value="{{old('social')['value']['0']}}">
                                                 </td>
                                             </tr>
@@ -125,6 +129,7 @@
                                                 </td>
                                                 <td>
                                                     <input class="form-control" name="social[value][]"
+                                                           placeholder="This field may be blank"
                                                            type="text" value="{{old('social')['value']['1']}}">
                                                 </td>
                                             </tr>
@@ -135,7 +140,9 @@
                                                 </td>
                                                 <td>
                                                     <input class="form-control" name="social[value][]"
-                                                           type="text" value="{{old('social')['value']['2']}}">
+                                                           placeholder="This field may be blank"
+                                                           type="text" placeholder="This field may be blank"
+                                                           value="{{old('social')['value']['2']}}">
                                                 </td>
                                             </tr>
                                             <tr>
@@ -145,6 +152,7 @@
                                                 </td>
                                                 <td>
                                                     <input class="form-control" name="social[value][]"
+                                                           placeholder="This field may be blank"
                                                            type="text" value="{{old('social')['value']['3']}}">
                                                 </td>
                                             </tr>
@@ -155,6 +163,7 @@
                                                 </td>
                                                 <td>
                                                     <input class="form-control" name="social[value][]"
+                                                           placeholder="This field may be blank"
                                                            type="text" value="{{old('social')['value']['4']}}">
                                                 </td>
                                             </tr>
@@ -166,7 +175,8 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label>Overview</label> <br/>
-                                <textarea id="editor1" class="editor1" style="width: 100%" name="overview">{{old('overview')}}</textarea>
+                                <textarea id="editor1" class="editor1" style="width: 100%"
+                                          name="overview">{{old('overview')}}</textarea>
                             </div>
                         </div>
                         <div class="col-md-12">
@@ -181,39 +191,43 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>名前のコワーキング</label>
-                                        <input class="form-control" type="text" name="name_jp"
+                                        <label>Name Coworking Japanese</label>
+                                        <input placeholder="This field may be blank" class="form-control" type="text"
+                                               name="name_jp"
                                                value="{{old('name_jp')}}">
                                     </div>
                                     <div class="form-group">
-                                        <label>ロケーション
+                                        <label> Location Coworking Japanese
                                         </label>
                                         <table class="table configuration">
                                             <tr>
                                                 <td width="200px">
                                                     <input class="form-control"
-                                                           type="text" value="地名" readonly></td>
+                                                           type="text" value="Location name Japanese" readonly></td>
                                                 <td>
                                                     <input class="form-control" name="location_jp[]"
-                                                           type="text" value="{{old('location_jp')[0]}}">
+                                                           type="text" placeholder="Please enter a value in this field"
+                                                           value="{{old('location_jp')[0]}}">
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td width="200px">
                                                     <input class="form-control"
-                                                           type="text" value="住所" readonly></td>
+                                                           type="text" value="Location address Japanese" readonly></td>
                                                 <td>
                                                     <input class="form-control" name="location_jp[]"
-                                                           type="text" value="{{old('location_jp')[1]}}">
+                                                           type="text" placeholder="Please enter a value in this field"
+                                                           value="{{old('location_jp')[1]}}">
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td width="200px">
                                                     <input class="form-control"
-                                                           type="text" value="シティ" readonly></td>
+                                                           type="text" value="City Japanese" readonly></td>
                                                 <td>
                                                     <input class="form-control" name="location_jp[]"
-                                                           type="text" value="{{old('location_jp')[2]}}">
+                                                           type="text" placeholder="Please enter a value in this field"
+                                                           value="{{old('location_jp')[2]}}">
                                                 </td>
                                             </tr>
                                         </table>
@@ -221,7 +235,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>Picture Coworking</label>
+                                        <label>Coworking Image</label>
                                         <input type="file" style="display:none" id="upload-input"
                                                name="imageCoworking" accept="image/*">
                                         <div id="upload" class="form-control drop-area">
@@ -237,8 +251,9 @@
                         </div>
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label>概要</label> <br/>
-                                <textarea id="editor2" class="editor2" style="width: 100%" name="overview_jp">{{old('overview_jp')}}</textarea>
+                                <label>Overview Japanese</label> <br/>
+                                <textarea id="editor2" class="editor2" style="width: 100%"
+                                          name="overview_jp">{{old('overview_jp')}}</textarea>
                             </div>
                         </div>
                         <div class="col-md-12">
@@ -257,7 +272,7 @@
     </div>
 @endsection
 @section("myscript")
-    <script src = "{{asset('admin/libraries/ckfinder/ckfinder.js')}}"></script>
+    <script src="{{asset('admin/libraries/ckfinder/ckfinder.js')}}"></script>
     <script>
         var editor = CKEDITOR.replace('editor1');
         CKFinder.setupCKEditor(editor, '{{asset('admin/libraries/ckfinder/ckfinder.js')}}');

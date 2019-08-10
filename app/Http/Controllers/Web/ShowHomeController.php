@@ -22,7 +22,7 @@ class ShowHomeController extends Controller
         $this->project = $project;
         $this->event = $event;
         $this->coWorking = $coWorking;
-        $this->config = Helpers::getConfig()['HomePage'];
+        $this->config = Helpers::getConfig()['Home_Page'];
         $this->background = $background;
         $this->about = $about;
     }
@@ -37,17 +37,20 @@ class ShowHomeController extends Controller
     {
 
         $listCoworking = $this->coWorking->getAllCoworking();
-        $listEvent = $this->event->getAllEvents($this->config['listEventPaginate']);
+        $listEvent = $this->event->getAllEvents($this->config['Quantity Post Event']);
         $listCategoryProject = $this->category->getCategoryProject();
         $listBackground = $this->background->getBackgroundHome();
         $listAbout = $this->about->getAllAbout();
+        $arrListProject = [];
+        foreach($listCategoryProject as $value){
+            $arrListProject[] = $this->project->getProjectByCategory($value->id)->paginate($this->config['Quantity Post Project']);
+        }
         if ($request->ajax()) {
             $valueCategory = $request->get('category_id');
-            $listProjects = $this->project->getProjectByCategory($valueCategory);
-            $view = view('data_projectIndex_loadmore', compact('listCategoryProject', 'listProjects', 'valueCategory'))->render();
+            $view = view('data_projectIndex_loadmore', compact('listCategoryProject', 'arrListProject', 'valueCategory'))->render();
             return response()->json(['html' => $view]);
         }
-        return view('web.index', compact('listEvent', 'listCoworking', 'listCategoryProject', 'listBackground','listAbout'));
+        return view('web.index', compact('listEvent', 'listCoworking', 'listCategoryProject', 'listBackground','listAbout','arrListProject'));
     }
 
     /**
@@ -58,7 +61,7 @@ class ShowHomeController extends Controller
      */
     public function searchProject(Request $request)
     {
-        $listProjects = $this->project->getProjectSearch($request);
+        $listProjects = $this->project->getProjectSearch($request)->paginate(Helpers::getConfig()['Project_Search_Page']['Quantity Show Post Search Project']);
         if ($request->ajax()) {
             $view = view('data_projectIndex_loadmore', compact('listProjects'))->render();
             return response()->json(['html' => $view]);

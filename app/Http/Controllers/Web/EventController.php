@@ -16,7 +16,7 @@ class EventController extends Controller
     {
         $this->eventModel = $eventModel;
         $this->backgroundModel = $background;
-        $this->config = Helpers::getConfig()['EventPage'];
+        $this->config = Helpers::getConfig()['Event_Page'];
     }
 
     /**
@@ -28,7 +28,7 @@ class EventController extends Controller
     public function index(Request $request)
     {
         $background = $this->backgroundModel->getBackgroundEvent();
-        $listEvent = $this->eventModel->getAllEvents($this->config['listEventPaginate']);
+        $listEvent = $this->eventModel->getAllEvents($this->config['Quantity Post Event']);
         if ($request->ajax()) {
             $view = view('data_event_loadmore', compact('listEvent'))->render();
             return response()->json(['html' => $view]);

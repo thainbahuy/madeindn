@@ -145,14 +145,18 @@
                                         </table>
                                     </div>
                                     <div class="form-group">
-                                        <div class="form-group">
-                                            <label>Author Image</label> <br/>
-                                            <input type="file" name="author_image" accept="image/*"> <Br/>
-                                            <span>Ảnh cũ</span> <Br/>
-                                            <img style="max-width: 120px !important; max-height: 120px !important;"
-                                                 class="img-thumbnail  listimage-edit"
-                                                 src="{{$infoProject->author_avatar}}">
-                                        </div>
+                                        @if($infoProject->author_avatar <> null)
+                                            <div class="form-group">
+                                                <label>Author Image</label> <br/>
+                                                <input type="file" name="author_image" accept="image/*"> <Br/>
+                                                <span>Old Author image</span> <Br/>
+                                                <img style="max-width: 120px !important; max-height: 120px !important;"
+                                                     class="img-thumbnail  listimage-edit"
+                                                     src="{{$infoProject->author_avatar}}">
+                                            </div>
+                                        @else
+                                            <del>No Author Images.</del>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
@@ -160,7 +164,8 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label>Overview</label> <br/>
-                                <textarea id="editor1" style="width: 100%" name="overview">{{$infoProject->overview}}</textarea>
+                                <textarea id="editor1" style="width: 100%"
+                                          name="overview">{{$infoProject->overview}}</textarea>
                             </div>
                         </div>
                         <div class="col-md-12">
@@ -175,19 +180,19 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>Name Project JP</label>
+                                        <label>Name Project Japanese</label>
                                         <input class="form-control" type="text" name="name_jp"
                                                placeholder="" value="{{$infoProject->jp_name}}">
                                     </div>
                                     <div class="form-group">
-                                        <label>Author description JP</label>
+                                        <label>Author description Japanese</label>
                                         <textarea class="form-control"
                                                   name="author_description_jp">{{$infoProject->author_description_jp}}</textarea>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>Picture Coworking</label>
+                                        <label>Project new Image</label>
                                         <input type="file" style="display:none" id="upload-input"
                                                name="imageProject" accept="image/*">
                                         <div id="upload" class="form-control drop-area">
@@ -196,7 +201,7 @@
                                                 Click here to select a photo!
                                             </button>
                                             <div id="thumbnail"></div>
-                                            <span>Hình cũ</span> <br/>
+                                            <span>Project old Image</span> <br/>
                                             <img style="max-width: 120px !important; max-height: 120px !important;"
                                                  class="img-thumbnail  listimage-edit"
                                                  src="{{$infoProject->image_link}}">
@@ -207,7 +212,7 @@
                         </div>
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label>概要</label> <br/>
+                                <label>Overview Japanese</label> <br/>
                                 <textarea id="editor2" style="width: 100%"
                                           name="overview_jp">{{$infoProject->jp_overview}}</textarea>
                             </div>
@@ -233,7 +238,7 @@
     </style>
 @endsection
 @section("myscript")
-    <script src = "{{asset('admin/libraries/ckfinder/ckfinder.js')}}"></script>
+    <script src="{{asset('admin/libraries/ckfinder/ckfinder.js')}}"></script>
     <script>
         var editor = CKEDITOR.replace('editor1');
         CKFinder.setupCKEditor(editor, '{{asset('admin/libraries/ckfinder/ckfinder.js')}}');

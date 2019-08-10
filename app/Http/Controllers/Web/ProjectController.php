@@ -14,13 +14,14 @@ use Illuminate\Http\Request;
 
 class ProjectController extends Controller
 {
-    private $projectModel, $category, $projectSubmit, $customer;
+    private $projectModel, $category, $projectSubmit;
 
     function __construct(Project $projectModel, Category $category, ProjectSubmit $projectSubmit)
     {
         $this->projectModel = $projectModel;
         $this->category = $category;
         $this->projectSubmit = $projectSubmit;
+        $this->config = Helpers::getConfig()['Project_Page'];
     }
 
     /**
@@ -33,7 +34,7 @@ class ProjectController extends Controller
     public function showProjectByCategory($name, Request $request)
     {
         $CategoryByProject = $this->category->where('name', $name)->first();
-        $listProjects = $this->projectModel->getProjectByCategory($CategoryByProject['id']);
+        $listProjects = $this->projectModel->getProjectByCategory($CategoryByProject['id'])->paginate($this->config['Quantity Post Project']);
         if ($request->ajax()) {
             $view = view('data_projectIndex_loadmore', compact('listProjects'))
                 ->with('valueCategory', $CategoryByProject['id'])

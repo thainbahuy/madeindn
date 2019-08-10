@@ -159,18 +159,18 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>Name Project JP</label>
+                                        <label>Name Project Japanese</label>
                                         <input class="form-control" type="text" name="name_jp"
                                                placeholder="" value="{{old('name_jp')}}">
                                     </div>
                                     <div class="form-group">
-                                        <label>Author description JP</label>
+                                        <label>Author description Japanese</label>
                                         <textarea class="form-control" name="author_description_jp">{{old('author_description_jp')}}</textarea>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>Picture Project</label>
+                                        <label>Project Image</label>
                                         <input type="file" style="display:none" id="upload-input"
                                                name="imageProject" accept="image/*">
                                         <div id="upload" class="form-control drop-area">
@@ -186,7 +186,7 @@
                         </div>
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label>概要</label> <br/>
+                                <label>Overview Japanese</label> <br/>
                                 <textarea id="editor2" style="width: 100%" name="overview_jp">{{old('overview_jp')}}</textarea>
                             </div>
                         </div>

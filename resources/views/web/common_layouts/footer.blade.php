@@ -9,36 +9,29 @@
             </div>
             <div class="c-footer__left__social">
                 <ul>
-                    <li>
-                        <a href="#" title="#"><img src="{{asset('web/')}}/images/icons/ic_fb.png" alt=""></a>
-                    </li>
-                    <li>
-                        <a href="#" title="#"><img src="{{asset('web/')}}/images/icons/ic_tw.png" alt=""></a>
-                    </li>
-                    <li>
-                        <a href="#" title="#"><img src="{{asset('web/')}}/images/icons/ic_inter.png" alt=""></a>
-                    </li>
-                    <li>
-                        <a href="#" title="#"><img src="{{asset('web/')}}/images/icons/ic_print.png" alt=""></a>
-                    </li>
-                    <li>
-                        <a href="#" title="#"><img src="{{asset('web/')}}/images/icons/ic_ig.png" alt=""></a>
-                    </li>
+                    @foreach(Helpers::getConfig()['Social_Link_Web_Footer'] as $key => $value)
+                        @if($value <> null )
+                            <li>
+                                <a href="{{$value}}" title="{{$value}}"><img
+                                            src="{{asset('web/')}}/images/icons/{{$key}}.png"></a>
+                            </li>
+                        @endif
+                    @endforeach
                 </ul>
             </div>
         </div>
         <div class="c-footer__middle">
-            <ul class="menu"">
-            <li>
-                <a href="">{{__('message.FT_ABOUT')}}</a>
-                <ul class="sub-menu">
-                    @foreach($listAllAbout as $key => $value)
-                        <li id= "active_{{$value->id}}">
-                            <a href="{{route('web.more.about',['name'=> str_slug($value->name),'id'=>$value->id])}}">{{Helpers::changeLanguage($value->name,$value->jp_name)}}</a>
-                        </li>
-                    @endforeach
-                </ul>
-            </li>
+            <ul class="menu">
+                <li>
+                    <a href="">{{__('message.FT_ABOUT')}}</a>
+                    <ul class="sub-menu">
+                        @foreach($listAllAbout as $key => $value)
+                            <li id="active_{{$value->id}}">
+                                <a href="{{route('web.more.about',['name'=> str_slug($value->name),'id'=>$value->id])}}">{{Helpers::changeLanguage($value->name,$value->jp_name)}}</a>
+                            </li>
+                        @endforeach
+                    </ul>
+                </li>
             </ul>
             <ul class="menu">
                 <li>

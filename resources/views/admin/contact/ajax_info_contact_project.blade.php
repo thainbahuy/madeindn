@@ -21,7 +21,7 @@
                 <td class="text-center">{{$value->email_customer}}</td>
                 <td class="text-center">{{$value->mobile_customer}}</td>
                 <td class="text-center">
-                    <button class="btn btn-danger btn-xs" id="show_info" value="{{$value->content_customer}}">{{__('admin_message.show')}}</button>
+                    <button class="btn btn-danger btn-xs" id="show_info" value="{{$value->content_customer}}">SHOW CONTENT</button>
                 </td>
                 <td class="text-center">{{$value->created_at}}</td>
                 <td class="text-center">

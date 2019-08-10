@@ -90,7 +90,7 @@
                                 <p>Link Driver (Nếu có)</p>
                             </div>
                             <div class="contact__form__controll">
-                                <input type="text" name="link_driver" value="{{old('link_driver')}}"
+                                <input type="url" onblur="checkURL(this)" name="link_driver" value="{{old('link_driver')}}"
                                        placeholder="Link driver của bạn (nếu có)....">
                             </div>
                         </div>
@@ -175,6 +175,16 @@
 @include('web.common_layouts.script_footer')
 <script src="{{asset('web/js/project.js')}}"></script>
 <script>
+    function checkURL (abc) {
+        var string = abc.value;
+        if(string.length > 10 ) {
+            if (!~string.indexOf("http")){
+                string = "http://" + string;
+            }
+            abc.value = string;
+            return abc
+        }
+    }
     if ($('.alert-success').length > 0) {
         $('.alert-success').append("{{__('message_submit_project.success')}}");
     }

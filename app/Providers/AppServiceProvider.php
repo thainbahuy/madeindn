@@ -30,7 +30,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         View::Share('getAllCoworking',CoWorking::select('id','name','jp_name')->orderByRaw('ISNULL(position), position ASC')->orderBy('id','DESC')->get());
-        View::Share('listCategory',Category::select('id','name','jp_name')->orderByRaw('ISNULL(position), position ASC')->orderBy('id','DESC')->get());
+        View::Share('listCategory',Category::select('id','name','jp_name','position','created_at')->orderByRaw('ISNULL(position), position ASC')->orderBy('id','DESC')->get());
         View::Share('listAllAbout',About::orderByRaw('ISNULL(position), position ASC')->orderBy('id','DESC')->get());
 
 

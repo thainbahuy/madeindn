@@ -11,11 +11,6 @@ class Project extends Model
     protected $table = 'project';
     protected $fillable = ['name', 'overview', 'author_name', 'author_email', 'author_phone', 'status', 'jp_name', 'jp_overview', 'category_id', 'position', 'author_avatar'];
 
-    function __construct()
-    {
-        $this->config = Helpers::getConfig()['HomePage'];
-    }
-
     public function activeProject($q)
     {
         return $q->where('status', 1)->where('category_id', '<>', null);
@@ -47,8 +42,7 @@ class Project extends Model
             ->where(function ($q) {
                 $this->activeProject($q);
             })->orderByRaw('ISNULL(position), position ASC')
-            ->orderBy('id', 'DESC')
-            ->paginate($this->config['listProjectPaginate']);
+            ->orderBy('id', 'DESC');
     }
 
     public function getProjectById($id)
@@ -67,7 +61,7 @@ class Project extends Model
             'category' => $request->get('category'),
         ];
 
-        return Project::select('id', 'name', 'author_name', 'image_link', 'status', 'jp_name', 'category_id')
+        return Project::select('id', 'name', 'author_name', 'image_link', 'status', 'jp_name', 'category_id', 'author_avatar')
             ->where(function ($query) use ($filters) {
                 if (!empty($filters['category'])) {
                     $query->where('category_id', $filters['category']);
@@ -84,7 +78,6 @@ class Project extends Model
                 $this->activeProject($q);
             })
             ->orderByRaw('ISNULL(position), position ASC')
-            ->orderBy('id', 'DESC')
-            ->paginate($this->config['listProjectPaginate']);
+            ->orderBy('id', 'DESC');
     }
 }

@@ -41,7 +41,7 @@
                                                placeholder="" value="{{$infoCategory->name}}">
                                     </div>
                                     <div class="form-group">
-                                        <label>Name Category JP</label>
+                                        <label>Name Category Japanese</label>
                                         <input pattern=".{0}|.{5,50}" required title="(5 to 50 chars)" class="form-control" type="text" name="name_jp"
                                                placeholder="" value="{{$infoCategory->jp_name}}">
                                     </div>

@@ -90,11 +90,21 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-lg-12">
-                                            <div class="form-group focused">
-                                                <label class="form-control-label" for="input-city">Link Driver</label>
-                                                <input type="text" id="input-link"
-                                                       class="form-control form-control-alternative" placeholder="link"
-                                                       value="{{$viewCustomerProject->link_driver}}">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group focused">
+                                                        <label class="form-control-label" for="input-city">Link
+                                                            Driver</label>
+                                                        <input type="text" id="input-link"
+                                                               class="form-control form-control-alternative"
+                                                               placeholder="link"
+                                                               value="{{$viewCustomerProject->link_driver}}">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <br/>
+                                                    <button onclick="myFunction()">Copy text</button>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -123,7 +133,6 @@
                                                   placeholder="A few words about you ...">{{$viewCustomerProject->content}}</textarea>
                                     </div>
                                 </div>
-
                                 <hr class="my-4">
                                 <!-- Description -->
                             </div>
@@ -133,4 +142,12 @@
             </div>
         </div>
     </div>
+    <script>
+        function myFunction() {
+            var copyText = document.getElementById("input-link");
+            copyText.select();
+            document.execCommand("copy");
+            alert("Copied the link : " + copyText.value);
+        }
+    </script>
 @endsection

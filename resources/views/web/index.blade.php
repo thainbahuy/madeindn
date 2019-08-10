@@ -122,7 +122,6 @@
                             <div class="c-list__project" id="project_{{$value->id}}">
                                 @php
                                     $valueCategory  = $value->id;
-                                    $listProjects   = Project::where('category_id',$valueCategory)->where('status', 1)->orderByRaw('ISNULL(position), position ASC')->paginate(Helpers::getConfig()['HomePage']['listProjectPaginate']);
                                 @endphp
                                 @include('data_projectIndex_loadmore')
                             </div>

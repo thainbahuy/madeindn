@@ -19,7 +19,7 @@
                         <p>Address</p>
                     </div>
                     <div class="text">
-                        <p>Floor 5, Quang Trung Street, Da Nang City</p>
+                        <p>{{Helpers::getConfig()['Info_Company']['Adress']}}</p>
                     </div>
                 </div>
                 <div class="item">
@@ -27,7 +27,7 @@
                         <p>Email</p>
                     </div>
                     <div class="text">
-                        <p>contact@madeindanang.com</p>
+                        <p>{{Helpers::getConfig()['Info_Company']['Email']}}</p>
                     </div>
                 </div>
                 <div class="item">
@@ -35,7 +35,9 @@
                         <p>Phone</p>
                     </div>
                     <div class="text">
-                        <p><span>0236 3 555 888</span><span>0905 888 555</span></p>
+                        <p>
+                            <span>{{Helpers::getConfig()['Info_Company']['Phone_1']}}</span><span>{{Helpers::getConfig()['Info_Company']['Phone_2']}}</span>
+                        </p>
                     </div>
                 </div>
             </div>
@@ -44,10 +46,15 @@
     <div class="c-section c-section__contact-info">
         <div class="c-section__contact-info__content">
             <div class="mapouter">
-                <div class="gmap_canvas">
-                    <iframe width="100%" height="490" id="gmap_canvas" src="https://maps.google.com/maps?q=v%C4%A9nh%20trung&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0">
-                    </iframe>
-                </div>
+                @php
+                    $address = Helpers::changeLanguage(Helpers::getConfig()['Info_Company']['AddressMap_English'],Helpers::getConfig()['Info_Company']['AddressMap_Japan'],true)
+                @endphp
+                <iframe id="map"
+                        width="100%"
+                        height="550"
+                        frameborder="0" style="border:0"
+                        src="" allowfullscreen>
+                </iframe>
             </div>
             <div class="contact__form">
                 <form action="{{route('web.contact.contact')}}" method="POST" enctype="multipart/form-data">
@@ -97,7 +104,8 @@
                             <p>Nội dung</p>
                         </div>
                         <div class="contact__form__controll">
-                            <input type="text" name="content" value="{{old('content')}}" placeholder="Viết gì đó bạn muốn yêu cầu chúng tôi?">
+                            <input type="text" name="content" value="{{old('content')}}"
+                                   placeholder="Viết gì đó bạn muốn yêu cầu chúng tôi?">
                             <span class="error">{{ $errors->first('content') }}</span>
                         </div>
                     </div>
@@ -116,6 +124,22 @@
 <!-- ======== JAVASCRIPT ======== -->
 @include('web.common_layouts.script_footer')
 <script src="{{asset('web/js/project.js')}}"></script>
+<script>
+    $(document).ready(function () {
+        $.ajax(
+            {
+                type: "POST",
+                url: 'https://maps.googleapis.com/maps/api/geocode/json?address={{$address}}&key=AIzaSyBqORBqnokRCmGGt3XqEWl21Ih6TCY38_A',
+            })
+            .done(function (data) {
+                $('#map').attr('src', 'https://www.google.com/maps/embed/v1/place?key=AIzaSyBqORBqnokRCmGGt3XqEWl21Ih6TCY38_A&zoom=18&q=place_id:' + data.results[0].place_id)
+
+            })
+            .fail(function (jqXHR, ajaxOptions, thrownError) {
+                alert('server not responding...');
+            });
+    });
+</script>
 <!-- endbuild -->
 <!-- ======== END JAVASCRIPT ======== -->
 </body>

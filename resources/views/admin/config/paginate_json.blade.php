@@ -36,28 +36,40 @@
                     <div class="form-group">
                         @foreach($jsonDataPaginate as $key => $value)
                             <div class="col-md-12" style="text-align: center;">
-                                <span style="color:red; font-weight:bold;">{{$key}}</span>
+                                <span style="text-transform: uppercase; color:red; font-weight:bold;">{{$key}}</span>
                                 <div class="form-group ">
                                     <div class="row">
                                         @foreach($jsonDataPaginate[$key] as $keyPaginate => $valuePaginate)
                                             <div class="col-md-6">
                                                 <div class="row">
-                                                    <div class="col-md-4">
+                                                    <div class="col-md-6">
                                                         <div class="form-group">
                                                             <span style="vertical-align: -webkit-baseline-middle;">{{$keyPaginate}}</span>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
-                                                        <div class="form-group focused">
-                                                            <input type="number" required name="{{$key}}[{{$keyPaginate}}]"
-                                                                   class="form-control" min=3 value="{{$valuePaginate}}">
-                                                        </div>
+                                                        @if($key == "Social_Link_Web_Footer" or $key == "Info_Company")
+                                                            <div class="form-group focused">
+                                                                <input type="text"
+                                                                       name="{{$key}}[{{$keyPaginate}}]"
+                                                                       class="form-control"
+                                                                       value="{{$valuePaginate}}">
+                                                            </div>
+                                                        @else
+                                                            <div class="form-group focused">
+                                                                <input type="number" required
+                                                                       name="{{$key}}[{{$keyPaginate}}]"
+                                                                       class="form-control" min=3
+                                                                       value="{{$valuePaginate}}">
+                                                            </div>
+                                                        @endif
                                                     </div>
                                                 </div>
                                             </div>
                                         @endforeach
                                     </div>
                                 </div>
+                                <hr/>
                             </div>
                         @endforeach
                     </div>

@@ -37,7 +37,7 @@
                                     <tr>
                                         <th class="text-center" scope="col">ID</th>
                                         <th class="text-center" scope="col">Name</th>
-                                        <th class="text-center" scope="col">お名前</th>
+                                        <th class="text-center" scope="col">Name Japanese</th>
                                         <th class="text-center" scope="col">Position</th>
                                         <th class="text-center" scope="col">Created at</th>
                                         <th class="text-center sorting" tabindex="0" aria-controls="example2"
