@@ -45,18 +45,20 @@ class ProjectController extends Controller
         $id = $request->get('id');
         $objProject = $this->project->getProjectById($id);
         $nameImage = Helpers::getNameImage($objProject->image_link);
+        $imageAuthor = Helpers::getNameImage($objProject->author_avatar);
         try {
             if ($this->project->deleteProject($id)) {
                 Log::info('Delete project titled: ' . $objProject->name);
                 Helpers::deleteImageFromCDN($nameImage);
-                return Response::json(['msg' => 'DELETE SUCCESS']);
+                Helpers::deleteImageFromCDN($imageAuthor);
+                return \Response::json(['msg' => 'DELETE SUCCESS']);
             } else {
                 Log::info('The deleted project titled: ' . $objProject->name);
-                return Response::json(['msg' => 'NO DELETE SUCCESS']);
+                return \Response::json(['msg' => 'DELETE SUCCESS']);
             }
         } catch (\Exception $e) {
             Log::info($e);
-            return Response::json(['msg' => 'NO DELETE SUCCESS']);
+            return \Response::json(['msg' => 'NO DELETE SUCCESS']);
         }
     }
 
@@ -78,14 +80,21 @@ class ProjectController extends Controller
         $newNameImage = Helpers::createNewNameImage($data["imageProject"]->getClientOriginalName());
         $image_link = "https://storage.googleapis.com/madeindn/" . $newNameImage;
 
-        $newNameImageAuthor = Helpers::createNewNameImage($data["author_image"]->getClientOriginalName());
-        $image_link_author = "https://storage.googleapis.com/madeindn/" . $newNameImageAuthor;
-        $resultAddProject = $this->project->addProject($data['name'], $data['overview'], $data['author_name'], $data['author_email'], $data['author_phone'], $data['status'], $data['name_jp'], $data['overview_jp'], $data['category'], $image_link, $data['author_description'], $data['author_description_jp'], $data['position'],$image_link_author);
+        if ($request->file('author_image')) {
+            $newNameImageAuthor = Helpers::createNewNameImage($data["author_image"]->getClientOriginalName());
+            $image_link_author = "https://storage.googleapis.com/madeindn/" . $newNameImageAuthor;
+        } else {
+            $image_link_author = null;
+        }
+
+        $resultAddProject = $this->project->addProject($data['name'], $data['overview'], $data['author_name'], $data['author_email'], $data['author_phone'], $data['status'], $data['name_jp'], $data['overview_jp'], $data['category'], $image_link, $data['author_description'], $data['author_description_jp'], $data['position'], $image_link_author);
 
         if ($resultAddProject) {
             Log::info('You just added project named: ' . $data['name']);
             Helpers::upLoadImageToCDN_N($data['imageProject'], $newNameImage);
-            Helpers::upLoadImageToCDN_N($data['author_image'], $newNameImageAuthor);
+            if ($request->file('author_image')) {
+                Helpers::upLoadImageToCDN_N($data['author_image'], $newNameImageAuthor);
+            }
             $request->session()->flash('msg', 'Success !');
             return redirect()->route('view.admin.project_admin.project');
         } else {
@@ -129,7 +138,7 @@ class ProjectController extends Controller
             $image_link_author = $oldPrject->author_avatar;
         }
 
-        $resultEditProject = $this->project->editProject($id, $data['name'], $data['overview'], $data['author_name'], $data['author_email'], $data['author_phone'], $data['status'], $data['name_jp'], $data['overview_jp'], $data['category'], $image_link, $data['author_description'], $data['author_description_jp'], $data['position'],$image_link_author);
+        $resultEditProject = $this->project->editProject($id, $data['name'], $data['overview'], $data['author_name'], $data['author_email'], $data['author_phone'], $data['status'], $data['name_jp'], $data['overview_jp'], $data['category'], $image_link, $data['author_description'], $data['author_description_jp'], $data['position'], $image_link_author);
 
         if ($resultEditProject) {
             Log::info('You just edited project named: ' . $oldPrject->name);

@@ -70,13 +70,14 @@ class Helpers
         try {
             $disk->put($file->getClientOriginalName(), file_get_contents($file));
             $urlImage = $disk->url($file->getClientOriginalName());
-            Log::info('Photos uploaded: '.$file->getClientOriginalName() );
+            Log::info('Photos uploaded: ' . $file->getClientOriginalName());
             return $urlImage;
         } catch (Exception $e) {
             Log::info('Exception upload image');
             Log::info($e);
         }
     }
+
     /**
      * delete file from CDN
      * @param $name
@@ -96,21 +97,22 @@ class Helpers
 
     public static function getNameImage($image)
     {
-        return explode("/", $image)[4];
+        return basename($image);
     }
 
-    public static function createNewNameImage($nameImage){
-        return rand(10000000, 99999999) . "_" . rand(10000000, 99999999) . "_" . rand(10000000, 99999999) . "_" .$nameImage;
+    public static function createNewNameImage($nameImage)
+    {
+        return rand(10000000, 99999999) . "_" . rand(10000000, 99999999) . "_" . rand(10000000, 99999999) . "_" . $nameImage;
     }
 
-    public static function upLoadImageToCDN_N ($file,$nameImage)
+    public static function upLoadImageToCDN_N($file, $nameImage)
     {
         $disk = Storage::disk('gcs');
         $nameImage = $nameImage;
         try {
             $disk->put($nameImage, file_get_contents($file));
             $urlImage = $disk->url($nameImage);
-            Log::info('Photos uploaded: '.$nameImage);
+            Log::info('Photos uploaded: ' . $nameImage);
             return $urlImage;
 
         } catch (Exception $e) {
