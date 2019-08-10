@@ -27,7 +27,7 @@ class AboutController extends Controller
     public function index($name, $id)
     {
         $listAbout = $this->about->getAllAbout();
-        $listFirstAbout = About::where('id',$id)->first();
+        $listFirstAbout = $this->about->getAboutById($id);
         return view('web.more.about', compact('listAbout','listFirstAbout'))->with('id',$id);
     }
 }

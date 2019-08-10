@@ -97,8 +97,8 @@
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="./examples/profile.html">
-                        <i class="ni ni-single-02 text-yellow"></i> User profile
+                    <a class="nav-link " href="{{route('view.admin.about.about')}}">
+                        <i class="ni ni-single-02 text-yellow"></i> About Page
                     </a>
                 </li>
                 <li class="nav-item">

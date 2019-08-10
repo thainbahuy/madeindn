@@ -122,6 +122,13 @@ Route::namespace('Admin')->middleware('guest')->prefix('admin/')->group( functio
     Route::get('/category/edit/{id}', 'CategoryController@getEditCategory')->name('view.admin.category.edit_category');
     Route::post('/category/edit/{id}', 'CategoryController@postEditCategory')->name('admin.category.edit_category');
 
+    //About
+    Route::get('/about', 'AboutController@showAllAbout')->name('view.admin.about.about');
+    Route::get('/about/add', 'AboutController@getAddAbout')->name('view.admin.about.add_about');
+    Route::post('/about/add', 'AboutController@postAddAbout')->name('admin.about.add_about');
+    Route::get('/about/edit/{id}', 'AboutController@getEditAbout')->name('view.admin.about.edit_about');
+    Route::post('/about/edit/{id}', 'AboutController@postEditAbout')->name('admin.about.edit_about');
+    Route::get('/about/delete', 'AboutController@deleteAbout')->name('admin.about.about_delete');
 });
 
 //Auth

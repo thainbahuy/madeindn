@@ -12,9 +12,17 @@ class About extends Model
     public function getAllAbout()
     {
         return DB::table($this->table)
-            ->select('id', 'name', 'jp_name', 'description', 'jp_description', 'position')
+            ->select('id', 'name', 'jp_name', 'description', 'jp_description', 'position', 'image_link')
             ->orderByRaw('ISNULL(position), position ASC')
-            ->orderBy('id','DESC')
+            ->orderBy('id', 'DESC')
             ->get();
+    }
+
+    public function getAboutById($id)
+    {
+        return DB::table($this->table)
+            ->select('id', 'name', 'jp_name', 'description', 'jp_description', 'position', 'image_link')
+            ->where('id', $id)
+            ->first();
     }
 }

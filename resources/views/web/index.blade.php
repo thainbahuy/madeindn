@@ -62,47 +62,24 @@
                         </p>
                     </div>
                 </div>
-                <div class="c-section__community__content__list">
-                    <div class="c-list">
-                        <div class="c-list__item">
-                            <div class="c-thumbnail">
-                                <img src="{{asset('web/')}}/images/4-3_1024x767.png" alt="">
-                            </div>
-                            <div class="c-list__item__content">
-                                <div class="c-list__item__sub">
-                                    <p>introduction</p>
+                <div class="c-section__community__content__list main-banner">
+                    <div class="c-list main-banner__slick">
+                        @foreach($listAbout as $valueAbout)
+                            <div class="c-list__item item">
+                                <div class="c-thumbnail">
+                                    <a href="{{route('web.more.about',['name'=> str_slug($valueAbout->name),'id'=>$valueAbout->id])}}">
+                                        <img src="{{$valueAbout->image_link}}" alt="">
+                                    </a>
                                 </div>
-                                <div class="c-list__item__title">
-                                    <p>How we can help</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="c-list__item">
-                            <div class="c-thumbnail">
-                                <img src="{{asset('web/')}}/images/4-3_1024x767.png" alt="">
-                            </div>
-                            <div class="c-list__item__content">
-                                <div class="c-list__item__sub">
-                                    <p>Our expertise</p>
-                                </div>
-                                <div class="c-list__item__title">
-                                    <p>Why partners with us</p>
+                                <div class="c-list__item__content">
+                                    <div class="c-list__item__title">
+                                        <a href="{{route('web.more.about',['name'=> str_slug($valueAbout->name), 'id'=> $valueAbout->id])}}">
+                                            <p>{{Helpers::changeLanguage($valueAbout->name,$valueAbout->jp_name)}}</p>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="c-list__item">
-                            <div class="c-thumbnail">
-                                <img src="{{asset('web/')}}/images/4-3_1024x767.png" alt="">
-                            </div>
-                            <div class="c-list__item__content">
-                                <div class="c-list__item__sub">
-                                    <p>OUR community</p>
-                                </div>
-                                <div class="c-list__item__title">
-                                    <p>Your benefits for community</p>
-                                </div>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
