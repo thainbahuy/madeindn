@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
-    <title>{{Helpers::changeLanguage($event->name, $event->jp_name)}}</title>
+    <title>{{__('message.TITLE_EVENT_DETAIL',['name' => Helpers::changeLanguage($event->name, $event->jp_name)])}}</title>
     @include('web.common_layouts.head')
 </head>
 <body>

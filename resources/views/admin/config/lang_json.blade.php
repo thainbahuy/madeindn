@@ -52,18 +52,37 @@
                         </div>
                     </div>
                 </div>
+                @php
+                    $key_EN = 0;
+                    $key_JP = 0;
+                @endphp
                 <form method="POST" action="{{route('admin.config.lang_json')}}">
                     {{csrf_field()}}
                     @foreach($jsonDataLanguage as $keyLang => $valueLang)
                         <div class="form-group row setup-content" id="step-{{$step++}}">
                             @foreach($jsonDataLanguage[$keyLang] as $title =>$value)
-                                <div class="col-md-4" style="text-align: center;">
-                                    <span style="color:red; font-weight:bold;">{{$title}}</span>
+                                <div style="text-align: center">
+                                    @if($title == "HEADER")
+                                        <span style="font-weight: bold;">
+                                           With the values ​​in the box number <span
+                                                    style="color:blue">3,6,7,8,10</span>. Please do not delete the attribute <span
+                                                    style="color:blue">:name </span>. If the <span style="color:blue">:name </span> attribute is deleted, the system will cause an error
+                                        </span>
+                                    @endif
+                                </div>
+                                <div class="col-md-4">
+                                    <span style="color:red; font-weight:bold;">{{$title}}</span> <br/>
                                     @foreach($value as $titleProperties =>$valueProperties)
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <span style="vertical-align: -webkit-baseline-middle;">{{$titleProperties}}</span>
+                                                    <span style="vertical-align: -webkit-baseline-middle;">
+                                                        @if($keyLang == "EN")
+                                                            {{++$key_EN}}:{{$titleProperties}}
+                                                        @else
+                                                            {{++$key_JP}}:{{$titleProperties}}
+                                                        @endif
+                                                    </span>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
@@ -84,6 +103,12 @@
                                         <button type="submit" class="btn btn-success PreviousBtn btn-lg">Lưu</button>
                                         <button class="btn btn-primary PreviousBtn btn-lg" type="button">Previous Step 1
                                         </button>
+                                    </div>
+                                </div>
+                            @else
+                                <div class="col-md-12">
+                                    <div class="text-center">
+                                        <button class="btn btn-primary nextBtn btn-lg" type="button">Next</button>
                                     </div>
                                 </div>
                             @endif

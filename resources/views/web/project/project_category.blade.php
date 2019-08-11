@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>{{$title}}</title>
+    <title>{{__('message.TITLE_PROJECT_CATEGORY',['name' => strtoupper($title)])}}</title>
 @include('web.common_layouts.head')
 <!-- endbuild -->
 </head>

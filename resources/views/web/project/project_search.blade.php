@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Kết quả tìm kiếm "{{app('request')->input('key_word')}}"| Madein Đà Nẵng</title>
+    <title>{{__('message.TITLE_SEARCH_PROJECT',['name' => app('request')->input('key_word')])}}</title>
     @include('web.common_layouts.head')
 </head>
 <body>

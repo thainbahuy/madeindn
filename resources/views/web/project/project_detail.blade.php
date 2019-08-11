@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>{{Helpers::changeLanguage($getProject->name,$getProject->jp_name)}}</title>
+    <title>{{__('message.TITLE_PROJECT_DETAIL',['name' => Helpers::changeLanguage($getProject->name,$getProject->jp_name)])}}</title>
     @include('web.common_layouts.head')
 </head>
 <body>
