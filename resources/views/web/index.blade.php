@@ -149,7 +149,7 @@
                     </div>
                     <div class="c-section__community__content__top__text">
                         <p>
-                            {{__('message.HOME_COWK_3')}}
+                            {!! __('message.HOME_COWK_3')  !!}
                         </p>
                     </div>
                 </div>

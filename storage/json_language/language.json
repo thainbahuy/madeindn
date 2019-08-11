@@ -26,22 +26,27 @@
             "HOME_BACKGROUND_8": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vel tortor vitae dolor eleifend mollis. Donec ultricies in urna eget tristique. Cras arcu dolor, iaculis ut est vestibulum, elementum aliquet est.",
             "HOME_PROJECT": "Our Projects",
             "HOME_COWK_1": "OUR COMMUNITY",
-            "HOME_COWK_2": "Welcome to MID",
-            "HOME_COWK_3": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vel tortor vitae dolor eleifend mollis. Donec ultricies in urna eget tristique. Cras arcu dolor, iaculis ut est vestibulum, elementum aliquet est",
+            "HOME_COWK_2": "We work with Top Coworking Space",
+            "HOME_COWK_3": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vel tortor vitae dolor eleifend mollis. <br/> Donec ultricies in urna eget tristique.Cras arcu dolor, iaculis ut est vestibulum, elementum aliquet est.",
             "HOME_EVENT": "You can join in Speacial Events",
             "HOME_COMPANY1": "Trusted by the biggest nonprofits,",
             "HOME_COMPANY2": "companies in the world.",
             "BD_OVERVIEW": "Overview",
             "BD_LOCATION": "Location",
             "BD_SHARE": "Shareing",
-            "BD_DATE_TIME": "Date and Time"
+            "BD_DATE_TIME": "Date and Time",
+            "CONTACT_ADDRESS": "Address",
+            "CONTACT_EMAIL": "Email",
+            "CONTACT_PHONE": "Phone",
+            "PROJECT_NOTICE": "If you are interested in this project, please contact us.",
+            "PROJECT_FOUNDER": "FOUNDER"
         },
         "FOOTER": {
-            "FT_TITLE" : "madeinDaNang",
+            "FT_TITLE": "madeinDaNang",
             "FT_SOLOGAN": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vel tortor vitae dolor eleifend mollis. Donec ultricies in urna eget tristique.",
-            "FT_ABOUT" : "About",
-            "FT_HELP" : "Help",
-            "FT_COPYRIGHT" : "Copyright © 2019 - MADE IN DA NANG"
+            "FT_ABOUT": "About",
+            "FT_HELP": "Help",
+            "FT_COPYRIGHT": "Copyright \u00a9 2019 - MADE IN DA NANG"
         }
     },
     "JP": {
@@ -71,22 +76,27 @@
             "HOME_BACKGROUND_8": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vel tortor vitae dolor eleifend mollis. Donec ultricies in urna eget tristique. Cras arcu dolor, iaculis ut est vestibulum, elementum aliquet est JP",
             "HOME_PROJECT": "Our Projects JP",
             "HOME_COWK_1": "OUR COMMUNITY JP",
-            "HOME_COWK_2": "Welcome to MID JP",
-            "HOME_COWK_3": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vel tortor vitae dolor eleifend mollis. Donec ultricies in urna eget tristique. Cras arcu dolor, iaculis ut est vestibulum, elementum aliquet est JP",
+            "HOME_COWK_2": "We work with Top Coworking Space JP",
+            "HOME_COWK_3": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vel tortor vitae dolor eleifend mollis. <br/> Donec ultricies in urna eget tristique.Cras arcu dolor, iaculis ut est vestibulum, elementum aliquet est JP",
             "HOME_EVENT": "You can join in Speacial Events JP",
             "HOME_COMPANY1": "Trusted by the biggest nonprofits JP,",
             "HOME_COMPANY2": "companies in the world JP.",
             "BD_OVERVIEW": "Overview JP",
             "BD_LOCATION": "Location JP",
             "BD_SHARE": "Shareing JP",
-            "BD_DATE_TIME": "Date and Time JP"
+            "BD_DATE_TIME": "Date and Time JP",
+            "CONTACT_ADDRESS": "Address JP",
+            "CONTACT_EMAIL": "Email JP",
+            "CONTACT_PHONE": "Phone JP",
+            "PROJECT_NOTICE": "If you are interested in this project, please contact us. JP",
+            "PROJECT_FOUNDER": "FOUNDER JP"
         },
         "FOOTER": {
-            "FT_TITLE" : "madeinDaNang JP",
+            "FT_TITLE": "madeinDaNang JP",
             "FT_SOLOGAN": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vel tortor vitae dolor eleifend mollis. Donec ultricies in urna eget tristique JP",
-            "FT_ABOUT" : "About JP",
-            "FT_HELP" : "Help JP",
-            "FT_COPYRIGHT" : "Copyright © 2019 - MADE IN DA NANG"
+            "FT_ABOUT": "About JP",
+            "FT_HELP": "Help JP",
+            "FT_COPYRIGHT": "Copyright \u00a9 2019 - MADE IN DA NANG"
         }
     }
 }

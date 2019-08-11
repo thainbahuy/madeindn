@@ -59,7 +59,7 @@
                                 </div>
                             </div>
                             <div class="c-sidebar__profile__name">
-                                <p>Founder</p>
+                                <p>{{__('message.PROJECT_FOUNDER')}}</p>
                                 <p>{{$getProject->author_name}}</p>
                             </div>
                             <div class="text">
@@ -69,33 +69,32 @@
                         <div class="c-sidebar__profile__bot">
                             <div class="c-form">
                                 <div class="c-form__body">
-                                    <p class="description_project">If you are interested in this project, please contact
-                                        us.</p>
+                                    <p class="description_project">{{__('message.PROJECT_NOTICE')}}</p>
                                     <form id="contactForm1" name="myForm"
                                           action="{{route('web.project.project_detail',['name'=>str_slug($getProject->name),'id'=>$getProject->id])}}"
                                           method="POST">
                                         {{csrf_field()}}
                                         <div class="c-form__row">
-                                            <input type="text" placeholder="Your email" name="email" id="email">
+                                            <input type="text" placeholder="{{__('message_project_detail.email')}}" name="email" id="email">
                                         </div>
                                         <div class="c-form-error">
                                             <span class="email_error"></span>
                                         </div>
                                         <div class="c-form__row">
-                                            <input type="phone" placeholder="Your moblie" name="phone">
+                                            <input type="phone" placeholder="{{__('message_project_detail.phone')}}" name="phone">
                                         </div>
                                         <div class="c-form-error">
                                             <span class="phone_error"></span>
                                         </div>
                                         <div class="c-form__row">
                                             <textarea id="content_message" name="content_message"
-                                                      placeholder="Type something..."></textarea>
+                                                      placeholder="{{__('message_project_detail.content')}}"></textarea>
                                         </div>
                                         <div class="c-form-error">
                                             <span class="content_message_error"></span>
                                         </div>
                                         <div style="text-align: center;" class="c-form_submit">
-                                            <button class="submit">SEND</button>
+                                            <button class="submit">{{__('message_project_detail.submit')}}</button>
                                         </div>
                                     </form>
                                 </div>
@@ -118,6 +117,41 @@
 <!-- <a id="go-top" href="javascript:;" title="Go Top" class="c-btn__go-top"><img src="{{asset('web/')}}/images/icons/go_top.png" alt="Go Top" /></a> -->
 <!-- ======== JAVASCRIPT ======== -->
 @include('web.common_layouts.script_footer')
+<script>
+    function validateForm(){
+        email_check = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        phone_check = /.{5,15}$/;
+        content_check = /.{10,}$/;
+
+        check_error_email = false;
+        check_error_phone = false;
+        check_error_content = false;
+        if (!email_check.test(document.myForm.email.value)){
+            $('.email_error').html("{{__('message_project_detail.error_name')}}");
+            check_error_email = false;
+        } else {
+            $('.email_error').empty();
+            check_error_email = true;
+        }
+        if (!phone_check.test(document.myForm.phone.value)){
+            $('.phone_error').html("{{__('message_project_detail.error_phone')}}");
+            check_error_phone = false;
+        } else {
+            $('.phone_error').empty();
+            check_error_phone = true;
+        }
+
+        if (!content_check.test($('textarea#content_message').val())){
+            $('.content_message_error').html("{{__('message_project_detail.error_content')}}");
+            check_error_content = false;
+        } else {
+            $('.content_message_error').empty();
+            check_error_content = true;
+        }
+
+        return check_error_email && check_error_phone && check_error_content;
+    }
+</script>
 <script src="{{asset('web/js/contact.js')}}"></script>
 <!-- endbuild -->
 <!-- ======== END JAVASCRIPT ======== -->

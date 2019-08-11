@@ -34,19 +34,18 @@ class ContactRequest extends FormRequest
 
     public function messages() {
         return [
-            'name.required'         => 'Vui lòng nhập họ tên của bạn',
-            'name.max'              => 'Tên không vượt quá 255 ký tự',
-            'title.min'             => 'Tiêu đề ít nhất là 6 ký tự',
-            'name.max'              => 'Tên không vượt quá 50 ký tự',
-            'title.required'        => 'Vui lòng nhập tiêu đề của bài viết',
-            'mobile.required'       => 'Vui lòng nhập số điện thoại của bạn',
-            'email.required'        => 'Vui lòng nhập email của bạn',
-            'email.max'             => 'Email không vượt quá 50 ký tự',
-            'email.email'           => 'Vui lòng nhập đúng định dạng email',
-            'content.required'      => 'Vui lòng nhập nội dung bài viết',
-            'title.max'             => 'Title không vượt quá 200 ký tự',
-            'content.min'           => 'Nội dung ít nhất là 20 ký tự',
-            'mobile.max'            => 'Số điện thoại không vượt quá 15 ký tự',
+            'name.required'         => __('message_contact.name.required'),
+            'name.max'              => __('message_contact.name.max'),
+            'title.min'             => __('message_contact.title.min'),
+            'title.required'        => __('message_contact.title.required'),
+            'mobile.required'       => __('message_contact.mobile.required'),
+            'email.required'        => __('message_contact.email.required'),
+            'email.max'             => __('message_contact.email.max'),
+            'email.email'           => __('message_contact.email.email'),
+            'content.required'      => __('message_contact.content.required'),
+            'title.max'             => __('message_contact.title.max'),
+            'content.min'           => __('message_contact.content.min'),
+            'mobile.max'            => __('message_contact.mobile.max'),
         ];
     }
 }

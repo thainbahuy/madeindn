@@ -16,7 +16,7 @@
             <div class="c-section__contact__content">
                 <div class="item">
                     <div class="title">
-                        <p>Address</p>
+                        <p>{{__('message.CONTACT_ADDRESS')}}</p>
                     </div>
                     <div class="text">
                         <p>{{Helpers::getConfig()['Info_Company']['Adress']}}</p>
@@ -24,7 +24,7 @@
                 </div>
                 <div class="item">
                     <div class="title">
-                        <p>Email</p>
+                        <p>{{__('message.CONTACT_EMAIL')}}</p>
                     </div>
                     <div class="text">
                         <p>{{Helpers::getConfig()['Info_Company']['Email']}}</p>
@@ -32,7 +32,7 @@
                 </div>
                 <div class="item">
                     <div class="title">
-                        <p>Phone</p>
+                        <p>{{__('message.CONTACT_PHONE')}}</p>
                     </div>
                     <div class="text">
                         <p>
@@ -65,51 +65,51 @@
                     @endif
                     <div class="contact__form__row">
                         <div class="contact__form__label">
-                            <p>HỌ VÀ TÊN</p>
+                            <p>{{__('message_contact.name')}}</p>
                         </div>
                         <div class="contact__form__controll">
-                            <input type="text" name="name" value="{{old('name')}}" placeholder="Nhập tên của bạn">
+                            <input type="text" name="name" value="{{old('name')}}" placeholder="{{__('message_contact.placeholder_name')}}">
                             <span class="error">{{ $errors->first('name') }}</span>
                         </div>
                     </div>
                     <div class="contact__form__row">
                         <div class="contact__form__label">
-                            <p>Email</p>
+                            <p>{{__('message_contact.email')}}</p>
                         </div>
                         <div class="contact__form__controll">
-                            <input type="text" name="email" value="{{old('email')}}" placeholder="Nhập địa chỉ email">
+                            <input type="text" name="email" value="{{old('email')}}" placeholder="{{__('message_contact.placeholder_email')}}">
                             <span class="error">{{ $errors->first('email') }}</span>
                         </div>
                     </div>
                     <div class="contact__form__row">
                         <div class="contact__form__label">
-                            <p>Số điện thoại</p>
+                            <p>{{__('message_contact.phone')}}</p>
                         </div>
                         <div class="contact__form__controll">
-                            <input type="text" name="mobile" value="{{old('mobile')}}" placeholder="Nhập số điện thoại">
+                            <input type="text" name="mobile" value="{{old('mobile')}}" placeholder="{{__('message_contact.placeholder_phone')}}">
                             <span class="error">{{ $errors->first('mobile') }}</span>
                         </div>
                     </div>
                     <div class="contact__form__row">
                         <div class="contact__form__label">
-                            <p>Tiêu đề</p>
+                            <p>{{__('message_contact.title')}}</p>
                         </div>
                         <div class="contact__form__controll">
-                            <input type="text" name="title" value="{{old('title')}}" placeholder="Nội dung...">
+                            <input type="text" name="title" value="{{old('title')}}" placeholder="{{__('message_contact.placeholder_title')}}">
                             <span class="error">{{ $errors->first('title') }}</span>
                         </div>
                     </div>
                     <div class="contact__form__row">
                         <div class="contact__form__label">
-                            <p>Nội dung</p>
+                            <p>{{__('message_contact.content')}}</p>
                         </div>
                         <div class="contact__form__controll">
                             <input type="text" name="content" value="{{old('content')}}"
-                                   placeholder="Viết gì đó bạn muốn yêu cầu chúng tôi?">
+                                   placeholder="{{__('message_contact.placeholder_content')}}">
                             <span class="error">{{ $errors->first('content') }}</span>
                         </div>
                     </div>
-                    <input type="submit" class="submit" value="GỬI ĐẾN CHÚNG TÔI">
+                    <input type="submit" class="submit" value="{{__('message_contact.submit')}}">
                 </form>
             </div>
         </div>
@@ -123,9 +123,15 @@
 <!-- <a id="go-top" href="javascript:;" title="Go Top" class="c-btn__go-top"><img src="{{asset('web/')}}/images/icons/go_top.png" alt="Go Top" /></a> -->
 <!-- ======== JAVASCRIPT ======== -->
 @include('web.common_layouts.script_footer')
-<script src="{{asset('web/js/project.js')}}"></script>
 <script>
     $(document).ready(function () {
+        if ($('.alert-success').length > 0) {
+            $('.alert-success').append("{{__('message_contact.success')}}");
+        }
+        if ($('.alert-danger').length > 0) {
+            $('.alert-danger').append("{{__('message_contact.fail')}}");
+        }
+
         $.ajax(
             {
                 type: "POST",

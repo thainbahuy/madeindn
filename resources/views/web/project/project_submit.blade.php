@@ -15,7 +15,7 @@
     <div class="c-section c-section__submit-your-project">
         <div class="o-container">
             <h3 class="c-section__heading">
-                <p>Submit your project</p>
+                <p>{{__('message_submit_project.heading_project')}}</p>
             </h3>
             @if(Session::has('msg'))
                 <div class="alert alert-{{Session::get('msg')}}" role="alert">
@@ -27,77 +27,76 @@
                         {{csrf_field()}}
                         <div class="contact__form__row">
                             <div class="contact__form__label">
-                                <p>HỌ VÀ TÊN SÁNG LẬP</p>
+                                <p>{{__('message_submit_project.name')}}</p>
                             </div>
                             <div class="contact__form__controll">
-                                <input type="text" name="name" value="{{old('name')}}" placeholder="Nhập tên của bạn">
+                                <input type="text" name="name" value="{{old('name')}}" placeholder="{{__('message_submit_project.placeholder_name')}}">
                                 <span class="error">{{ $errors->first('name') }}</span>
                             </div>
                         </div>
                         <div class="contact__form__row">
                             <div class="contact__form__label">
-                                <p>Email</p>
+                                <p>{{__('message_submit_project.email')}}</p>
                             </div>
                             <div class="contact__form__controll">
                                 <input type="text" name="email" value="{{old('email')}}"
-                                       placeholder="Nhập địa chỉ email">
+                                       placeholder="{{__('message_submit_project.placeholder_email')}}">
                                 <span class="error">{{ $errors->first('email') }}</span>
                             </div>
                         </div>
                         <div class="contact__form__row">
                             <div class="contact__form__label">
-                                <p>Số điện thoại</p>
+                                <p>{{__('message_submit_project.phone')}}</p>
                             </div>
                             <div class="contact__form__controll">
                                 <input type="text" name="phone" value="{{old('phone')}}"
-                                       placeholder="Nhập số điện thoại">
+                                       placeholder="{{__('message_submit_project.placeholder_phone')}}">
                                 <span class="error">{{ $errors->first('phone') }}</span>
                             </div>
                         </div>
                         <div class="contact__form__row">
                             <div class="contact__form__label">
-                                <p>ĐỊA CHỈ</p>
+                                <p>{{__('message_submit_project.address')}}</p>
                             </div>
                             <div class="contact__form__controll">
                                 <input type="text" name="address" value="{{old('address')}}"
-                                       placeholder="Nhập địa chỉ startup đang làm việc">
+                                       placeholder="{{__('message_submit_project.placeholder_address')}}">
                                 <span class="error">{{ $errors->first('address') }}</span>
                             </div>
                         </div>
                         <div class="contact__form__row">
                             <div class="contact__form__label">
-                                <p>TÊN STARTUP</p>
+                                <p>{{__('message_submit_project.name_startup')}}</p>
                             </div>
                             <div class="contact__form__controll">
                                 <input type="text" name="name_startup" value="{{old('name_startup')}}"
-                                       placeholder="Nội dung...">
+                                       placeholder="{{__('message_submit_project.placeholder_name_startup')}}">
                                 <span class="error">{{ $errors->first('name_startup') }}</span>
                             </div>
                         </div>
                         <div class="contact__form__row">
                             <div class="contact__form__label">
-                                <p>Nội dung</p>
+                                <p>{{__('message_submit_project.content')}}</p>
                             </div>
                             <div class="contact__form__controll">
-                                <input type="text" name="content" value="{{old('content')}}"
-                                       placeholder="Viết về Startup của bạn....">
+                                <textarea  style="width: 100%" placeholder="{{__('message_submit_project.placeholder_content')}}" name="content">{{old('content')}}</textarea>
                                 <span class="error">{{ $errors->first('content') }}</span>
                             </div>
                         </div>
 
                         <div class="contact__form__row">
                             <div class="contact__form__label">
-                                <p>Link Driver (Nếu có)</p>
+                                <p>{{__('message_submit_project.link_driver')}}</p>
                             </div>
                             <div class="contact__form__controll">
                                 <input type="url" onblur="checkURL(this)" name="link_driver" value="{{old('link_driver')}}"
-                                       placeholder="Link driver của bạn (nếu có)....">
+                                       placeholder="{{__('message_submit_project.placeholder_link_driver')}}">
                             </div>
                         </div>
 
                         <div class="contact__form__row">
                             <div class="contact__form__label">
-                                <p>Nội dung</p>
+                                <p>{{__('message_submit_project.files_startup')}}</p>
                             </div>
                             <div class="contact__form__controll">
                                 <div class="form-upload">
@@ -106,16 +105,16 @@
                                                accept="" id="files_startup"
                                                type="file">
                                         <label tabindex="0" for="my-file" class="input-file-trigger">
-                                            <img src="{{asset('web/images/')}}/icons/icon-upload.png">
-                                            TẢI FILE VĂN BẢN GIỚI THIỆU
+                                            <img src="{{asset('web/images/icons/icon-upload.png')}}">
+                                            {{__('message_submit_project.download_files_startup')}}
                                         </label>
                                     </div>
-                                    <p>Hỗ trợ định dạng .docs, .pdf</p>
+                                    <p>{{__('message_submit_project.placeholder_files_startup')}}</p>
                                 </div>
                                 <div class="upload-content">
                                     <div class="upload-content-item">
                                         <div class="img">
-                                            <img src="{{asset('web/images/')}}/icons/icon-pdf.png">
+                                            <img src="{{asset('web/images/icons/icon-pdf.png')}}">
                                         </div>
                                         <div class="text-file">
                                         </div>
@@ -128,7 +127,7 @@
 
                         <div class="contact__form__row">
                             <div class="contact__form__label">
-                                <p>Nội dung</p>
+                                <p>{{__('message_submit_project.image_startup')}}</p>
                             </div>
                             <div class="contact__form__controll">
                                 <div class="form-upload">
@@ -136,16 +135,16 @@
                                         <input class="input-file" accept="image/gif, image/jpeg, image/png"
                                                name="image_startup" id="image_startup" type="file">
                                         <label tabindex="0" for="my-file" class="input-file-trigger">
-                                            <img src="{{asset('web/images/')}}/icons/icon-upload.png">
-                                            TẢI HÌNH ẢNH VỀ STARTUP
+                                            <img src="{{asset('web/images/icons/icon-upload.png')}}">
+                                            {{__('message_submit_project.download_image_startup')}}
                                         </label>
                                     </div>
-                                    <p>Hỗ trợ định dạng .jpg</p>
+                                    <p>{{__('message_submit_project.placeholder_image_startup')}}</p>
                                 </div>
                                 <div class="upload-content">
                                     <div class="upload-content-item">
                                         <div class="img">
-                                            <img src="{{asset('web/images/')}}/icons/icon-jpg.png">
+                                            <img src="{{asset('web/images/icons/icon-jpg.png')}}">
                                         </div>
                                         <div class="text-image">
                                         </div>
@@ -157,7 +156,7 @@
                                 <!-- <p class="file-return"></p> -->
                             </div>
                         </div>
-                        <input type="submit" class="submit" value="GỬI ĐẾN CHÚNG TÔI">
+                        <input type="submit" class="submit" value="{{__('message_submit_project.submit')}}">
                     </form>
                 </div>
             </div>

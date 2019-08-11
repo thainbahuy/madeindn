@@ -16,16 +16,13 @@
             <div class="c-section__coworking__content">
                 <div class="c-section__coworking__content__top">
                     <div class="c-section__coworking__content__top__title">
-                        <p class="sub-title">OUR community</p>
+                        <p class="sub-title">{{__('message.HOME_COWK_1')}}</p>
                         <h3 class="title">
-                            <p>We work with Top Coworking Space</p>
+                            <p>{{__('message.HOME_COWK_2')}}</p>
                         </h3>
                     </div>
                     <div class="c-section__coworking__content__top__text">
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vel <br/>tortor vitae
-                            dolor eleifend mollis. Donec ultricies in urna eget tristique. Cras.
-                        </p>
+                        <p>{!! __('message.HOME_COWK_3')  !!}</p>
                     </div>
                 </div>
                 <div class="c-section__coworking__content__list">
