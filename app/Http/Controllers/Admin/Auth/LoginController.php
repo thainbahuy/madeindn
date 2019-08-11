@@ -71,12 +71,10 @@ class LoginController extends Controller
         $this->validateLogin($request);
 
         if ($this->attemptLogin($request)) {
-            return redirect()->route('view.admin.event.event_list');
+            return redirect()->route('dashboard');
         } else {
             return redirect()->back()->withErrors(['Incorrect Username or Password']);
         }
-
-
     }
 
     /**
@@ -95,7 +93,7 @@ class LoginController extends Controller
     /**
      * Log the user out of the application.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function logout(Request $request)

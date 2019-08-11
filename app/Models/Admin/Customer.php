@@ -26,4 +26,10 @@ class Customer extends Model
             ->where('id',$id)
             ->delete();
     }
+
+    public function countContatInProject()
+    {
+        return DB::table($this->table)
+            ->count();
+    }
 }

@@ -129,12 +129,7 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{route('admin.config.paginate_json')}}">
-                        <i class="ni ni-palette"></i> Config Page
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{route('logout')}}">
-                        <i class="ni ni-palette"></i> Logout
+                        <i class="ni ni-palette"></i> Config System
                     </a>
                 </li>
             </ul>

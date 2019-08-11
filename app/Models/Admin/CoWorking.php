@@ -63,4 +63,10 @@ class CoWorking extends Model
 
         return $infoCoworking->save();
     }
+
+    public function coutCoworking()
+    {
+        return DB::table($this->table)
+            ->count();
+    }
 }
