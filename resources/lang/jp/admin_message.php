@@ -2,17 +2,18 @@
 
 return [
     //notification header
-    'delete_success' => 'Delete Successful JP',
+    'delete_success' => 'Delete Successful',
+
     //for modal delete
-    'modal-header' => 'Delete JP',
-    'modal-body' => 'Are you sure want to delete this JP?',
-    'modal-footer-btn-close' => 'Close JP',
-    'modal-footer-btn-yes' => 'Yes JP',
+    'modal-header' => 'Delete',
+    'modal-body' => 'Are you sure want to delete this ?',
+    'modal-footer-btn-close' => 'Close',
+    'modal-footer-btn-yes' => 'Yes',
 
-    'next' => "Next JP",
-    'save' => "Save JP",
-    'previous' => "Previous Step JP",
+    'next' => "Next",
+    'save' => "Save",
+    'previous' => "Previous Step",
 
-    'show' => '情報を表示する'
+    'show' => 'SHOW INFO'
 
 ];

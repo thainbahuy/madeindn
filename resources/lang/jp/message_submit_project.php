@@ -16,8 +16,8 @@ return [
     'content.required'      			=> 'Vui lòng nhập nội dung JP',
     'image_startup.required'			=> 'Vui lòng Upload 1 tấm ảnh về startup JP',
     'files_startup.*.mimes'			    => 'Chỉ chấp nhận Files word hoặc PDF JP',
-    'success'                           => 'BẠN ĐÃ SUBMIT THÀNH CÔNG JP !!!',
-    'fail'                              => 'BẠN ĐÃ SUBMIT THẤT BẠI !!! VUI LÒNG THỬ LẠI JP',
+    'success'                           => 'YOU HAVE SUBMIT SUCCESS JP!!!',
+    'fail'                              => 'YOU HAVE SUBMIT FAILURE JP !!! PLEASE TRY AGAIN',
 
 
     // Info Form
@@ -26,13 +26,13 @@ return [
     'name' 								=> "HỌ VÀ TÊN SÁNG LẬP JP",
     'placeholder_name' 					=> "Nhập tên của bạn JP",
 
-    'email' 							=> "HỌ VÀ TÊN SÁNG LẬP JP",
+    'email' 							=> "EMAIL JP",
     'placeholder_email' 				=> "Nhập địa chỉ email JP",
 
-    'phone' 							=> "HỌ VÀ TÊN SÁNG LẬP JP",
+    'phone' 							=> "SỐ ĐIỆN THOẠI JP",
     'placeholder_phone' 				=> "Nhập số điện thoại JP",
 
-    'address' 							=> "HỌ VÀ TÊN SÁNG LẬP JP",
+    'address' 							=> "ĐỊA CHỈ JP",
     'placeholder_address' 				=> "Nhập địa chỉ startup đang làm việc JP",
 
     'name_startup' 						=> "TÊN START UP JP",

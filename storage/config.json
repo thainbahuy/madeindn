@@ -1,16 +1,16 @@
 {
     "Home_Page": {
-        "Quantity Post Project": "3",
-        "Quantity Post Event": "3"
+        "Quantity Post Project": "2",
+        "Quantity Post Event": "2"
     },
     "Event_Page": {
-        "Quantity Post Event": "3"
+        "Quantity Post Event": "6"
     },
     "Project_Page": {
-        "Quantity Post Project": "3"
+        "Quantity Post Project": "6"
     },
     "Project_Search_Page": {
-        "Quantity Show Post Search Project": "3"
+        "Quantity Show Post Search Project": "6"
     },
     "Social_Link_Web_Footer": {
         "ic_fb": "https:\/\/www.facebook1.com\/",

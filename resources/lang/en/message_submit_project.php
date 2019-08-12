@@ -15,8 +15,8 @@ return [
     'content.required'      			=> 'Vui lòng nhập nội dung',
     'image_startup.required'			=> 'Vui lòng Upload 1 tấm ảnh về startup',
     'files_startup.*.mimes'			    => "Chỉ chấp nhận Files word hoặc PDF",
-    'success'                           => 'BẠN ĐÃ SUBMIT THÀNH CÔNG !!!',
-    'fail'                              => 'BẠN ĐÃ SUBMIT THẤT BẠI !!! VUI LÒNG THỬ LẠI',
+    'success'                           => 'YOU HAVE SUBMIT SUCCESS !!!',
+    'fail'                              => 'YOU HAVE SUBMIT FAILURE !!! PLEASE TRY AGAIN',
 
 
     // Info Form
@@ -25,13 +25,13 @@ return [
     'name' 								=> "HỌ VÀ TÊN SÁNG LẬP",
     'placeholder_name' 					=> "Nhập tên của bạn",
 
-    'email' 							=> "HỌ VÀ TÊN SÁNG LẬP",
+    'email' 							=> "EMAIL",
     'placeholder_email' 				=> "Nhập địa chỉ email",
 
-    'phone' 							=> "HỌ VÀ TÊN SÁNG LẬP",
+    'phone' 							=> "SỐ ĐIỆN THOẠI",
     'placeholder_phone' 				=> "Nhập số điện thoại",
 
-    'address' 							=> "HỌ VÀ TÊN SÁNG LẬP",
+    'address' 							=> "ĐỊA CHỈ",
     'placeholder_address' 				=> "Nhập địa chỉ startup đang làm việc",
 
     'name_startup' 						=> "TÊN START UP",

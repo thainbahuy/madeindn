@@ -101,7 +101,7 @@
                                                 <td>
                                                     <input class="form-control" name="location[]"
                                                            type="text" placeholder="Please enter a value in this field"
-                                                           value="{{$location[0]}}">
+                                                           value="{{$location[1]}}">
                                                 </td>
                                             </tr>
                                             <tr>

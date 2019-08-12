@@ -47,13 +47,13 @@
                         <div class="row">
                             <div class="col-md-6"><h3>English</h3>
                                 <div class="form-group">
-                                    <label>Title</label>
+                                    <label>Name</label>
                                     <input class="form-control" type="text" name="name"
                                            value="{{old('name')}}">
                                 </div>
                                 <div class="form-group">
                                     <label>Description</label>
-                                    <textarea id="editor1" rows="5" class="form-control" name="description">{!!old('name_jp')!!}</textarea>
+                                    <textarea id="editor1" rows="5" class="form-control" name="description">{!!old('description')!!}</textarea>
                                 </div>
                                 <div class="form-group" style="padding-left:0">
                                     <label>Position</label>
@@ -75,12 +75,12 @@
                             </div>
                             <div class="col-md-6"><h3>Japan</h3>
                                 <div class="form-group">
-                                    <label>タイトル</label>
+                                    <label>Name Japanese</label>
                                     <input class="form-control" type="text" name="jp_name"
                                            value="{{old('jp_name')}}">
                                 </div>
                                 <div class="form-group">
-                                    <label>説明</label>
+                                    <label>Description Japanese</label>
                                     <textarea id="editor2" rows="5" class="form-control" name="jp_description">{!!old('jp_description')!!}</textarea>
                                 </div>
                             </div>

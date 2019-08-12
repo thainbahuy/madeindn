@@ -60,18 +60,18 @@
                     {{csrf_field()}}
                     @foreach($jsonDataLanguage as $keyLang => $valueLang)
                         <div class="form-group row setup-content" id="step-{{$step++}}">
-                            @foreach($jsonDataLanguage[$keyLang] as $title =>$value)
+                            @foreach($jsonDataLanguage[$keyLang] as $titleLang =>$value)
                                 <div style="text-align: center">
-                                    @if($title == "HEADER")
+                                    @if($titleLang == "HEADER")
                                         <span style="font-weight: bold;">
                                            With the values ​​in the box number <span
-                                                    style="color:blue">3,6,7,8,10</span>. Please do not delete the attribute <span
+                                                    style="color:blue">3,6,7,8,10,11</span>. Please do not delete the attribute <span
                                                     style="color:blue">:name </span>. If the <span style="color:blue">:name </span> attribute is deleted, the system will cause an error
                                         </span>
                                     @endif
                                 </div>
                                 <div class="col-md-4">
-                                    <span style="color:red; font-weight:bold;">{{$title}}</span> <br/>
+                                    <span style="color:red; font-weight:bold;">{{$titleLang}}</span> <br/>
                                     @foreach($value as $titleProperties =>$valueProperties)
                                         <div class="row">
                                             <div class="col-md-6">
@@ -88,7 +88,7 @@
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <input required type="text"
-                                                           name="{{$keyLang}}[{{$title}}][{{$titleProperties}}]"
+                                                           name="{{$keyLang}}[{{$titleLang}}][{{$titleProperties}}]"
                                                            class="form-control"
                                                            value="{{$valueProperties}}">
                                                 </div>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
-    <title>About</title>
+    <title>{{__('message.TITLE_ABOUT',['name'=>Helpers::changeLanguage($listFirstAbout->name,$listFirstAbout->jp_name)])}}</title>
 @include('web.common_layouts.head')
 <!-- endbuild -->
 </head>
@@ -15,10 +15,10 @@
     <div class="c-banner__page">
         <div class="c-banner__page__inner">
             <div class="c-banner__page__sub-title">
-                Our Projects
+                {{Helpers::changeLanguage($listFirstAbout->name,$listFirstAbout->jp_name)}}
             </div>
             <div class="c-banner__page__title">
-                <img src="{{asset('web/')}}/images/madeinDaNang.png" alt=madeinDaNang">
+                <img src="{{asset('web/images/madeinDaNang.png')}}" alt=madeinDaNang">
             </div>
         </div>
     </div>
