@@ -14,8 +14,8 @@
         'title.max'             => 'Title không vượt quá 200 ký tự JP',
         'content.min'           => 'Nội dung ít nhất là 20 ký tự JP',
         'mobile.max'            => 'Số điện thoại không vượt quá 15 ký tự JP',
-        'success'               => 'BẠN ĐÃ SUBMIT THÀNH CÔNG !!! JP',
-        'fail'                  => 'BẠN ĐÃ SUBMIT THẤT BẠI !!! VUI LÒNG THỬ LẠI JP',
+        'success'               => 'YOU HAVE SUBMIT SUCCESS JP!!!',
+        'fail'                  => 'YOU HAVE SUBMIT FAILURE !!! PLEASE TRY AGAIN JP',
 
         // Info Form
 

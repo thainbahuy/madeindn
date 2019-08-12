@@ -21,8 +21,12 @@ class CoWorkingController extends Controller
      */
     public function index()
     {
-        $listCoworking = $this->coWorking->getAllCoworking();
-        return view('web.coworking.coworking_space', compact('listCoworking'));
+        try {
+            $listCoworking = $this->coWorking->getAllCoworking();
+            return view('web.coworking.coworking_space', compact('listCoworking'));
+        } catch(\Exception $e) {
+            return redirect()->route('web.index');
+        }
     }
 
     /**
@@ -33,9 +37,13 @@ class CoWorkingController extends Controller
      */
     public function showDetailCoworking($name, $id)
     {
-        $objCoworking = $this->coWorking->getCoworking($id);
-        $title = Helpers::changeLanguage($objCoworking->name, $objCoworking->jp_name);
-        $configurations = Helpers::convertToJson($objCoworking->social_link);
-        return view('web.coworking.coworking_detail', compact('objCoworking', 'configurations', 'title'));
+        try {
+            $objCoworking = $this->coWorking->getCoworking($id);
+            $title = Helpers::changeLanguage($objCoworking->name, $objCoworking->jp_name);
+            $configurations = Helpers::convertToJson($objCoworking->social_link);
+            return view('web.coworking.coworking_detail', compact('objCoworking', 'configurations', 'title'));
+        } catch(\Exception $e) {
+            return redirect()->route('web.index');
+        }
     }
 }

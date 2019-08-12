@@ -127,7 +127,7 @@
         check_error_phone = false;
         check_error_content = false;
         if (!email_check.test(document.myForm.email.value)){
-            $('.email_error').html("{{__('message_project_detail.error_name')}}");
+            $('.email_error').html("{{__('message_project_detail.error_mail')}}");
             check_error_email = false;
         } else {
             $('.email_error').empty();

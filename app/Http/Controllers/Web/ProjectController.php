@@ -34,17 +34,20 @@ class ProjectController extends Controller
     public function showProjectByCategory($name, Request $request)
     {
         $CategoryByProject = $this->category->where('name', $name)->first();
-        $listProjects = $this->projectModel->getProjectByCategory($CategoryByProject['id'])->paginate($this->config['Quantity Post Project']);
-        if ($request->ajax()) {
-            $view = view('data_projectIndex_loadmore', compact('listProjects'))
-                ->with('valueCategory', $CategoryByProject['id'])
-                ->render();
-            return response()->json(['html' => $view]);
+        if ($CategoryByProject != null) {
+            $listProjects = $this->projectModel->getProjectByCategory($CategoryByProject['id'])->paginate($this->config['Quantity Post Project']);
+            if ($request->ajax()) {
+                $view = view('data_projectIndex_loadmore', compact('listProjects'))
+                    ->with('valueCategory', $CategoryByProject['id'])
+                    ->render();
+                return response()->json(['html' => $view]);
+            }
+            return view('web.project.project_category', compact('listProjects'))
+                ->with('title', ucwords($name))
+                ->with('valueCategory', $CategoryByProject['id']);
+        } else {
+            return redirect()->route('web.index');
         }
-
-        return view('web.project.project_category', compact('listProjects'))
-            ->with('title', ucwords($name))
-            ->with('valueCategory', $CategoryByProject['id']);
     }
 
     /**
@@ -56,7 +59,12 @@ class ProjectController extends Controller
     public function showDetailProject($name, $id)
     {
         $getProject = $this->projectModel->getProjectById($id);
-        return view('web.project.project_detail', compact('getProject'));
+        if ($getProject != null) {
+            return view('web.project.project_detail', compact('getProject'));
+        } else {
+            return redirect()->route('web.index');
+        }
+
     }
 
     /**Save customer information in the database and shoot mail to the administrator
@@ -76,7 +84,7 @@ class ProjectController extends Controller
 
         if ($validator->fails()) {
 //            response()->json(['errors' => $validator->errors()->all()]);
-            return redirect()->route('web.project.project_detail',['name'=>$name,'id'=>$id]);
+            return redirect()->route('web.project.project_detail', ['name' => $name, 'id' => $id]);
         } else {
             if ($request->ajax()) {
                 if ($info_customer->postCustomer($request, $id)) {

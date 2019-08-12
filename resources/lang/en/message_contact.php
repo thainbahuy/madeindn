@@ -14,8 +14,8 @@
         'title.max'             => 'Title không vượt quá 200 ký tự',
         'content.min'           => 'Nội dung ít nhất là 20 ký tự',
         'mobile.max'            => 'Số điện thoại không vượt quá 15 ký tự',
-        'success'               => 'BẠN ĐÃ SUBMIT THÀNH CÔNG !!!',
-        'fail'                  => 'BẠN ĐÃ SUBMIT THẤT BẠI !!! VUI LÒNG THỬ LẠI',
+        'success'               => 'YOU HAVE SUBMIT SUCCESS !!!',
+        'fail'                  => 'YOU HAVE SUBMIT FAILURE !!! PLEASE TRY AGAIN',
 
         //Info form
         'name' 					=> "HỌ VÀ TÊN",

@@ -43,10 +43,15 @@ class EventController extends Controller
      */
     public function loadEventDetail($eventSlug)
     {
-        $eventSlug = explode('-', $eventSlug);
-        $idEvent = $eventSlug[sizeof($eventSlug) - 1];
-        $event = $this->eventModel->getEventById($idEvent);
-        $socical_link = Helpers::convertToJson($event->social_link);
-        return view('web.event.events_detail', compact('event', 'socical_link'));
+        try{
+            $eventSlug = explode('-', $eventSlug);
+            $idEvent = $eventSlug[sizeof($eventSlug) - 1];
+            $event = $this->eventModel->getEventById($idEvent);
+            $socical_link = Helpers::convertToJson($event->social_link);
+            return view('web.event.events_detail', compact('event', 'socical_link'));
+        } catch(\Exception $e) {
+            return redirect()->route('web.index');
+        }
+
     }
 }

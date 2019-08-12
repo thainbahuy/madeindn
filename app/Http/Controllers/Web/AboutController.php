@@ -28,6 +28,11 @@ class AboutController extends Controller
     {
         $listAbout = $this->about->getAllAbout();
         $listFirstAbout = $this->about->getAboutById($id);
-        return view('web.more.about', compact('listAbout','listFirstAbout'))->with('id',$id);
+        if ($listFirstAbout != null) {
+            return view('web.more.about', compact('listAbout', 'listFirstAbout'))->with('id', $id);
+        } else {
+            return redirect()->route('web.index');
+        }
+
     }
 }
