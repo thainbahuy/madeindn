@@ -60,7 +60,7 @@ class DashboardController extends Controller
 
 
         $backgroundHome = $this->background->getBackgroundHome();
-        return view('admin.dashboard', compact('backgroundHome','boxes'));
+        return view('admin.dashboard', compact('backgroundHome','boxes'))->with('title','Admin Dashboard');
     }
 
     /**Change new background in Home Page

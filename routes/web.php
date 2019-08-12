@@ -79,8 +79,8 @@ Route::namespace('Admin')->middleware('guest')->prefix('admin/')->group( functio
 
 
     // Test API CDN
-    Route::post('/upLoadImage', 'ImageController@upLoadImage');
-    Route::post('/deleteImage', 'ImageController@deletImage');
+//    Route::post('/upLoadImage', 'ImageController@upLoadImage');
+//    Route::post('/deleteImage', 'ImageController@deletImage');
 
     // Project
     Route::get('/project/customer_project', 'CustomerProjectController@showCustomerProject')->name('view.admin.project.project_customer');
@@ -129,6 +129,12 @@ Route::namespace('Admin')->middleware('guest')->prefix('admin/')->group( functio
     Route::get('/about/edit/{id}', 'AboutController@getEditAbout')->name('view.admin.about.edit_about');
     Route::post('/about/edit/{id}', 'AboutController@postEditAbout')->name('admin.about.edit_about');
     Route::get('/about/delete', 'AboutController@deleteAbout')->name('admin.about.about_delete');
+
+    //partner
+    Route::get('/partner-background', 'PartnerBackgroundController@index')->name('view.admin.partner.partner_background_list');
+    Route::get('/partner-background/add', 'PartnerBackgroundController@showAddNewPartnerBackground')->name('view.admin.partner.add_partner_background');
+    Route::post('/partner-background/add', 'PartnerBackgroundController@addNewPartnerBackground')->name('admin.partner.add_partner_background');
+    Route::get('/partner-background/delete', 'PartnerBackgroundController@deletePartnerBackground')->name('admin.partner.partner_background_list.delete');
 });
 
 //Auth
@@ -141,6 +147,6 @@ Route::post('account/forgot-password', 'Admin\Auth\ForgotPasswordController@send
 Route::get('account/reset-password/{token}', 'Admin\Auth\ResetPasswordController@showResetForm')->name('resetpass');
 Route::post('account/reset-password', 'Admin\Auth\ResetPasswordController@reset')->name('admin.Auth.resetpass');
 
-Route::get('ABC',function(){
-    echo Hash::make('thaibahuy');
-});
+//Route::get('ABC',function(){
+//    echo Hash::make('thaibahuy');
+//});

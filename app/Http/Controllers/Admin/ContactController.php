@@ -27,7 +27,7 @@ class ContactController extends Controller
         if ($request->ajax()) {
             return view('admin.contact.ajax_info_contact_project', compact(['listInfoContactProject']));
         }
-        return view('admin.contact.info_contact_project', compact('listInfoContactProject'));
+        return view('admin.contact.info_contact_project', compact('listInfoContactProject'))->with('title','List contact');
     }
 
     /**Delete customer information entered in the project page into the database
@@ -56,7 +56,7 @@ class ContactController extends Controller
         if ($request->ajax()) {
             return view('admin.contact.ajax_info_contact_customer', compact(['listInfoContact']));
         }
-        return view('admin.contact.info_contact_customer', compact('listInfoContact'));
+        return view('admin.contact.info_contact_customer', compact('listInfoContact'))->with('title','Contact customer');
     }
 
     /**Delete customer information entered in the contact page into the database

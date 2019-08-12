@@ -88,6 +88,11 @@
                         <i class="ni ni-planet text-capitalize"></i> Event
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link " href="{{route('view.admin.partner.partner_background_list')}}">
+                        <i class="ni ni-planet text-blue"></i> Partner Logo
+                    </a>
+                </li>
             </ul>
             <!-- Divider -->
             <hr class="my-3">

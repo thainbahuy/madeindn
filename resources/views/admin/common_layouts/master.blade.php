@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>
-        Admin Dashboard
+        {{$title}}
     </title>
     <!-- Favicon -->
     <link href="{{ asset('web/images/icons/logo.png') }}" rel="icon" type="image/png">
@@ -14,10 +14,11 @@
     <link href="{{ asset('admin/assets/js/plugins/nucleo/css/nucleo.css') }}" rel="stylesheet" />
     <link href="{{ asset('admin/assets/js/plugins/@fortawesome/fontawesome-free/css/all.min.css') }}" rel="stylesheet" />
     <!-- CSS Files -->
+    <link href="{{ asset('admin/main.css') }}" rel="stylesheet" />
     <link href="{{ asset('admin/assets/css/argon-dashboard.css?v=1.1.0') }}" rel="stylesheet" />
-    <link href="{{ asset('admin/main.css') }}/" rel="stylesheet" />
     <link href="{{ asset('admin/assets/css/bootstrap.css') }}" rel="stylesheet" />
     <link href="{{ asset('admin/assets/css/dataTables.bootstrap4.min.css') }}" rel="stylesheet" />
+
     @yield('myheadscript')
 
 </head>

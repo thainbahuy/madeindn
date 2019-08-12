@@ -27,7 +27,7 @@ class CoworkingController extends Controller
         if ($request->ajax()) {
             return view('admin.coworking.ajax_coworking_space', compact(['listCoworkingSpace']));
         }
-        return view('admin.coworking.coworking_space', compact('listCoworkingSpace'));
+        return view('admin.coworking.coworking_space', compact('listCoworkingSpace'))->with('title','List Co-working');
     }
 
     /**Delete selected coworking and delete image on CDN
@@ -60,7 +60,7 @@ class CoworkingController extends Controller
      */
     public function getAddCoworking()
     {
-        return view('admin.coworking.add_coworking_space');
+        return view('admin.coworking.add_coworking_space')->with('title','Add New Co-working');
     }
 
     /**Add new Coworking
@@ -99,7 +99,7 @@ class CoworkingController extends Controller
     public function getEditCoworking($id)
     {
         $infoCoworking = $this->coWorking->getCoworking($id);
-        return view('admin.coworking.edit_coworking_space', compact('infoCoworking'));
+        return view('admin.coworking.edit_coworking_space', compact('infoCoworking'))->with('title','Edit Co-working');
     }
 
     /**Update coworking information just modified to the database

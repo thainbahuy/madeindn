@@ -95,16 +95,32 @@ class Helpers
         }
     }
 
+    /**
+     * get name image from url
+     * @param $image
+     * @return string
+     */
     public static function getNameImage($image)
     {
         return basename($image);
     }
 
+    /**
+     * random name for image
+     * @param $nameImage
+     * @return string
+     */
     public static function createNewNameImage($nameImage)
     {
         return rand(10000000, 99999999) . "_" . rand(10000000, 99999999) . "_" . rand(10000000, 99999999) . "_" . $nameImage;
     }
 
+    /**
+     * upload image to cdn
+     * @param $file file
+     * @param $nameImage string
+     * @return mixed
+     */
     public static function upLoadImageToCDN_N($file, $nameImage)
     {
         $disk = Storage::disk('gcs');

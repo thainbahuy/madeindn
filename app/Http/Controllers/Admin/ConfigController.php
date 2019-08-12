@@ -14,7 +14,7 @@ class ConfigController extends Controller
     {
         $jsonLanguage = file_get_contents(storage_path('json_language/language.json'));
         $jsonDataLanguage = json_decode($jsonLanguage, true);
-        return view('admin.config.lang_json', compact('jsonDataLanguage'));
+        return view('admin.config.lang_json', compact('jsonDataLanguage'))->with('title','Config language');
     }
 
     /**
@@ -50,7 +50,7 @@ class ConfigController extends Controller
     {
         $jsonPaginate = file_get_contents(storage_path('config.json'));
         $jsonDataPaginate = json_decode($jsonPaginate, true);
-        return view('admin.config.paginate_json', compact('jsonDataPaginate'));
+        return view('admin.config.paginate_json', compact('jsonDataPaginate'))->with('title','Config system');
     }
 
     /**

@@ -193,51 +193,13 @@
             <h2 class="c-section__heading"><p>{{__('message.HOME_COMPANY1')}} <br/> {{__('message.HOME_COMPANY2')}}</p></h2>
             <div class="c-section__content">
                 <div class="c-list__company">
-                    <div class="c-list__company__item">
-                        <div class="c-thumbnail c-thumbnail--1x1">
-                            <img src="{{asset('web/images/logo_cloud.png')}}" alt="">
+                    @foreach($listPartner as $item)
+                        <div class="c-list__company__item">
+                            <div class="c-thumbnail c-thumbnail--1x1">
+                                <img src="{{$item->image_link}}" alt="{{$item->name}}">
+                            </div>
                         </div>
-                    </div>
-                    <div class="c-list__company__item">
-                        <div class="c-thumbnail c-thumbnail--1x1">
-                            <img src="{{asset('web/images/logo_dell.png')}}" alt="">
-                        </div>
-                    </div>
-                    <div class="c-list__company__item">
-                        <div class="c-thumbnail c-thumbnail--1x1">
-                            <img src="{{asset('web/images/logo_fiverr.png')}}" alt="">
-                        </div>
-                    </div>
-                    <div class="c-list__company__item">
-                        <div class="c-thumbnail c-thumbnail--1x1">
-                            <img src="{{asset('web/images/logo_asitech.png')}}" alt="">
-                        </div>
-                    </div>
-                    <div class="c-list__company__item">
-                        <div class="c-thumbnail c-thumbnail--1x1">
-                            <img src="{{asset('web/images/logo_sprout.png')}}" alt="">
-                        </div>
-                    </div>
-                    <div class="c-list__company__item">
-                        <div class="c-thumbnail c-thumbnail--1x1">
-                            <img src="{{asset('web/images/logo_konica.png')}}" alt="">
-                        </div>
-                    </div>
-                    <div class="c-list__company__item">
-                        <div class="c-thumbnail c-thumbnail--1x1">
-                            <img src="{{asset('web/images/logo_atlas.png')}}" alt="">
-                        </div>
-                    </div>
-                    <div class="c-list__company__item">
-                        <div class="c-thumbnail c-thumbnail--1x1">
-                            <img src="{{asset('web/images/logo_fusion.png')}}" alt="">
-                        </div>
-                    </div>
-                    <div class="c-list__company__item">
-                        <div class="c-thumbnail c-thumbnail--1x1">
-                            <img src="{{asset('web/images/logo_socket.png')}}" alt="">
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>

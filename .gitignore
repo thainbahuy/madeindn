@@ -6,6 +6,8 @@
 .env
 # PhpStorm
 .idea
+# vscode
+.vscode
 .env.backup
 madein-ggkey.json
 .phpunit.result.cache

@@ -33,7 +33,7 @@ class ProjectController extends Controller
         if ($request->ajax()) {
             return view('admin.project_admin.ajax_project', compact(['listProject']));
         }
-        return view('admin.project_admin.project', compact('listProject'));
+        return view('admin.project_admin.project', compact('listProject'))->with('title','List Project');;
     }
 
     /** Delete Project by Id
@@ -67,7 +67,7 @@ class ProjectController extends Controller
      */
     public function getAddProject()
     {
-        return view('admin.project_admin.add_project');
+        return view('admin.project_admin.add_project')->with('title','Add New Project');;
     }
 
     /** Insert new Submit by ADmin into Database
@@ -111,7 +111,7 @@ class ProjectController extends Controller
     public function getEditProject($id)
     {
         $infoProject = $this->project->getProjectById($id);
-        return view('admin.project_admin.edit_project', compact('infoProject'));
+        return view('admin.project_admin.edit_project', compact('infoProject'))->with('title','Edit Project');;
     }
 
     /** Update new information into Database

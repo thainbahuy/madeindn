@@ -19,7 +19,7 @@ class CategoryController extends Controller
 
     public function showAllCategory()
     {
-        return view('admin.category.view_category');
+        return view('admin.category.view_category')->with('title','List Category');
     }
 
     public function deleteCategory(Request $request)
@@ -36,9 +36,9 @@ class CategoryController extends Controller
         }
     }
 
-    public function getAddCategory(Request $request)
+    public function getAddCategory()
     {
-        return view('admin.category.add_category');
+        return view('admin.category.add_category')->with('title','Add New Category');
     }
 
     public function postAddCategory(CategoryRequest $request)
@@ -56,10 +56,10 @@ class CategoryController extends Controller
         }
     }
 
-    public function getEditCategory($id, Request $request)
+    public function getEditCategory($id)
     {
         $infoCategory = $this->category->getCategoryById($id);
-        return view('admin.category.edit_category', compact('infoCategory'));
+        return view('admin.category.edit_category', compact('infoCategory'))->with('title','Edit Category');
     }
 
     public function postEditCategory($id, CategoryRequest $request)

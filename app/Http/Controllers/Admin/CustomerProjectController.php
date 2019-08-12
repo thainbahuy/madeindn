@@ -28,7 +28,7 @@ class CustomerProjectController extends Controller
         if ($request->ajax()) {
             return view('admin.project.ajax_project_customer', compact(['listCustomerProject']));
         }
-        return view('admin.project.project_customer', compact('listCustomerProject'));
+        return view('admin.project.project_customer', compact('listCustomerProject'))->with('title','List Customer Project');
     }
 
     /**Display info about project by ID
@@ -39,7 +39,7 @@ class CustomerProjectController extends Controller
     public function showCustomerProjectById($id, Request $request)
     {
         $viewCustomerProject = $this->projectSubmit->showDetailProjectById($id);
-        return view('admin.project.detail_project_submit', compact('viewCustomerProject'));
+        return view('admin.project.detail_project_submit', compact('viewCustomerProject'))->with('title','Customer Project');
     }
 
     /** Delete Project by id

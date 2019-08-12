@@ -36,7 +36,7 @@ class EventController extends Controller
             $view = view('admin.event.loadmore_event_list', compact('listEvent','background'))->render();
             return response()->json(['html' => $view]);
         }
-        return view('admin.event.event_list', compact('listEvent','background'));
+        return view('admin.event.event_list', compact('listEvent','background'))->with('title','List Event');;
     }
 
     /**
@@ -45,14 +45,14 @@ class EventController extends Controller
      */
     public function showAddNewEvent()
     {
-        return view('admin.event.addnew');
+        return view('admin.event.addnew')->with('title','Add New Event');;
     }
 
     public function showEditEvent($id)
     {
         try{
             $event = $this->event->getEventById($id);
-            return view('admin.event.edit', compact('event'));
+            return view('admin.event.edit', compact('event'))->with('title','Edit Event');;
         } catch (Exception $e){
             return redirect()->route('view.admin.event.event_list');
         }

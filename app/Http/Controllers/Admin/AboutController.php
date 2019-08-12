@@ -27,7 +27,7 @@ class AboutController extends Controller
         if ($request->ajax()) {
             return view('admin.about.ajax_about', compact(['listAbout']));
         }
-        return view('admin.about.about', compact('listAbout'));
+        return view('admin.about.about', compact('listAbout'))->with('title','List About');;
     }
 
     /**Add About
@@ -35,7 +35,7 @@ class AboutController extends Controller
      */
     public function getAddAbout()
     {
-        return view('admin.about.add_about');
+        return view('admin.about.add_about')->with('title','Add New About');;
     }
 
     /**Add new About
@@ -67,7 +67,7 @@ class AboutController extends Controller
     public function getEditAbout($id)
     {
         $infoAbout = $this->about->getAboutDetail($id);
-        return view('admin.about.edit_about', compact('infoAbout'));
+        return view('admin.about.edit_about', compact('infoAbout'))->with('title','Edit About');;
     }
 
     /**Update edit new About
