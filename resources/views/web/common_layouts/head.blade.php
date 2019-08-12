@@ -5,7 +5,7 @@
 <meta name="author" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
 <!-- ======== FAVICON ======== -->
-<link rel="shortcut icon" href="{{asset('web/images/favicon.png')}}" />
+<link rel="shortcut icon" href="{{asset('web/images/icons/logo.png')}}" />
 <link rel="icon" href="{{asset('web/images/icons/logo.png')}}">
 
 <!-- ======== STYLES ======== -->
