@@ -67,9 +67,14 @@ class EventController extends Controller
     public function deleteEventById(Request $request)
     {
         $id = $request->get('id');
+        $event = $this->event->getEventById($id);
+        $nameImage = Helpers::getNameImage($event->image_link);
         if ($this->event->deleteEventById($id) == 1) {
+            Helpers::deleteImageFromCDN($nameImage);
+            Log::info('delete event success');
             return response()->json(['status' => 'success'], Response::HTTP_OK);
         } else {
+            Log::info('delete event failed');
             return response()->json(['status' => 'fail'], Response::HTTP_INTERNAL_SERVER_ERROR);
         }
     }
