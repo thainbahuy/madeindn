@@ -11,7 +11,7 @@ $('#delete-save').on('click', function () {
         }
     });
     $.ajax({
-        url: route('admin.contact.contact_customer_delete'),
+        url: route('admin.contact.project_customer_delete'),
         type: 'get',
         data: {
             id: id,
@@ -36,6 +36,9 @@ $(document).ready(function () {
         processing: true,
         aaSorting : [[ 0, 'DESC' ]],
         ClientSide: true,
+        ajax: {
+            url: route('view.admin.contact.project_customer'),
+        },
         oLanguage: {
             oPaginate: {
                 First: "First page", // This is the link to the first page
@@ -44,17 +47,13 @@ $(document).ready(function () {
                 sLast: "<" // This is the link to the last page
             }
         },
-        ajax: {
-            url: route('view.admin.contact.contact_customer'),
-        },
         columns: [
             {data: 'id'},
-            {data: 'title'},
-            {data: 'name'},
-            {data: 'email'},
-            {data: 'mobile'},
-            {data: 'content'},
+            {data: 'email_customer'},
+            {data: 'mobile_customer'},
+            {data: 'content_customer'},
             {data: 'created_at'},
+            {data: 'project_id',orderable: false, searchable: false},
             {data: 'feature',orderable: false, searchable: false},
         ],
         createdRow: function (row, data) {

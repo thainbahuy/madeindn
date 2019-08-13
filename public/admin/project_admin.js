@@ -50,6 +50,14 @@ $(document).ready(function () {
         processing: true,
         aaSorting : [[ 4, 'asc' ],[ 0, 'DESC' ]],
         ClientSide: true,
+        oLanguage: {
+            oPaginate: {
+                First: "First page", // This is the link to the first page
+                sPrevious: "<", // This is the link to the previous page
+                sNext: ">", // This is the link to the next page
+                sLast: "<" // This is the link to the last page
+            }
+        },
         ajax: {
             url: route('view.admin.project_admin.project'),
         },

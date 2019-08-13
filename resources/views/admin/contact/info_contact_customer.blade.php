@@ -24,12 +24,21 @@
     <div class="container-fluid mt--7">
         <div class="row mt-8">
             <div class="col-xl-12 mb-5 mb-xl-0">
-                <div class="row">
-                    <div class="col">
-                        <div id="content" class="card shadow">
-                            @include('admin.contact.ajax_info_contact_customer')
-                        </div>
-                    </div>
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="tableData">
+                        <thead class="thead-light">
+                            <tr>
+                                <th scope="col">ID</th>
+                                <th style='width: 100px;' scope="col">Title</th>
+                                <th scope="col">Customer Name</th>
+                                <th scope="col">Customer Email</th>
+                                <th scope="col">Customer Phone</th>
+                                <th scope="col">Content</th>
+                                <th scope="col">Created at</th>
+                                <th scope="col">Feature</th>
+                            </tr>
+                        </thead>
+                    </table>
                 </div>
             </div>
         </div>
@@ -78,12 +87,5 @@
     </div>
 @endsection
 @section('myscript')
-    <script>
-        var config = {
-            routes: {
-                zone: "{{ route('admin.contact.contact_customer_delete') }}"
-            }
-        };
-    </script>
     <script src="{{ asset('admin') }}/contact.js"></script>
 @endsection

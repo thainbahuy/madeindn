@@ -4,7 +4,8 @@
     <nav class="navbar navbar-top navbar-expand-md navbar-dark" id="navbar-main">
         <div class="container-fluid">
             <!-- Brand -->
-            <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" href="#">CONTACT CUSTOMER IN PROJECT</a>
+            <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" href="#">CONTACT CUSTOMER IN
+                PROJECT</a>
             @include('admin.common_layouts.language')
         </div>
     </nav>
@@ -24,12 +25,20 @@
     <div class="container-fluid mt--7">
         <div class="row mt-8">
             <div class="col-xl-12 mb-5 mb-xl-0">
-                <div class="row">
-                    <div class="col">
-                        <div id="content" class="card shadow">
-                            @include('admin.contact.ajax_info_contact_project')
-                        </div>
-                    </div>
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="tableData">
+                        <thead class="thead-light">
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Customer Email</th>
+                            <th scope="col">Customer Phone</th>
+                            <th scope="col">Customer Content</th>
+                            <th scope="col">Created at</th>
+                            <th scope="col">Code Project</th>
+                            <th scope="col">Feature</th>
+                        </tr>
+                        </thead>
+                    </table>
                 </div>
             </div>
         </div>
@@ -78,12 +87,5 @@
     </div>
 @endsection
 @section('myscript')
-    <script>
-        var config = {
-            routes: {
-                zone: "{{ route('admin.contact.project_customer_delete') }}"
-            }
-        };
-    </script>
-    <script src="{{ asset('admin') }}/contact.js"></script>
+    <script src="{{ asset('admin/contact_project.js') }}"></script>
 @endsection
