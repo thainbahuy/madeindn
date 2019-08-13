@@ -52,16 +52,16 @@ class AboutRequest extends FormRequest
     public function messages()
     {
         return [
-            'name.required' => 'The Name field is required.',
-            'name.min' => 'The Name must be at least 6 characters.',
-            'name.max' => 'The Name may not be greater than 100 characters',
-            'jp_name.required' => 'The Name JP field is required.',
-            'jp_name.min' => 'The Name JP must be at least 6 characters.',
-            'jp_name.max' => 'The Name JP may not be greater than 100 characters',
+            'name.required' => 'The Title field is required.',
+            'name.min' => 'The Title must be at least 6 characters.',
+            'name.max' => 'The Title may not be greater than 100 characters',
+            'jp_name.required' => 'The Title Japan field is required.',
+            'jp_name.min' => 'The Title Japan must be at least 6 characters.',
+            'jp_name.max' => 'The Title Japan may not be greater than 100 characters',
             'description.required' => 'The Description field is required.',
             'description.min' => 'The Description must be at least 6 characters.',
-            'jp_description.required' => 'The Description JP field is required.',
-            'jp_description.min' => 'The Description JP must be at least 6 characters.',
+            'jp_description.required' => 'The Description Japan field is required.',
+            'jp_description.min' => 'The Description Japan must be at least 6 characters.',
             'position.unique' => 'The position has already been taken.',
             'image_link.required' => 'Please choose a Image cover.',
         ];

@@ -31,13 +31,6 @@
                 <div class="row">
                     <div class="col-xl-12 order-xl-1">
                         <div class="card bg-secondary shadow">
-                            <div class="card-header bg-white border-0">
-                                <div class="row align-items-center">
-                                    {{--                                    <div class="col-4 text-right">--}}
-                                    {{--                                        <a href="#!" class="btn btn-sm btn-primary">Settings</a>--}}
-                                    {{--                                    </div>--}}
-                                </div>
-                            </div>
                             <div style="background:#fbfbfc" class="card-body">
                                 <h6 style="text-align: center; color: red">{{Session::get('FILES')}}</h6>
                                 <h6 class="heading-small text-muted mb-4">CONTACT INFORMATION</h6>

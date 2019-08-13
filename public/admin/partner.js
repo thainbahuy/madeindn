@@ -1,6 +1,22 @@
 
 $(document).ready(function () {
 
+
+    $('#partnerTable').DataTable({
+        bInfo: false,
+        oLanguage: {
+            oPaginate: {
+                First: "First page", // This is the link to the first page
+                sPrevious: "<", // This is the link to the previous page
+                sNext: ">", // This is the link to the next page
+                sLast: "<" // This is the link to the last page
+            }
+        },
+    });
+
+
+
+
     $('#delete-save').on('click', function () {
         let id = $(this).attr('data-id');
         let url = $(this).attr('data-url');
@@ -9,11 +25,7 @@ $(document).ready(function () {
         $('#modal-danger').modal('hide');
     });
 
-    $(document).on('click', '.pagination a', function (e) {
-        e.preventDefault();
-        var url = $(this).attr('href');
-        loadMore(url);
-    });
+
 
 
 });
@@ -43,17 +55,3 @@ function deletePartner(urlAjax, id) {
 
 }
 
-function loadMore(urlAjax) {
-    $.ajax(
-        {
-            url: urlAjax,
-            type: "get",
-        })
-        .done(function (data) {
-            $("#tableEvent").html(data.html);
-
-        })
-        .fail(function (jqXHR, ajaxOptions, thrownError) {
-            alert('server not responding...');
-        });
-}

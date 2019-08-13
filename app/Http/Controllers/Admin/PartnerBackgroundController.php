@@ -25,13 +25,9 @@ class PartnerBackgroundController extends Controller
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\JsonResponse|\Illuminate\View\View
      * @throws \Throwable
      */
-    public function index(Request $request)
+    public function index()
     {
         $listBackground = $this->partner->getListBackground();
-        if ($request->ajax()) {
-            $view = view('admin/partner/loadmore_list', compact('listBackground'))->render();
-            return response()->json(['html' => $view]);
-        }
         return view('admin/partner/partner_background_list', compact('listBackground'))->with('title','List Partner logo');;
     }
 
