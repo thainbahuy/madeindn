@@ -166,6 +166,7 @@ return [
          * Package Service Providers...
          */
         Superbalist\LaravelGoogleCloudStorage\GoogleCloudStorageServiceProvider::class,
+        Tightenco\Ziggy\ZiggyServiceProvider::class,
 
         /*
          * Application Service Providers...

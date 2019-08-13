@@ -1,21 +1,49 @@
 
-$(document).ready(function () {
+// $(document).ready(function () {
+//
+//     $('#delete-save').on('click', function () {
+//         let id = $(this).attr('data-id');
+//         let url = $(this).attr('data-url');
+//
+//         deleteEvent(url,id);
+//         $('#modal-danger').modal('hide');
+//     });
+//
+//     $(document).on('click', '.pagination a', function (e) {
+//         e.preventDefault();
+//         var url = $(this).attr('href');
+//         loadMoreEvent(url);
+//     });
+//
+//
+// });
 
-    $('#delete-save').on('click', function () {
-        let id = $(this).attr('data-id');
-        let url = $(this).attr('data-url');
+$(function() {
+    $('#event-table').DataTable({
+        processing: true,
+        serverSide: true,
+        bInfo : false,
+        oLanguage: {
+            oPaginate: {
+                First: "First page", // This is the link to the first page
+                sPrevious: "<", // This is the link to the previous page
+                sNext: ">", // This is the link to the next page
+                sLast: "<" // This is the link to the last page
+            }
+        },
+        ajax : {
+            url: route('view.admin.event.event_list'),
+        },
+        columns: [
+            { data: 'name' },
+            { data: 'image_link' },
+            { data: 'date_time' },
+            { data: 'begin_time' },
+            { data: 'end_time' },
+            { data: 'feature' },
 
-        deleteEvent(url,id);
-        $('#modal-danger').modal('hide');
+        ]
     });
-
-    $(document).on('click', '.pagination a', function (e) {
-        e.preventDefault();
-        var url = $(this).attr('href');
-        loadMoreEvent(url);
-    });
-
-
 });
 
 function setImageBackground(imageLink,urlAjax) {

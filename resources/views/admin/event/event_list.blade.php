@@ -66,7 +66,22 @@
     </div>
 @endsection
 @section('myscript')
-    <script src="{{asset('admin/event.js')}}"></script>
+    <script src="{{asset('admin/event.js')}}">
+        // $(function() {
+        //     $('#event-table').DataTable({
+        //         processing: true,
+        //         serverSide: true,
+        //         ajax: route('admin.event.event_list.datatable'),
+        //         columns: [
+        //             { data: 'name' },
+        //             { data: 'image_link' },
+        //             { data: 'created_at' },
+        //             { data: 'updated_at' }
+        //         ]
+        //     });
+        // });
+    </script>
+
 @endsection
 
 

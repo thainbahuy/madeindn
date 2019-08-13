@@ -11,6 +11,7 @@ use http\Exception;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Log;
+use Yajra\DataTables\Facades\DataTables;
 
 class EventController extends Controller
 {
@@ -31,12 +32,25 @@ class EventController extends Controller
     public function showListEvent(Request $request)
     {
         $background = $this->background->getBackgroundEvent();
-        $listEvent = $this->event->getAllEvents(5);
         if ($request->ajax()) {
-            $view = view('admin.event.loadmore_event_list', compact('listEvent','background'))->render();
-            return response()->json(['html' => $view]);
+            $listEvent = $this->event->getAllEvents();
+            return Datatables::of($listEvent)
+                ->editColumn('image_link', function ($event) {
+                    return '<img src="' . $event->image_link . '" alt="image" class="img-thumbnail">';
+                })
+                ->addColumn('feature', function ($event) {
+                    $data = '<a onclick="showModalContact(' . "'$event->id'" . ')" href="javascript:">
+                            <img style="width: 25px; height: 25px;" src="https://image.flaticon.com/icons/png/128/61/61848.png" alt="">
+                        </a>' .
+                        ' ||&nbsp; <a href="' . route('view.admin.project_admin.edit_project', $event->id) . '">
+                            <img style="width: 25px; height: 25px;" src="https://png.pngtree.com/svg/20151211/af2c28659c.svg" alt="">
+                        </a>';
+                    return $data;
+                })
+                ->rawColumns(['image_link','feature'])
+                ->make();
         }
-        return view('admin.event.event_list', compact('listEvent','background'))->with('title','List Event');;
+        return view('admin.event.event_list', compact('listEvent','background'))->with('title','List Event');
     }
 
     /**
@@ -226,6 +240,7 @@ class EventController extends Controller
             return response()->json(['status' =>'set background success'],Response::HTTP_OK);
         }
     }
+
 
 
 }
