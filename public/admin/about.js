@@ -30,14 +30,14 @@ $('#delete-save').on('click', function () {
     });
 });
 $(document).ready(function() {
-    $('#about_table').DataTable()
+    $('#about_table').DataTable({
+        language: {
+            paginate: {
+                next: '>',
+                previous: '<'
+            }
+        },
+        bInfo : false,
+    });
 });
-$('#about_table').DataTable({
-    language: {
-        paginate: {
-            next: '>',
-            previous: '<'
-        }
-    },
-    "bInfo" : false,
-});
+

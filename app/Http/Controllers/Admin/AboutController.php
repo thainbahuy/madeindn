@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AboutRequest;
 use App\Models\Admin\About;
+use Helpers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
@@ -42,12 +43,12 @@ class AboutController extends Controller
     public function postAddAbout(AboutRequest $request)
     {
         $data = $request->all();
-        $newNameImage = \Helpers::createNewNameImage($data["imageAbout"]->getClientOriginalName());
+        $newNameImage = Helpers::createNewNameImage($data["imageAbout"]->getClientOriginalName());
         $linkImage = "https://storage.googleapis.com/madeindn/" . $newNameImage;
         $resultAddAbout = $this->about->addAbout($data['name'], $data['jp_name'], $data['position'], $data['description'], $data['jp_description'], $linkImage);
         if ($resultAddAbout) {
             Log::info('You just added About name: ' . $data['name']);
-            \Helpers::upLoadImageToCDN_N($data['imageAbout'], $newNameImage);
+            Helpers::upLoadImageToCDN_N($data['imageAbout'], $newNameImage);
             $request->session()->flash('msg', 'Success!');
             return redirect()->route('view.admin.about.about');
         } else {
@@ -76,7 +77,7 @@ class AboutController extends Controller
         $data = $request->all();
         $oldInfoAbout = $this->about->getAboutDetail($id);
         if ($request->file('imageAbout')) {
-            $newNameImage = \Helpers::createNewNameImage($data["imageAbout"]->getClientOriginalName());
+            $newNameImage = Helpers::createNewNameImage($data["imageAbout"]->getClientOriginalName());
             $linkImage = "https://storage.googleapis.com/madeindn/" . $newNameImage;
         } else {
             $linkImage = $oldInfoAbout->image_link;
@@ -84,9 +85,9 @@ class AboutController extends Controller
         $resultEditAbout = $this->about->editAbout($id, $data['name'], $data['jp_name'], $data['position'], $data['description'], $data['jp_description'], $linkImage);
         if ($resultEditAbout) {
             if ($request->file('imageAbout')) {
-                $nameImage = \Helpers::getNameImage($oldInfoAbout->image_link);
-                \Helpers::deleteImageFromCDN($nameImage);
-                \Helpers::upLoadImageToCDN_N($data['imageAbout'], $newNameImage);
+                $nameImage = Helpers::getNameImage($oldInfoAbout->image_link);
+                Helpers::deleteImageFromCDN($nameImage);
+                Helpers::upLoadImageToCDN_N($data['imageAbout'], $newNameImage);
             }
             Log::info('You just edit About name: ' . $data['name']);
             $request->session()->flash('msg', 'Success!');
@@ -106,19 +107,19 @@ class AboutController extends Controller
     {
         $id = $request->get('id');
         $objAbout = $this->about->getAbout($id);
-        $nameImage = \Helpers::getNameImage($objAbout->image_link);
+        $nameImage = Helpers::getNameImage($objAbout->image_link);
         try {
             if ($this->about->deleteAbout($id)) {
                 Log::info('Delete about title: ' . $objAbout->name);
-                \Helpers::deleteImageFromCDN($nameImage);
-                return \Response::json(['msg' => 'DELETE SUCCESS']);
+                Helpers::deleteImageFromCDN($nameImage);
+                return response()->json(['msg' => 'DELETE SUCCESS']);
             } else {
                 Log::info('The deleted about titled: ' . $objAbout->name);
-                return \Response::json(['msg' => 'NO DELETE SUCCESS']);
+                return response()->json(['msg' => 'NO DELETE SUCCESS']);
             }
         } catch (\Exception $e) {
             Log::info($e);
-            return \Response::json(['msg' => 'NO DELETE SUCCESS']);
+            return response()->json(['msg' => 'NO DELETE SUCCESS']);
         }
     }
 }

@@ -78,12 +78,12 @@
                             </div>
                             <div class="col-md-6"><h3>Japan</h3>
                                 <div class="form-group">
-                                    <label>タイトル</label>
+                                    <label>Title Japan</label>
                                     <input class="form-control" type="text" name="jp_name"
                                            value="{{$infoAbout->jp_name}}">
                                 </div>
                                 <div class="form-group">
-                                    <label>説明</label>
+                                    <label>Description Japan</label>
                                     <textarea id="editor2" rows="5" class="form-control" name="jp_description">{!!$infoAbout->description!!}</textarea>
                                 </div>
                             </div>
