@@ -65,7 +65,7 @@ class EventController extends Controller
                 ->rawColumns(['image_link', 'feature', 'setBackgroundEvent'])
                 ->make();
         }
-        return view('admin.event.event_list', compact('listEvent', 'background'))->with('title', 'List Event');
+        return view('admin.event.event_list')->with('title', 'List Event');
     }
 
     /**
