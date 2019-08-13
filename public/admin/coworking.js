@@ -1,3 +1,24 @@
+
+$(document).ready(function () {
+
+
+    $('#coworkingTable').DataTable({
+        bInfo: false,
+        oLanguage: {
+            oPaginate: {
+                First: "First page", // This is the link to the first page
+                sPrevious: "<", // This is the link to the previous page
+                sNext: ">", // This is the link to the next page
+                sLast: "<" // This is the link to the last page
+            }
+        },
+    });
+});
+
+
+
+
+
 function showModalContact(id) {
     $('#modal-danger').modal('show');
     $('#delete-save').attr('data-id', id);

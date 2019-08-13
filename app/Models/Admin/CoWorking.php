@@ -14,7 +14,8 @@ class CoWorking extends Model
         return DB::table($this->table)
             ->select('id', 'name', 'jp_name', 'image_link', 'position', 'created_at')
             ->orderByRaw('ISNULL(position), position ASC')
-            ->orderBy('id', 'DESC');
+            ->orderBy('id', 'DESC')
+            ->get();
     }
 
     public function getCoworking($id)
