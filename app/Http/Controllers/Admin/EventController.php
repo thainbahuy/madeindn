@@ -15,9 +15,9 @@ use Yajra\DataTables\Facades\DataTables;
 
 class EventController extends Controller
 {
-    private $event,$background;
+    private $event, $background;
 
-    public function __construct(Event $event,Background $background)
+    public function __construct(Event $event, Background $background)
     {
         $this->event = $event;
         $this->background = $background;
@@ -37,12 +37,18 @@ class EventController extends Controller
                 ->editColumn('image_link', function ($event) {
                     return '<img src="' . $event->image_link . '" alt="image" class="img-thumbnail">';
                 })
-                ->addColumn('setBackgroundEvent',function ($event){
+                ->editColumn('begin_time', function ($event) {
+                    return date_format(date_create($event->begin_time),'G:i A');
+                })
+                ->editColumn('end_time', function ($event) {
+                    return date_format(date_create($event->end_time),'G:i A');
+                })
+                ->addColumn('setBackgroundEvent', function ($event) {
                     $background = $this->background->getBackgroundEvent();
-                    if ($event->image_link == $background->image_link){
-                        $data = '<input id="set_background" checked onclick="setImageBackground('."'$event->image_link'".')" name="event_background" value="'.$event->image_link.'" type="radio">';
-                    }else{
-                        $data = '<input id="set_background"  name="event_background" onclick="setImageBackground('."'$event->image_link'".')" value="'.$event->image_link.'" type="radio">';
+                    if ($event->image_link == $background->image_link) {
+                        $data = '<input id="set_background" checked onclick="setImageBackground(' . "'$event->image_link'" . ')" name="event_background" value="' . $event->image_link . '" type="radio">';
+                    } else {
+                        $data = '<input id="set_background"  name="event_background" onclick="setImageBackground(' . "'$event->image_link'" . ')" value="' . $event->image_link . '" type="radio">';
                     }
 
                     return $data;
@@ -56,10 +62,10 @@ class EventController extends Controller
                         </a>';
                     return $data;
                 })
-                ->rawColumns(['image_link','feature','setBackgroundEvent'])
+                ->rawColumns(['image_link', 'feature', 'setBackgroundEvent'])
                 ->make();
         }
-        return view('admin.event.event_list', compact('listEvent','background'))->with('title','List Event');
+        return view('admin.event.event_list', compact('listEvent', 'background'))->with('title', 'List Event');
     }
 
     /**
@@ -68,15 +74,15 @@ class EventController extends Controller
      */
     public function showAddNewEvent()
     {
-        return view('admin.event.addnew')->with('title','Add New Event');;
+        return view('admin.event.addnew')->with('title', 'Add New Event');;
     }
 
     public function showEditEvent($id)
     {
-        try{
+        try {
             $event = $this->event->getEventById($id);
-            return view('admin.event.edit', compact('event'))->with('title','Edit Event');;
-        } catch (Exception $e){
+            return view('admin.event.edit', compact('event'))->with('title', 'Edit Event');;
+        } catch (Exception $e) {
             return redirect()->route('view.admin.event.event_list');
         }
 
@@ -152,23 +158,49 @@ class EventController extends Controller
         $begin_time = date_format(date_create($begin_time), 'Y-m-d H:i:s');
         $end_time = date_format(date_create($end_time), 'Y-m-d H:i:s');
 
-
         //upload image to cdn and get url
         $newNameImage = Helpers::createNewNameImage($imageFile->getClientOriginalName());
-        $imageLinkCDN = Helpers::upLoadImageToCDN_N($imageFile,$newNameImage);
+        $imageLinkCDN = Helpers::upLoadImageToCDN_N($imageFile, $newNameImage);
 
+        $this->insertEventSql($name, $jp_name, $sort_description, $jp_sort_description,
+            $overview, $jp_overview, $location_json, $location_json_jp,
+            $date_time, $begin_time, $end_time, $imageLinkCDN, $position, $socical_link_json);
+
+        return redirect()->route('view.admin.event.event_list')->with('message', 'Add New Event Success');
+    }
+
+    /**
+     * insert event into database
+     * @param $name
+     * @param $jp_name
+     * @param $sort_description
+     * @param $jp_sort_description
+     * @param $overview
+     * @param $jp_overview
+     * @param $location_json
+     * @param $location_json_jp
+     * @param $date_time
+     * @param $begin_time
+     * @param $end_time
+     * @param $imageLinkCDN
+     * @param $position
+     * @param $socical_link_json
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    private function insertEventSql($name, $jp_name, $sort_description, $jp_sort_description,
+                                 $overview, $jp_overview, $location_json, $location_json_jp,
+                                 $date_time, $begin_time, $end_time, $imageLinkCDN, $position, $socical_link_json)
+    {
         if ($this->event->addNewEvent($name, $jp_name, $sort_description, $jp_sort_description,
                 $overview, $jp_overview, $location_json, $location_json_jp,
                 $date_time, $begin_time, $end_time, $imageLinkCDN, $position, $socical_link_json) == true) {
             Log::info('add event success');
-            return redirect()->route('view.admin.event.event_list')->with('message', 'Add New Event Success');
+
 
         } else {
             Log::info('add event failed');
-            return redirect()->route('view.admin.event.event_list')->with('message', 'Add New Event Failed');
+
         }
-
-
     }
 
     /**
@@ -177,7 +209,7 @@ class EventController extends Controller
      * @param $id
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function updateEvent(EventRequest $request,$id)
+    public function updateEvent(EventRequest $request, $id)
     {
         $name = $request->get('name');
         $jp_name = $request->get('jp_name');
@@ -221,35 +253,66 @@ class EventController extends Controller
 
         $linkImageSaveSql = '';
         //upload image to cdn and get url
-        if ($request->hasFile('image_link')){
+        if ($request->hasFile('image_link')) {
             $imageFile = $request->file('image_link');
             $newNameImage = Helpers::createNewNameImage($imageFile->getClientOriginalName());
-            $linkImageSaveSql = Helpers::upLoadImageToCDN_N($imageFile,$newNameImage);
-        }else{
+            $linkImageSaveSql = Helpers::upLoadImageToCDN_N($imageFile, $newNameImage);
+        } else {
             $image_old = $request->get('image_display');
             $linkImageSaveSql = $image_old;
         }
 
+        $this->updateEventSql($id, $name, $jp_name, $sort_description, $jp_sort_description,
+            $overview, $jp_overview, $location_json, $location_json_jp,
+            $date_time, $begin_time, $end_time, $linkImageSaveSql, $position, $socical_link_json);
 
-        if ($this->event->updateEvent($id,$name, $jp_name, $sort_description, $jp_sort_description,
+        return redirect()->route('view.admin.event.event_list')->with('message', 'Update Event Success');
+    }
+
+    /**
+     * update event into database
+     * @param $id
+     * @param $name
+     * @param $jp_name
+     * @param $sort_description
+     * @param $jp_sort_description
+     * @param $overview
+     * @param $jp_overview
+     * @param $location_json
+     * @param $location_json_jp
+     * @param $date_time
+     * @param $begin_time
+     * @param $end_time
+     * @param $linkImageSaveSql
+     * @param $position
+     * @param $socical_link_json
+     */
+    private function updateEventSql($id, $name, $jp_name, $sort_description, $jp_sort_description,
+                                 $overview, $jp_overview, $location_json, $location_json_jp,
+                                 $date_time, $begin_time, $end_time, $linkImageSaveSql, $position, $socical_link_json)
+    {
+        if ($this->event->updateEvent($id, $name, $jp_name, $sort_description, $jp_sort_description,
                 $overview, $jp_overview, $location_json, $location_json_jp,
                 $date_time, $begin_time, $end_time, $linkImageSaveSql, $position, $socical_link_json) == true) {
             Log::info('update event success');
-            return redirect()->route('view.admin.event.event_list')->with('message', 'Update Event Success');
 
         } else {
             Log::info('update event failed');
-            return redirect()->route('view.admin.event.event_list')->with('message', 'Update Event Failed');
+
         }
     }
 
-    public function setImageBackground(Request $request){
+    /** update image event background in web
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function setImageBackground(Request $request)
+    {
         $image_link = $request->get('image_link');
-        if ($this->background->updateBackground($image_link) == 1){
-            return response()->json(['status' =>'set background success'],Response::HTTP_OK);
+        if ($this->background->updateBackground($image_link) == 1) {
+            return response()->json(['status' => 'set background success'], Response::HTTP_OK);
         }
     }
-
 
 
 }
