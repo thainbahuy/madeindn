@@ -2,10 +2,9 @@
     <h3 class="mb-0">List About US</h3>
 </div>
 <div class="table-responsive">
-    <table class="table align-items-center ">
+    <table id ="about_table" class="table align-items-center ">
         <thead class="thead-light">
         <tr>
-            <th class="text-center" scope="col">ID</th>
             <th class="text-center" scope="col">Title</th>
             <th class="text-center" scope="col">Image</th>
             <th class="text-center" scope="col">Position</th>
@@ -20,7 +19,6 @@
         <tbody>
         @foreach($listAbout as $value)
             <tr id="delete-coloum-{{$value->id}}">
-                <td class="text-center">{{$value->id}}</td>
                 <td class="text-center">{{Helpers::changeLanguage($value->name,$value->jp_name)}}</td>
                 <td class="text-center">
                     <img width="100px" height="100px" class="img img-thumbnail" src="{{$value->image_link}}">
@@ -44,7 +42,6 @@
 <div class="card-footer py-4">
     <nav aria-label="...">
         <ul class="pagination justify-content-end mb-0">
-            {{$listAbout->links()}}
         </ul>
     </nav>
 </div>

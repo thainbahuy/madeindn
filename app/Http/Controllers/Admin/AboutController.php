@@ -23,10 +23,7 @@ class AboutController extends Controller
      */
     public function showAllAbout(Request $request)
     {
-        $listAbout = $this->about->getAllAbout()->paginate(5);
-        if ($request->ajax()) {
-            return view('admin.about.ajax_about', compact(['listAbout']));
-        }
+        $listAbout = $this->about->getAllAbout();
         return view('admin.about.about', compact('listAbout'))->with('title','List About');;
     }
 

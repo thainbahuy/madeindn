@@ -1,3 +1,4 @@
+
 function showModalAbout(id) {
     $('#modal-danger').modal('show');
     $('#delete-save').attr('data-id', id);
@@ -27,4 +28,16 @@ $('#delete-save').on('click', function () {
             $('.message').html(data.msg);
         }
     });
+});
+$(document).ready(function() {
+    $('#about_table').DataTable()
+});
+$('#about_table').DataTable({
+    language: {
+        paginate: {
+            next: '>',
+            previous: '<'
+        }
+    },
+    "bInfo" : false,
 });

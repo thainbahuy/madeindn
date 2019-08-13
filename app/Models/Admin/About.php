@@ -15,7 +15,8 @@ class About extends Model
         return DB::table($this->table)
             ->select('id', 'name', 'jp_name', 'description', 'jp_description', 'position', 'image_link', 'created_at')
             ->orderByRaw('ISNULL(position), position ASC')
-            ->orderBy('id', 'DESC');
+            ->orderBy('id', 'DESC')
+            ->get();
     }
 
     public function addAbout($name, $jp_name, $position, $description, $jp_description, $image_link)
