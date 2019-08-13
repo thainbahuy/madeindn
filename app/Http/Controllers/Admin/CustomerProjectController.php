@@ -40,7 +40,7 @@ class CustomerProjectController extends Controller
                 ->rawColumns(['feature'])
                 ->make(true);
         }
-        return view('admin.project.project_customer')->with('title','List Customer Project');
+        return view('admin.project.project_customer')->with('title', 'List Customer Project');
     }
 
     /**Display info about project by ID
@@ -51,7 +51,7 @@ class CustomerProjectController extends Controller
     public function showCustomerProjectById($id, Request $request)
     {
         $viewCustomerProject = $this->projectSubmit->showDetailProjectById($id);
-        return view('admin.project.detail_project_submit', compact('viewCustomerProject'))->with('title','Customer Project');
+        return view('admin.project.detail_project_submit', compact('viewCustomerProject'))->with('title', 'Customer Project');
     }
 
     /** Delete Project by id
@@ -84,8 +84,12 @@ class CustomerProjectController extends Controller
     public function downloadFile($name)
     {
         $file = Helpers::getFilePathFromStorage('project_submit/link_project/' . $name);
-        $name = basename($file);
-        return response()->download($file, $name);
+        if (File::exists($file)) {
+            $name = basename($file);
+            return response()->download($file, $name);
+        } else {
+            return redirect()->back()->with("FILES",'FILES '.$name. ' ARE NOT EXISTING OR REMOVED');
+        }
     }
 
 }

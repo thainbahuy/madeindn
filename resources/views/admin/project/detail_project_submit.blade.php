@@ -39,6 +39,7 @@
                                 </div>
                             </div>
                             <div style="background:#fbfbfc" class="card-body">
+                                <h6 style="text-align: center; color: red">{{Session::get('FILES')}}</h6>
                                 <h6 class="heading-small text-muted mb-4">CONTACT INFORMATION</h6>
                                 <div class="pl-lg-4">
                                     <div class="row">
