@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Http\Response;
+use Yajra\DataTables\DataTables;
 
 class ProjectController extends Controller
 {
@@ -29,11 +30,44 @@ class ProjectController extends Controller
      */
     public function showAllProject(Request $request)
     {
-        $listProject = $this->project->getAllProject()->paginate(10);
-        if ($request->ajax()) {
-            return view('admin.project_admin.ajax_project', compact(['listProject']));
+        $listAllProject = $this->project->getAllProject();
+        if($request->ajax()){
+            return DataTables::of($listAllProject)
+                ->editColumn('image_link', function ($listAllProject) {
+                    return '<img style="100px";height="100px" class="img img-thumbnail" src="' . $listAllProject->image_link . '" alt="" class="img-circle img-avatar-list">';
+                })
+                ->editColumn('status', function ($listAllProject) {
+                    if ($listAllProject->status == 1) {
+                        $data = '<a onclick="changeStatus(' . "'$listAllProject->id'" . ',\'2\')" href="javascript:void(0)">
+                            <img src="/admin/assets/img/icons/active.gif" alt="">
+                            </a>';
+                    } else {
+                        $data = '<a onclick="changeStatus(' . "'$listAllProject->id'" . ',\'1\')" href="javascript:void(0)">
+                            <img src="/admin/assets/img/icons/deactive.gif" alt="">
+                            </a>';
+                    }
+                    return $data."<span style='display: none;'>".$listAllProject->status."</span>";
+                })
+                ->addColumn('category', function ($listAllProject) {
+                    if ($listAllProject->category_id != null) {
+                        return $listAllProject->category->name;
+                    } else {
+                        return "Category was deleted";
+                    }
+                })
+                ->addColumn('feature', function ($listAllProject) {
+                    $data = '<a onclick="showModalContact(' . "'$listAllProject->id'" . ')" href="javascript:">
+                            <img style="width: 25px; height: 25px;" src="/admin/assets/img/icons/61848.png" alt="">
+                        </a>' .
+                        ' ||&nbsp; <a href="' . route('view.admin.project_admin.edit_project', $listAllProject->id) . '">
+                            <img style="width: 25px; height: 25px;" src="/admin/assets/img/icons/eye_1-512.png" alt="">
+                        </a>';
+                    return $data;
+                })
+                ->rawColumns(['image_link', 'status', 'feature', 'category'])
+                ->make(true);
         }
-        return view('admin.project_admin.project', compact('listProject'))->with('title','List Project');;
+        return view('admin.project_admin.project')->with('title','List Project');;
     }
 
     /** Delete Project by Id

@@ -44,4 +44,10 @@ class Category extends Model
         return $infoCategory->save();
     }
 
+    public function getAllCategory() {
+        return DB::table($this->table)->select('id','name','jp_name','position','created_at')
+            ->orderByRaw('ISNULL(position), position ASC')
+            ->orderBy('id','DESC');
+    }
+
 }

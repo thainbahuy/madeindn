@@ -11,7 +11,7 @@ $('#delete-save').on('click', function () {
         }
     });
     $.ajax({
-        url: config.routes.zone,
+        url: route('admin.project.project_customer.delete'),
         type: 'get',
         data: {
             id: id,
@@ -27,4 +27,34 @@ $('#delete-save').on('click', function () {
             $('.message').html(data.msg);
         }
     });
+});
+
+$(document).ready(function () {
+    var t = $('#tableData').DataTable({
+        responsive: true,
+        "lengthMenu": [[5, 10, 15, 20, 25, 30, -1], [5, 10, 15, 20, 25, 30, "All"]],
+        aaSorting : [[ 0, 'DESC' ]],
+        processing: true,
+        ServerSide: true,
+        ajax: {
+            url: route('view.admin.project.project_customer'),
+        },
+        columns: [
+            {data: 'id'},
+            {data: 'author_name'},
+            {data: 'author_email'},
+            {data: 'name'},
+            {data: 'created_at'},
+            {data: 'feature',orderable: false, searchable: false},
+        ],
+        createdRow: function (row, data) {
+            $(row).attr('id', 'delete-coloum-' + data['id'])
+        },
+    });
+
+    t.on('order.dt', function () {
+        t.column(0, {search: 'applied', order: 'applied'}).nodes().each(function (cell, i) {
+            cell.innerHTML = i + 1;
+        });
+    }).sort();
 });

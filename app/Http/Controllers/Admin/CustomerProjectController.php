@@ -7,6 +7,7 @@ use Helpers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use File;
+use Yajra\DataTables\DataTables;
 
 
 class CustomerProjectController extends Controller
@@ -24,11 +25,22 @@ class CustomerProjectController extends Controller
      */
     public function showCustomerProject(Request $request)
     {
-        $listCustomerProject = $this->projectSubmit->showAllProject()->paginate(10);
+        $listCustomerProject = $this->projectSubmit->showAllProject()->get();
         if ($request->ajax()) {
-            return view('admin.project.ajax_project_customer', compact(['listCustomerProject']));
+            return DataTables::of($listCustomerProject)
+                ->addColumn('feature', function ($listCustomerProject) {
+                    $data = '<a onclick="showModalProject(' . "'$listCustomerProject->id'" . ')" href="javascript:">
+                            <img style="width: 25px; height: 25px;" src="/admin/assets/img/icons/61848.png" alt="">
+                        </a>' .
+                        ' ||&nbsp; <a href="' . route('view.admin.project.detail_project_submit', $listCustomerProject->id) . '">
+                            <img style="width: 25px; height: 25px;" src="/admin/assets/img/icons/eye_1-512.png" alt="">
+                        </a>';
+                    return $data;
+                })
+                ->rawColumns(['feature'])
+                ->make(true);
         }
-        return view('admin.project.project_customer', compact('listCustomerProject'))->with('title','List Customer Project');
+        return view('admin.project.project_customer')->with('title','List Customer Project');
     }
 
     /**Display info about project by ID

@@ -16,7 +16,7 @@ $('#delete-save').on('click', function () {
         }
     });
     $.ajax({
-        url: config.routes.zone,
+        url: route('admin.category.delete_category'),
         type: 'get',
         data: {
             id: id,
@@ -35,4 +35,32 @@ $('#delete-save').on('click', function () {
     });
 });
 
+$(document).ready(function () {
+    var t = $('#tableData').DataTable({
+        responsive: true,
+        "lengthMenu": [[5, 10, 15, 20, 25, 30, -1], [5, 10, 15, 20, 25, 30, "All"]],
+        processing: true,
+        ServerSide: true,
+        aaSorting : [[ 3, 'asc' ],[ 0, 'DESC' ]],
+        ajax: {
+            url: route('view.admin.category.view_category'),
+        },
+        columns: [
+            {data: 'id'},
+            {data: 'name'},
+            {data: 'jp_name'},
+            {data: 'position'},
+            {data: 'created_at'},
+            {data: 'feature',orderable: false, searchable: false},
+        ],
+        createdRow: function (row, data) {
+            $(row).attr('id', 'delete-coloum-' + data['id'])
+        },
+    });
 
+    t.on('order.dt', function () {
+        t.column(0, {search: 'applied', order: 'applied'}).nodes().each(function (cell, i) {
+            cell.innerHTML = i + 1;
+        });
+    }).sort();
+});

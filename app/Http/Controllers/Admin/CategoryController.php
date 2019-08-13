@@ -7,6 +7,7 @@ use App\Models\Admin\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Log;
+use Yajra\DataTables\DataTables;
 
 class CategoryController extends Controller
 {
@@ -17,9 +18,24 @@ class CategoryController extends Controller
         $this->category = $category;
     }
 
-    public function showAllCategory()
+    public function showAllCategory(Request $request)
     {
-        return view('admin.category.view_category')->with('title','List Category');
+        $listCategory = $this->category->getAllCategory();
+        if ($request->ajax()) {
+            return DataTables::of($listCategory)
+                ->addColumn('feature', function ($listCategory) {
+                    $data = '<a onclick="showModalProject(' . "'$listCategory->id'" . ')" href="javascript:">
+                            <img style="width: 25px; height: 25px;" src="/admin/assets/img/icons/61848.png" alt="">
+                        </a>' .
+                        ' ||&nbsp; <a href="' . route('view.admin.category.edit_category', $listCategory->id) . '">
+                            <img style="width: 25px; height: 25px;" src="/admin/assets/img/icons/eye_1-512.png" alt="">
+                        </a>';
+                    return $data;
+                })
+                ->rawColumns(['feature'])
+                ->make(true);
+        }
+        return view('admin.category.view_category')->with('title', 'List Category');
     }
 
     public function deleteCategory(Request $request)
@@ -38,7 +54,7 @@ class CategoryController extends Controller
 
     public function getAddCategory()
     {
-        return view('admin.category.add_category')->with('title','Add New Category');
+        return view('admin.category.add_category')->with('title', 'Add New Category');
     }
 
     public function postAddCategory(CategoryRequest $request)
@@ -59,7 +75,7 @@ class CategoryController extends Controller
     public function getEditCategory($id)
     {
         $infoCategory = $this->category->getCategoryById($id);
-        return view('admin.category.edit_category', compact('infoCategory'))->with('title','Edit Category');
+        return view('admin.category.edit_category', compact('infoCategory'))->with('title', 'Edit Category');
     }
 
     public function postEditCategory($id, CategoryRequest $request)

@@ -27,8 +27,25 @@
             <div class="col-xl-12 mb-5 mb-xl-0">
                 <div class="row">
                     <div class="col">
-                        <div id="content" class="card shadow">
-                            @include('admin.project_admin.ajax_project')
+                        <div class="table-responsive">
+                            <table class="table table-bordered" id="tableData">
+                                <thead>
+                                <tr>
+                                    <th class="text-center">Id</th>
+                                    <th class="text-center">Name</th>
+                                    <th class="text-center">Image</th>
+                                    <th class="text-center">Category</th>
+                                    <th class="text-center">Position</th>
+                                    <th class="text-center">Status</th>
+                                    <th class="text-center">Created At</th>
+                                    <th class="text-center">
+                                        <a href="{{route('view.admin.project_admin.add_project')}}"
+                                           class="btn btn-sm btn-success"><span class="ni ni-fat-add"></span>ADD
+                                        </a>
+                                    </th>
+                                </tr>
+                                </thead>
+                            </table>
                         </div>
                     </div>
                 </div>
@@ -49,22 +66,15 @@
                     {{ __('admin_message.modal-body') }}
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ __('admin_message.modal-footer-btn-close') }}</button>
-                    <button type="button" id="delete-save" class="btn btn-primary">{{ __('admin_message.modal-footer-btn-yes') }}</button>
+                    <button type="button" class="btn btn-secondary"
+                            data-dismiss="modal">{{ __('admin_message.modal-footer-btn-close') }}</button>
+                    <button type="button" id="delete-save"
+                            class="btn btn-primary">{{ __('admin_message.modal-footer-btn-yes') }}</button>
                 </div>
             </div>
         </div>
     </div>
 @endsection
 @section('myscript')
-    <script>
-        var config = {
-            routes: {
-                zone: "{{ route('admin.project_admin.project_delete') }}",
-                status: "{{ route('change_status_project') }}"
-            }
-
-        };
-    </script>
-    <script src="{{ asset('admin') }}/project_admin.js"></script>
+    <script src="{{ asset('admin/project_admin.js') }}"></script>
 @endsection
