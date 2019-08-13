@@ -1,3 +1,6 @@
+.dataTables_info{
+    display: none;
+}
 .stepwizard {
     margin-left:25%;
 }

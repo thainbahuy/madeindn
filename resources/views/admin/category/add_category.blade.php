@@ -37,12 +37,12 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Name Category</label>
-                                        <input pattern=".{0}|.{5,50}" required title="(5 to 50 chars)" class="form-control" type="text" name="name"
+                                        <input pattern=".{0}|.{2,50}" required title="(2 to 50 chars)" class="form-control" type="text" name="name"
                                                placeholder="" value="{{old('name')}}">
                                     </div>
                                     <div class="form-group">
                                         <label>Name Category Japanese</label>
-                                        <input pattern=".{0}|.{5,50}" required title="(5 to 50 chars)" class="form-control" type="text" name="name_jp"
+                                        <input pattern=".{0}|.{2,50}" required title="(2 to 50 chars)" class="form-control" type="text" name="name_jp"
                                                placeholder="" value="{{old('name_jp')}}">
                                     </div>
                                     <div class="form-group">
