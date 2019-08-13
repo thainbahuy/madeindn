@@ -16,7 +16,7 @@ class Partner extends Model
             ->select('id','name', 'image_link', 'position')
             ->orderByRaw('ISNULL(position), position ASC')
             ->orderByDesc('id')
-            ->paginate(5);
+            ->get();
     }
 
     public function getBackgroundById($id){

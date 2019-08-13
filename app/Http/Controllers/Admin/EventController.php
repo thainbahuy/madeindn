@@ -31,23 +31,32 @@ class EventController extends Controller
      */
     public function showListEvent(Request $request)
     {
-        $background = $this->background->getBackgroundEvent();
         if ($request->ajax()) {
             $listEvent = $this->event->getAllEvents();
             return Datatables::of($listEvent)
                 ->editColumn('image_link', function ($event) {
                     return '<img src="' . $event->image_link . '" alt="image" class="img-thumbnail">';
                 })
+                ->addColumn('setBackgroundEvent',function ($event){
+                    $background = $this->background->getBackgroundEvent();
+                    if ($event->image_link == $background->image_link){
+                        $data = '<input id="set_background" checked onclick="setImageBackground('."'$event->image_link'".')" name="event_background" value="'.$event->image_link.'" type="radio">';
+                    }else{
+                        $data = '<input id="set_background"  name="event_background" onclick="setImageBackground('."'$event->image_link'".')" value="'.$event->image_link.'" type="radio">';
+                    }
+
+                    return $data;
+                })
                 ->addColumn('feature', function ($event) {
-                    $data = '<a onclick="showModalContact(' . "'$event->id'" . ')" href="javascript:">
+                    $data = '<a onclick="showModelDeleteEvent(' . "'$event->id'" . ')" href="javascript:">
                             <img style="width: 25px; height: 25px;" src="https://image.flaticon.com/icons/png/128/61/61848.png" alt="">
                         </a>' .
-                        ' ||&nbsp; <a href="' . route('view.admin.project_admin.edit_project', $event->id) . '">
+                        ' ||&nbsp; <a href="' . route('view.admin.event.edit', $event->id) . '">
                             <img style="width: 25px; height: 25px;" src="https://png.pngtree.com/svg/20151211/af2c28659c.svg" alt="">
                         </a>';
                     return $data;
                 })
-                ->rawColumns(['image_link','feature'])
+                ->rawColumns(['image_link','feature','setBackgroundEvent'])
                 ->make();
         }
         return view('admin.event.event_list', compact('listEvent','background'))->with('title','List Event');

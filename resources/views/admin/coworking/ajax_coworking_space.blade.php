@@ -2,10 +2,9 @@
     <h3 class="mb-0">{{__('message_coworking.listCoworking')}}</h3>
 </div>
 <div class="table-responsive">
-    <table class="table align-items-center ">
+    <table id="coworkingTable" class="table align-items-center ">
         <thead class="thead-light">
         <tr>
-            <th class="text-center" scope="col">ID</th>
             <th class="text-center" scope="col">Name</th>
             <th class="text-center" scope="col">Image</th>
             <th class="text-center" scope="col">position</th>
@@ -21,7 +20,6 @@
         <tbody>
         @foreach($listCoworkingSpace as $value)
             <tr id="delete-coloum-{{$value->id}}">
-                <td class="text-center">{{$value->id}}</td>
                 <td class="text-center">{{Helpers::changeLanguage($value->name,$value->jp_name)}}</td>
                 <td class="text-center">
                     <img width="100px" height="100px" class="img img-thumbnail" src="{{$value->image_link}}">
@@ -45,7 +43,7 @@
 <div class="card-footer py-4">
     <nav aria-label="...">
         <ul class="pagination justify-content-end mb-0">
-            {{$listCoworkingSpace->links()}}
+
         </ul>
     </nav>
 </div>

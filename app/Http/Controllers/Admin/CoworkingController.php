@@ -21,12 +21,9 @@ class CoworkingController extends Controller
      * @param Request $request
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function showAllCowroking(Request $request)
+    public function showAllCowroking()
     {
-        $listCoworkingSpace = $this->coWorking->getAllCoworking()->paginate(5);
-        if ($request->ajax()) {
-            return view('admin.coworking.ajax_coworking_space', compact(['listCoworkingSpace']));
-        }
+        $listCoworkingSpace = $this->coWorking->getAllCoworking();
         return view('admin.coworking.coworking_space', compact('listCoworkingSpace'))->with('title','List Co-working');
     }
 
