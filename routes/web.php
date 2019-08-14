@@ -78,9 +78,7 @@ Route::namespace('Admin')->middleware('guest')->prefix('admin/')->group( functio
 
 
 
-    // Test API CDN
-//    Route::post('/upLoadImage', 'ImageController@upLoadImage');
-//    Route::post('/deleteImage', 'ImageController@deletImage');
+
 
     // Project
     Route::get('/project/customer_project', 'CustomerProjectController@showCustomerProject')->name('view.admin.project.project_customer');
@@ -150,3 +148,6 @@ Route::post('account/reset-password', 'Admin\Auth\ResetPasswordController@reset'
 //Route::get('ABC',function(){
 //    echo Hash::make('thaibahuy');
 //});
+// Test API CDN
+//    Route::post('test/upLoadImage', 'Admin\ImageController@upLoadImage');
+//    Route::post('test/deleteImage', 'Admin\ImageController@deletImage');
