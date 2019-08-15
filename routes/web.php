@@ -11,8 +11,6 @@
 |
 */
 
-use Illuminate\Support\Facades\Hash;
-
 route::pattern('name' ,'(.*)');
 route::pattern('id', '([0-9]*)');
 

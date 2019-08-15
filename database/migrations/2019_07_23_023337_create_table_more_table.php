@@ -20,6 +20,8 @@ class CreateTableMoreTable extends Migration
             $table->string('jp_name', 255);
             $table->text('jp_description');
             $table->integer('status');
+            $table->text('image_link');
+            $table->integer('position')->nullable();
             $table->timestamps();
         });
     }
