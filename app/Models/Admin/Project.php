@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\DB;
 
 class Project extends Model
 {
-    protected $table = 'project';
+    protected $table = 'Project';
     protected $fillable = ['name', 'overview', 'author_name', 'author_email', 'author_phone', 'status', 'jp_name', 'jp_overview', 'category_id', 'position'];
 
     public function category()
