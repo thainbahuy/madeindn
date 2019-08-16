@@ -88,7 +88,7 @@ class ProjectController extends Controller
         } else {
             if ($request->ajax()) {
                 if ($info_customer->postCustomer($request, $id)) {
-                    $emailJob = (new SendMailJob('mail', array('email' => $request->email, 'mobile' => $request->phone, 'content_text' => $request->content_message, 'product_id' => $id, 'date' => date("d-m-Y H:i:s")), "Khách Hàng Liên Lạc", "congthongtindue@gmail.com", "TEST", "nghia97dn@gmail.com"));
+                    $emailJob = (new SendMailJob('mail', array('email' => $request->email, 'mobile' => $request->phone, 'content_text' => $request->content_message, 'product_id' => $id, 'date' => date("d-m-Y H:i:s")), "Customer contact", "madeindn.system@gmail.com", "Customer contact", "thainbahuy@gmail.com"));
                     dispatch($emailJob);
                 }
             };
