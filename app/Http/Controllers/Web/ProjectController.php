@@ -143,8 +143,8 @@ class ProjectController extends Controller
     public function postProjectSubmit(SubmitProjectRequest $request)
     {
         //Handler Upload Image Startup
-        $image_startup = $request->file('image_startup');
-        $this->uploadImage($request, $image_startup);
+//        $image_startup = $request->file('image_startup');
+//        $this->uploadImage($request, $image_startup);
 
         //Handler Upload Files StartUp
         $files_startup = $request->file('files_startup');
@@ -153,7 +153,7 @@ class ProjectController extends Controller
         }
         try {
             if ($this->projectSubmit->addProject($request)) {
-                $image_startup->move(Helpers::getFilePathFromStorage("project_submit/image_project"), $request->new_name);
+//                $image_startup->move(Helpers::getFilePathFromStorage("project_submit/image_project"), $request->new_name);
                 if ($files_startup) {
                     foreach ($files_startup as $key => $valueFiles) {
                         $valueFiles->move(Helpers::getFilePathFromStorage("project_submit/link_project"), Helpers::convertToJson($request->content_link)[$key]);

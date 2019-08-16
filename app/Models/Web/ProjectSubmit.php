@@ -21,7 +21,7 @@ class ProjectSubmit extends Model
         $this->content = $request->content;
         $this->name = $request->name_startup;
         $this->link_driver = $request->link_driver;
-        $this->image_link = $request->new_name;
+        $this->image_link = 0;
         $this->content_link = $request->content_link;
         return $this->save();
     }

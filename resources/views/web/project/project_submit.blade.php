@@ -125,37 +125,37 @@
                             </div>
                         </div>
 
-                        <div class="contact__form__row">
-                            <div class="contact__form__label">
-                                <p>{{__('message_submit_project.image_startup')}}</p>
-                            </div>
-                            <div class="contact__form__controll">
-                                <div class="form-upload">
-                                    <div class="input-file-container">
-                                        <input class="input-file" accept="image/gif, image/jpeg, image/png"
-                                               name="image_startup" id="image_startup" type="file">
-                                        <label tabindex="0" for="my-file" class="input-file-trigger">
-                                            <img src="{{asset('web/images/icons/icon-upload.png')}}">
-                                            {{__('message_submit_project.download_image_startup')}}
-                                        </label>
-                                    </div>
-                                    <p>{{__('message_submit_project.placeholder_image_startup')}}</p>
-                                </div>
-                                <div class="upload-content">
-                                    <div class="upload-content-item">
-                                        <div class="img">
-                                            <img src="{{asset('web/images/icons/icon-jpg.png')}}">
-                                        </div>
-                                        <div class="text-image">
-                                        </div>
-                                        <a href="javascript:void(0)" class="close fileupload-exists"
-                                           data-dismiss="fileupload" style="display: none"></a>
-                                    </div>
-                                    <span class="error">{{ $errors->first('image_startup') }}</span>
-                                </div>
-                                <!-- <p class="file-return"></p> -->
-                            </div>
-                        </div>
+{{--                        <div class="contact__form__row">--}}
+{{--                            <div class="contact__form__label">--}}
+{{--                                <p>{{__('message_submit_project.image_startup')}}</p>--}}
+{{--                            </div>--}}
+{{--                            <div class="contact__form__controll">--}}
+{{--                                <div class="form-upload">--}}
+{{--                                    <div class="input-file-container">--}}
+{{--                                        <input class="input-file" accept="image/gif, image/jpeg, image/png"--}}
+{{--                                               name="image_startup" id="image_startup" type="file">--}}
+{{--                                        <label tabindex="0" for="my-file" class="input-file-trigger">--}}
+{{--                                            <img src="{{asset('web/images/icons/icon-upload.png')}}">--}}
+{{--                                            {{__('message_submit_project.download_image_startup')}}--}}
+{{--                                        </label>--}}
+{{--                                    </div>--}}
+{{--                                    <p>{{__('message_submit_project.placeholder_image_startup')}}</p>--}}
+{{--                                </div>--}}
+{{--                                <div class="upload-content">--}}
+{{--                                    <div class="upload-content-item">--}}
+{{--                                        <div class="img">--}}
+{{--                                            <img src="{{asset('web/images/icons/icon-jpg.png')}}">--}}
+{{--                                        </div>--}}
+{{--                                        <div class="text-image">--}}
+{{--                                        </div>--}}
+{{--                                        <a href="javascript:void(0)" class="close fileupload-exists"--}}
+{{--                                           data-dismiss="fileupload" style="display: none"></a>--}}
+{{--                                    </div>--}}
+{{--                                    <span class="error">{{ $errors->first('image_startup') }}</span>--}}
+{{--                                </div>--}}
+{{--                                <!-- <p class="file-return"></p> -->--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
                         <input type="submit" class="submit" value="{{__('message_submit_project.submit')}}">
                     </form>
                 </div>

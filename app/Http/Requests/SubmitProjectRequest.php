@@ -30,7 +30,7 @@ class SubmitProjectRequest extends FormRequest
             'email'                       => 'required|email',
             'name_startup'                => 'required|min:10|max:255',
             'content'                     => 'required',
-            'image_startup'               => 'required|',
+//            'image_startup'               => 'required|',
             'files_startup.*'             => 'mimes:docx,doc,pdf',
         ];
     }
@@ -48,7 +48,7 @@ class SubmitProjectRequest extends FormRequest
             'name_startup.min'      			=> __('message_submit_project.name_startup.min'),
             'name_startup.max'      			=> __('message_submit_project.name_startup.max'),
             'content.required'      			=> __('message_submit_project.content.required'),
-            'image_startup.required'			=> __('message_submit_project.image_startup.required'),
+//            'image_startup.required'			=> __('message_submit_project.image_startup.required'),
             'files_startup.*.mimes'			    => __('message_submit_project.files_startup.mimes'),
         ];
     }
