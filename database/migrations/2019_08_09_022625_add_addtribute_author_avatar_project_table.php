@@ -13,7 +13,7 @@ class AddAddtributeAuthorAvatarProjectTable extends Migration
      */
     public function up()
     {
-        Schema::table('Project', function (Blueprint $table) {
+        Schema::table('project', function (Blueprint $table) {
             $table->text('author_avatar')->nullable();
         });
     }

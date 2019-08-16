@@ -13,7 +13,7 @@ class AddBeginEndToEvent extends Migration
      */
     public function up()
     {
-        Schema::table('Event', function (Blueprint $table) {
+        Schema::table('event', function (Blueprint $table) {
             $table->string('jp_location', 255);
             $table->dateTime('begin_time');
             $table->dateTime('end_time');
@@ -27,7 +27,7 @@ class AddBeginEndToEvent extends Migration
      */
     public function down()
     {
-        Schema::table('Event', function (Blueprint $table) {
+        Schema::table('event', function (Blueprint $table) {
             $table->dropColumn('jp_location');
             $table->dropColumn('begin_time');
             $table->dropColumn('end_time');

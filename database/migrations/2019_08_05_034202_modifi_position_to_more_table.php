@@ -13,7 +13,7 @@ class ModifiPositionToMoreTable extends Migration
      */
     public function up()
     {
-        Schema::table('More', function (Blueprint $table) {
+        Schema::table('more', function (Blueprint $table) {
             $table->integer('position')->nullable()->change();
         });
     }
@@ -25,7 +25,7 @@ class ModifiPositionToMoreTable extends Migration
      */
     public function down()
     {
-        Schema::table('More', function (Blueprint $table) {
+        Schema::table('more', function (Blueprint $table) {
             //
         });
     }

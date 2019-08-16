@@ -13,7 +13,7 @@ class CreateTableMoreTable extends Migration
      */
     public function up()
     {
-        Schema::create('More', function (Blueprint $table) {
+        Schema::create('more', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name', 255);
             $table->text('description');
@@ -33,6 +33,6 @@ class CreateTableMoreTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('More');
+        Schema::dropIfExists('more');
     }
 }

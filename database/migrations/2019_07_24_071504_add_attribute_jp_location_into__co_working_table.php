@@ -13,7 +13,7 @@ class AddAttributeJpLocationIntoCoWorkingTable extends Migration
      */
     public function up()
     {
-        Schema::table('Co_working', function (Blueprint $table) {
+        Schema::table('co_working', function (Blueprint $table) {
             $table->text('jp_location');
             $table->text('location')->change();
         });
@@ -26,7 +26,7 @@ class AddAttributeJpLocationIntoCoWorkingTable extends Migration
      */
     public function down()
     {
-        Schema::table('Co_working', function (Blueprint $table) {
+        Schema::table('co_working', function (Blueprint $table) {
 
         });
     }

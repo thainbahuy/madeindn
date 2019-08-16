@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\DB;
 
 class About extends Model
 {
-    protected $table = 'More';
+    protected $table = 'more';
     protected $fillable = ['name', 'jp_name', 'position', 'description', 'jp_description', 'image_link'];
 
     public function getAllAbout()

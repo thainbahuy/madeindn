@@ -8,7 +8,7 @@ use Helpers;
 
 class Project extends Model
 {
-    protected $table = 'Project';
+    protected $table = 'project';
     protected $fillable = ['name', 'overview', 'author_name', 'author_email', 'author_phone', 'status', 'jp_name', 'jp_overview', 'category_id', 'position', 'author_avatar'];
 
     public function activeProject($q)

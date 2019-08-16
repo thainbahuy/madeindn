@@ -13,7 +13,7 @@ class AddPositionToProjectTable extends Migration
      */
     public function up()
     {
-        Schema::table('Project', function (Blueprint $table) {
+        Schema::table('project', function (Blueprint $table) {
             $table->integer('position')->nullable();
         });
 
@@ -26,7 +26,7 @@ class AddPositionToProjectTable extends Migration
      */
     public function down()
     {
-        Schema::table('Project', function (Blueprint $table) {
+        Schema::table('project', function (Blueprint $table) {
             //
         });
     }

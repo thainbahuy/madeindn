@@ -13,7 +13,7 @@ class CreateTableCategoryTable extends Migration
      */
     public function up()
     {
-        Schema::create('Category', function (Blueprint $table) {
+        Schema::create('category', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name',100);
             $table->integer('position');
@@ -29,6 +29,6 @@ class CreateTableCategoryTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('Category');
+        Schema::dropIfExists('category');
     }
 }

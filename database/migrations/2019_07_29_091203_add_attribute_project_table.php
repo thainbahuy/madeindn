@@ -13,7 +13,7 @@ class AddAttributeProjectTable extends Migration
      */
     public function up()
     {
-        Schema::table('Project', function (Blueprint $table) {
+        Schema::table('project', function (Blueprint $table) {
             $table->text('image_link');
             $table->text('author_description');
             $table->text('author_description_jp');

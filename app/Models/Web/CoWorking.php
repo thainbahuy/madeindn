@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\DB;
 
 class CoWorking extends Model
 {
-    protected $table = 'Co_working';
+    protected $table = 'co_working';
 
     public function getAllCoworking()
     {

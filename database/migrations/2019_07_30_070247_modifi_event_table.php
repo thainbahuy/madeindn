@@ -13,7 +13,7 @@ class ModifiEventTable extends Migration
      */
     public function up()
     {
-        Schema::table('Event', function (Blueprint $table) {
+        Schema::table('event', function (Blueprint $table) {
             $table->integer('position')->nullable()->change();
         });
     }

@@ -13,7 +13,7 @@ class DropBackgroundEventTable extends Migration
      */
     public function up()
     {
-        Schema::dropIfExists('Background_event');
+        Schema::dropIfExists('background_event');
     }
 
     /**

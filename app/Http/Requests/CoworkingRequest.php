@@ -33,7 +33,7 @@ class CoworkingRequest extends FormRequest
         if($request->position == ''){
             $rule_position = '';
         } else {
-            $rule_position = 'unique:Co_working,position,' . $request->id . ',id';
+            $rule_position = 'unique:co_working,position,' . $request->id . ',id';
         }
 
         return [

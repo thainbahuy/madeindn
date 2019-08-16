@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\DB;
 
 class About extends Model
 {
-    protected $table = 'More';
+    protected $table = 'more';
 
     public function getAllAbout()
     {

@@ -13,7 +13,7 @@ class AddAttributeCoworkingTable extends Migration
      */
     public function up()
     {
-        Schema::table('Co_working', function (Blueprint $table) {
+        Schema::table('co_working', function (Blueprint $table) {
             $table->integer('position');
             $table->text('social_link');
         });

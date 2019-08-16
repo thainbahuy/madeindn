@@ -13,7 +13,7 @@ class CreateTableCoWorkingTable extends Migration
      */
     public function up()
     {
-        Schema::create('Co_working', function (Blueprint $table) {
+        Schema::create('co_working', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name',255);
             $table->text('image_link');
@@ -32,6 +32,6 @@ class CreateTableCoWorkingTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('Co_working');
+        Schema::dropIfExists('co_working');
     }
 }

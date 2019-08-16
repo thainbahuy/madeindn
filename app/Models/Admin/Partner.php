@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 
 class Partner extends Model
 {
-    protected $table = 'Partner_Background';
+    protected $table = 'partner_background';
 
     public function getListBackground()
     {

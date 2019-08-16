@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 
 class Event extends Model
 {
-    protected $table = 'Event';
+    protected $table = 'event';
 
     public function getAllEvents()
     {

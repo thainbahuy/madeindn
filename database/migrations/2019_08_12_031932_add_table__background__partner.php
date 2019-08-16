@@ -13,7 +13,7 @@ class AddTableBackgroundPartner extends Migration
      */
     public function up()
     {
-        Schema::create('Partner_Background', function (Blueprint $table) {
+        Schema::create('partner_background', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->text('name');
             $table->text('image_link');
@@ -29,6 +29,6 @@ class AddTableBackgroundPartner extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('Partner_Background');
+        Schema::dropIfExists('partner_background');
     }
 }

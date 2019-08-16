@@ -13,7 +13,7 @@ class CreateTableBackgroundEventTable extends Migration
      */
     public function up()
     {
-        Schema::create('Background_event', function (Blueprint $table) {
+        Schema::create('background_event', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('image_link',255);
             $table->timestamps();
@@ -27,6 +27,6 @@ class CreateTableBackgroundEventTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('Background_event');
+        Schema::dropIfExists('background_event');
     }
 }

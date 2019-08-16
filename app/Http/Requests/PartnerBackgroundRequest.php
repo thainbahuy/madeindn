@@ -38,7 +38,7 @@ class PartnerBackgroundRequest extends FormRequest
             return [
                 'name' => 'required|max:100|min:6',
                 'image_link' => 'required',
-                'position' => 'unique:Partner_Background,position,' . $request->id . ',id',
+                'position' => 'unique:partner_background,position,' . $request->id . ',id',
             ];
 
         }

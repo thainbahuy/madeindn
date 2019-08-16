@@ -13,7 +13,7 @@ class ModifiPositionToCategoryTable extends Migration
      */
     public function up()
     {
-        Schema::table('Category', function (Blueprint $table) {
+        Schema::table('category', function (Blueprint $table) {
             $table->integer('position')->nullable()->change();
         });
     }
@@ -25,7 +25,7 @@ class ModifiPositionToCategoryTable extends Migration
      */
     public function down()
     {
-        Schema::table('Category', function (Blueprint $table) {
+        Schema::table('category', function (Blueprint $table) {
             //
         });
     }

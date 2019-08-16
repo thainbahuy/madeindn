@@ -15,12 +15,12 @@ $(function() {
             } else {
                 $(".submit").remove();
                 $('.c-form_submit').empty();
-                $(".c-form_submit").append("<img style='max-width: 25%;' src='/public/web/images/icons/check-icon-small-16.jpg' alt=''>");
+                $(".c-form_submit").append("<img style='max-width: 25%;' src='/web/images/icons/check-icon-small-16.jpg' alt=''>");
             }
         }).fail(function(data) {
             alert("Try again");
             $('#img_fail').remove();
-            $(".c-form_submit").append("<div id='img_fail'><img style='max-width: 25%;' src='/public/web/images/icons/fail-icon-3.jpg' alt='' ></div>");
+            $(".c-form_submit").append("<div id='img_fail'><img style='max-width: 25%;' src='/web/images/icons/fail-icon-3.jpg' alt='' ></div>");
         });
     });
 });
