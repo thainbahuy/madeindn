@@ -24,7 +24,7 @@ class CategoryController extends Controller
         if ($request->ajax()) {
             return DataTables::of($listCategory)
                 ->addColumn('feature', function ($listCategory) {
-                    $data = '<a onclick="showModalProject(' . "'$listCategory->id'" . ')" href="javascript:">
+                    $data = '<a onclick="showModalCategory(' . "'$listCategory->id'" . ')" href="javascript:">
                             <img style="width: 25px; height: 25px;" src="/admin/assets/img/icons/61848.png" alt="">
                         </a>' .
                         ' ||&nbsp; <a href="' . route('view.admin.category.edit_category', $listCategory->id) . '">
