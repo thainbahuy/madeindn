@@ -68,7 +68,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label>Location appears</label>
-                                        <input class="form-control" type="number" name="position"
+                                        <input class="form-control" type="number" min="1" max="100" name="position"
                                                placeholder="This field may be blank" value="{{old('position')}}">
                                     </div>
                                     <div class="form-group">

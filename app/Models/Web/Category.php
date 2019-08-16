@@ -17,7 +17,7 @@ class Category extends Model
 
     public function getCategoryProject(){
         return DB::table($this->table)->select('id','name','jp_name')->whereIn('id',function($query) {
-            $query->select('category_id')->from('Project')
+            $query->select('category_id')->from('project')
                 ->orderByRaw('ISNULL(position), position ASC')
                 ->orderBy('id','DESC');
         })->get();
