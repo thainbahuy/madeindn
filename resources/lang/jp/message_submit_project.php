@@ -14,8 +14,9 @@ return [
     'name_startup.min'      			=> 'Tên start up tối thiểu 10 ký tự JP',
     'name_startup.max'      			=> 'Tên start up tối đá 255 ký tự JP',
     'content.required'      			=> 'Vui lòng nhập nội dung JP',
-    'image_startup.required'			=> 'Vui lòng Upload 1 tấm ảnh về startup JP',
-    'files_startup.*.mimes'			    => 'Chỉ chấp nhận Files word hoặc PDF JP',
+//    'image_startup.required'			=> 'Vui lòng Upload 1 tấm ảnh về startup JP',
+    'link_driver.required'              => 'Vui lòng nhập link dự án nếu bạn không chọn Files dự án JP',
+    'files_startup.mimes'			    => "Chỉ chấp nhận Files word hoặc PDF JP",
     'success'                           => 'YOU HAVE SUBMIT SUCCESS JP!!!',
     'fail'                              => 'YOU HAVE SUBMIT FAILURE JP !!! PLEASE TRY AGAIN',
 
