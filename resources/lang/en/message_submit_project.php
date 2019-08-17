@@ -13,11 +13,11 @@ return [
     'name_startup.min'      			=> 'Tên start up tối thiểu 10 ký tự',
     'name_startup.max'      			=> 'Tên start up tối đá 255 ký tự',
     'content.required'      			=> 'Vui lòng nhập nội dung',
-    'image_startup.required'			=> 'Vui lòng Upload 1 tấm ảnh về startup',
-    'files_startup.*.mimes'			    => "Chỉ chấp nhận Files word hoặc PDF",
+//    'image_startup.required'			=> 'Vui lòng Upload 1 tấm ảnh về startup',
+    'link_driver.required'              => 'Vui lòng nhập link dự án nếu bạn không chọn Files dự án',
+    'files_startup.mimes'			    => "Chỉ chấp nhận Files word hoặc PDF",
     'success'                           => 'YOU HAVE SUBMIT SUCCESS !!!',
     'fail'                              => 'YOU HAVE SUBMIT FAILURE !!! PLEASE TRY AGAIN',
-
 
     // Info Form
     'heading_project' 					=> "Submit your project",

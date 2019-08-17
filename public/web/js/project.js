@@ -12,7 +12,7 @@ $('#image_startup').change(function (event) {
             }
         }
         if (!blnValid) {
-            alert("Ảnh sai định dạng");
+            alert("Photo wrong format");
             input.replaceWith(input.val('').clone(true));
         } else {
             $(".text-image").empty();
@@ -39,16 +39,12 @@ $('#files_startup').change(function () {
     }
     if (size / (1024 * 1024).toFixed(2) > 10) {
         inputFileStartup.replaceWith(inputFileStartup.val('').clone(true));
-        alert("Dung lượng file quá lớn");
+        alert("Total file size <10 MB");
     } else {
         $(".text-file").empty();
         for (var i = 0; i < filesStartup.files.length; i++) {
-            $(".text-file").append("<div id='files_" + i + "'><span>" + this.files[i].name + "</span><a href='javascript:deletFiles(" + i + ")' style='display: inline-block' class='close fileupload-exists'></a></div>");
+            $(".text-file").append("<div id='files_" + i + "'>" + this.files[i].name);
         }
     }
 });
-
-function deletFiles(key) {
-    console.log(filesList);
-}
 

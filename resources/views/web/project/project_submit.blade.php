@@ -92,6 +92,7 @@
                                 <input type="url" onblur="checkURL(this)" name="link_driver" value="{{old('link_driver')}}"
                                        placeholder="{{__('message_submit_project.placeholder_link_driver')}}">
                             </div>
+                            <span class="error">{{ $errors->first('link_driver')}}</span>
                         </div>
 
                         <div class="contact__form__row">
@@ -120,11 +121,10 @@
                                         </div>
                                     </div>
                                 </div>
-                                <span class="error">{{ $errors->first('files_startup') }}</span>
+                                <span class="error">{{ $errors->first('files_startup.*')}}</span>
                                 <!-- <p class="file-return"></p> -->
                             </div>
                         </div>
-
 {{--                        <div class="contact__form__row">--}}
 {{--                            <div class="contact__form__label">--}}
 {{--                                <p>{{__('message_submit_project.image_startup')}}</p>--}}
