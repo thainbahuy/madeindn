@@ -18,10 +18,8 @@ return [
     'author_email.required'           => 'The Author Email JP  field is required.',
     'author_phone.required'           => 'The Author Phone JP  field is required.',
 
-    'position.unique'                 => "The Position has already been taken.",
-
     'overview.required'               => 'The Overview  field is required.',
     'overview_jp.required'            => 'The Overview JP  field is required.',
 
-    'imageProject.required'           => 'The Image Project field is required.',
+    'imageProject.required'           => 'Please choose a Image.',
 ];

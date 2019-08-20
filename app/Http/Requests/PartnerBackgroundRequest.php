@@ -38,9 +38,18 @@ class PartnerBackgroundRequest extends FormRequest
             return [
                 'name' => 'required|max:100|min:6',
                 'image_link' => 'required',
-                'position' => 'unique:partner_background,position,' . $request->id . ',id',
+                'position' => 'numeric|min:1|max:500',
             ];
 
         }
+    }
+
+    public function messages() {
+        return [
+            'name.required'            => 'The Name field is required.',
+            'name.min'                 => 'The Name must be at least 6 characters.',
+            'name.max'                 => 'The Name may not be greater than 100 characters',
+            'image_link.required'               => 'Please choose a Image',
+        ];
     }
 }

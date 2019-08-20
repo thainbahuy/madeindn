@@ -81,7 +81,7 @@ function loadMoreProjectByCategory(urlAjax) {
             console.log(data);
             if ($.trim(data.html) != "") {
                 $(".c-list__project").append(data.html);
-                indexPage++
+                indexPage++;
                 console.log($('body').height());
             } else {
                 $('#loadmore_btn').hide();
@@ -103,7 +103,7 @@ function loadMoreSearchProject(urlAjax, key_word, category) {
             console.log(data);
             if ($.trim(data.html) != "") {
                 $(".c-list__project").append(data.html);
-                indexPage++
+                indexPage++;
                 console.log($('body').height());
             } else {
                 $('#loadmore_btn').hide();

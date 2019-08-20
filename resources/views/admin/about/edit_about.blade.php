@@ -58,7 +58,7 @@
                                 </div>
                                 <div class="from-group">
                                     <label>Position</label>
-                                    <input class="form-control" type="number" min="1" max="100" name="position"
+                                    <input class="form-control" type="number" min="1" max="500" name="position"
                                            value="{{$infoAbout->position}}">
                                 </div>
                                 <div class="form-group">

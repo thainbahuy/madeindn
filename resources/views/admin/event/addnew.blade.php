@@ -46,7 +46,7 @@
                     <div class="form-row">
                         <div class="form-group col-md-1">
                             <label for="inputPassword4">Position</label>
-                            <input type="number" value="{{old('position')}}" name="position" min="1" max="100"
+                            <input type="number" value="{{old('position')}}" name="position" min="1"
                                    class="form-control" id="inputPassword4">
                         </div>
                     </div>

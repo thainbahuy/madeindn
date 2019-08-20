@@ -71,11 +71,9 @@ class EventRequest extends FormRequest
                 'begin_time' => 'required',
                 'end_time' => 'required',
                 'image_link' => $ruleImage,
-                'position' => 'unique:event,position,' . $request->id . ',id',
+                'position' => 'numeric|min:1|max:500',
             ];
-
         }
-
     }
     public function messages() {
         return [
@@ -111,9 +109,7 @@ class EventRequest extends FormRequest
             'date_time.required'            => 'The Date field is required.',
             'begin_time.required'            => 'The Begin time field is required.',
             'end_time.required'            => 'The End time field is required.',
-            'image_link.required'            => 'Please choose a Image cover.',
-
-            'position.unique'            => 'The position has already been taken.',
+            'image_link.required'            => 'Please choose a Image',
         ];
     }
 }

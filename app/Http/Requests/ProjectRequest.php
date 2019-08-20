@@ -33,7 +33,7 @@ class ProjectRequest extends FormRequest
         if ($request->position == '') {
             $rule_position = '';
         } else {
-            $rule_position = 'unique:project,position,' . $request->id . ',id';
+            $rule_position = 'numeric|min:1|max:500';
         }
 
         if ($request->project_id <> '') {

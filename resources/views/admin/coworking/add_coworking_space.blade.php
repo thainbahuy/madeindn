@@ -67,8 +67,8 @@
                                                placeholder="Please enter a value in this field" value="{{old('name')}}">
                                     </div>
                                     <div class="form-group">
-                                        <label>Location appears</label>
-                                        <input class="form-control" type="number" min="1" max="100" name="position"
+                                        <label>Position</label>
+                                        <input class="form-control" type="number" min="1" max="500" name="position"
                                                placeholder="This field may be blank" value="{{old('position')}}">
                                     </div>
                                     <div class="form-group">
