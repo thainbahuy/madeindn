@@ -36,7 +36,7 @@
                                 </div>
                                 <div class="c-list__item__content">
                                     <div class="c-list__item__title">
-                                        <p>{{Helpers::changeLanguage($items->name,$items->jp_name)}}</p>
+                                        <a href="{{route('web.coworking.coworking_detail',['name' => str_slug($items->name),'id'=>$items->id])}}">{{Helpers::changeLanguage($items->name,$items->jp_name)}}</a>
                                     </div>
                                 </div>
                             </div>

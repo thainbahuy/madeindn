@@ -13,9 +13,7 @@
                             <p>{{Helpers::changeLanguage($valueProject->category->name,$valueProject->category->jp_name)}}</p>
                         </div>
                         <div class="c-list__project__item__title">
-                            <a href="{{route('web.project.project_detail',['name'=>str_slug($valueProject->name),'id'=>$valueProject->id])}}">
-                                <p>{{Helpers::changeLanguage($valueProject->name,$valueProject->jp_name)}}</p>
-                            </a>
+                            <a href="{{route('web.project.project_detail',['name'=>str_slug($valueProject->name),'id'=>$valueProject->id])}}">{{Helpers::changeLanguage($valueProject->name,$valueProject->jp_name)}}</a>
                         </div>
                         <div class="c-list__project__item__profile">
                             <div class="avatar">
@@ -47,9 +45,7 @@
                     <p>{{Helpers::changeLanguage($valueProject->category->name,$valueProject->category->jp_name)}}</p>
                 </div>
                 <div class="c-list__project__item__title">
-                    <a href="{{route('web.project.project_detail',['name'=>str_slug($valueProject->name),'id'=>$valueProject->id])}}">
-                        <p>{{Helpers::changeLanguage($valueProject->name,$valueProject->jp_name)}}</p>
-                    </a>
+                    <a href="{{route('web.project.project_detail',['name'=>str_slug($valueProject->name),'id'=>$valueProject->id])}}">{{Helpers::changeLanguage($valueProject->name,$valueProject->jp_name)}}</a>
                 </div>
                 <div class="c-list__project__item__profile">
                     <div class="avatar">

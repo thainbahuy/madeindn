@@ -9,9 +9,6 @@
     @include('web.common_layouts.header')
 </header>
 <!-- END HEADER -->
-@php
-    use App\Models\Web\Project;
-@endphp
 <main class="c-main">
     <div class="c-banner">
         <div class="c-banner__inner">
@@ -26,7 +23,8 @@
                     <div class="tab-content">
                         <form action="{{route('web.project.project_search')}}" method="GET">
                             <div class="form-group">
-                                <input type="text" name="key_word" class="input-form" placeholder="{{__('message.HOME_BACKGROUND_3')}}">
+                                <input type="text" name="key_word" class="input-form"
+                                       placeholder="{{__('message.HOME_BACKGROUND_3')}}">
                             </div>
                             <div class="form-group">
                                 <select name="category" id="category">
@@ -73,9 +71,7 @@
                                 </div>
                                 <div class="c-list__item__content">
                                     <div class="c-list__item__title">
-                                        <a href="{{route('web.more.about',['name'=> str_slug($valueAbout->name), 'id'=> $valueAbout->id])}}">
-                                            <p>{{Helpers::changeLanguage($valueAbout->name,$valueAbout->jp_name)}}</p>
-                                        </a>
+                                        <a href="{{route('web.more.about',['name'=> str_slug($valueAbout->name), 'id'=> $valueAbout->id])}}">{{ Helpers::changeLanguage($valueAbout->name,$valueAbout->jp_name)}}</a>
                                     </div>
                                 </div>
                             </div>
@@ -102,10 +98,10 @@
                             }
                         @endphp
                         <li {{$active}} data-value="{{$value->id}}" style="{{$style}}">
-                            <a onclick="checkDataIsExist({{$value->id}})" href="#tab{{$value->id}}">{{Helpers::changeLanguage($value->name,$value->jp_name)}}</a>
+                            <a onclick="checkDataIsExist({{$value->id}})"
+                               href="#tab{{$value->id}}">{{Helpers::changeLanguage($value->name,$value->jp_name)}}</a>
                         </li>
                     @endforeach
-                </ul>
                 </ul>
             </div>
             <div class="c-section__content">
@@ -118,7 +114,7 @@
                                 $active = "tab";
                             }
                         @endphp
-                        <div  id="tab{{$value->id}}" class="{{$active}}">
+                        <div id="tab{{$value->id}}" class="{{$active}}">
                             <div class="c-list__project" id="project_{{$value->id}}">
                                 @php
                                     $valueCategory  = $value->id;
@@ -164,9 +160,7 @@
                                 </div>
                                 <div class="c-list__item__content">
                                     <div class="c-list__item__title">
-                                        <a href="{{route('web.coworking.coworking_detail',['name'=> str_slug($valueCoWorking->name), 'id'=>$valueCoWorking->id])}}">
-                                            <p>{{Helpers::changeLanguage($valueCoWorking->name,$valueCoWorking->jp_name)}}</p>
-                                        </a>
+                                        <a href="{{route('web.coworking.coworking_detail',['name'=> str_slug($valueCoWorking->name), 'id'=>$valueCoWorking->id])}}">{{Helpers::changeLanguage($valueCoWorking->name,$valueCoWorking->jp_name)}}</a>
                                     </div>
                                 </div>
                             </div>
@@ -190,7 +184,8 @@
     <!-- END SECTION -->
     <div class="c-section c-section__trust">
         <div class="o-container">
-            <h2 class="c-section__heading"><p>{{__('message.HOME_COMPANY1')}} <br/> {{__('message.HOME_COMPANY2')}}</p></h2>
+            <h2 class="c-section__heading"><p>{{__('message.HOME_COMPANY1')}} <br/> {{__('message.HOME_COMPANY2')}}</p>
+            </h2>
             <div class="c-section__content">
                 <div class="c-list__company">
                     @foreach($listPartner as $item)
@@ -215,11 +210,11 @@
 @include('web.common_layouts.script_footer')
 <script src="{{asset('web/js/loadmore.js')}}"></script>
 @if($listBackground != null)
-<script>
-    $(function() {
-        $('.c-banner').css("background-image", "url({{$listBackground->image_link}})");
-    });
-</script>
+    <script>
+        $(function () {
+            $('.c-banner').css("background-image", "url({{$listBackground->image_link}})");
+        });
+    </script>
 @endif
 <!-- endbuild -->
 <!-- ======== END JAVASCRIPT ======== -->
