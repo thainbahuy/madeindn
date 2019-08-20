@@ -40,7 +40,7 @@
         <div class="o-container">
             <div class="number-all">
                 <p>
-                    <span>Explore</span> {{$listProjects->total()}} projects
+                    <span id="total_project" data-total ="{{$listProjects->total()}}" >Explore</span> {{$listProjects->total()}} projects
                 </p>
             </div>
         </div>
@@ -75,6 +75,9 @@
     $(document).ready(function(){
         var e = document.getElementById("category");
         $('.select-styled').text(e.options[e.selectedIndex].text);
+        if($('.c-list__project__item').length == $('#total_project').attr("data-total")){
+            $('#loadmore_btn').hide();
+        }
     })
 </script>
 <!-- endbuild -->

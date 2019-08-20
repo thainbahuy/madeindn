@@ -10,7 +10,8 @@ function loadMoreEvent(urlAjax) {
         .done(function (data) {
             if ($.trim(data.html) != "") {
                 $(".c-post").append(data.html);
-                indexPage++
+                indexPage++;
+                checkDataEventEmpty(urlAjax,indexPage);
             }
 
         })
@@ -44,15 +45,8 @@ function loadMoreProjectIndex(urlAjax) {
                 lastCategories[category_id]++;
 
                 $('#loadmore_btn').show();
-                projectByCatrgory[category_id] = {
-                    'data': true,
-                }
-            } else {
-                $('#loadmore_btn').hide();
-                projectByCatrgory[category_id] = {
-                    'data': false,
-                }
-
+                let index = lastCategories[category_id];
+                checkDataProjectByCategoryEmpty(category_id,urlAjax,index);
             }
         });
 }
@@ -66,8 +60,6 @@ function checkDataIsExist(categoryId) {
             $('#loadmore_btn').hide();
         }
     }
-
-
 }
 
 function loadMoreProjectByCategory(urlAjax) {
@@ -82,7 +74,6 @@ function loadMoreProjectByCategory(urlAjax) {
             if ($.trim(data.html) != "") {
                 $(".c-list__project").append(data.html);
                 indexPage++;
-                console.log($('body').height());
             } else {
                 $('#loadmore_btn').hide();
             }
@@ -100,16 +91,62 @@ function loadMoreSearchProject(urlAjax, key_word, category) {
             data: {'key_word': key_word, 'category': category, 'page': indexPage},
         })
         .done(function (data) {
-            console.log(data);
             if ($.trim(data.html) != "") {
                 $(".c-list__project").append(data.html);
                 indexPage++;
-                console.log($('body').height());
-            } else {
-                $('#loadmore_btn').hide();
+                checkDataProjectSearch(urlAjax,key_word,category,indexPage);
             }
         })
         .fail(function (jqXHR, ajaxOptions, thrownError) {
             alert('server not responding...');
         });
+}
+
+// functions for check data is exist
+function checkDataProjectByCategoryEmpty(category_id,urlAjax,indexPage) {
+    $.ajax(
+        {
+            url: urlAjax,
+            type: "get",
+            data: {'page': indexPage, 'category_id': category_id},
+            success: function(data){
+                // if out of data
+                if ($.trim(data.html) == "") {
+                    projectByCatrgory[category_id] = {
+                        'data': false,
+                    };
+                    $('#loadmore_btn').hide();
+                }
+            }
+        });
+}
+
+function checkDataEventEmpty(urlAjax,index) {
+    $.ajax(
+        {
+            url: urlAjax,
+            type: "get",
+            data: {'page': index},
+            success:function (data) {
+                // if out of data
+                if ($.trim(data.html) == "") {
+                    $('#loadmore_btn').hide();
+                }
+            }
+        })
+}
+
+function checkDataProjectSearch(urlAjax,key_word,category,index) {
+    $.ajax(
+        {
+            url: urlAjax,
+            type: "get",
+            data: {'key_word': key_word, 'category': category, 'page': index},
+            success:function (data) {
+                // if out of data
+                if ($.trim(data.html) == "") {
+                    $('#loadmore_btn').hide();
+                }
+            }
+        })
 }

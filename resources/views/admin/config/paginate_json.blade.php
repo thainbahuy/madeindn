@@ -59,7 +59,7 @@
                                                             <div class="form-group focused">
                                                                 <input type="number" required
                                                                        name="{{$key}}[{{$keyPaginate}}]"
-                                                                       class="form-control" min=3
+                                                                       class="form-control" min=1
                                                                        value="{{$valuePaginate}}">
                                                             </div>
                                                         @endif
@@ -75,7 +75,7 @@
                     </div>
                     <div class="col-md-12">
                         <div class="text-center">
-                            <button type="submit" class="btn btn-success PreviousBtn btn-lg">Lưu</button>
+                            <button type="submit" class="btn btn-success PreviousBtn btn-lg">Save</button>
                             </button>
                         </div>
                     </div>

@@ -80,4 +80,9 @@ class Project extends Model
             ->orderByRaw('ISNULL(position), position ASC')
             ->orderBy('id', 'DESC');
     }
+
+    public function getTotalProjectByCategory($idCategory){
+        $listProjectCategory = DB::table($this->table)->where('category_id', $idCategory)->get();
+        return $listProjectCategory->count();
+    }
 }
