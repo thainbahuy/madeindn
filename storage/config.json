@@ -1,7 +1,7 @@
 {
     "Home_Page": {
-        "Quantity Post Project": "2",
-        "Quantity Post Event": "2"
+        "Quantity Post Project": "3",
+        "Quantity Post Event": "3"
     },
     "Event_Page": {
         "Quantity Post Event": "6"
@@ -13,11 +13,11 @@
         "Quantity Show Post Search Project": "6"
     },
     "Social_Link_Web_Footer": {
-        "ic_fb": "https:\/\/www.facebook1.com\/",
-        "ic_tw": "https:\/\/www.facebook4.com\/",
-        "ic_inter": null,
-        "ic_print": "https:\/\/www.facebook3.com\/",
-        "ic_ig": "https:\/\/www.facebook2.com\/"
+        "Facebook": "https:\/\/www.facebook.com\/",
+        "Twitter": "https:\/\/twitter.com\/?lang=vi",
+        "Dribbble": "https:\/\/dribbble.com\/",
+        "Pinterest": "https:\/\/www.pinterest.com\/",
+        "Instagram": "https:\/\/www.instagram.com\/"
     },
     "Info_Company": {
         "Adress": "https:\/\/www.facebook1.com\/",

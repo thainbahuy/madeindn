@@ -31,10 +31,10 @@ class SubmitProjectRequest extends FormRequest
             $rule_link = "";
         }
         return [
-            'name'                        => 'required|min:15|max:50',
+            'name'                        => 'required|min:5|max:100',
             'address'                     => 'required|',
-            'phone'                       => 'required|',
-            'email'                       => 'required|email',
+            'phone'                       => 'required|min:6|max:15',
+            'email'                       => 'required|max:100|regex:/^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/',
             'name_startup'                => 'required|min:10|max:255',
             'content'                     => 'required',
             'link_driver'                 => $rule_link,
@@ -50,8 +50,11 @@ class SubmitProjectRequest extends FormRequest
             'name.max'              			=> __('message_submit_project.name.max'),
             'address.required'      			=> __('message_submit_project.address.required'),
             'phone.required'        			=> __('message_submit_project.phone.required'),
+            'phone.min'        			        => __('message_submit_project.phone.min'),
+            'phone.max'        			        => __('message_submit_project.phone.max'),
             'email.required'        			=> __('message_submit_project.email.required'),
-            'email.email'           			=> __('message_submit_project.email.email'),
+            'email.regex'           			=> __('message_submit_project.email.email'),
+            'email.max'           			    => __('message_submit_project.email.max'),
             'name_startup.required' 			=> __('message_submit_project.name_startup.required'),
             'name_startup.min'      			=> __('message_submit_project.name_startup.min'),
             'name_startup.max'      			=> __('message_submit_project.name_startup.max'),
