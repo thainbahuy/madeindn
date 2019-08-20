@@ -16,7 +16,7 @@
                 <div class="c-section__project__banner__profile">
                     <div class="avatar c-thumbnail c-thumbnail__object-fit">
                         @if($getProject->author_avatar == null)
-                            <img src="{{asset('web/')}}/images/4-3_1024x767.png" alt="">
+                            <img src="{{asset('web/images/4-3_1024x767.png')}}" alt="">
                         @else
                             <img src="{{$getProject->author_avatar}}" alt="">
                         @endif
@@ -30,7 +30,7 @@
                 </div>
             </div>
             <div class="c-section__project__banner__bot">
-                <img src="{{asset('web/')}}/images/post/img_detail01.png" alt="">
+                <img src="{{asset('web/images/post/img_detail01.png')}}" alt="">
             </div>
         </div>
     </div>
@@ -52,7 +52,7 @@
                             <div class="c-sidebar__profile__avatar">
                                 <div class="avatar c-thumbnail c-thumbnail__object-fit">
                                     @if($getProject->author_avatar == null)
-                                        <img src="{{asset('web/')}}/images/4-3_1024x767.png" alt="">
+                                        <img src="{{asset('web/images/4-3_1024x767.png')}}" alt="">
                                     @else
                                         <img src="{{$getProject->author_avatar}}" alt="">
                                     @endif
@@ -75,26 +75,31 @@
                                           method="POST">
                                         {{csrf_field()}}
                                         <div class="c-form__row">
-                                            <input type="text" placeholder="{{__('message_project_detail.email')}}" name="email" id="email">
+                                            <input type="text" placeholder="{{__('message_contact.placeholder_email')}}"
+                                                   name="email" id="email">
                                         </div>
                                         <div class="c-form-error">
                                             <span class="email_error"></span>
                                         </div>
                                         <div class="c-form__row">
-                                            <input type="phone" placeholder="{{__('message_project_detail.phone')}}" name="phone">
+                                            <input type="phone"
+                                                   placeholder="{{__('message_contact.placeholder_phone')}}"
+                                                   name="phone" id="phone">
                                         </div>
                                         <div class="c-form-error">
                                             <span class="phone_error"></span>
                                         </div>
                                         <div class="c-form__row">
                                             <textarea id="content_message" name="content_message"
-                                                      placeholder="{{__('message_project_detail.content')}}"></textarea>
+                                                      placeholder="{{__('message_contact.placeholder_content')}}"></textarea>
                                         </div>
                                         <div class="c-form-error">
                                             <span class="content_message_error"></span>
                                         </div>
+                                        <div class="button_submit">
+                                            <button class="submit">{{__('message_contact.submit')}}</button>
+                                        </div>
                                         <div style="text-align: center;" class="c-form_submit">
-                                            <button class="submit">{{__('message_project_detail.submit')}}</button>
                                         </div>
                                     </form>
                                 </div>
@@ -118,39 +123,15 @@
 <!-- ======== JAVASCRIPT ======== -->
 @include('web.common_layouts.script_footer')
 <script>
-    function validateForm(){
-        email_check = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-        phone_check = /.{5,15}$/;
-        content_check = /.{10,}$/;
-
-        check_error_email = false;
-        check_error_phone = false;
-        check_error_content = false;
-        if (!email_check.test(document.myForm.email.value)){
-            $('.email_error').html("{{__('message_project_detail.error_mail')}}");
-            check_error_email = false;
-        } else {
-            $('.email_error').empty();
-            check_error_email = true;
+    var config = {
+        message: {
+            success: "{{ __('message_contact.success') }}",
+            fail: "{{__('message_contact.fail')}}",
+            error_email : "{{__('message_contact.email.email')}}",
+            error_phone : "{{__('message_contact.mobile.max')}}",
+            error_content : "{{__('message_contact.content.required')}}",
         }
-        if (!phone_check.test(document.myForm.phone.value)){
-            $('.phone_error').html("{{__('message_project_detail.error_phone')}}");
-            check_error_phone = false;
-        } else {
-            $('.phone_error').empty();
-            check_error_phone = true;
-        }
-
-        if (!content_check.test($('textarea#content_message').val())){
-            $('.content_message_error').html("{{__('message_project_detail.error_content')}}");
-            check_error_content = false;
-        } else {
-            $('.content_message_error').empty();
-            check_error_content = true;
-        }
-
-        return check_error_email && check_error_phone && check_error_content;
-    }
+    };
 </script>
 <script src="{{asset('web/js/contact.js')}}"></script>
 <!-- endbuild -->
