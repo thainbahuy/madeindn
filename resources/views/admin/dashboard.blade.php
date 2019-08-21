@@ -118,9 +118,9 @@
 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary"
-                                data-dismiss="modal">{{ __('admin_message.modal-footer-btn-close') }}</button>
+                                data-dismiss="modal">Close</button>
                         <button id="save" type="submit"
-                                class="btn btn-primary">{{ __('admin_message.modal-footer-btn-yes') }}</button>
+                                class="btn btn-primary">Yes</button>
                     </div>
                 </div>
             </div>

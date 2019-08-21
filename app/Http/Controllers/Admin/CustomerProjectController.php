@@ -81,9 +81,9 @@ class CustomerProjectController extends Controller
      * @param $name
      * @return \Symfony\Component\HttpFoundation\BinaryFileResponse
      */
-    public function downloadFile($name)
+    public function downloadFile($url,$name)
     {
-        $file = Helpers::getFilePathFromStorage('project_submit/link_project/' . $name);
+        $file = Helpers::getFilePathFromStorage($url . $name);
         if (File::exists($file)) {
             $name = basename($file);
             return response()->download($file, $name);

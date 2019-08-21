@@ -150,7 +150,7 @@
                         <div class="col-md-12">
                             <div class="text-center">
                                 <button class="btn btn-primary nextBtn btn-lg"
-                                        type="button">{{__('admin_message.next')}}</button>
+                                        type="button">{{__('Next')}}</button>
                             </div>
                         </div>
                     </div>
@@ -193,9 +193,9 @@
                         <div class="col-md-12">
                             <div class="text-center">
                                 <button type="submit"
-                                        class="btn btn-success PreviousBtn btn-lg">{{__('admin_message.save')}}</button>
+                                        class="btn btn-success PreviousBtn btn-lg">Save</button>
                                 <button class="btn btn-primary PreviousBtn btn-lg"
-                                        type="button">{{__('admin_message.previous')}} 1
+                                        type="button">{{__('Previous Step')}} 1
                                 </button>
                             </div>
                         </div>

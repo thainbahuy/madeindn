@@ -90,7 +90,7 @@
                             <div class="col-md-12">
                                 <div class="text-center" >
                                     <button type="submit" class="btn btn-success PreviousBtn btn-lg">
-                                        {{__('admin_message.save')}}
+                                        Save
                                     </button>
                                 </div>
                             </div>

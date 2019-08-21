@@ -105,6 +105,11 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="{{route('view.admin.config.lang_form')}}">
+                        <i class="ni ni-settings"></i> Config Language Form
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="{{route('admin.config.paginate_json')}}">
                         <i class="ni ni-settings"></i> Config System
                     </a>

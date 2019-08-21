@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Helpers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -14,7 +15,7 @@ class ConfigController extends Controller
     {
         $jsonLanguage = file_get_contents(storage_path('json_language/language.json'));
         $jsonDataLanguage = json_decode($jsonLanguage, true);
-        return view('admin.config.lang_json', compact('jsonDataLanguage'))->with('title','Config language');
+        return view('admin.config.lang_json', compact('jsonDataLanguage'))->with('title', 'Config language');
     }
 
     /**
@@ -50,7 +51,7 @@ class ConfigController extends Controller
     {
         $jsonPaginate = file_get_contents(storage_path('config.json'));
         $jsonDataPaginate = json_decode($jsonPaginate, true);
-        return view('admin.config.paginate_json', compact('jsonDataPaginate'))->with('title','Config system');
+        return view('admin.config.paginate_json', compact('jsonDataPaginate'))->with('title', 'Config system');
     }
 
     /**
@@ -74,6 +75,37 @@ class ConfigController extends Controller
         } else {
             $request->session()->flash('message', 'Updated Faild !');
             return redirect()->route('admin.config.paginate_json');
+        }
+    }
+
+    public function showLangForm()
+    {
+        return view('admin.config.lang_form')->with('title', 'Config Language Form');
+    }
+
+    public function postLangProject(Request $request)
+    {
+        $files = $request->file('files_json');
+        $result = $files->move(Helpers::getFilePathFromStorage("json_language"), "language_project.json");
+        if($result){
+            $request->session()->flash('message', 'Updated Success !');
+            return redirect()->route('view.admin.config.lang_form');
+        }else {
+            $request->session()->flash('message', 'Updated Faild !');
+            return redirect()->route('view.admin.config.lang_form');
+        }
+    }
+
+    public function postLangContact(Request $request)
+    {
+        $files = $request->file('files_json_contact');
+        $result = $files->move(Helpers::getFilePathFromStorage("json_language"), "language_contact.json");
+        if($result){
+            $request->session()->flash('message', 'Updated Success !');
+            return redirect()->route('view.admin.config.lang_form');
+        }else {
+            $request->session()->flash('message', 'Updated Faild !');
+            return redirect()->route('view.admin.config.lang_form');
         }
     }
 }

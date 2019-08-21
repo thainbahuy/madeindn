@@ -40,7 +40,8 @@
                         <div class="contact__form__row">
                             <div class="contact__form__label">
                                 <p>{{__('message_submit_project.email')}} <span class="error">(*)</span></p>
-                                <small>( {!!__('message_submit_project.small_email')!!} )</small>
+                                <small>( {!!__('message_submit_project.small_email_1')!!} )</small><br/>
+                                <small>( {!!__('message_submit_project.small_email_2')!!} )</small>
                             </div>
                             <div class="contact__form__controll">
                                 <input type="email" name="email" value="{{old('email')}}"
