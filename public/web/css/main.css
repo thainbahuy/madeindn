@@ -3681,10 +3681,9 @@ li > ol {
 }
 
 .c-section__contact-info iframe {
-    height: 37.8125rem !important;
+    /*height: 37.8125rem !important;*/
     margin-bottom: -0.625rem;
 }
-
 @media (max-width: 600px) {
     .c-section__contact-info iframe {
         margin-bottom: -1.25rem;

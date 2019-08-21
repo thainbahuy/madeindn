@@ -13,6 +13,7 @@ return [
     'email.email'           => "The email must be a vail email address JP",
     'content.required'      => "The content field is required. JP",
     'mobile.max'            => "The mobile can not be greater than 15 characters JP",
+    'captcha.required'		=> "The G-RECAPTCHA-RESPONSE field is required JP",
     'success'               => "YOU HAVE SUBMIT SUCCESS !!! JP",
     'fail'                  => "YOU HAVE SUBMIT FAILURE !!! PLEASE TRY AGAIN JP",
 
@@ -36,6 +37,6 @@ return [
     'content'               => "Content JP",
     'placeholder_content'   => "Write something you want to ask us JP",
 
-    'submit'                => "Send to us JP",
+    'submit'                => "SEND TO US JP",
 ]
 ?>
