@@ -43,7 +43,7 @@ class AboutRequest extends FormRequest
                 'jp_name' => 'required|max:100|min:6',
                 'description' => 'required|min:6',
                 'jp_description' => 'required|min:6',
-                'position' => 'unique:more,position,' . $request->id . ',id',
+                'position' => 'numeric|min:1|max:500',
                 'imageAbout' => $rule_image,
             ];
         }
@@ -62,8 +62,7 @@ class AboutRequest extends FormRequest
             'description.min' => 'The Description must be at least 6 characters.',
             'jp_description.required' => 'The Description Japan field is required.',
             'jp_description.min' => 'The Description Japan must be at least 6 characters.',
-            'position.unique' => 'The position has already been taken.',
-            'image_link.required' => 'Please choose a Image cover.',
+            'imageAbout.required' => 'Please choose a Image.',
         ];
     }
 }

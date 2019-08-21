@@ -20,7 +20,7 @@
     <div class="c-section c-section__events c-section__events__two">
         <div class="o-container">
             <div class="c-section__content">
-                <div class="c-post">
+                <div id="total_event" data-total ={{$listEvent->total()}}  class="c-post">
                     @include('data_event_loadmore')
                 </div>
                 <div class="btn-view-more">
@@ -49,6 +49,10 @@
 <script>
     $(function() {
         $('.c-banner__events').css("background-image", "url({{$background->image_link}})");
+
+        if($('.c-post__item').length == $('#total_event').attr("data-total")){
+            $('#loadmore_btn').hide();
+        }
     });
 </script>
 @endif

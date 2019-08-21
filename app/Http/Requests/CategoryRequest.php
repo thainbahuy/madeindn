@@ -33,7 +33,7 @@ class CategoryRequest extends FormRequest
         if($request->position == ''){
             $rule_position = '';
         } else {
-            $rule_position = 'unique:category,position,' . $request->id . ',id';
+            $rule_position = 'numeric|min:1|max:500';
         }
 
         return [

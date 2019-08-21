@@ -27,6 +27,8 @@ Route::namespace('Web')->group( function() {
     Route::get('/home', 'ShowHomeController@index')->name('web.index');
     Route::get('/', 'ShowHomeController@index')->name('web.index');
     Route::get('/search','ShowHomeController@searchProject')->name('web.project.project_search');
+    // get total project by category for homepage
+    Route::get('/project/total','ShowHomeController@getTotalProjectByCategory')->name('web.index.totalProjectByCategory');
 
     // Co-working page
     Route::get('/co-working-space', 'CoWorkingController@index')->name('web.coworking.coworking_space');

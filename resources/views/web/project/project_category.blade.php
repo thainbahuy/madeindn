@@ -23,7 +23,7 @@
     <div class="c-section c-section__project-category">
         <div class="o-container">
             <div class="c-section__project-category__content">
-                <div class="c-list__project">
+                <div id="total_project" data-total="{{$listProjects->total()}}" class="c-list__project">
                     @include('data_projectIndex_loadmore')
                 </div>
                 <div class="btn-view-more">
@@ -46,6 +46,13 @@
 <!-- ======== JAVASCRIPT ======== -->
 @include('web.common_layouts.script_footer')
 <script src="{{asset('web/js/loadmore.js')}}"></script>
+<script>
+    $(document).ready(function(){
+        if($('.c-list__project__item').length == $('#total_project').attr("data-total")){
+            $('#loadmore_btn').hide();
+        }
+    })
+</script>
 <!-- endbuild -->
 <!-- ======== END JAVASCRIPT ======== -->
 </body>

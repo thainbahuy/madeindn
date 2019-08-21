@@ -10,7 +10,8 @@ function loadMoreEvent(urlAjax) {
         .done(function (data) {
             if ($.trim(data.html) != "") {
                 $(".c-post").append(data.html);
-                indexPage++
+                indexPage++;
+                checkDataEventEmpty();
             }
 
         })
@@ -42,17 +43,7 @@ function loadMoreProjectIndex(urlAjax) {
             if ($.trim(data.html) != "") {
                 $("#project_" + category_id).append(data.html);
                 lastCategories[category_id]++;
-
-                $('#loadmore_btn').show();
-                projectByCatrgory[category_id] = {
-                    'data': true,
-                }
-            } else {
-                $('#loadmore_btn').hide();
-                projectByCatrgory[category_id] = {
-                    'data': false,
-                }
-
+                checkDataProjectByCategoryIndexEmpty(category_id);
             }
         });
 }
@@ -65,9 +56,13 @@ function checkDataIsExist(categoryId) {
         } else {
             $('#loadmore_btn').hide();
         }
+    } else {
+        if ($('#project_' + categoryId).find('.c-list__project__item').length == $('#project_' + categoryId).attr("data-total")) {
+            $('#loadmore_btn').hide();
+        } else {
+            $('#loadmore_btn').show();
+        }
     }
-
-
 }
 
 function loadMoreProjectByCategory(urlAjax) {
@@ -81,10 +76,8 @@ function loadMoreProjectByCategory(urlAjax) {
             console.log(data);
             if ($.trim(data.html) != "") {
                 $(".c-list__project").append(data.html);
-                indexPage++
-                console.log($('body').height());
-            } else {
-                $('#loadmore_btn').hide();
+                indexPage++;
+                checkDataProjectByCategoryEmpty();
             }
         })
         .fail(function (jqXHR, ajaxOptions, thrownError) {
@@ -100,16 +93,48 @@ function loadMoreSearchProject(urlAjax, key_word, category) {
             data: {'key_word': key_word, 'category': category, 'page': indexPage},
         })
         .done(function (data) {
-            console.log(data);
             if ($.trim(data.html) != "") {
                 $(".c-list__project").append(data.html);
-                indexPage++
-                console.log($('body').height());
-            } else {
-                $('#loadmore_btn').hide();
+                indexPage++;
+                checkDataProjectSearch();
             }
         })
         .fail(function (jqXHR, ajaxOptions, thrownError) {
             alert('server not responding...');
         });
+}
+
+// functions for check data is exist
+function checkDataProjectByCategoryIndexEmpty(category_id) {
+    if ($('#project_' + category_id).find('.c-list__project__item').length == $('#project_' + category_id).attr("data-total")) {
+        //out of data
+        $('#loadmore_btn').hide();
+        projectByCatrgory[category_id] = {
+            'data': false,
+        };
+    }
+
+}
+
+function checkDataEventEmpty() {
+    if ($('#total_event').attr("data-total") == $('.c-post__item').length) {
+        //out of data
+        $('#loadmore_btn').hide();
+    }
+
+}
+
+function checkDataProjectSearch() {
+
+    if ($('#total_project').attr("data-total") == $('.c-list__project__item').length) {
+        //out of data
+        $('#loadmore_btn').hide();
+    }
+}
+
+function checkDataProjectByCategoryEmpty() {
+    if ($('#total_project').attr("data-total") == $('.c-list__project__item').length) {
+        //out of data
+        $('#loadmore_btn').hide();
+    }
 }

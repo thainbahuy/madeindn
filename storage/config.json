@@ -1,7 +1,7 @@
 {
     "Home_Page": {
         "Quantity Post Project": "3",
-        "Quantity Post Event": "3"
+        "Quantity Post Event": "10"
     },
     "Event_Page": {
         "Quantity Post Event": "6"
@@ -10,7 +10,7 @@
         "Quantity Post Project": "6"
     },
     "Project_Search_Page": {
-        "Quantity Show Post Search Project": "6"
+        "Quantity Show Post Search Project": "3"
     },
     "Social_Link_Web_Footer": {
         "Facebook": "https:\/\/www.facebook.com\/",

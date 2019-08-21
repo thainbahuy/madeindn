@@ -22,7 +22,7 @@ return [
     'overview.required' 		=> 'The Overview  field is required.',
     'overview_jp.required' 		=> 'The Overview JP  field is required.',
 
-    'imageCoworking.required' 	=> 'The Image coworking field is required.',
+    'imageCoworking.required' 	=> 'Please choose a Image.',
 
     'listCoworking' 			=> 'List Coworking Space',
 ];

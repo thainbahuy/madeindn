@@ -55,9 +55,9 @@
                                     <label>Description</label>
                                     <textarea id="editor1" rows="5" class="form-control" name="description">{!!old('description')!!}</textarea>
                                 </div>
-                                <div class="form-group" style="padding-left:0">
+                                <div class="form-group">
                                     <label>Position</label>
-                                    <input class="form-control" type="number" min="1" max="100" name="position"
+                                    <input class="form-control" type="number" min="1" max="500" name="position"
                                            value="{{old('position')}}">
                                 </div>
                                 <div class="form-group">

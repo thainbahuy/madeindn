@@ -47,7 +47,7 @@ class ShowHomeController extends Controller
         $listPartner = $this->partner->getListBackground();
         $arrListProject = [];
         foreach($listCategoryProject as $value){
-            $arrListProject[] = $this->project->getProjectByCategory($value->id)->paginate($this->config['Quantity Post Project']);
+            $arrListProject[$value->id] = $this->project->getProjectByCategory($value->id)->paginate($this->config['Quantity Post Project']);
         }
         if ($request->ajax()) {
             $valueCategory = $request->get('category_id');
@@ -72,4 +72,5 @@ class ShowHomeController extends Controller
         }
         return view('web.project.project_search', compact('listProjects'));
     }
+
 }

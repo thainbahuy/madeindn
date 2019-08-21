@@ -80,4 +80,5 @@ class Project extends Model
             ->orderByRaw('ISNULL(position), position ASC')
             ->orderBy('id', 'DESC');
     }
+
 }

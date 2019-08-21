@@ -47,7 +47,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label>Position</label>
-                                        <input class="form-control" min="1" max="100" type="number" name="position"
+                                        <input class="form-control" min="1" max="500" type="number" name="position"
                                                placeholder="" value="{{$infoCategory->position}}">
                                     </div>
                                 </div>

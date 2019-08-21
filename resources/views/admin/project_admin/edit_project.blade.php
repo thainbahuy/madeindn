@@ -82,8 +82,8 @@
                                                placeholder="" value="{{$infoProject->name}}">
                                     </div>
                                     <div class="form-group">
-                                        <label>Location appears</label>
-                                        <input class="form-control" type="number" min="1" max="100" name="position"
+                                        <label>Position</label>
+                                        <input class="form-control" type="number" min="1" max="500" name="position"
                                                placeholder="" value="{{$infoProject->position}}">
                                     </div>
                                     <div class="form-group">

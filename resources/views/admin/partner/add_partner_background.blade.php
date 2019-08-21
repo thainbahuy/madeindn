@@ -47,7 +47,7 @@
                                     <div class="row">
                                         <div class="col-md-2">
                                             <label>Position</label>
-                                            <input class="form-control" type="number" min="1" max="100" name="position"
+                                            <input class="form-control" type="number" min="1" max="500" name="position"
                                                    value="{{old('position')}}">
                                         </div>
                                     </div>

@@ -70,8 +70,8 @@
                                                value="{{$infoCoworking->name}}">
                                     </div>
                                     <div class="form-group">
-                                        <label>Location appears</label>
-                                        <input class="form-control" min="1" max="100" type="number" name="position"
+                                        <label>Position</label>
+                                        <input class="form-control" min="1" max="500" type="number" name="position"
                                                placeholder="This field may be blank"
                                                value="{{$infoCoworking->position}}">
                                     </div>
