@@ -30,7 +30,7 @@
                 </div>
             </div>
             <div class="c-section__project__banner__bot">
-                <img src="{{asset('web/images/post/img_detail01.png')}}" alt="">
+                <img style="width: 100%" height="auto" src="{{$getProject->image_link}}" alt="">
             </div>
         </div>
     </div>

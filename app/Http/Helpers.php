@@ -59,12 +59,12 @@ class Helpers
     }
 
     /**
-     * Upload image to CDN
+     * Upload image to CDN ,THIS JUST FOR TEST DO NOT DELETE
      * @param $file
      * @return url
      */
 
-    public static function upLoadImageToCDN($file)
+    public static function upLoadImageToCDNTest($file)
     {
         $disk = Storage::disk('gcs');
         try {
