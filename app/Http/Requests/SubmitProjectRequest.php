@@ -40,6 +40,7 @@ class SubmitProjectRequest extends FormRequest
             'link_driver'                 => $rule_link,
 //            'image_startup'               => 'required|',
             'files_startup.*'             => 'mimes:docx,doc,pdf',
+            'g-recaptcha-response'        => ['required', new \App\Rules\ValidRecaptcha],
         ];
     }
 
@@ -62,6 +63,7 @@ class SubmitProjectRequest extends FormRequest
             'link_driver.required'      	    => __('message_submit_project.link_driver.required'),
 //            'image_startup.required'			=> __('message_submit_project.image_startup.required'),
             'files_startup.*.mimes'			    => __('message_submit_project.files_startup.mimes'),
+            'g-recaptcha-response.required'     => __('message_submit_project.captcha.required'),
         ];
     }
 }

@@ -29,6 +29,7 @@ class ContactRequest extends FormRequest
             'email'                       => 'required|regex:/^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/|max:50',
             'title'                       => 'required|min:6|max:200',
             'content'                     => 'required',
+            'g-recaptcha-response'        => ['required', new \App\Rules\ValidRecaptcha],
         ];
     }
 
@@ -45,6 +46,7 @@ class ContactRequest extends FormRequest
             'content.required'      => __('message_contact.content.required'),
             'title.max'             => __('message_contact.title.max'),
             'mobile.max'            => __('message_contact.mobile.max'),
+            'g-recaptcha-response.required'     => __('message_contact.captcha.required'),
         ];
     }
 }

@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <title>{{__('message.TITLE_SUBMIT_PROJECT')}}</title>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 @include('web.common_layouts.head')
 <!-- endbuild -->
 </head>
@@ -132,6 +133,12 @@
                                 <span class="error">{{ $errors->first('files_startup.*')}}</span>
                             </div>
                         </div>
+                        <div style="margin-bottom: 1rem" class="contact__form__row">
+                            <div class="g-recaptcha" id="feedback-recaptcha"
+                                 data-sitekey="{{ env('GOOGLE_RECAPTCHA_KEY')  }}"></div>
+                            <span class="error">{{ $errors->first('g-recaptcha-response')}}</span>
+                        </div>
+                        <input type="submit" class="submit" value="{{__('message_submit_project.submit')}}">
                         {{--                        <div class="contact__form__row">--}}
                         {{--                            <div class="contact__form__label">--}}
                         {{--                                <p>{{__('message_submit_project.image_startup')}}</p>--}}
@@ -163,7 +170,6 @@
                         {{--                                <!-- <p class="file-return"></p> -->--}}
                         {{--                            </div>--}}
                         {{--                        </div>--}}
-                        <input type="submit" class="submit" value="{{__('message_submit_project.submit')}}">
                     </form>
                 </div>
             </div>

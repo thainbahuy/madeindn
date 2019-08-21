@@ -17,6 +17,7 @@ return [
     'content.required'      			=> "Please enter describe startup projects JP",
     'link_driver.required'              => "Please enter the project link if you do not select Upload File JP",
     'files_startup.mimes'			    => "Only Word or PDF files are accepted JP",
+    'captcha.required'			        => "The G-RECAPTCHA-RESPONSE field is required JP",
     'success'                           => "YOU HAVE SUBMIT SUCCESS !!! JP",
     'fail'                              => "YOU HAVE SUBMIT FAILURE !!! PLEASE TRY AGAIN JP",
 
