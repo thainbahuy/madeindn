@@ -13,7 +13,7 @@
                         @if($value <> null )
                             <li>
                                 <a href="{{$value}}" title="{{$value}}"><img
-                                            src="{{asset('web/')}}/images/icons/{{$key}}.png"></a>
+                                            src="{{asset('web/')}}/images/icons/icons_footer/{{$key}}.png"></a>
                             </li>
                         @endif
                     @endforeach

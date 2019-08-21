@@ -12,23 +12,26 @@
         'email.email'           => 'Vui lòng nhập đúng định dạng email',
         'content.required'      => 'Vui lòng nhập nội dung bài viết',
         'title.max'             => 'Title không vượt quá 200 ký tự',
-        'content.min'           => 'Nội dung ít nhất là 20 ký tự',
         'mobile.max'            => 'Số điện thoại không vượt quá 15 ký tự',
         'success'               => 'YOU HAVE SUBMIT SUCCESS !!!',
         'fail'                  => 'YOU HAVE SUBMIT FAILURE !!! PLEASE TRY AGAIN',
 
         //Info form
-        'name' 					=> "HỌ VÀ TÊN",
+        'name' 					=> "Họ và tên",
         'placeholder_name' 		=> "Nhập tên của bạn",
+        'small_name'            => "The name can not be greater than 100 CHARACTERS",
 
-        'email' 				=> "EMAIL",
+        'email' 				=> "Email",
         'placeholder_email' 	=> "Nhập địa chỉ email",
+        'small_email'           => "The email must be a vail email address ) <br/> ( The email can not be greater than 50 CHARACTERS",
 
-        'phone' 				=> "SỐ ĐIỆN THOẠI",
+        'phone' 				=> "Số điện thoại",
         'placeholder_phone' 	=> "Nhập số điện thoại",
+        'small_phone'           => "The phone can not be greater than 15 CHARACTERS",
 
-        'title' 				=> "TIÊU ĐỀ",
+        'title' 				=> "Tiêu đề",
         'placeholder_title' 	=> "Nhập nội dung",
+        'small_title'           => "Values ​​range from 6-200 characters",
 
         'content' 				=> "NỘI DUNG",
         'placeholder_content' 	=> "Viết gì đó bạn muốn yêu cầu chúng tôi",

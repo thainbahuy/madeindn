@@ -24,11 +24,11 @@ class ContactRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'                        => 'required|max:40',
+            'name'                        => 'required|max:100',
             'mobile'                      => 'required|max:15',
-            'email'                       => 'required|email|max:50',
+            'email'                       => 'required|regex:/^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/|max:50',
             'title'                       => 'required|min:6|max:200',
-            'content'                     => 'required|min:20',
+            'content'                     => 'required',
         ];
     }
 
@@ -41,10 +41,9 @@ class ContactRequest extends FormRequest
             'mobile.required'       => __('message_contact.mobile.required'),
             'email.required'        => __('message_contact.email.required'),
             'email.max'             => __('message_contact.email.max'),
-            'email.email'           => __('message_contact.email.email'),
+            'email.regex'           => __('message_contact.email.email'),
             'content.required'      => __('message_contact.content.required'),
             'title.max'             => __('message_contact.title.max'),
-            'content.min'           => __('message_contact.content.min'),
             'mobile.max'            => __('message_contact.mobile.max'),
         ];
     }

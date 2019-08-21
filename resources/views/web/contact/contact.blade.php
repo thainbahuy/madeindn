@@ -65,43 +65,51 @@
                     @endif
                     <div class="contact__form__row">
                         <div class="contact__form__label">
-                            <p>{{__('message_contact.name')}}</p>
+                            <p>{{__('message_contact.name')}} <span class="error">(*)</span></p>
+                            <small>( {!!__('message_contact.small_name')!!} )</small>
                         </div>
                         <div class="contact__form__controll">
-                            <input type="text" name="name" value="{{old('name')}}" placeholder="{{__('message_contact.placeholder_name')}}">
+                            <input type="text" name="name" value="{{old('name')}}"
+                                   placeholder="{{__('message_contact.placeholder_name')}}">
                             <span class="error">{{ $errors->first('name') }}</span>
                         </div>
                     </div>
                     <div class="contact__form__row">
                         <div class="contact__form__label">
-                            <p>{{__('message_contact.email')}}</p>
+                            <p>{{__('message_contact.email')}} <span class="error">(*)</span></p>
+                            <small>( {!!__('message_contact.small_email')!!} )</small>
                         </div>
                         <div class="contact__form__controll">
-                            <input type="text" name="email" value="{{old('email')}}" placeholder="{{__('message_contact.placeholder_email')}}">
+                            <input type="text" name="email" value="{{old('email')}}"
+                                   placeholder="{{__('message_contact.placeholder_email')}}">
                             <span class="error">{{ $errors->first('email') }}</span>
                         </div>
                     </div>
                     <div class="contact__form__row">
                         <div class="contact__form__label">
-                            <p>{{__('message_contact.phone')}}</p>
+                            <p>{{__('message_contact.phone')}} <span class="error">(*)</span></p>
+                            <small>( {!!__('message_contact.small_phone')!!} )</small>
                         </div>
                         <div class="contact__form__controll">
-                            <input type="text" name="mobile" value="{{old('mobile')}}" placeholder="{{__('message_contact.placeholder_phone')}}">
+                            <input type="text" name="mobile" value="{{old('mobile')}}"
+                                   placeholder="{{__('message_contact.placeholder_phone')}}">
                             <span class="error">{{ $errors->first('mobile') }}</span>
                         </div>
                     </div>
                     <div class="contact__form__row">
                         <div class="contact__form__label">
-                            <p>{{__('message_contact.title')}}</p>
+                            <p>{{__('message_contact.title')}} <span class="error">(*)</span></p>
+                            <small>( {!!__('message_contact.small_title')!!} )</small>
                         </div>
                         <div class="contact__form__controll">
-                            <input type="text" name="title" value="{{old('title')}}" placeholder="{{__('message_contact.placeholder_title')}}">
+                            <input type="text" name="title" value="{{old('title')}}"
+                                   placeholder="{{__('message_contact.placeholder_title')}}">
                             <span class="error">{{ $errors->first('title') }}</span>
                         </div>
                     </div>
                     <div class="contact__form__row">
                         <div class="contact__form__label">
-                            <p>{{__('message_contact.content')}}</p>
+                            <p>{{__('message_contact.content')}} <span class="error">(*)</span></p>
                         </div>
                         <div class="contact__form__controll">
                             <input type="text" name="content" value="{{old('content')}}"
