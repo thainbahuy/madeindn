@@ -73,10 +73,4 @@ class ShowHomeController extends Controller
         return view('web.project.project_search', compact('listProjects'));
     }
 
-//    public function getTotalProjectByCategory(Request $request){
-//        if ($request->ajax()) {
-//            $total = $this->project->getTotalProjectByCategory($request->get('id'));
-//            return response()->json(['total' => $total]);
-//        }
-//    }
 }

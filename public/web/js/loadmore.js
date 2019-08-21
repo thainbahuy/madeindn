@@ -11,7 +11,7 @@ function loadMoreEvent(urlAjax) {
             if ($.trim(data.html) != "") {
                 $(".c-post").append(data.html);
                 indexPage++;
-                checkDataEventEmpty(urlAjax,indexPage);
+                checkDataEventEmpty();
             }
 
         })
@@ -43,10 +43,7 @@ function loadMoreProjectIndex(urlAjax) {
             if ($.trim(data.html) != "") {
                 $("#project_" + category_id).append(data.html);
                 lastCategories[category_id]++;
-
-                $('#loadmore_btn').show();
-                let index = lastCategories[category_id];
-                checkDataProjectByCategoryEmpty(category_id,urlAjax,index);
+                checkDataProjectByCategoryIndexEmpty(category_id);
             }
         });
 }
@@ -59,10 +56,10 @@ function checkDataIsExist(categoryId) {
         } else {
             $('#loadmore_btn').hide();
         }
-    }else{
-        if($('#project_'+categoryId).find('.c-list__project__item').length == $('#project_'+categoryId).attr("data-total")){
+    } else {
+        if ($('#project_' + categoryId).find('.c-list__project__item').length == $('#project_' + categoryId).attr("data-total")) {
             $('#loadmore_btn').hide();
-        }else{
+        } else {
             $('#loadmore_btn').show();
         }
     }
@@ -80,8 +77,7 @@ function loadMoreProjectByCategory(urlAjax) {
             if ($.trim(data.html) != "") {
                 $(".c-list__project").append(data.html);
                 indexPage++;
-            } else {
-                $('#loadmore_btn').hide();
+                checkDataProjectByCategoryEmpty();
             }
         })
         .fail(function (jqXHR, ajaxOptions, thrownError) {
@@ -100,7 +96,7 @@ function loadMoreSearchProject(urlAjax, key_word, category) {
             if ($.trim(data.html) != "") {
                 $(".c-list__project").append(data.html);
                 indexPage++;
-                checkDataProjectSearch(urlAjax,key_word,category,indexPage);
+                checkDataProjectSearch();
             }
         })
         .fail(function (jqXHR, ajaxOptions, thrownError) {
@@ -109,50 +105,36 @@ function loadMoreSearchProject(urlAjax, key_word, category) {
 }
 
 // functions for check data is exist
-function checkDataProjectByCategoryEmpty(category_id,urlAjax,indexPage) {
-    $.ajax(
-        {
-            url: urlAjax,
-            type: "get",
-            data: {'page': indexPage, 'category_id': category_id},
-            success: function(data){
-                // if out of data
-                if ($.trim(data.html) == "") {
-                    projectByCatrgory[category_id] = {
-                        'data': false,
-                    };
-                    $('#loadmore_btn').hide();
-                }
-            }
-        });
+function checkDataProjectByCategoryIndexEmpty(category_id) {
+    if ($('#project_' + category_id).find('.c-list__project__item').length == $('#project_' + category_id).attr("data-total")) {
+        //out of data
+        $('#loadmore_btn').hide();
+        projectByCatrgory[category_id] = {
+            'data': false,
+        };
+    }
+
 }
 
-function checkDataEventEmpty(urlAjax,index) {
-    $.ajax(
-        {
-            url: urlAjax,
-            type: "get",
-            data: {'page': index},
-            success:function (data) {
-                // if out of data
-                if ($.trim(data.html) == "") {
-                    $('#loadmore_btn').hide();
-                }
-            }
-        })
+function checkDataEventEmpty() {
+    if ($('#total_event').attr("data-total") == $('.c-post__item').length) {
+        //out of data
+        $('#loadmore_btn').hide();
+    }
+
 }
 
-function checkDataProjectSearch(urlAjax,key_word,category,index) {
-    $.ajax(
-        {
-            url: urlAjax,
-            type: "get",
-            data: {'key_word': key_word, 'category': category, 'page': index},
-            success:function (data) {
-                // if out of data
-                if ($.trim(data.html) == "") {
-                    $('#loadmore_btn').hide();
-                }
-            }
-        })
+function checkDataProjectSearch() {
+
+    if ($('#total_project').attr("data-total") == $('.c-list__project__item').length) {
+        //out of data
+        $('#loadmore_btn').hide();
+    }
+}
+
+function checkDataProjectByCategoryEmpty() {
+    if ($('#total_project').attr("data-total") == $('.c-list__project__item').length) {
+        //out of data
+        $('#loadmore_btn').hide();
+    }
 }
