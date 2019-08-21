@@ -9,9 +9,9 @@ use Illuminate\Http\Request;
 class ImageController extends Controller
 {
     public function upLoadImage(Request $request){
-        $path = $request->file('image');
-        $newNameImage = Helpers::createNewNameImage($path->getClientOriginalName());
-        dd(Helpers::upLoadImageToCDNTest($path,$newNameImage));
+        $imageFile = $request->file('image');
+        $thubnail = Helpers::resizeImage($imageFile,2);
+        dd(Helpers::upLoadImageToCDNDetail_H($thubnail->content(),$imageFile->getClientOriginalName(),2));
     }
 
     public function deletImage(Request $request){

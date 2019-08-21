@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
+use Intervention\Image\ImageManagerStatic as Image;
 
 class Helpers
 {
@@ -64,15 +65,16 @@ class Helpers
      * @return url
      */
 
-    public static function upLoadImageToCDNTest($file)
+    public static function upLoadImageToCDNTest($name,$file)
     {
         $disk = Storage::disk('gcs');
         try {
-
-            $urlImage[1] = $disk->put('thumbnail/'.$file->getClientOriginalName(), file_get_contents($file));
-            $urlImage[2] = $disk->put('detail/'.$file->getClientOriginalName(), file_get_contents($file));
-            Log::info('Photos uploaded: ' . $file->getClientOriginalName());
-            return $urlImage;
+            $disk->put('thumbnail/'.$name, $file);
+            $disk->put('detail/'.$name,$file);
+            Log::info('Photos uploaded: ' . $name);
+            $urlImage[] = $disk->url('thumbnail/'.$name);
+            $urlImage[] = $disk->url('detail/'.$name);
+            dd($urlImage);
         } catch (Exception $e) {
             Log::info('Exception upload image');
             Log::info($e);
@@ -126,31 +128,56 @@ class Helpers
     {
         $disk = Storage::disk('gcs');
         try {
-            $disk->put('thumbnail/'.$nameImage, file_get_contents($file));
-            Log::info('Photos Thumbnail uploaded: ' . $nameImage);
-
+            $disk->put($nameImage, file_get_contents($file));
+            $urlImage = $disk->url($nameImage);
+            Log::info('Photos uploaded: '.$nameImage);
+            return $urlImage;
 
         } catch (Exception $e) {
-            Log::info('Exception Thumbnail upload image');
+            Log::info('Exception upload image');
             Log::info($e);
         }
     }
+
     /**
-     * upload image to cdn for detail
-     * @param $file file
-     * @param $nameImage string
-     * @return mixed
+     * Upload image to cdn with option
+     * @param $file
+     * @param $nameImage
+     * @param $option 1:thumbnail,2:detail
      */
-    public static function upLoadImageToCDNDetail($file, $nameImage)
+    public static function upLoadImageToCDNDetail_H($file, $nameImage,$option)
     {
         $disk = Storage::disk('gcs');
         try {
-            $disk->put('detail/'.$nameImage, file_get_contents($file));
-            Log::info('Photos Detail uploaded: ' . $nameImage);
-
+            if ($option == 1){
+                $disk->put('thumbnail/'.$nameImage, $file);
+                Log::info('Photos uploaded: ' . $nameImage);
+                return $disk->url('thumbnail/'.$nameImage);
+            }else{
+                $disk->put('detail/'.$nameImage, $file);
+                return $disk->url('detail/'.$nameImage);
+                Log::info('Photos uploaded: ' . $nameImage);
+            }
         } catch (Exception $e) {
             Log::info('Exception Detail upload image');
             Log::info($e);
+        }
+    }
+
+    /**
+     * @param $file
+     * @param $option 1 : thumbnail,2:detail
+     * @return \Intervention\Image\Image
+     */
+    public static function resizeImage($file,$option){
+        Image::configure(array('driver' => 'gd'));
+        if ($option == 1){
+            $img = Image::make($file)->resize(380, 284);
+            return $img->response('jpg');
+        }
+        else{
+            $img = Image::make($file)->resize(1350, 685);
+            return $img->response('jpg');
         }
     }
 }
