@@ -217,7 +217,7 @@
                                             <span>Coworking old Image</span> <br/>
                                             <img style="max-width: 120px !important; max-height: 120px !important;"
                                                  class="img-thumbnail  listimage-edit"
-                                                 src="{{$infoCoworking->image_link}}">
+                                                 src="{{Helpers::$URL_THUMBNAIL.$infoCoworking->image_link}}">
                                         </div>
                                     </div>
                                 </div>

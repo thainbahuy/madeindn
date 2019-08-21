@@ -96,7 +96,7 @@
 <!-- ======== JAVASCRIPT ======== -->
 @include('web.common_layouts.script_footer')
 <script>
-    $urlImage = '{{$objCoworking->image_link}}'
+    $urlImage = '{{Helpers::$URL_DETAIL.$objCoworking->image_link}}';
 
     $(document).ready(function () {
         $('.c-banner__coworking').css('background-image', 'url(' + $urlImage + ')');

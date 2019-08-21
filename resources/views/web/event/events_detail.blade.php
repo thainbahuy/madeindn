@@ -113,7 +113,7 @@
 
 </script>
 <script>
-    $urlImage = '{{$event->image_link}}'
+    $urlImage = '{{Helpers::$URL_DETAIL.$event->image_link}}';
     $(document).ready(function () {
         $('.c-banner__events').css('background-image', 'url(' + $urlImage + ')');
 

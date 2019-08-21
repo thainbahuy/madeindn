@@ -231,7 +231,7 @@
                                     Click here to select a photo!
                                 </button>
                                 <div id="thumbnail"></div>
-                                <img style="width:200px" src="{{$event->image_link}}" alt="">
+                                <img style="width:200px" src="{{Helpers::$URL_THUMBNAIL.$event->image_link}}" alt="">
                                 <input style="display: none" type="text" value="{{$event->image_link}}"
                                        name="image_display">
                             </div>

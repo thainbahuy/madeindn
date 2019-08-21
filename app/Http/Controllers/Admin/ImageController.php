@@ -10,8 +10,8 @@ class ImageController extends Controller
 {
     public function upLoadImage(Request $request){
         $imageFile = $request->file('image');
-        $thubnail = Helpers::resizeImage($imageFile,2);
-        dd(Helpers::upLoadImageToCDNDetail_H($thubnail->content(),$imageFile->getClientOriginalName(),2));
+        $thubnail = Helpers::resizeImage($imageFile,1);
+        dd(Helpers::upLoadImageToCDNDetail_H($thubnail->content(),$imageFile->getClientOriginalName(),1));
     }
 
     public function deletImage(Request $request){

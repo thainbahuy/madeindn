@@ -74,12 +74,11 @@ class CoworkingController extends Controller
             $social = Helpers::convertArrayToJson($arrSocial);
         }
         $newNameImage = Helpers::createNewNameImage($data["imageCoworking"]->getClientOriginalName());
-        $linkImage = "https://storage.googleapis.com/madeindn/" . $newNameImage;
-        $resultAddCowork = $this->coWorking->addCoworking($data['name'], $data['name_jp'], $data['overview'], $data['overview_jp'], $location, $location_jp, $linkImage, $data['position'], $social);
+        $this->uploadImageToCDN($newNameImage,$data["imageCoworking"]);
+        $resultAddCowork = $this->coWorking->addCoworking($data['name'], $data['name_jp'], $data['overview'], $data['overview_jp'], $location, $location_jp, $newNameImage, $data['position'], $social);
 
         if ($resultAddCowork) {
             Log::info('You just added coworking named: ' . $data['name']);
-            Helpers::upLoadImageToCDN_N($data['imageCoworking'], $newNameImage);
             $request->session()->flash('msg', 'Success !');
             return redirect()->route('view.admin.coworking.coworking_space');
         } else {
@@ -111,7 +110,7 @@ class CoworkingController extends Controller
 
         if ($request->file('imageCoworking')) {
             $newNameImage = Helpers::createNewNameImage($data["imageCoworking"]->getClientOriginalName());
-            $linkImage = "https://storage.googleapis.com/madeindn/" . $newNameImage;
+            $linkImage = $newNameImage;
         } else {
             $linkImage = $oldCoworking->image_link;
         }
@@ -128,9 +127,9 @@ class CoworkingController extends Controller
         if ($resultAddCowork) {
             Log::info('You just edited coworking named: ' . $oldCoworking->name);
             if ($request->file('imageCoworking')) {
-                $nameImage = Helpers::getNameImage($oldCoworking->image_link);
-                Helpers::deleteImageFromCDN($nameImage);
-                Helpers::upLoadImageToCDN_N($data['imageCoworking'], $newNameImage);
+//                Helpers::deleteImageFromCDN(Helpers::$URL_THUMBNAIL.$oldCoworking->image_link);
+//                Helpers::deleteImageFromCDN(Helpers::$URL_DETAIL.$oldCoworking->image_link);
+                $this->uploadImageToCDN($newNameImage,$request->file('imageCoworking'));
             }
             $request->session()->flash('msg', "Success");
             return redirect()->route('view.admin.coworking.coworking_space');
@@ -139,5 +138,16 @@ class CoworkingController extends Controller
             $request->session()->flash('msg', 'Fail');
             return redirect()->route('view.admin.coworking.coworking_space');
         }
+    }
+
+    private function uploadImageToCDN($name,$imageFile){
+        //for thumbnail
+        $thubnail = Helpers::resizeImage($imageFile,1);
+        Helpers::upLoadImageToCDNDetail_H($thubnail->content(),$name,1);
+
+        //for detail
+        $detail = Helpers::resizeImage($imageFile,2);
+        Helpers::upLoadImageToCDNDetail_H($detail->content(),$name,2);
+
     }
 }

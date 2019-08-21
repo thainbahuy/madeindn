@@ -31,7 +31,7 @@
                             <div class="c-list__item">
                                 <div class="c-thumbnail">
                                     <a href="{{route('web.coworking.coworking_detail',['name' => str_slug($items->name),'id'=>$items->id])}}">
-                                        <img src="{{$items->image_link}}" alt="{{$items->name}}">
+                                        <img src="{{Helpers::$URL_THUMBNAIL.$items->image_link}}" alt="{{$items->name}}">
                                     </a>
                                 </div>
                                 <div class="c-list__item__content">

@@ -7,6 +7,8 @@ use Intervention\Image\ImageManagerStatic as Image;
 
 class Helpers
 {
+    public static  $URL_THUMBNAIL = 'https://storage.googleapis.com/madeindn/thumbnail/';
+    public static  $URL_DETAIL = 'https://storage.googleapis.com/madeindn/detail/';
     /**
      * return language folowing locale
      * @param $name_en

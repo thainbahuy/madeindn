@@ -48,7 +48,7 @@
 @if($background != null)
 <script>
     $(function() {
-        $('.c-banner__events').css("background-image", "url({{$background->image_link}})");
+        $('.c-banner__events').css("background-image", "url({{Helpers::$URL_DETAIL.$background->image_link}})");
 
         if($('.c-post__item').length == $('#total_event').attr("data-total")){
             $('#loadmore_btn').hide();

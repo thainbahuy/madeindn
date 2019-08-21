@@ -35,7 +35,8 @@ class EventController extends Controller
             $listEvent = $this->event->getAllEvents();
             return Datatables::of($listEvent)
                 ->editColumn('image_link', function ($event) {
-                    return '<img src="' . $event->image_link . '" alt="image" class="img-thumbnail">';
+                    $image = Helpers::$URL_THUMBNAIL.$event->image_link;
+                    return '<img src="' . $image . '" alt="image" class="img-thumbnail">';
                 })
                 ->editColumn('begin_time', function ($event) {
                     return date_format(date_create($event->begin_time),'G:i A');
@@ -46,7 +47,7 @@ class EventController extends Controller
                 ->addColumn('setBackgroundEvent', function ($event) {
                     $background = $this->background->getBackgroundEvent();
                     if ($event->image_link == $background->image_link) {
-                        $data = '<input id="set_background" checked onclick="setImageBackground(' . "'$event->image_link'" . ')" name="event_background" value="' . $event->image_link . '" type="radio">';
+                        $data = '<input id="set_background" checked onclick="setImageBackground(' . "'.$event->image_link'" . ')" name="event_background" value="' . $event->image_link . '" type="radio">';
                     } else {
                         $data = '<input id="set_background"  name="event_background" onclick="setImageBackground(' . "'$event->image_link'" . ')" value="' . $event->image_link . '" type="radio">';
                     }
@@ -97,9 +98,8 @@ class EventController extends Controller
     {
         $id = $request->get('id');
         $event = $this->event->getEventById($id);
-        $nameImage = Helpers::getNameImage($event->image_link);
         if ($this->event->deleteEventById($id) == 1) {
-            Helpers::deleteImageFromCDN($nameImage);
+            Helpers::deleteImageFromCDN($event->image_link);
             Log::info('delete event success');
             return response()->json(['status' => 'success'], Response::HTTP_OK);
         } else {
@@ -160,11 +160,11 @@ class EventController extends Controller
 
         //upload image to cdn and get url
         $newNameImage = Helpers::createNewNameImage($imageFile->getClientOriginalName());
-        $imageLinkCDN = Helpers::upLoadImageToCDN_N($imageFile, $newNameImage);
+        $this->uploadImageToCDN($newNameImage,$imageFile);
 
         $this->insertEventSql($name, $jp_name, $sort_description, $jp_sort_description,
             $overview, $jp_overview, $location_json, $location_json_jp,
-            $date_time, $begin_time, $end_time, $imageLinkCDN, $position, $socical_link_json);
+            $date_time, $begin_time, $end_time, $newNameImage, $position, $socical_link_json);
 
         return redirect()->route('view.admin.event.event_list')->with('message', 'Add New Event Success');
     }
@@ -256,7 +256,8 @@ class EventController extends Controller
         if ($request->hasFile('image_link')) {
             $imageFile = $request->file('image_link');
             $newNameImage = Helpers::createNewNameImage($imageFile->getClientOriginalName());
-            $linkImageSaveSql = Helpers::upLoadImageToCDN_N($imageFile, $newNameImage);
+            $linkImageSaveSql = $newNameImage;
+            $this->uploadImageToCDN($newNameImage,$imageFile);
         } else {
             $image_old = $request->get('image_display');
             $linkImageSaveSql = $image_old;
@@ -312,6 +313,17 @@ class EventController extends Controller
         if ($this->background->updateBackground($image_link) == 1) {
             return response()->json(['status' => 'set background success'], Response::HTTP_OK);
         }
+    }
+
+    private function uploadImageToCDN($name,$imageFile){
+       //for thumbnail
+        $thubnail = Helpers::resizeImage($imageFile,1);
+        Helpers::upLoadImageToCDNDetail_H($thubnail->content(),$name,1);
+
+        //for detail
+        $detail = Helpers::resizeImage($imageFile,2);
+        Helpers::upLoadImageToCDNDetail_H($detail->content(),$name,2);
+
     }
 
 

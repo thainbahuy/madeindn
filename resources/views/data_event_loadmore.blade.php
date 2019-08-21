@@ -5,7 +5,7 @@
     <div id="event_item" class="c-post__item">
         <div class="c-post__item__thumb">
             <div class="c-thumbnail c-thumbnail__object-fit">
-                <img src="{{$item->image_link}}" alt="">
+                <img src="{{Helpers::$URL_THUMBNAIL.$item->image_link}}" alt="">
                 <a href="{{route('web.event.events_detail',$urlParam)}}"></a>
             </div>
         </div>

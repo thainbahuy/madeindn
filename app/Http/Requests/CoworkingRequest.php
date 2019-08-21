@@ -37,8 +37,8 @@ class CoworkingRequest extends FormRequest
         }
 
         return [
-            'name'              => 'required|max:255|unique:co_working,name,' . $request->id . ',id',
-            'name_jp'           => 'required|max:255|unique:co_working,jp_name,' . $request->id . ',id',
+            'name'              => 'required|max:255',
+            'name_jp'           => 'required|max:255',
             'position'          => $rule_position,
             'location.*'        => 'required',
             'location_jp.*'     => 'required',
