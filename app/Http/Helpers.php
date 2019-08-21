@@ -68,8 +68,9 @@ class Helpers
     {
         $disk = Storage::disk('gcs');
         try {
-            $disk->put($file->getClientOriginalName(), file_get_contents($file));
-            $urlImage = $disk->url($file->getClientOriginalName());
+
+            $urlImage[1] = $disk->put('thumbnail/'.$file->getClientOriginalName(), file_get_contents($file));
+            $urlImage[2] = $disk->put('detail/'.$file->getClientOriginalName(), file_get_contents($file));
             Log::info('Photos uploaded: ' . $file->getClientOriginalName());
             return $urlImage;
         } catch (Exception $e) {
@@ -116,7 +117,7 @@ class Helpers
     }
 
     /**
-     * upload image to cdn
+     * upload image to cdn for thumbnail
      * @param $file file
      * @param $nameImage string
      * @return mixed
@@ -124,15 +125,31 @@ class Helpers
     public static function upLoadImageToCDN_N($file, $nameImage)
     {
         $disk = Storage::disk('gcs');
-        $nameImage = $nameImage;
         try {
-            $disk->put($nameImage, file_get_contents($file));
-            $urlImage = $disk->url($nameImage);
-            Log::info('Photos uploaded: ' . $nameImage);
-            return $urlImage;
+            $disk->put('thumbnail/'.$nameImage, file_get_contents($file));
+            Log::info('Photos Thumbnail uploaded: ' . $nameImage);
+
 
         } catch (Exception $e) {
-            Log::info('Exception upload image');
+            Log::info('Exception Thumbnail upload image');
+            Log::info($e);
+        }
+    }
+    /**
+     * upload image to cdn for detail
+     * @param $file file
+     * @param $nameImage string
+     * @return mixed
+     */
+    public static function upLoadImageToCDNDetail($file, $nameImage)
+    {
+        $disk = Storage::disk('gcs');
+        try {
+            $disk->put('detail/'.$nameImage, file_get_contents($file));
+            Log::info('Photos Detail uploaded: ' . $nameImage);
+
+        } catch (Exception $e) {
+            Log::info('Exception Detail upload image');
             Log::info($e);
         }
     }

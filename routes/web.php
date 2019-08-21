@@ -148,6 +148,6 @@ Route::post('account/reset-password', 'Admin\Auth\ResetPasswordController@reset'
 //Route::get('ABC',function(){
 //    echo Hash::make('thaibahuy');
 //});
-// Test API CDN
-//    Route::post('test/upLoadImage', 'Admin\ImageController@upLoadImage');
-//    Route::post('test/deleteImage', 'Admin\ImageController@deletImage');
+ //Test API CDN
+    Route::post('test/upLoadImage', 'Admin\ImageController@upLoadImage');
+    Route::post('test/deleteImage', 'Admin\ImageController@deletImage');
