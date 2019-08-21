@@ -119,7 +119,7 @@
                             }
                         @endphp
                         <div  id="tab{{$value->id}}" class="{{$active}}">
-                            <div class="c-list__project" id="project_{{$value->id}}">
+                            <div data-total = "{{$arrListProject[$value->id]->total()}}" class="c-list__project" id="project_{{$value->id}}">
                                 @php
                                     $valueCategory  = $value->id;
                                 @endphp
@@ -218,6 +218,7 @@
 <script>
     $(function() {
         $('.c-banner').css("background-image", "url({{$listBackground->image_link}})");
+        checkDataIsExist($('.tabs-list li').first().data('value'));
     });
 </script>
 @endif

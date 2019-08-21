@@ -59,6 +59,12 @@ function checkDataIsExist(categoryId) {
         } else {
             $('#loadmore_btn').hide();
         }
+    }else{
+        if($('#project_'+categoryId).find('.c-list__project__item').length == $('#project_'+categoryId).attr("data-total")){
+            $('#loadmore_btn').hide();
+        }else{
+            $('#loadmore_btn').show();
+        }
     }
 }
 

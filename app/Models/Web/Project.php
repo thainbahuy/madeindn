@@ -81,8 +81,8 @@ class Project extends Model
             ->orderBy('id', 'DESC');
     }
 
-    public function getTotalProjectByCategory($idCategory){
-        $listProjectCategory = DB::table($this->table)->where('category_id', $idCategory)->get();
-        return $listProjectCategory->count();
-    }
+//    public function getTotalProjectByCategory($idCategory){
+//        $listProjectCategory = DB::table($this->table)->where('category_id', $idCategory)->get();
+//        return $listProjectCategory->count();
+//    }
 }
