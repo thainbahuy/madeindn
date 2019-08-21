@@ -73,9 +73,7 @@
                                 </div>
                                 <div class="c-list__item__content">
                                     <div class="c-list__item__title">
-                                        <a href="{{route('web.more.about',['name'=> str_slug($valueAbout->name), 'id'=> $valueAbout->id])}}">
-                                            <p>{{Helpers::changeLanguage($valueAbout->name,$valueAbout->jp_name)}}</p>
-                                        </a>
+                                        <a href="{{route('web.more.about',['name'=> str_slug($valueAbout->name), 'id'=> $valueAbout->id])}}">{{ Helpers::changeLanguage($valueAbout->name,$valueAbout->jp_name)}}</a>
                                     </div>
                                 </div>
                             </div>
@@ -164,9 +162,7 @@
                                 </div>
                                 <div class="c-list__item__content">
                                     <div class="c-list__item__title">
-                                        <a href="{{route('web.coworking.coworking_detail',['name'=> str_slug($valueCoWorking->name), 'id'=>$valueCoWorking->id])}}">
-                                            <p>{{Helpers::changeLanguage($valueCoWorking->name,$valueCoWorking->jp_name)}}</p>
-                                        </a>
+                                        <a href="{{route('web.coworking.coworking_detail',['name'=> str_slug($valueCoWorking->name), 'id'=>$valueCoWorking->id])}}">{{Helpers::changeLanguage($valueCoWorking->name,$valueCoWorking->jp_name)}}</a>
                                     </div>
                                 </div>
                             </div>

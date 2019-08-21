@@ -83,7 +83,6 @@ class ProjectController extends Controller
         ]);
 
         if ($validator->fails()) {
-//            response()->json(['errors' => $validator->errors()->all()]);
             return redirect()->route('web.project.project_detail', ['name' => $name, 'id' => $id]);
         } else {
             if ($request->ajax()) {
