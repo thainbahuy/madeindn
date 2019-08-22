@@ -99,7 +99,8 @@ class EventController extends Controller
         $id = $request->get('id');
         $event = $this->event->getEventById($id);
         if ($this->event->deleteEventById($id) == 1) {
-            Helpers::deleteImageFromCDN($event->image_link);
+            Helpers::deleteImageFromCDN(Helpers::$THUMBNAIL.$event->image_link);
+            Helpers::deleteImageFromCDN(Helpers::$DETAIL.$event->image_link);
             Log::info('delete event success');
             return response()->json(['status' => 'success'], Response::HTTP_OK);
         } else {

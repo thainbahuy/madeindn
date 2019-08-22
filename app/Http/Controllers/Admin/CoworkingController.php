@@ -36,11 +36,11 @@ class CoworkingController extends Controller
 
         $id = $request->get('id');
         $objCoworking = $this->coWorking->getCoworking($id);
-        $nameImage = Helpers::getNameImage($objCoworking->image_link);
         try {
             if ($this->coWorking->deleteCoworking($id)) {
                 Log::info('Delete coworking titled: ' . $objCoworking->name);
-                Helpers::deleteImageFromCDN($nameImage);
+                Helpers::deleteImageFromCDN(Helpers::$THUMBNAIL.$objCoworking->image_link);
+                Helpers::deleteImageFromCDN(Helpers::$DETAIL.$objCoworking->image_link);
                 return \Response::json(['msg' => 'DELETE SUCCESS']);
             } else {
                 Log::info('The deleted coworking titled: ' . $objCoworking->name);
@@ -111,6 +111,11 @@ class CoworkingController extends Controller
         if ($request->file('imageCoworking')) {
             $newNameImage = Helpers::createNewNameImage($data["imageCoworking"]->getClientOriginalName());
             $linkImage = $newNameImage;
+            $this->uploadImageToCDN($newNameImage,$request->file('imageCoworking'));
+
+            //delete old image cdn
+            Helpers::deleteImageFromCDN(Helpers::$THUMBNAIL.$oldCoworking->image_link);
+            Helpers::deleteImageFromCDN(Helpers::$DETAIL.$oldCoworking->image_link);
         } else {
             $linkImage = $oldCoworking->image_link;
         }
@@ -126,11 +131,6 @@ class CoworkingController extends Controller
 
         if ($resultAddCowork) {
             Log::info('You just edited coworking named: ' . $oldCoworking->name);
-            if ($request->file('imageCoworking')) {
-//                Helpers::deleteImageFromCDN(Helpers::$URL_THUMBNAIL.$oldCoworking->image_link);
-//                Helpers::deleteImageFromCDN(Helpers::$URL_DETAIL.$oldCoworking->image_link);
-                $this->uploadImageToCDN($newNameImage,$request->file('imageCoworking'));
-            }
             $request->session()->flash('msg', "Success");
             return redirect()->route('view.admin.coworking.coworking_space');
         } else {

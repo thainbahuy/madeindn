@@ -52,7 +52,7 @@ class DashboardController extends Controller
             ],
             'Project Customer' => [
                 'count' => $ProjectCustomer,
-                'title' => 'Project Custmoer',
+                'title' => 'Project Customer',
                 'icon'  => 'icon icon-shape bg-gradient-warning rounded-circle text-white',
                 'url'   => route('view.admin.project.project_customer'),
             ],
