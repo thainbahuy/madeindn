@@ -58,7 +58,7 @@
                 </iframe>
             </div>
             <div class="contact__form">
-                <form action="{{route('web.contact.contact')}}" method="POST" enctype="multipart/form-data">
+                <form id="form_submit" action="{{route('web.contact.contact')}}" method="POST" enctype="multipart/form-data">
                     {{csrf_field()}}
                     @if(Session::has('msg'))
                         <div class="alert alert-{{Session::get('msg')}}" role="alert">
@@ -125,7 +125,7 @@
                         <span class="error">{{ $errors->first('g-recaptcha-response')}}</span>
                     </div>
                     <div class="contact__form__row">
-                        <input type="submit" class="submit" value="{{__('message_contact.submit')}}">
+                        <input type="submit" id="btn" class="submit" value="{{__('message_contact.submit')}}">
                     </div>
                 </form>
             </div>
@@ -137,11 +137,16 @@
     @include('web.common_layouts.footer')
 </footer>
 <!-- END FOOTER -->
-<!-- <a id="go-top" href="javascript:;" title="Go Top" class="c-btn__go-top"><img src="{{asset('web/')}}/images/icons/go_top.png" alt="Go Top" /></a> -->
 <!-- ======== JAVASCRIPT ======== -->
 @include('web.common_layouts.script_footer')
 <script>
     $(document).ready(function () {
+        $('#btn').click(function () {
+            $('#btn').attr('disabled', true);
+            $('#form_submit').submit();
+            return true;
+        });
+
         if ($('.alert-success').length > 0) {
             $('.alert-success').append("{{__('message_contact.success')}}");
         }
@@ -163,6 +168,7 @@
             });
     });
 </script>
+
 <!-- endbuild -->
 <!-- ======== END JAVASCRIPT ======== -->
 </body>

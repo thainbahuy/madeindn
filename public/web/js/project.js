@@ -26,7 +26,7 @@
 //     input.replaceWith(input.val('').clone(true));
 //     $(this).hide("");
 // });
-
+var $el = $('#files_startup');
 var filesStartup = document.getElementById('files_startup')
 filesList = [];
 $('#files_startup').change(function () {
@@ -35,16 +35,17 @@ $('#files_startup').change(function () {
         var ext = this.files[k].name.split('.').pop();
         if(ext!== "doc" && ext!== "docx" && ext!== "pdf")  {
             alert('Not an accepted file extension: '+this.files[k].name);
-            $(this).closest('form').trigger("reset");
+            $el.wrap('<form>').closest('form').get(0).reset();
+            $el.unwrap();
         }else {
             sFileName = this.files[k].name;
             sFileName.split('.').pop();
             size += this.files[k].size;
         }
     }
-
     if (size / (1024 * 1024).toFixed(2) > 10) {
-        $(this).closest('form').trigger("reset");
+        $el.wrap('<form>').closest('form').get(0).reset();
+        $el.unwrap();
         alert("Total file size <10 MB");
     } else {
         $(".text-file").empty();
@@ -52,5 +53,13 @@ $('#files_startup').change(function () {
             $(".text-file").append("<div id='files_" + i + "'>" + this.files[i].name);
         }
     }
+});
+
+$(document).ready(function () {
+    $('#btn').click(function () {
+        $('#btn').attr('disabled', true);
+        $('#form_submit').submit();
+        return true;
+    });
 });
 

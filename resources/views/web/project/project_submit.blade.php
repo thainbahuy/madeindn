@@ -24,7 +24,8 @@
             @endif
             <div class="c-section__submit-your-project__content">
                 <div class="contact__form">
-                    <form action="{{route('web.project.project_submit')}}" method="POST" enctype="multipart/form-data">
+                    <form id="form_submit" action="{{route('web.project.project_submit')}}" method="POST"
+                          enctype="multipart/form-data">
                         {{csrf_field()}}
                         <div class="contact__form__row">
                             <div class="contact__form__label">
@@ -40,7 +41,8 @@
                         <div class="contact__form__row">
                             <div class="contact__form__label">
                                 <p>{{__('message_submit_project.email')}} <span class="error">(*)</span></p>
-                                <small>( {!!__('message_submit_project.small_email_1')!!} )</small><br/>
+                                <small>( {!!__('message_submit_project.small_email_1')!!} )</small>
+                                <br/>
                                 <small>( {!!__('message_submit_project.small_email_2')!!} )</small>
                             </div>
                             <div class="contact__form__controll">
@@ -139,7 +141,7 @@
                                  data-sitekey="{{ env('GOOGLE_RECAPTCHA_KEY')  }}"></div>
                             <span class="error">{{ $errors->first('g-recaptcha-response')}}</span>
                         </div>
-                        <input type="submit" class="submit" value="{{__('message_submit_project.submit')}}">
+                        <input type="submit" id="btn" class="submit" value="{{__('message_submit_project.submit')}}">
                         {{--                        <div class="contact__form__row">--}}
                         {{--                            <div class="contact__form__label">--}}
                         {{--                                <p>{{__('message_submit_project.image_startup')}}</p>--}}
