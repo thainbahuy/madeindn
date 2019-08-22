@@ -7,10 +7,14 @@ use Intervention\Image\ImageManagerStatic as Image;
 
 class Helpers
 {
-    public static  $URL_THUMBNAIL = 'https://storage.googleapis.com/madeindn/thumbnail/';
-    public static  $URL_DETAIL = 'https://storage.googleapis.com/madeindn/detail/';
-    public static  $THUMBNAIL = 'thumbnail/';
-    public static  $DETAIL = 'detail/';
+//    URL for CDN
+    public static $URL_BASIC = 'https://storage.googleapis.com/madeindn/';
+    public static $URL_THUMBNAIL = 'https://storage.googleapis.com/madeindn/thumbnail/';
+    public static $URL_DETAIL = 'https://storage.googleapis.com/madeindn/detail/';
+//    relative URL CDN
+    public static $THUMBNAIL = 'thumbnail/';
+    public static $DETAIL = 'detail/';
+
     /**
      * return language folowing locale
      * @param $name_en
@@ -69,15 +73,15 @@ class Helpers
      * @return url
      */
 
-    public static function upLoadImageToCDNTest($name,$file)
+    public static function upLoadImageToCDNTest($name, $file)
     {
         $disk = Storage::disk('gcs');
         try {
-            $disk->put('thumbnail/'.$name, $file);
-            $disk->put('detail/'.$name,$file);
+            $disk->put('thumbnail/' . $name, $file);
+            $disk->put('detail/' . $name, $file);
             Log::info('Photos uploaded: ' . $name);
-            $urlImage[] = $disk->url('thumbnail/'.$name);
-            $urlImage[] = $disk->url('detail/'.$name);
+            $urlImage[] = $disk->url('thumbnail/' . $name);
+            $urlImage[] = $disk->url('detail/' . $name);
             dd($urlImage);
         } catch (Exception $e) {
             Log::info('Exception upload image');
@@ -134,7 +138,7 @@ class Helpers
         try {
             $disk->put($nameImage, file_get_contents($file));
             $urlImage = $disk->url($nameImage);
-            Log::info('Photos uploaded: '.$nameImage);
+            Log::info('Photos uploaded: ' . $nameImage);
             return $urlImage;
 
         } catch (Exception $e) {
@@ -147,21 +151,23 @@ class Helpers
      * Upload image to cdn with option
      * @param $file
      * @param $nameImage
-     * @param $option 1:thumbnail,2:detail
+     * @param $option 1:thumbnail, 2:detail, 3 :defalt:madeindn
      */
-    public static function upLoadImageToCDNDetail_H($file, $nameImage,$option)
+    public static function upLoadImageToCDNDetail_H($file, $nameImage, $option)
     {
         $disk = Storage::disk('gcs');
         try {
-            if ($option == 1){
-                $disk->put('thumbnail/'.$nameImage, $file);
-                Log::info('Photos uploaded: ' . $nameImage);
-                return $disk->url('thumbnail/'.$nameImage);
-            }else{
-                $disk->put('detail/'.$nameImage, $file);
-                return $disk->url('detail/'.$nameImage);
-                Log::info('Photos uploaded: ' . $nameImage);
+            if ($option == 1) {
+                $disk->put('thumbnail/' . $nameImage, $file);
+                return $disk->url('thumbnail/' . $nameImage);
+            } else if ($option == 2) {
+                $disk->put('detail/' . $nameImage, $file);
+                return $disk->url('detail/' . $nameImage);
+            } else {
+                $disk->put($nameImage, $file);
+                return $disk->url($nameImage);
             }
+            Log::info('Photos uploaded: ' . $nameImage);
         } catch (Exception $e) {
             Log::info('Exception Detail upload image');
             Log::info($e);
@@ -173,13 +179,13 @@ class Helpers
      * @param $option 1 : thumbnail,2:detail
      * @return \Intervention\Image\Image
      */
-    public static function resizeImage($file,$option){
+    public static function resizeImage($file, $option)
+    {
         Image::configure(array('driver' => 'gd'));
-        if ($option == 1){
+        if ($option == 1) {
             $img = Image::make($file)->resize(380, 284);
             return $img->response('jpg');
-        }
-        else{
+        } else {
             $img = Image::make($file)->resize(1437, 716);
             return $img->response('jpg');
         }

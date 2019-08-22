@@ -71,7 +71,7 @@
                             <tr>
                                 <td class="text-center">
                                     <img width="25%" height="25%" class="img img-thumbnail"
-                                         src="{{$backgroundHome->image_link}}">
+                                         src="{{Helpers::$URL_BASIC.$backgroundHome->image_link}}">
                                 </th>
                                 <td class="text-center">
                                     {{$backgroundHome->created_at}}

@@ -70,15 +70,27 @@ class DashboardController extends Controller
     public function changeBackgroundHome(Request $request)
     {
         $data = $request->file('imageBackground');
-        $name = $data->getClientOriginalName();
-        $newNameImage = Helpers::createNewNameImage($name);
-        $linkImage = "https://storage.googleapis.com/madeindn/" . $newNameImage;
+        $newNameImage = Helpers::createNewNameImage($data->getClientOriginalName());
 
-        $resultChangeBackgroundHome = $this->background->changeBackgroundHome($linkImage);
+        //resize and upload
+        $newImageResize = $this->resizeImageBackground($data);
+        Helpers::upLoadImageToCDNDetail_H($newImageResize->content(), $newNameImage,3);
+
+        //insert into db
+        $resultChangeBackgroundHome = $this->background->changeBackgroundHome($newNameImage);
         if ($resultChangeBackgroundHome) {
             Helpers::deleteImageFromCDN($request->image_link);
-            Helpers::upLoadImageToCDN_N($data, $newNameImage);
             return redirect()->route('dashboard');
         }
+    }
+
+    /**
+     * resize image for background
+     * @param $imageFile
+     * @return \Intervention\Image\Image
+     */
+    private function resizeImageBackground($imageFile){
+        $imageResize = Helpers::resizeImage($imageFile,2);
+        return $imageResize;
     }
 }

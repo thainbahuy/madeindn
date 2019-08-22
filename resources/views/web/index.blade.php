@@ -213,7 +213,7 @@
 @if($listBackground != null)
 <script>
     $(function() {
-        $('.c-banner').css("background-image", "url({{$listBackground->image_link}})");
+        $('.c-banner').css("background-image", "url({{Helpers::$URL_BASIC.$listBackground->image_link}})");
         checkDataIsExist($('.tabs-list li').first().data('value'));
     });
 </script>
