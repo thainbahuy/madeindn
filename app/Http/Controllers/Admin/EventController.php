@@ -252,12 +252,15 @@ class EventController extends Controller
         $end_time = date_format(date_create($end_time), 'Y-m-d H:i:s');
 
         $linkImageSaveSql = '';
-        //upload image to cdn and get url
         if ($request->hasFile('image_link')) {
+            //upload new image
             $imageFile = $request->file('image_link');
             $newNameImage = Helpers::createNewNameImage($imageFile->getClientOriginalName());
             $linkImageSaveSql = $newNameImage;
             $this->uploadImageToCDN($newNameImage,$imageFile);
+            //delete old image cdn
+            Helpers::deleteImageFromCDN(Helpers::$THUMBNAIL.$request->get('image_display'));
+            Helpers::deleteImageFromCDN(Helpers::$DETAIL.$request->get('image_display'));
         } else {
             $image_old = $request->get('image_display');
             $linkImageSaveSql = $image_old;

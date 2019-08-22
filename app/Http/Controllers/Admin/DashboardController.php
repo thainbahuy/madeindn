@@ -81,6 +81,8 @@ class DashboardController extends Controller
         if ($resultChangeBackgroundHome) {
             Helpers::deleteImageFromCDN($request->image_link);
             return redirect()->route('dashboard');
+        }else{
+            return redirect()->route('dashboard');
         }
     }
 
