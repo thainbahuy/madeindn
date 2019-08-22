@@ -65,6 +65,8 @@ Route::namespace('Admin')->middleware('guest')->prefix('admin/')->group( functio
     Route::post('/config_language', 'ConfigController@postLanguageJson')->name('admin.config.lang_json');
     Route::get('/config_paginate', 'ConfigController@showPaginateJson')->name('admin.config.paginate_json');
     Route::post('/config_paginate', 'ConfigController@postPaginateJson')->name('admin.config.paginate_json');
+    Route::get('/config_language_form', 'ConfigController@showLangForm')->name('view.admin.config.lang_form');
+    Route::post('/config_language_form', 'ConfigController@postLangForm')->name('admin.config.lang_form');
 
     //event
     Route::get('/event', 'EventController@showListEvent')->name('view.admin.event.event_list');
@@ -84,7 +86,7 @@ Route::namespace('Admin')->middleware('guest')->prefix('admin/')->group( functio
     Route::get('/project/customer_project', 'CustomerProjectController@showCustomerProject')->name('view.admin.project.project_customer');
     Route::get('/project/customer_project/view_{id}', 'CustomerProjectController@showCustomerProjectById')->name('view.admin.project.detail_project_submit');
     Route::get('/project/customer_project/delete', 'CustomerProjectController@deleteProjectSubmit')->name('admin.project.project_customer.delete');
-    Route::get('/project/customer_project/download/{name}', 'CustomerProjectController@downloadFile')->name('download_file');
+    Route::get('/project/customer_project/download/{url}{name}', 'CustomerProjectController@downloadFile')->name('download_file');
 
     // Contact
     Route::get('/contact/contact_project', 'ContactController@showContactProject')->name('view.admin.contact.project_customer');

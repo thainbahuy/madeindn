@@ -37,6 +37,13 @@ class ProjectController extends Controller
                     $image = Helpers::$URL_THUMBNAIL.$listAllProject->image_link;
                     return '<img style="100px";height="100px" class="img img-thumbnail" src="' . $image . '" alt="" class="img-circle img-avatar-list">';
                 })
+                ->editColumn('cname', function ($listAllProject) {
+                    if($listAllProject->category_id == null) {
+                        return "Category was deleted";
+                    } else {
+                        return $listAllProject->cname;
+                    }
+                })
                 ->editColumn('status', function ($listAllProject) {
                     if ($listAllProject->status == 1) {
                         $data = '<a onclick="changeStatus(' . "'$listAllProject->id'" . ',\'2\')" href="javascript:void(0)">
@@ -49,13 +56,6 @@ class ProjectController extends Controller
                     }
                     return $data."<span style='display: none;'>".$listAllProject->status."</span>";
                 })
-                ->addColumn('category', function ($listAllProject) {
-                    if ($listAllProject->category_id != null) {
-                        return $listAllProject->category->name;
-                    } else {
-                        return "Category was deleted";
-                    }
-                })
                 ->addColumn('feature', function ($listAllProject) {
                     $data = '<a onclick="showModalContact(' . "'$listAllProject->id'" . ')" href="javascript:">
                             <img style="width: 25px; height: 25px;" src="/admin/assets/img/icons/61848.png" alt="">
@@ -65,7 +65,7 @@ class ProjectController extends Controller
                         </a>';
                     return $data;
                 })
-                ->rawColumns(['image_link', 'status', 'feature', 'category'])
+                ->rawColumns(['image_link', 'status', 'feature', 'cname'])
                 ->make(true);
         }
         return view('admin.project_admin.project')->with('title','List Project');;

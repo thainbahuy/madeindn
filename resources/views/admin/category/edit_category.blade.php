@@ -69,7 +69,7 @@
                         <div class="col-md-12">
                             <div class="text-center">
                                 <button type="submit"
-                                        class="btn btn-success PreviousBtn btn-lg">{{__('admin_message.save')}}</button>
+                                        class="btn btn-success PreviousBtn btn-lg">Save</button>
                             </div>
                         </div>
                     </div>

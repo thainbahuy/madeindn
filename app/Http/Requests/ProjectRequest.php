@@ -70,29 +70,26 @@ class ProjectRequest extends FormRequest
     public function messages()
     {
         return [
-            'category.required' => __('message_project.category.required'),
-            'name.required' => __('message_project.name.required'),
-            'name.max' => __('message_project.name.max'),
-            'name.unique' => __('message_project.name.unique'),
+            'category.required'               => 'The Category field is required.',
+            'name.required'                   => 'The Name Project field is required.',
+            'name.max'                        => 'The Name Project may not be greater than 255 characters.',
+            'name.unique'                     => 'The Name Project has already been taken.',
 
-            'name_jp.required' => __('message_project.name_jp.required'),
-            'name_jp.max' => __('message_project.name_jp.max'),
-            'name_jp.unique' => __('message_project.name_jp.unique'),
+            'name_jp.required'                => 'The Name Project Japanese  field is required.',
+            'name_jp.max'                     => 'The Name Project Japanese may not be greater than 255 characters.',
+            'name_jp.unique'                  => 'The Name Project Japanese has already been taken.',
 
-            'author_description.required' => __('message_project.author_description.required'),
-            'author_description_jp.required' => __('message_project.author_description_jp.required'),
+            'author_description.required'     => 'The Author Description field is required.',
+            'author_description_jp.required'  => 'The Author Description Japanese  field is required.',
 
-            'author_name.required' => __('message_project.author_name.required'),
-            'author_email.required' => __('message_project.author_email.required'),
-            'author_phone.required' => __('message_project.author_phone.required'),
+            'author_name.required'            => 'The Author Name Japanese  field is required.',
+            'author_email.required'           => 'The Author Email Japanese  field is required.',
+            'author_phone.required'           => 'The Author Phone Japanese  field is required.',
 
-            'position.unique' => __('message_project.position.unique'),
+            'overview.required'               => 'The Overview  field is required.',
+            'overview_jp.required'            => 'The Overview Japanese  field is required.',
 
-
-            'overview.required' => __('message_project.overview.required'),
-            'overview_jp.required' => __('message_project.overview_jp.required'),
-
-            'imageProject.required' => __('message_project.imageProject.required'),
+            'imageProject.required'           => 'Please choose a Image.',
         ];
     }
 }

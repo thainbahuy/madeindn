@@ -55,13 +55,13 @@ class AboutRequest extends FormRequest
             'name.required' => 'The Title field is required.',
             'name.min' => 'The Title must be at least 6 characters.',
             'name.max' => 'The Title may not be greater than 100 characters',
-            'jp_name.required' => 'The Title Japan field is required.',
-            'jp_name.min' => 'The Title Japan must be at least 6 characters.',
-            'jp_name.max' => 'The Title Japan may not be greater than 100 characters',
+            'jp_name.required' => 'The Title Japanese field is required.',
+            'jp_name.min' => 'The Title Japanese must be at least 6 characters.',
+            'jp_name.max' => 'The Title Japanese may not be greater than 100 characters',
             'description.required' => 'The Description field is required.',
             'description.min' => 'The Description must be at least 6 characters.',
-            'jp_description.required' => 'The Description Japan field is required.',
-            'jp_description.min' => 'The Description Japan must be at least 6 characters.',
+            'jp_description.required' => 'The Description Japanese field is required.',
+            'jp_description.min' => 'The Description Japanese must be at least 6 characters.',
             'imageAbout.required' => 'Please choose a Image.',
         ];
     }

@@ -21,6 +21,7 @@ $('#delete-save').on('click', function () {
             $("#delete-coloum-" + id).replaceWith();
             $('.message').empty();
             $('.message').html(data.msg);
+            $('#tableData').DataTable().ajax.reload();
         },
         fail: function (data) {
             $('.message').empty();
@@ -65,7 +66,7 @@ $(document).ready(function () {
             {data: 'id'},
             {data: 'name'},
             {data: 'image_link'},
-            {data: 'category', orderable: false, searchable: false},
+            {data: 'cname'},
             {data: 'position'},
             {data: 'status'},
             {data: 'created_at'},

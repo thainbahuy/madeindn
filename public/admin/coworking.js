@@ -42,6 +42,7 @@ $('#delete-save').on('click', function () {
             $("#delete-coloum-" + id).replaceWith();
             $('.message').empty();
             $('.message').html(data.msg);
+            $('#coworkingTable').DataTable().ajax.reload();
         },
         fail: function (data) {
             $('.message').empty();

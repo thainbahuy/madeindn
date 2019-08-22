@@ -55,19 +55,19 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">{{ __('admin_message.modal-header') }}</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Delete</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    {{ __('admin_message.modal-body') }}
+                    Are you sure want to delete this ?
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary"
-                            data-dismiss="modal">{{ __('admin_message.modal-footer-btn-close') }}</button>
+                            data-dismiss="modal">Close</button>
                     <button type="button" id="delete-save"
-                            class="btn btn-primary">{{ __('admin_message.modal-footer-btn-yes') }}</button>
+                            class="btn btn-primary">Yes</button>
                 </div>
             </div>
         </div>

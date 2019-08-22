@@ -1,5 +1,5 @@
 <div class="card-header border-0">
-    <h3 class="mb-0">{{__('message_coworking.listCoworking')}}</h3>
+    <h3 class="mb-0">List Coworking Space</h3>
 </div>
 <div class="table-responsive">
     <table id="coworkingTable" class="table align-items-center ">

@@ -113,7 +113,7 @@
                                                             $files = Helpers::convertToJson($viewCustomerProject->content_link,true);
                                                         @endphp
                                                         @foreach($files as $key=>$value)
-                                                            <a href="{{route('download_file',$value)}}">{{$value}}</a>
+                                                            <a href="{{route('download_file',['project_submit/link_project/',$value])}}">{{$value}}</a>
                                                             <br/>
                                                         @endforeach
                                                     @endif

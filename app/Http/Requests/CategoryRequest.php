@@ -46,11 +46,11 @@ class CategoryRequest extends FormRequest
     public function messages()
     {
         return [
-            'name.unique'               => __('message_category.name.unique'),
+            'name.unique'               => 'The Name Category has already been taken.',
 
-            'name_jp.unique'            => __('message_category.name_jp.unique'),
+            'name_jp.unique'            => 'The Name Category Japanese has already been taken.',
 
-            'position.unique'           => __('message_category.position.unique'),
+            'position.unique'           => '"The Position has already been taken."',
         ];
     }
 }
