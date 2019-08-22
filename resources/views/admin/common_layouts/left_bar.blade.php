@@ -101,7 +101,7 @@
             <ul class="navbar-nav mb-md-3">
                 <li class="nav-item">
                     <a class="nav-link" href="{{route('admin.config.lang_json')}}">
-                        <i class="ni ni-settings"></i> Config Language
+                        <i class="ni ni-settings"></i> Config Language System
                     </a>
                 </li>
                 <li class="nav-item">

@@ -78,32 +78,31 @@ class ConfigController extends Controller
         }
     }
 
+    /**Display Language Form Project and Form Contact to edit
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function showLangForm()
     {
         return view('admin.config.lang_form')->with('title', 'Config Language Form');
     }
 
-    public function postLangProject(Request $request)
+    /** Update new language in Form Project and Contact us
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function postLangForm(Request $request)
     {
-        $files = $request->file('files_json');
-        $result = $files->move(Helpers::getFilePathFromStorage("json_language"), "language_project.json");
-        if($result){
-            $request->session()->flash('message', 'Updated Success !');
-            return redirect()->route('view.admin.config.lang_form');
-        }else {
-            $request->session()->flash('message', 'Updated Faild !');
-            return redirect()->route('view.admin.config.lang_form');
-        }
-    }
-
-    public function postLangContact(Request $request)
-    {
-        $files = $request->file('files_json_contact');
-        $result = $files->move(Helpers::getFilePathFromStorage("json_language"), "language_contact.json");
-        if($result){
-            $request->session()->flash('message', 'Updated Success !');
-            return redirect()->route('view.admin.config.lang_form');
-        }else {
+        try {
+            $files = $request->file('files_json');
+            $result = $files->move(Helpers::getFilePathFromStorage("json_language"), $request->name_files_json);
+            if ($result) {
+                $request->session()->flash('message', 'Updated Success !');
+                return redirect()->route('view.admin.config.lang_form');
+            } else {
+                $request->session()->flash('message', 'Updated Faild !');
+                return redirect()->route('view.admin.config.lang_form');
+            }
+        } catch (\Exception $e) {
             $request->session()->flash('message', 'Updated Faild !');
             return redirect()->route('view.admin.config.lang_form');
         }

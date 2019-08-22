@@ -66,8 +66,7 @@ Route::namespace('Admin')->middleware('guest')->prefix('admin/')->group( functio
     Route::get('/config_paginate', 'ConfigController@showPaginateJson')->name('admin.config.paginate_json');
     Route::post('/config_paginate', 'ConfigController@postPaginateJson')->name('admin.config.paginate_json');
     Route::get('/config_language_form', 'ConfigController@showLangForm')->name('view.admin.config.lang_form');
-    Route::post('/config_language_form_project', 'ConfigController@postLangProject')->name('admin.config.lang_form_project');
-    Route::post('/config_language_form_contact', 'ConfigController@postLangContact')->name('admin.config.lang_form_contact');
+    Route::post('/config_language_form', 'ConfigController@postLangForm')->name('admin.config.lang_form');
 
     //event
     Route::get('/event', 'EventController@showListEvent')->name('view.admin.event.event_list');

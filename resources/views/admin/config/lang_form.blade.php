@@ -45,11 +45,12 @@
                                 </div>
                                 <div class="form-group">
                                     <p style="font-weight: bold;">Upload Files Json Project</p>
-                                    <form method="POST" action="{{route('admin.config.lang_form_project')}}"
+                                    <form method="POST" action="{{route('admin.config.lang_form')}}"
                                           enctype="multipart/form-data">
                                         {{csrf_field()}}
                                         <div class="form-group col-md-6">
-                                            <input type="file" id="files_json" name="files_json" accept=".json">
+                                            <input type="file" required id="files_json" name="files_json" accept=".json">
+                                            <input type="text" hidden name="name_files_json" value="language_project.json">
                                         </div>
                                         <div class="form-group col-md-12 text-center">
                                             <button type="submit" class="btn btn-success PreviousBtn btn-lg">SAVE
@@ -105,11 +106,12 @@
                                 </div>
                                 <div class="form-group">
                                     <p style="font-weight: bold;">Upload Files Json Contact</p>
-                                    <form method="POST" action="{{route('admin.config.lang_form_contact')}}"
+                                    <form method="POST" action="{{route('admin.config.lang_form')}}"
                                           enctype="multipart/form-data">
                                         {{csrf_field()}}
                                         <div class="form-group col-md-6">
-                                            <input type="file" id="files_json_contact" name="files_json_contact" accept=".json">
+                                            <input type="file" required id="files_json_contact" name="files_json" >
+                                            <input type="text" hidden name="name_files_json" value="language_contact.json">
                                         </div>
                                         <div class="form-group col-md-12 text-center">
                                             <button type="submit" class="btn btn-success PreviousBtn btn-lg">SAVE
