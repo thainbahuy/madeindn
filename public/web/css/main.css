@@ -2008,9 +2008,10 @@ li > ol {
     line-height: 2rem;
 }
 
-.c-list__project__item__title a:hover{
+.c-list__project__item__title a:hover {
     color: #FF3220;
 }
+
 .c-list__project__item .c-thumbnail:hover {
     opacity: 0.7;
 }
@@ -2281,6 +2282,7 @@ li > ol {
     color: #041C57;
     font-family: "sailec-medium", sans-serif;
 }
+
 @media (min-width: 601px) {
     .c-navbar > li {
         display: flex;
@@ -2324,6 +2326,10 @@ li > ol {
     .c-navbar > li.active a,
     .c-navbar > li a:hover {
         color: #FF3220;
+    }
+
+    .c-navbar > li.active .c-navbar__dropdown__content li a {
+        color: #535863;
     }
 
     .c-navbar > li .btn-submit {
@@ -3684,6 +3690,7 @@ li > ol {
     /*height: 37.8125rem !important;*/
     margin-bottom: -0.625rem;
 }
+
 @media (max-width: 600px) {
     .c-section__contact-info iframe {
         margin-bottom: -1.25rem;

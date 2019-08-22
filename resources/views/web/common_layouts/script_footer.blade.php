@@ -4,3 +4,4 @@
 <script type="text/javascript" src="{{asset('web/libs/slick/slick.min.js')}}"></script>
 <!-- build:js js/main.min.js -->
 <script src="{{asset('web/js/main.min.js')}}" type="text/javascript"></script>
+<script src="{{asset('web/js/active.js')}}" type="text/javascript"></script>
