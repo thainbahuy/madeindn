@@ -44,11 +44,14 @@ class AboutController extends Controller
     {
         $data = $request->all();
         $newNameImage = Helpers::createNewNameImage($data["imageAbout"]->getClientOriginalName());
-        $linkImage = "https://storage.googleapis.com/madeindn/" . $newNameImage;
+        $linkImage = $newNameImage;
+
+        //resize and upload image
+        $this->uploadImageToCDN($newNameImage,$data["imageAbout"]);
+
         $resultAddAbout = $this->about->addAbout($data['name'], $data['jp_name'], $data['position'], $data['description'], $data['jp_description'], $linkImage);
         if ($resultAddAbout) {
             Log::info('You just added About name: ' . $data['name']);
-            Helpers::upLoadImageToCDN_N($data['imageAbout'], $newNameImage);
             $request->session()->flash('msg', 'Success!');
             return redirect()->route('view.admin.about.about');
         } else {
@@ -78,17 +81,21 @@ class AboutController extends Controller
         $oldInfoAbout = $this->about->getAboutDetail($id);
         if ($request->file('imageAbout')) {
             $newNameImage = Helpers::createNewNameImage($data["imageAbout"]->getClientOriginalName());
-            $linkImage = "https://storage.googleapis.com/madeindn/" . $newNameImage;
+            $linkImage = $newNameImage;
+
+            $this->uploadImageToCDN($newNameImage,$data["imageAbout"]);
+            //delete old image in cdn
+            Helpers::deleteImageFromCDN(Helpers::$THUMBNAIL.$oldInfoAbout->image_link);
+            Helpers::deleteImageFromCDN(Helpers::$DETAIL.$oldInfoAbout->image_link);
         } else {
             $linkImage = $oldInfoAbout->image_link;
         }
         $resultEditAbout = $this->about->editAbout($id, $data['name'], $data['jp_name'], $data['position'], $data['description'], $data['jp_description'], $linkImage);
         if ($resultEditAbout) {
-            if ($request->file('imageAbout')) {
-                $nameImage = Helpers::getNameImage($oldInfoAbout->image_link);
-                Helpers::deleteImageFromCDN($nameImage);
-                Helpers::upLoadImageToCDN_N($data['imageAbout'], $newNameImage);
-            }
+//            if ($request->file('imageAbout')) {
+//                Helpers::deleteImageFromCDN($nameImage);
+//                Helpers::upLoadImageToCDN_N($data['imageAbout'], $newNameImage);
+//            }
             Log::info('You just edit About name: ' . $data['name']);
             $request->session()->flash('msg', 'Success!');
             return redirect()->route('view.admin.about.about');
@@ -107,11 +114,12 @@ class AboutController extends Controller
     {
         $id = $request->get('id');
         $objAbout = $this->about->getAbout($id);
-        $nameImage = Helpers::getNameImage($objAbout->image_link);
+        $nameImage = $objAbout->image_link;
         try {
             if ($this->about->deleteAbout($id)) {
                 Log::info('Delete about title: ' . $objAbout->name);
-                Helpers::deleteImageFromCDN($nameImage);
+                Helpers::deleteImageFromCDN(Helpers::$THUMBNAIL.$nameImage);
+                Helpers::deleteImageFromCDN(Helpers::$DETAIL.$nameImage);
                 return response()->json(['msg' => 'DELETE SUCCESS']);
             } else {
                 Log::info('The deleted about titled: ' . $objAbout->name);
@@ -121,5 +129,16 @@ class AboutController extends Controller
             Log::info($e);
             return response()->json(['msg' => 'NO DELETE SUCCESS']);
         }
+    }
+
+    private function uploadImageToCDN($name,$imageFile){
+        //for thumbnail
+        $thubnail = Helpers::resizeImage($imageFile,1);
+        Helpers::upLoadImageToCDNDetail_H($thubnail->content(),$name,1);
+
+//        //for detail
+//        $detail = Helpers::resizeImage($imageFile,2);
+//        Helpers::upLoadImageToCDNDetail_H($detail->content(),$name,2);
+
     }
 }

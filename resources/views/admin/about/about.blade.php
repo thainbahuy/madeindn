@@ -44,7 +44,7 @@
                             <tr id="delete-coloum-{{$value->id}}">
                                 <td class="text-center">{{$value->name}}</td>
                                 <td class="text-center">
-                                    <img width="100px" height="100px" class="img img-thumbnail" src="{{$value->image_link}}">
+                                    <img width="100px" height="100px" class="img img-thumbnail" src="{{Helpers::$URL_THUMBNAIL.$value->image_link}}">
                                 </td>
                                 <td class="text-center">{{$value->position}}</td>
                                 <td class="text-center">

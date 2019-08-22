@@ -62,7 +62,7 @@
                                            value="{{$infoAbout->position}}">
                                 </div>
                                 <div class="form-group">
-                                    <label>Picture About</label>
+                                    <label>About image</label>
                                     <input type="file" style="display:none" id="upload-input"
                                            name="imageAbout" accept="image/*">
                                     <div id="upload" class="form-control drop-area">
@@ -72,7 +72,7 @@
                                         </button>
                                         <div id="thumbnail"></div>
                                         <span>Old picture</span> <br/>
-                                        <img style="max-width: 120px !important; max-height: 120px !important;" class="img-thumbnail  listimage-edit" src="{{$infoAbout->image_link}}">
+                                        <img style="max-width: 120px !important; max-height: 120px !important;" class="img-thumbnail  listimage-edit" src="{{Helpers::$URL_THUMBNAIL.$infoAbout->image_link}}">
                                     </div>
                                 </div>
                             </div>

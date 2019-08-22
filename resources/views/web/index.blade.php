@@ -68,9 +68,7 @@
                         @foreach($listAbout as $valueAbout)
                             <div class="c-list__item item">
                                 <div class="c-thumbnail">
-                                    <a href="{{route('web.more.about',['name'=> str_slug($valueAbout->name),'id'=>$valueAbout->id])}}">
-                                        <img src="{{$valueAbout->image_link}}" alt="">
-                                    </a>
+                                    <img src="{{Helpers::$URL_THUMBNAIL.$valueAbout->image_link}}" alt="">
                                 </div>
                                 <div class="c-list__item__content">
                                     <div class="c-list__item__title">
@@ -160,7 +158,7 @@
                             <div class="c-list__item item">
                                 <div class="c-thumbnail">
                                     <a href="{{route('web.coworking.coworking_detail',['name'=> str_slug($valueCoWorking->name), 'id'=>$valueCoWorking->id])}}">
-                                        <img src="{{$valueCoWorking->image_link}}" alt="">
+                                        <img src="{{Helpers::$URL_THUMBNAIL.$valueCoWorking->image_link}}" alt="">
                                     </a>
                                 </div>
                                 <div class="c-list__item__content">

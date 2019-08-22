@@ -1905,6 +1905,10 @@ li > ol {
 }
 
 .c-list__item__title a {
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
     color: #041C57;
     font-size: 1.1875rem;
     font-family: "sailec-bold", sans-serif;
@@ -2002,6 +2006,10 @@ li > ol {
 }
 
 .c-list__project__item__title a {
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
     color: #041C57;
     font-size: 1.3125rem;
     font-family: "sailec-bold", sans-serif;
