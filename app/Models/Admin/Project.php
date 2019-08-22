@@ -23,9 +23,11 @@ class Project extends Model
 
     public function getAllProject()
     {
-        return Project::select('id', 'name', 'author_name', 'image_link', 'status', 'jp_name', 'category_id', 'position', 'created_at')
-            ->orderByRaw('ISNULL(position), position ASC')
-            ->orderBy('id', 'DESC');
+        return DB::table($this->table)
+            ->select('project.id', 'project.name', 'author_name', 'image_link', 'status', 'project.jp_name', 'category_id', 'project.position', 'project.created_at','category.id as cid' ,'category.name as cname')
+            ->leftjoin('category','category.id','=','project.category_id')
+            ->orderByRaw('ISNULL(project.position), project.position ASC')
+            ->orderBy('project.id', 'DESC');
     }
 
     public function getProjectById($id)

@@ -66,7 +66,7 @@ $(document).ready(function () {
             {data: 'id'},
             {data: 'name'},
             {data: 'image_link'},
-            {data: 'category', orderable: false, searchable: false},
+            {data: 'cname'},
             {data: 'position'},
             {data: 'status'},
             {data: 'created_at'},
