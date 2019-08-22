@@ -49,8 +49,8 @@ class ProjectRequest extends FormRequest
 
         return [
             'category' => $rule_category,
-            'name' => 'required|max:255|unique:project,name,' . $request->id . ',id',
-            'name_jp' => 'required|max:255|unique:project,jp_name,' . $request->id . ',id',
+            'name' => 'required|max:255',
+            'name_jp' => 'required|max:255',
             'position' => $rule_position,
 
             'author_description' => 'required',

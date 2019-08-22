@@ -170,7 +170,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>Project Image</label>
+                                        <label>Project Image (Recommend image size : 1437 x 716 or Bigger)</label>
                                         <input type="file" style="display:none" id="upload-input"
                                                name="imageProject" accept="image/*">
                                         <div id="upload" class="form-control drop-area">

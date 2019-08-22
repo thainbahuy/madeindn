@@ -148,7 +148,6 @@
                                         @if($infoProject->author_avatar <> null)
                                             <div class="form-group">
                                                 <label>Author Image</label> <br/>
-                                                <input type="file" name="author_image" accept="image/*"> <Br/>
                                                 <span>Old Author image</span> <Br/>
                                                 <img style="max-width: 120px !important; max-height: 120px !important;"
                                                      class="img-thumbnail  listimage-edit"
@@ -157,6 +156,7 @@
                                         @else
                                             <del>No Author Images.</del>
                                         @endif
+                                            <input type="file" name="author_image" accept="image/*"> <Br/>
                                     </div>
                                 </div>
                             </div>
@@ -192,7 +192,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>Project new Image</label>
+                                        <label>Project Image (Recommend image size : 1437 x 716 or Bigger)</label>
                                         <input type="file" style="display:none" id="upload-input"
                                                name="imageProject" accept="image/*">
                                         <div id="upload" class="form-control drop-area">
@@ -204,7 +204,7 @@
                                             <span>Project old Image</span> <br/>
                                             <img style="max-width: 120px !important; max-height: 120px !important;"
                                                  class="img-thumbnail  listimage-edit"
-                                                 src="{{$infoProject->image_link}}">
+                                                 src="{{Helpers::$URL_THUMBNAIL.$infoProject->image_link}}">
                                         </div>
                                     </div>
                                 </div>

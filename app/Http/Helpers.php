@@ -9,6 +9,8 @@ class Helpers
 {
     public static  $URL_THUMBNAIL = 'https://storage.googleapis.com/madeindn/thumbnail/';
     public static  $URL_DETAIL = 'https://storage.googleapis.com/madeindn/detail/';
+    public static  $THUMBNAIL = 'thumbnail/';
+    public static  $DETAIL = 'detail/';
     /**
      * return language folowing locale
      * @param $name_en
@@ -178,7 +180,7 @@ class Helpers
             return $img->response('jpg');
         }
         else{
-            $img = Image::make($file)->resize(1350, 685);
+            $img = Image::make($file)->resize(1437, 716);
             return $img->response('jpg');
         }
     }

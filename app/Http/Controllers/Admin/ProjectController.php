@@ -34,7 +34,8 @@ class ProjectController extends Controller
         if($request->ajax()){
             return DataTables::of($listAllProject)
                 ->editColumn('image_link', function ($listAllProject) {
-                    return '<img style="100px";height="100px" class="img img-thumbnail" src="' . $listAllProject->image_link . '" alt="" class="img-circle img-avatar-list">';
+                    $image = Helpers::$URL_THUMBNAIL.$listAllProject->image_link;
+                    return '<img style="100px";height="100px" class="img img-thumbnail" src="' . $image . '" alt="" class="img-circle img-avatar-list">';
                 })
                 ->editColumn('status', function ($listAllProject) {
                     if ($listAllProject->status == 1) {
@@ -78,12 +79,13 @@ class ProjectController extends Controller
     {
         $id = $request->get('id');
         $objProject = $this->project->getProjectById($id);
-        $nameImage = Helpers::getNameImage($objProject->image_link);
+        $nameImage = $objProject->image_link;
         $imageAuthor = Helpers::getNameImage($objProject->author_avatar);
         try {
             if ($this->project->deleteProject($id)) {
                 Log::info('Delete project titled: ' . $objProject->name);
-                Helpers::deleteImageFromCDN($nameImage);
+                Helpers::deleteImageFromCDN(Helpers::$THUMBNAIL.$nameImage);
+                Helpers::deleteImageFromCDN(Helpers::$DETAIL.$nameImage);
                 Helpers::deleteImageFromCDN($imageAuthor);
                 return \Response::json(['msg' => 'DELETE SUCCESS']);
             } else {
@@ -112,23 +114,18 @@ class ProjectController extends Controller
     {
         $data = $request->all();
         $newNameImage = Helpers::createNewNameImage($data["imageProject"]->getClientOriginalName());
-        $image_link = "https://storage.googleapis.com/madeindn/" . $newNameImage;
-
+        $this->uploadImageToCDN($newNameImage,$data["imageProject"]);
         if ($request->file('author_image')) {
             $newNameImageAuthor = Helpers::createNewNameImage($data["author_image"]->getClientOriginalName());
-            $image_link_author = "https://storage.googleapis.com/madeindn/" . $newNameImageAuthor;
+            $image_link_author =  Helpers::upLoadImageToCDN_N($data['author_image'], $newNameImageAuthor);
         } else {
             $image_link_author = null;
         }
 
-        $resultAddProject = $this->project->addProject($data['name'], $data['overview'], $data['author_name'], $data['author_email'], $data['author_phone'], $data['status'], $data['name_jp'], $data['overview_jp'], $data['category'], $image_link, $data['author_description'], $data['author_description_jp'], $data['position'], $image_link_author);
+        $resultAddProject = $this->project->addProject($data['name'], $data['overview'], $data['author_name'], $data['author_email'], $data['author_phone'], $data['status'], $data['name_jp'], $data['overview_jp'], $data['category'], $newNameImage, $data['author_description'], $data['author_description_jp'], $data['position'], $image_link_author);
 
         if ($resultAddProject) {
             Log::info('You just added project named: ' . $data['name']);
-            Helpers::upLoadImageToCDN_N($data['imageProject'], $newNameImage);
-            if ($request->file('author_image')) {
-                Helpers::upLoadImageToCDN_N($data['author_image'], $newNameImageAuthor);
-            }
             $request->session()->flash('msg', 'Success !');
             return redirect()->route('view.admin.project_admin.project');
         } else {
@@ -160,14 +157,15 @@ class ProjectController extends Controller
 
         if ($request->file('imageProject')) {
             $newNameImage = Helpers::createNewNameImage($data["imageProject"]->getClientOriginalName());
-            $image_link = "https://storage.googleapis.com/madeindn/" . $newNameImage;
+            $image_link = $newNameImage;
+            $this->uploadImageToCDN($newNameImage,$data["imageProject"]);
         } else {
             $image_link = $oldPrject->image_link;
         }
 
         if ($request->file('author_image')) {
             $newNameImageAuthor = Helpers::createNewNameImage($data["author_image"]->getClientOriginalName());
-            $image_link_author = "https://storage.googleapis.com/madeindn/" . $newNameImageAuthor;
+            $image_link_author = Helpers::upLoadImageToCDN_N($data['author_image'], $newNameImageAuthor);
         } else {
             $image_link_author = $oldPrject->author_avatar;
         }
@@ -177,15 +175,14 @@ class ProjectController extends Controller
         if ($resultEditProject) {
             Log::info('You just edited project named: ' . $oldPrject->name);
             if ($request->file('imageProject')) {
-                $nameImage = Helpers::getNameImage($oldPrject->image_link);
-                Helpers::deleteImageFromCDN($nameImage);
-                Helpers::upLoadImageToCDN_N($data['imageProject'], $newNameImage);
+                $nameImage = $oldPrject->image_link;
+                Helpers::deleteImageFromCDN(Helpers::$THUMBNAIL.$nameImage);
+                Helpers::deleteImageFromCDN(Helpers::$DETAIL.$nameImage);
             }
 
             if ($request->file('author_image')) {
                 $oldImageAuthor = Helpers::getNameImage($oldPrject->author_avatar);
                 Helpers::deleteImageFromCDN($oldImageAuthor);
-                Helpers::upLoadImageToCDN_N($data['author_image'], $newNameImageAuthor);
             }
             $request->session()->flash('msg', "Success");
             return redirect()->route('view.admin.project_admin.project');
@@ -221,5 +218,16 @@ class ProjectController extends Controller
                 return Response($data);
             }
         }
+    }
+
+    private function uploadImageToCDN($name,$imageFile){
+        //for thumbnail
+        $thubnail = Helpers::resizeImage($imageFile,1);
+        Helpers::upLoadImageToCDNDetail_H($thubnail->content(),$name,1);
+
+        //for detail
+        $detail = Helpers::resizeImage($imageFile,2);
+        Helpers::upLoadImageToCDNDetail_H($detail->content(),$name,2);
+
     }
 }

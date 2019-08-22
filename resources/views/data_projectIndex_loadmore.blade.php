@@ -5,7 +5,7 @@
                 <div class="c-list__project__item">
                     <div class="c-thumbnail">
                         <a href="{{route('web.project.project_detail',['name'=>str_slug($valueProject->name),'id' =>$valueProject->id])}}">
-                            <img src="{{$valueProject->image_link}}" alt="">
+                            <img src="{{Helpers::$URL_THUMBNAIL.$valueProject->image_link}}" alt="">
                         </a>
                     </div>
                     <div class="c-list__project__item__content">
@@ -37,7 +37,7 @@
         <div class="c-list__project__item">
             <div class="c-thumbnail">
                 <a href="{{route('web.project.project_detail',['name'=>str_slug($valueProject->name),'id' =>$valueProject->id])}}">
-                    <img src="{{$valueProject->image_link}}" alt="">
+                    <img src="{{Helpers::$URL_THUMBNAIL.$valueProject->image_link}}" alt="">
                 </a>
             </div>
             <div class="c-list__project__item__content">
