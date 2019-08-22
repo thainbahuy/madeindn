@@ -1,9 +1,8 @@
-
 $(document).ready(function () {
-
-
-    $('#coworkingTable').DataTable({
-        bInfo: false,
+    var t = $('#coworkingTable').DataTable({
+        responsive: true,
+        "lengthMenu": [[5, 10, 15, 20, 25, 30, -1], [5, 10, 15, 20, 25, 30, "All"]],
+        processing: true,
         oLanguage: {
             oPaginate: {
                 First: "First page", // This is the link to the first page
@@ -12,14 +11,20 @@ $(document).ready(function () {
                 sLast: "<" // This is the link to the last page
             }
         },
+        ajax: {
+            url: route('view.admin.coworking.coworking_space'),
+        },
+        columns: [
+            {data: 'name'},
+            {data: 'image_link'},
+            {data: 'position'},
+            {data: 'created_at'},
+            {data: 'feature',orderable: false, searchable: false},
+        ],
     });
 });
 
-
-
-
-
-function showModalContact(id) {
+function showModalCoworking(id) {
     $('#modal-danger').modal('show');
     $('#delete-save').attr('data-id', id);
 }

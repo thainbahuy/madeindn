@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Log;
 use Helpers;
+use Yajra\DataTables\DataTables;
 
 class CoworkingController extends Controller
 {
@@ -21,9 +22,27 @@ class CoworkingController extends Controller
      * @param Request $request
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function showAllCowroking()
+    public function showAllCowroking(Request $request)
     {
         $listCoworkingSpace = $this->coWorking->getAllCoworking();
+        if($request->ajax()){
+            return DataTables::of($listCoworkingSpace)
+                ->editColumn('image_link', function ($listAllProject) {
+                    $image = Helpers::$URL_THUMBNAIL.$listAllProject->image_link;
+                    return '<img style="100px";height="100px" class="img img-thumbnail" src="' . $image . '" alt="" class="img-circle img-avatar-list">';
+                })
+                ->addColumn('feature', function ($listAllProject) {
+                    $data = '<a onclick="showModalCoworking(' . "'$listAllProject->id'" . ')" href="javascript:">
+                            <img style="width: 25px; height: 25px;" src="/admin/assets/img/icons/61848.png" alt="">
+                        </a>' .
+                        ' ||&nbsp; <a href="' . route('view.admin.coworking.edit_coworking_space', $listAllProject->id) . '">
+                            <img style="width: 25px; height: 25px;" src="/admin/assets/img/icons/eye_1-512.png" alt="">
+                        </a>';
+                    return $data;
+                })
+                ->rawColumns(['image_link','feature'])
+                ->make(true);
+        }
         return view('admin.coworking.coworking_space', compact('listCoworkingSpace'))->with('title','List Co-working');
     }
 
