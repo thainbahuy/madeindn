@@ -27,8 +27,27 @@
             <div class="col-xl-12 mb-5 mb-xl-0">
                 <div class="row">
                     <div class="col">
-                        <div id="content" class="card shadow">
-                            @include('admin.coworking.ajax_coworking_space')
+                        <div  class="card shadow">
+                            <div class="card-header border-0">
+                                <h3 class="mb-0">List Coworking Space</h3>
+                            </div>
+                            <div class="table-responsive">
+                                <table id="coworkingTable" class="table align-items-center ">
+                                    <thead class="thead-light">
+                                    <tr>
+                                        <th class="text-center" scope="col">Name</th>
+                                        <th class="text-center" scope="col">Image</th>
+                                        <th class="text-center" scope="col">position</th>
+                                        <th class="text-center" scope="col">Created at</th>
+                                        <th class="text-center sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="ADD">
+                                            <a href="{{route('view.admin.coworking.add_coworking_space')}}" class="btn btn-sm btn-success">
+                                                <span class="ni ni-fat-add"></span>&nbsp;ADD
+                                            </a>
+                                        </th>
+                                    </tr>
+                                    </thead>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
