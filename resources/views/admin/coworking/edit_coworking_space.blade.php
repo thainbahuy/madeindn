@@ -205,7 +205,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>Coworking new Image</label>
+                                        <label>Coworking Image (Recommend image size : 1437 x 716 or Bigger)</label>
                                         <input type="file" style="display:none" id="upload-input"
                                                name="imageCoworking" accept="image/*">
                                         <div id="upload" class="form-control drop-area">
