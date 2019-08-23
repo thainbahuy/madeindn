@@ -39,9 +39,9 @@ Route::namespace('Web')->group( function() {
     Route::get('/event/{eventSlug}', 'EventController@loadEventDetail')->name('web.event.events_detail');
 
     // project page
-    Route::get('project/{name}-{id}.html', 'ProjectController@showDetailProject')->name('web.project.project_detail');
-    Route::post('project/{name}-{id}.html', 'ProjectController@postCustomer')->name('web.project.project_detail');
-    Route::get('/project/{name}', 'ProjectController@showProjectByCategory')->name('web.project.project_category');
+    Route::get('projects/{name}-{id}.html', 'ProjectController@showDetailProject')->name('web.project.project_detail');
+    Route::post('projects/{name}-{id}.html', 'ProjectController@postCustomer')->name('web.project.project_detail');
+    Route::get('/projects/{name}', 'ProjectController@showProjectByCategory')->name('web.project.project_category');
     Route::get('/project/', 'ProjectController@showProjectSubmit')->name('web.project.project_submit');
     Route::post('/project/', 'ProjectController@postProjectSubmit')->name('web.project.project_submit');
 

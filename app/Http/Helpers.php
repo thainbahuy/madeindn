@@ -190,5 +190,10 @@ class Helpers
             return $img->response('jpg');
         }
     }
+
+    public static function getURL(){
+        $actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://{$_SERVER['HTTP_HOST']}";
+        return $actual_link;
+    }
 }
 
