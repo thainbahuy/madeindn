@@ -212,7 +212,7 @@
 <!-- ======== JAVASCRIPT ======== -->
 @include('web.common_layouts.script_footer')
 <script src="{{asset('web/js/loadmore.js')}}"></script>
-<script async src="https://cse.google.com/cse.js?cx=011212294835017365594:gfjjobzaemy"></script>
+<script async src="https://cse.google.com/cse.js?cx=011212294835017365594:emzusx8uiuk"></script>
 <div class="gcse-search"></div>
 @if($listBackground != null)
     <script>
@@ -238,7 +238,6 @@
             });
 
         });
-
     </script>
 @endif
 <!-- endbuild -->
