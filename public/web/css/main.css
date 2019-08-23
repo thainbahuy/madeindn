@@ -701,7 +701,7 @@ li > ol {
 .c-banner {
     position: relative;
     height: 39.0625rem;
-    background-image: url("../images/banner.png");
+    /* background-image: url("../images/banner.png"); */
     background-size: cover;
 }
 
@@ -944,7 +944,7 @@ li > ol {
 
 .c-banner__events {
     height: 44.6875rem;
-    background-image: url("../images/banner_events.png");
+    /* background-image: url("../images/banner_events.png"); */
     background-size: cover;
     background-repeat: repeat-x;
     background-position: center;
@@ -952,7 +952,7 @@ li > ol {
 
 .c-banner__coworking {
     height: 44.6875rem;
-    background-image: url("../images/coworking_banner.png");
+    /* background-image: url("../images/coworking_banner.png"); */
     background-size: cover;
     background-repeat: repeat-x;
     background-position: center;
@@ -3156,7 +3156,7 @@ li > ol {
 .c-section__trust {
     padding-top: 4.375rem;
     padding-bottom: 3.125rem;
-    background-image: url("../images/bitmap.png");
+    /* background-image: url("../images/bitmap.png"); */
     background-size: cover;
     background-position: bottom;
     background-color: #fafafa;
@@ -5364,7 +5364,7 @@ li > ol {
     bottom: -1px;
     width: 100%;
     height: 0.5625rem;
-    background-image: url("../images/line_banner.png");
+    /* background-image: url("../images/line_banner.png"); */
     background-size: auto 100%;
     background-position: center;
     z-index: 99;
@@ -5412,7 +5412,7 @@ li > ol {
     bottom: -1px;
     width: 100%;
     height: 0.5625rem;
-    background-image: url("../images/line_banner.png");
+    /* background-image: url("../images/line_banner.png"); */
     background-size: auto 100%;
     background-position: center;
     z-index: 99;
