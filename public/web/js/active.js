@@ -14,3 +14,21 @@ $(function($) {
         }
     });
 });
+
+$(document).ready(function () {
+    $("#gg-search").submit(function (e) {
+        $('#___gcse_0').show();
+        e.preventDefault(e);
+        console.log($("#gg-search").find('#search').val());
+        let searchText = $("#gg-search").find('#search').val();
+        $('#gsc-i-id1').val(searchText);
+        $('.gsc-search-button').click();
+    });
+    $(document).on("click", ".gsc-modal-background-image", function () {
+        $('#___gcse_0').hide();
+    });
+    $(document).on("click", ".gsc-results-close-btn", function () {
+        $('#___gcse_0').hide();
+    });
+
+});

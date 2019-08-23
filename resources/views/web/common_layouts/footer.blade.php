@@ -68,3 +68,4 @@
         <p>{{__('message.FT_COPYRIGHT')}}</p>
     </div>
 </div>
+<div class="gcse-search"></div>

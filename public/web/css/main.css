@@ -2207,9 +2207,7 @@ li > ol {
     display: flex;
 }
 
-.c-navbar li a {
-    display: block;
-}
+.c-navbar li a {display: block;}
 
 .c-navbar__right {
     display: flex;
@@ -2479,6 +2477,7 @@ li > ol {
 }
 
 .c-post__item {
+    width: 100%;
     position: relative;
     padding: 1.25rem;
     background: #ffffff;

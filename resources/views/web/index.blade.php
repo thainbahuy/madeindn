@@ -212,31 +212,11 @@
 <!-- ======== JAVASCRIPT ======== -->
 @include('web.common_layouts.script_footer')
 <script src="{{asset('web/js/loadmore.js')}}"></script>
-<script async src="https://cse.google.com/cse.js?cx=011212294835017365594:emzusx8uiuk"></script>
-<div class="gcse-search"></div>
 @if($listBackground != null)
     <script>
         $(function () {
             $('.c-banner').css("background-image", "url({{Helpers::$URL_BASIC.$listBackground->image_link}})");
             checkDataIsExist($('.tabs-list li').first().data('value'));
-        });
-
-        $(document).ready(function () {
-            $("#gg-search").submit(function (e) {
-                $('#___gcse_0').show();
-                e.preventDefault(e);
-                console.log($("#gg-search").find('#search').val());
-                let searchText = $("#gg-search").find('#search').val();
-                $('#gsc-i-id1').val(searchText);
-                $('.gsc-search-button').click();
-            });
-            $(document).on("click", ".gsc-modal-background-image", function () {
-                $('#___gcse_0').hide();
-            });
-            $(document).on("click", ".gsc-results-close-btn", function () {
-                $('#___gcse_0').hide();
-            });
-
         });
     </script>
 @endif
