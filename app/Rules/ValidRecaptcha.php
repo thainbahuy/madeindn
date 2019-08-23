@@ -4,6 +4,7 @@ namespace App\Rules;
 
 use Illuminate\Contracts\Validation\Rule;
 use GuzzleHttp\Client;
+use Helpers;
 
 class ValidRecaptcha implements Rule
 {
@@ -50,6 +51,6 @@ class ValidRecaptcha implements Rule
      */
     public function message()
     {
-
+        return Helpers::changeLanguage("Please do not click continuously","連続してクリックしないでください");
     }
 }
