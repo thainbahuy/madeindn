@@ -5610,4 +5610,10 @@ li > ol {
 div#___gcse_0 {
     display: none;
 }
+
+/*#list-menu li a{*/
+/*    overflow:hidden;*/
+/*    white-space:nowrap;*/
+/*    text-overflow:ellipsis;*/
+/*}*/
 /*# sourceMappingURL=main.css.map */

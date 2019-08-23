@@ -6,3 +6,13 @@
 <script src="{{asset('web/js/main.min.js')}}" type="text/javascript"></script>
 <script src="{{asset('web/js/active.js')}}" type="text/javascript"></script>
 <script async src="https://cse.google.com/cse.js?cx=011212294835017365594:emzusx8uiuk"></script>
+@if(Session::get('locale') != 'en')
+    <script>
+        $('#list-menu li a').each(function() {
+            var text = $(this).text();
+            if(text.length > 10) {
+                $(this).text(text.substring(0, 3) + '..')
+            }
+        });
+    </script>
+@endif

@@ -74,5 +74,5 @@
     </div>
 @endsection
 @section('myscript')
-    <script src="{{ asset('admin/category.js') }}/"></script>
+    <script src="{{ asset('admin/category.js') }}"></script>
 @endsection
