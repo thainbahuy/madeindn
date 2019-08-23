@@ -67,7 +67,7 @@
                     <div class="c-list main-banner__slick">
                         @foreach($listAbout as $valueAbout)
                             <div class="c-list__item item">
-                                <div class="c-thumbnail">
+                                <div style="opacity: 1" class="c-thumbnail">
                                     <img src="{{Helpers::$URL_THUMBNAIL.$valueAbout->image_link}}" alt="">
                                 </div>
                                 <div class="c-list__item__content">

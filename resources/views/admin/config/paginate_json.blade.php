@@ -48,7 +48,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
-                                                        @if($key == "Social_Link_Web_Footer" or $key == "Info_Company")
+                                                        @if($key == "Social_Link_Web_Footer" or $key == "Info_Company" or $key == "Info_Company" or $key == "System_Email")
                                                             <div class="form-group focused">
                                                                 <input type="text"
                                                                        name="{{$key}}[{{$keyPaginate}}]"
