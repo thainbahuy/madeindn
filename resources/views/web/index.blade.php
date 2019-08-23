@@ -104,7 +104,6 @@
                         </li>
                     @endforeach
                 </ul>
-                </ul>
             </div>
             <div class="c-section__content">
                 <div class="tabs-content">
