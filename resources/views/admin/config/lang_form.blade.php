@@ -149,6 +149,11 @@
                         </div>
                     </div>
                 </div>
+                <div class="col-md-12">
+                    <div class="text-center">
+                        <a onclick="back('{{route('dashboard')}}')" href="#" class="btn btn-danger PreviousBtn btn-lg">Back</a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

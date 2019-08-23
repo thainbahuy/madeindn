@@ -152,8 +152,8 @@
                         </div>
                         <div class="col-md-12">
                             <div class="text-center">
-                                <button class="btn btn-primary nextBtn btn-lg"
-                                        type="button">{{__('Next')}}</button>
+                                <a onclick="back('{{route('view.admin.coworking.coworking_space')}}')" href="#" class="btn btn-danger PreviousBtn btn-lg">Back</a>
+                                <button class="btn btn-primary nextBtn btn-lg" type="button">{{__('Next')}}</button>
                             </div>
                         </div>
                     </div>

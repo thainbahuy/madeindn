@@ -78,9 +78,8 @@
                         </div>
                     </div>
                     <div class="text-center" >
-                        <button type="submit" class="btn btn-success PreviousBtn btn-lg">
-                            Save
-                        </button>
+                        <a onclick="back('{{route('view.admin.partner.partner_background_list')}}')" href="#" class="btn btn-danger PreviousBtn btn-lg">Back</a>
+                        <button type="submit" class="btn btn-success PreviousBtn btn-lg">Save</button>
                     </div>
                 </form>
             </div>

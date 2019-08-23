@@ -4,7 +4,7 @@
     <nav class="navbar navbar-top navbar-expand-md navbar-dark" id="navbar-main">
         <div class="container-fluid">
             <!-- Brand -->
-            <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" href="#">ADD CATEGORY</a>
+            <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" href="#">EDIT CATEGORY</a>
             <!-- Form -->
             @include("admin.common_layouts.language")
         </div>
@@ -68,8 +68,8 @@
                         </div>
                         <div class="col-md-12">
                             <div class="text-center">
-                                <button type="submit"
-                                        class="btn btn-success PreviousBtn btn-lg">Save</button>
+                                <a onclick="back('{{route('view.admin.category.view_category')}}')" href="#" class="btn btn-danger PreviousBtn btn-lg">Back</a>
+                                <button type="submit" class="btn btn-success PreviousBtn btn-lg">Save</button>
                             </div>
                         </div>
                     </div>

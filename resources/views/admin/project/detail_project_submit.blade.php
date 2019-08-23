@@ -126,6 +126,12 @@
                                         <textarea rows="4" class="form-control form-control-alternative"
                                                   placeholder="A few words about you ...">{{$viewCustomerProject->content}}</textarea>
                                     </div>
+                                    <div class="col-md-12">
+                                        <div class="text-center">
+                                            <a onclick="back('{{route('view.admin.project.project_customer')}}')"
+                                               href="#" class="btn btn-danger PreviousBtn btn-lg">Back</a>
+                                        </div>
+                                    </div>
                                 </div>
                                 <hr class="my-4">
                                 <!-- Description -->

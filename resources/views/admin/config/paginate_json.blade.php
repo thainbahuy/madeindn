@@ -75,6 +75,7 @@
                     </div>
                     <div class="col-md-12">
                         <div class="text-center">
+                            <a onclick="back('{{route('dashboard')}}')" href="#" class="btn btn-danger PreviousBtn btn-lg">Back</a>
                             <button type="submit" class="btn btn-success PreviousBtn btn-lg">Save</button>
                             </button>
                         </div>

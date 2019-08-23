@@ -46,6 +46,12 @@
         token: "ee6fab19c5a04ac1a32a645abde4613a",
         application: "argon-dashboard-free"
     });
+    function back($url) {
+        var r = confirm("Are you sure return to Home ?");
+        if (r == true) {
+            window.location.assign($url);
+        }
+    }
 </script>
 @yield('myscript')
 </body>

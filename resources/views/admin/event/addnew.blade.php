@@ -226,6 +226,7 @@
                         </div>
 
                     </div>
+                    <a onclick="back('{{route('view.admin.event.event_list')}}')" href="#" class="btn btn-danger PreviousBtn btn-lg">Back</a>
                     <button type="submit" class="btn btn-primary">Add new</button>
                 </form>
             </div>
