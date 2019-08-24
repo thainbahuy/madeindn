@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>{{__('message.TITLE_PROJECT_CATEGORY',['name' => strtoupper($title)])}}</title>
+    <title>{{__('message.TITLE_PROJECT_CATEGORY',['name' => Helpers::changeLanguage($CategoryByProject['name'],$CategoryByProject['jp_name'])])}}</title>
 @include('web.common_layouts.head')
 <!-- endbuild -->
 </head>
@@ -15,7 +15,7 @@
     <div class="c-section c-section__technology">
         <div class="o-container">
             <div class="c-section__technology__title">
-                <p>{{$title}}</p>
+                <p>{{Helpers::changeLanguage($CategoryByProject['name'],$CategoryByProject['jp_name'])}}</p>
             </div>
         </div>
     </div>
@@ -28,7 +28,7 @@
                 </div>
                 <div class="btn-view-more">
                     <a id="loadmore_btn"
-                       href="javascript:loadMoreProjectByCategory('{{route('web.project.project_category',['name'=>str_slug($title)])}}');">
+                       href="javascript:loadMoreProjectByCategory('{{route('web.project.project_category',['name'=>$CategoryByProject['slug_name']])}}');">
                         <span>VIEW MORE</span>
                     </a>
                 </div>
@@ -42,7 +42,6 @@
     @include('web.common_layouts.footer')
 </footer>
 <!-- END FOOTER -->
-<!-- <a id="go-top" href="javascript:;" title="Go Top" class="c-btn__go-top"><img src="{{asset('web/')}}/images/icons/go_top.png" alt="Go Top" /></a> -->
 <!-- ======== JAVASCRIPT ======== -->
 @include('web.common_layouts.script_footer')
 <script src="{{asset('web/js/loadmore.js')}}"></script>

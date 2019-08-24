@@ -42,8 +42,7 @@ class ProjectController extends Controller
                     ->render();
                 return response()->json(['html' => $view]);
             }
-            return view('web.project.project_category', compact('listProjects'))
-                ->with('title', ucwords($name))
+            return view('web.project.project_category', compact('listProjects','CategoryByProject'))
                 ->with('valueCategory', $CategoryByProject['id']);
         } else {
             return redirect()->route('web.index');
