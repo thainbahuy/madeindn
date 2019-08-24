@@ -4,6 +4,7 @@ $(document).ready(function () {
 
     $('#partnerTable').DataTable({
         bInfo: false,
+        "lengthMenu": [[5, 10, 15, 20, 25, 30], [5, 10, 15, 20, 25, 30]],
         oLanguage: {
             oPaginate: {
                 First: "First page", // This is the link to the first page

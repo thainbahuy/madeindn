@@ -33,7 +33,7 @@ class ProjectController extends Controller
      */
     public function showProjectByCategory($name, Request $request)
     {
-        $CategoryByProject = $this->category->where('name', $name)->first();
+        $CategoryByProject = $this->category->where('slug_name', $name)->first();
         if ($CategoryByProject != null) {
             $listProjects = $this->projectModel->getProjectByCategory($CategoryByProject['id'])->paginate($this->config['Quantity Post Project']);
             if ($request->ajax()) {

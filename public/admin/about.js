@@ -31,6 +31,7 @@ $('#delete-save').on('click', function () {
 });
 $(document).ready(function() {
     $('#about_table').DataTable({
+        "lengthMenu": [[5, 10, 15, 20, 25, 30], [5, 10, 15, 20, 25, 30]],
         language: {
             paginate: {
                 next: '>',

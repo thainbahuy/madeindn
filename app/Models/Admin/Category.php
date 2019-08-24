@@ -21,10 +21,11 @@ class Category extends Model
             ->delete();
     }
 
-    public function addCategory($name, $name_jp, $position){
+    public function addCategory($name, $name_jp, $position, $slug_name){
         $this->name = $name;
         $this->jp_name = $name_jp;
         $this->position = $position;
+        $this->slug_name = $slug_name;
         return $this->save();
     }
 
@@ -36,9 +37,10 @@ class Category extends Model
             ->first();
     }
 
-    public function editCategory($id, $name, $name_jp, $position){
+    public function editCategory($id, $name, $name_jp, $position,$slug_name){
         $infoCategory = $this->findOrfail($id);
         $infoCategory->name = $name;
+        $infoCategory->slug_name = $slug_name;
         $infoCategory->jp_name = $name_jp;
         $infoCategory->position = $position;
         return $infoCategory->save();

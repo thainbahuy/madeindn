@@ -33,7 +33,7 @@ $('#delete-save').on('click', function () {
 
 $(document).ready(function () {
     var t = $('#tableData').DataTable({
-        "lengthMenu": [[5, 10, 15, 20, 25, 30, -1], [5, 10, 15, 20, 25, 30, "All"]],
+        "lengthMenu": [[5, 10, 15, 20, 25, 30], [5, 10, 15, 20, 25, 30]],
         processing: true,
         aaSorting : [[ 0, 'DESC' ]],
         ClientSide: true,

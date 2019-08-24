@@ -60,7 +60,7 @@ class CategoryController extends Controller
     public function postAddCategory(CategoryRequest $request)
     {
         $data = $request->all();
-        $resultAddCategory = $this->category->addCategory($data['name'], $data['name_jp'], $data['position']);
+        $resultAddCategory = $this->category->addCategory($data['name'], $data['name_jp'], $data['position'],str_slug($data['name']));
         if ($resultAddCategory) {
             Log::info('You just added new Category named: ' . $data['name']);
             $request->session()->flash('msg', "Success");
@@ -81,7 +81,7 @@ class CategoryController extends Controller
     public function postEditCategory($id, CategoryRequest $request)
     {
         $data = $request->all();
-        $resultEdit = $this->category->editCategory($id, $data['name'], $data['name_jp'], $data['position']);
+        $resultEdit = $this->category->editCategory($id, $data['name'], $data['name_jp'], $data['position'],str_slug($data['name']));
         if ($resultEdit) {
             Log::info('You just edited category named: ' . $data['name']);
             $request->session()->flash('msg', "Success");
