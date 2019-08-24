@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use Helpers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Artisan;
+use Illuminate\Http\Response;
 
 class ConfigController extends Controller
 {
@@ -106,5 +108,41 @@ class ConfigController extends Controller
             $request->session()->flash('message', 'Updated Faild !');
             return redirect()->route('view.admin.config.lang_form');
         }
+    }
+
+    /**Display memory buffer management
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function showConfigCache()
+    {
+        return view('admin.config.cache')->with('title', 'Memory Buffer management');
+    }
+
+    /**Handling the required memory
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function handleConfigCache(Request $request)
+    {
+        $type = $request->type;
+        switch ($type) {
+            case "clear_cms_cache":
+                Artisan::call('cache:clear');
+                break;
+            case "refresh_compiled_views":
+                Artisan::call('view:clear');
+                break;
+            case "clear_config_cache":
+                Artisan::call('config:cache');
+                break;
+            case "clear_route_cache":
+                Artisan::call('route:clear');
+                break;
+            case "clear_log":
+                Artisan::call('log:clear --keep-last');
+                break;
+        }
+
+        return response()->json(['status' => 'success'], Response::HTTP_OK);
     }
 }

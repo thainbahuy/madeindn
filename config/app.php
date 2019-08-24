@@ -170,6 +170,7 @@ return [
          */
         Superbalist\LaravelGoogleCloudStorage\GoogleCloudStorageServiceProvider::class,
         Tightenco\Ziggy\ZiggyServiceProvider::class,
+        Hedii\ArtisanLogCleaner\ArtisanLogCleanerServiceProvider::class,
 
         /*
          * Application Service Providers...

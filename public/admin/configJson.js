@@ -45,3 +45,28 @@ $(document).ready(function () {
 
     $('div.setup-panel div a.btn-primary').trigger('click');
 });
+
+$(document).on('click', '.btn-clear-cache', function () {
+    var type = $(this).attr('data-type');
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    $.ajax({
+        url: route('handle.cache'),
+        type: 'get',
+        data: {
+            type: type,
+        },
+        success: function () {
+            $('#hideMe').show();
+            setTimeout(function () {
+                document.getElementById('hideMe').style.display = "none";
+            }, 2000);
+        },
+        fail: function () {
+            Alert("Try again");
+        }
+    });
+})

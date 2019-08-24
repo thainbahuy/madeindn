@@ -11,6 +11,10 @@
 |
 */
 
+
+use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Session;
+
 route::pattern('name' ,'(.*)');
 route::pattern('id', '([0-9]*)');
 
@@ -68,6 +72,9 @@ Route::namespace('Admin')->middleware('guest')->prefix('admin/')->group( functio
     Route::get('/config_language_form', 'ConfigController@showLangForm')->name('view.admin.config.lang_form');
     Route::post('/config_language_form', 'ConfigController@postLangForm')->name('admin.config.lang_form');
 
+    //Memory Buffer management
+    Route::get('/config_cache', 'ConfigController@showConfigCache')->name('admin.config.cache');
+    Route::get('/config_cache/handling', 'ConfigController@handleConfigCache')->name('handle.cache');
     //event
     Route::get('/event', 'EventController@showListEvent')->name('view.admin.event.event_list');
     Route::get('/event/add', 'EventController@showAddNewEvent')->name('view.admin.event.addnew');
@@ -76,11 +83,6 @@ Route::namespace('Admin')->middleware('guest')->prefix('admin/')->group( functio
     Route::get('/event/edit/{id}', 'EventController@showEditEvent')->name('view.admin.event.edit');
     Route::get('/event/delete', 'EventController@deleteEventById')->name('admin.event.event_list.delete');
     Route::post('/event/setImage', 'EventController@setImageBackground')->name('admin.event.event_list.setImage');
-
-
-
-
-
 
     // Project
     Route::get('/project/customer_project', 'CustomerProjectController@showCustomerProject')->name('view.admin.project.project_customer');
@@ -135,6 +137,8 @@ Route::namespace('Admin')->middleware('guest')->prefix('admin/')->group( functio
     Route::get('/partner-background/add', 'PartnerBackgroundController@showAddNewPartnerBackground')->name('view.admin.partner.add_partner_background');
     Route::post('/partner-background/add', 'PartnerBackgroundController@addNewPartnerBackground')->name('admin.partner.add_partner_background');
     Route::get('/partner-background/delete', 'PartnerBackgroundController@deletePartnerBackground')->name('admin.partner.partner_background_list.delete');
+
+
 });
 
 //Auth
