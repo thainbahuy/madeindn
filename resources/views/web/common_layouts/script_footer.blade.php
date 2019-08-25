@@ -5,7 +5,7 @@
 <!-- build:js js/main.min.js -->
 <script src="{{asset('web/js/main.min.js')}}" type="text/javascript"></script>
 <script src="{{asset('web/js/active.js')}}" type="text/javascript"></script>
-<script async src="https://cse.google.com/cse.js?cx=011212294835017365594:emzusx8uiuk"></script>
+<script async src="{{Helpers::getConfig()['Google_Search']['Script Google Search']}}"></script>
 @if(Session::get('locale') != 'en')
     <script>
         $('#list-menu li a').each(function() {

@@ -45,30 +45,30 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link " href="{{route('view.admin.category.view_category')}}">
-                        <i class="ni ni-planet text-blue"></i> Category
+                        <i class="ni ni-planet text-blue"></i> Categories
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link " href="{{route('view.admin.coworking.coworking_space')}}">
-                        <i class="ni ni-planet text-red"></i> Coworking
+                        <i class="ni ni-planet text-red"></i> Coworkings
                     </a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link nav-link-icon" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
                        aria-expanded="false">
-                        <i class="ni ni-planet text-green"></i> Project
+                        <i class="ni ni-planet text-green"></i> Projects
                     </a>
                     <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-right"
                          aria-labelledby="navbar-default_dropdown_1">
-                        <a class="dropdown-item" href="{{route('view.admin.project.project_customer')}}">Project
+                        <a class="dropdown-item" href="{{route('view.admin.project.project_customer')}}">Projects
                             Customers Posted</a>
-                        <a class="dropdown-item" href="{{route('view.admin.project_admin.project')}}">Project</a>
+                        <a class="dropdown-item" href="{{route('view.admin.project_admin.project')}}">Projects</a>
                     </div>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link nav-link-icon" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
                        aria-expanded="false">
-                        <i class="ni ni-planet text-pink"></i> Contact
+                        <i class="ni ni-planet text-pink"></i> Contacts
                     </a>
                     <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-right"
                          aria-labelledby="navbar-default_dropdown_1">
@@ -80,24 +80,24 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link " href="{{route('view.admin.about.about')}}">
-                        <i class="ni ni-planet text-yellow"></i> About Page
+                        <i class="ni ni-planet text-yellow"></i> About pages
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link " href="{{route('view.admin.event.event_list')}}">
-                        <i class="ni ni-planet text-capitalize"></i> Event
+                        <i class="ni ni-planet text-capitalize"></i> Events
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link " href="{{route('view.admin.partner.partner_background_list')}}">
-                        <i class="ni ni-planet text-blue"></i> Partner Logo
+                        <i class="ni ni-planet text-blue"></i> Partner Logos
                     </a>
                 </li>
             </ul>
             <!-- Divider -->
             <hr class="my-3">
             <!-- Heading -->
-            <h6 class="navbar-heading text-muted">CONFIG</h6>
+            <h6 class="navbar-heading text-muted">CONFIGS</h6>
             <ul class="navbar-nav mb-md-3">
                 <li class="nav-item">
                     <a class="nav-link" href="{{route('admin.config.lang_json')}}">
@@ -112,6 +112,11 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{route('admin.config.paginate_json')}}">
                         <i class="ni ni-settings"></i> Config System
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{route('admin.config.cache')}}">
+                        <i class="ni ni-settings"></i> Memory Management
                     </a>
                 </li>
             </ul>

@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>{{__('message.TITLE_SUBMIT_PROJECT')}}</title>
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<title>{{__('message.TITLE_SUBMIT_PROJECT')}}</title>
 @include('web.common_layouts.head')
 <!-- endbuild -->
 </head>
@@ -138,7 +137,7 @@
                         </div>
                         <div style="margin-bottom: 1rem" class="contact__form__row">
                             <div class="g-recaptcha" id="feedback-recaptcha"
-                                 data-sitekey="{{ env('GOOGLE_RECAPTCHA_KEY')  }}"></div>
+                                 data-sitekey="{{Helpers::getConfig()['Google_Capcha']['Captcha Site Key']}}"></div>
                             <span class="error">{{ $errors->first('g-recaptcha-response')}}</span>
                         </div>
                         <input type="submit" id="btn" class="submit" value="{{__('message_submit_project.submit')}}">
@@ -189,6 +188,7 @@
 <!-- ======== JAVASCRIPT ======== -->
 @include('web.common_layouts.script_footer')
 <script src="{{asset('web/js/project.js')}}"></script>
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 <script>
     function checkURL(abc) {
         var string = abc.value;

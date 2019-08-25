@@ -4,8 +4,8 @@
     <nav class="navbar navbar-top navbar-expand-md navbar-dark" id="navbar-main">
         <div class="container-fluid">
             <!-- Brand -->
-            <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" href="./index.html">Customer
-                Project</a>
+            <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" href="#">Customer
+                Projects</a>
             @include('admin.common_layouts.language')
         </div>
     </nav>

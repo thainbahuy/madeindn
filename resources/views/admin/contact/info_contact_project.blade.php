@@ -5,7 +5,7 @@
         <div class="container-fluid">
             <!-- Brand -->
             <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" href="#">CONTACT CUSTOMER IN
-                PROJECT</a>
+                PROJECTS</a>
             @include('admin.common_layouts.language')
         </div>
     </nav>

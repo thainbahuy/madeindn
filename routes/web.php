@@ -67,8 +67,8 @@ Route::namespace('Admin')->middleware('guest')->prefix('admin/')->group( functio
     // Config
     Route::get('/config_language', 'ConfigController@showLanngJson')->name('admin.config.lang_json');
     Route::post('/config_language', 'ConfigController@postLanguageJson')->name('admin.config.lang_json');
-    Route::get('/config_paginate', 'ConfigController@showPaginateJson')->name('admin.config.paginate_json');
-    Route::post('/config_paginate', 'ConfigController@postPaginateJson')->name('admin.config.paginate_json');
+    Route::get('/config_system', 'ConfigController@showPaginateJson')->name('admin.config.paginate_json');
+    Route::post('/config_system', 'ConfigController@postPaginateJson')->name('admin.config.paginate_json');
     Route::get('/config_language_form', 'ConfigController@showLangForm')->name('view.admin.config.lang_form');
     Route::post('/config_language_form', 'ConfigController@postLangForm')->name('admin.config.lang_form');
 

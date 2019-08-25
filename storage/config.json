@@ -29,5 +29,12 @@
     },
     "System_Email": {
         "Email": "nghia97dn@gmail.com"
+    },
+    "Google_Capcha": {
+        "Captcha Site Key": "6LeICLQUAAAAALz4gLs7EOL_OV-YjW8tZROzPI78",
+        "Captcha Secret": "6LeICLQUAAAAAMCEoYwv-_zbVd70LWpYj36cytyV"
+    },
+    "Google_Search": {
+        "Script Google Search": "https:\/\/cse.google.com\/cse.js?cx=011212294835017365594:emzusx8uiuk"
     }
 }

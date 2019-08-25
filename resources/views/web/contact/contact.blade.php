@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>{{@trans('message.TITLE_CONTACT')}}</title>
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<title>{{@trans('message.TITLE_CONTACT')}}</title>
 @include('web.common_layouts.head')
 <!-- endbuild -->
 </head>
@@ -121,7 +120,7 @@
                     </div>
                     <div style="margin-bottom: 1rem" class="contact__form__row">
                         <div class="g-recaptcha" id="feedback-recaptcha"
-                             data-sitekey="{{ env('GOOGLE_RECAPTCHA_KEY')  }}"></div>
+                             data-sitekey="{{Helpers::getConfig()['Google_Capcha']['Captcha Site Key']}}"></div>
                         <span class="error">{{ $errors->first('g-recaptcha-response')}}</span>
                     </div>
                     <div class="contact__form__row">
@@ -139,6 +138,7 @@
 <!-- END FOOTER -->
 <!-- ======== JAVASCRIPT ======== -->
 @include('web.common_layouts.script_footer')
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 <script>
     $(document).ready(function () {
         $('#btn').click(function () {

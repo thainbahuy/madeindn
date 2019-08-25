@@ -35,7 +35,7 @@ class ValidRecaptcha implements Rule
         // Send data to google recaptcha handling
         $response = $client->post('siteverify', [
             'query' => [
-                'secret' => env('GOOGLE_RECAPTCHA_SECRET'),
+                'secret' => Helpers::getConfig()['Google_Capcha']['Captcha Secret'],
                 'response' => $value
             ]
         ]);

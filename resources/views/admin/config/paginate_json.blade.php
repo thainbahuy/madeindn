@@ -4,7 +4,7 @@
     <nav class="navbar navbar-top navbar-expand-md navbar-dark" id="navbar-main">
         <div class="container-fluid">
             <!-- Brand -->
-            <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block">Config Paginate</a>
+            <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block">Config System</a>
             <!-- Form -->
         </div>
     </nav>
@@ -48,13 +48,14 @@
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
-                                                        @if($key == "Social_Link_Web_Footer" or $key == "Info_Company" or $key == "Info_Company" or $key == "System_Email")
+                                                        @if($key != "Home_Page" && $key != "Event_Page" && $key != "Project_Page" && $key != "Project_Search_Page")
                                                             <div class="form-group focused">
                                                                 <input type="text"
                                                                        name="{{$key}}[{{$keyPaginate}}]"
                                                                        class="form-control"
                                                                        value="{{$valuePaginate}}">
                                                             </div>
+
                                                         @else
                                                             <div class="form-group focused">
                                                                 <input type="number" required
@@ -67,6 +68,11 @@
                                                 </div>
                                             </div>
                                         @endforeach
+                                        @if($key == 'Google_Capcha')
+                                            <div class="col-md-12 text-center">
+                                                <span class="help-ts">Access https://www.google.com/recaptcha/admin#list to get information about Site key and Secret. Please select reCaptcha v2.</span>
+                                            </div>
+                                        @endif
                                     </div>
                                 </div>
                                 <hr/>
@@ -75,7 +81,8 @@
                     </div>
                     <div class="col-md-12">
                         <div class="text-center">
-                            <a onclick="back('{{route('dashboard')}}')" href="#" class="btn btn-danger PreviousBtn btn-lg">Back</a>
+                            <a onclick="back('{{route('dashboard')}}')" href="#"
+                               class="btn btn-danger PreviousBtn btn-lg">Back</a>
                             <button type="submit" class="btn btn-success PreviousBtn btn-lg">Save</button>
                             </button>
                         </div>
