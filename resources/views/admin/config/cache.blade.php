@@ -91,16 +91,6 @@
                                             </button>
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <td>Clear error history log ( Still Keep the latest log file )</td>
-                                        <td>
-                                            <button class="btn green-meadow btn-block btn-clear-cache bg-green"
-                                                    data-type="clear_log"
-                                                    data-url="{{route('admin.config.cache')}}">
-                                                Clear error history log
-                                            </button>
-                                        </td>
-                                    </tr>
                                     </tbody>
                                 </table>
                             </div>

@@ -100,7 +100,7 @@
                             @if($step <> 2)
                                 <div class="col-md-12">
                                     <div class="text-center">
-                                        <button type="submit" class="btn btn-success PreviousBtn btn-lg">Lưu</button>
+                                        <button type="submit" class="btn btn-success PreviousBtn btn-lg">Save</button>
                                         <button class="btn btn-primary PreviousBtn btn-lg" type="button">Previous Step 1
                                         </button>
                                     </div>
@@ -121,5 +121,5 @@
     </div>
 @endsection
 @section('myscript')
-    <script src="{{ asset('admin') }}/configJson.js"></script>
+    <script src="{{ asset('admin/configJson.js')}}"></script>
 @endsection
