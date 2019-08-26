@@ -138,9 +138,6 @@ class ConfigController extends Controller
             case "clear_route_cache":
                 Artisan::call('route:clear');
                 break;
-            case "clear_log":
-                Artisan::call('log:clear --keep-last');
-                break;
         }
 
         return response()->json(['status' => 'success'], Response::HTTP_OK);
