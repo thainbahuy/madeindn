@@ -6,9 +6,9 @@
     <div class="c-header__menu">
         <!-- <a href="#" title="情報公開" class="c-btn__contact only_pc"><span class="c-icon"></span> 情報公開</a> -->
         <ul id="list-menu" class="c-navbar">
-            <li class=""><a href="{{route('web.index')}}" title="">{{__('message.HD_HOME')}}</a></li>
+            <li class=""><a href="{{route('web.index')}}" title="{{__('message.HD_HOME')}}"><span>{{__('message.HD_HOME')}}</span></a></li>
             <li class="about c-navbar__dropdown">
-                <a href="{{Helpers::getURL()}}/about" onclick="return false;" title="{{__('message.HD_ABOUT')}}" class="c-navbar__dropdown__link">{{__('message.HD_ABOUT')}}</a>
+                <a href="{{Helpers::getURL()}}/about" onclick="return false;" title="{{__('message.HD_ABOUT')}}" class="c-navbar__dropdown__link"><span>{{__('message.HD_ABOUT')}}</span></a>
                 <ul class="c-navbar__dropdown__content">
                     @foreach($listAllAbout as $value)
                         <li><a href="{{route('web.more.about',['name'=> str_slug($value->name),'id'=>$value->id])}}">{{Helpers::changeLanguage($value->name,$value->jp_name)}}</a></li>
@@ -16,24 +16,24 @@
                 </ul>
             </li>
             <li class="projects c-navbar__dropdown">
-                <a href="{{Helpers::getURL()}}/projects" onclick="return false;" title="活動内容" class="c-navbar__dropdown__link">{{__('message.HD_PROJECT')}}</a>
+                <a href="{{Helpers::getURL()}}/projects" onclick="return false;" title="{{__('message.HD_PROJECT')}}" class="c-navbar__dropdown__link"><span>{{__('message.HD_PROJECT')}}</span></a>
                 <ul class="c-navbar__dropdown__content">
                     @foreach($listCategory as $value)
                         <li><a href="{{route('web.project.project_category',['name'=>str_slug($value->name)])}}" title="">{{Helpers::changeLanguage($value->name,$value->jp_name)}}</a></li>
                     @endforeach
                 </ul>
             </li>
-            <li class="event"><a href="{{route('web.event.events')}}" title="">{{__('message.HD_EVENT')}}</a></li>
+            <li class="event"><a href="{{route('web.event.events')}}" title="{{__('message.HD_EVENT')}}"><span>{{__('message.HD_EVENT')}}</span></a></li>
             <li class="co-working-space c-navbar__dropdown">
-                <a href="{{route('web.coworking.coworking_space')}}" title="" class="c-navbar__dropdown__link">{{__('message.HD_CO-SPACE')}}</a>
+                <a href="{{route('web.coworking.coworking_space')}}" title="{{__('message.HD_CO-SPACE')}}" class="c-navbar__dropdown__link"><span>{{__('message.HD_CO-SPACE')}}</span></a>
                 <ul class="c-navbar__dropdown__content">
                     @foreach($getAllCoworking as $value)
                         <li><a href="{{route('web.coworking.coworking_detail',['name'=>str_slug($value->name),'id'=>$value->id])}}" title="{{Helpers::changeLanguage($value->name,$value->jp_name)}}">{{Helpers::changeLanguage($value->name,$value->jp_name)}}</a></li>
                     @endforeach
                 </ul>
             </li>
-            <li class="contact"><a href="{{route('web.contact.contact')}}" title="">{{__('message.HD_CONTACT')}}</a></li>
-            <li class="project"><a href="{{route('web.project.project_submit')}}" title="" class="btn-submit">{{__('message.HD_SUBMIT')}}</a></li>
+            <li class="contact"><a href="{{route('web.contact.contact')}}" title="{{__('message.HD_CONTACT')}}"><span>{{__('message.HD_CONTACT')}}</span></a></li>
+            <li class="project"><a style="width: 100%" id="submit_project" href="{{route('web.project.project_submit')}}" title="{{__('message.HD_SUBMIT')}}" class="btn-submit"><span>{{__('message.HD_SUBMIT')}}</span></a></li>
         </ul>
         <div class="c-navbar__right">
             <div class="c-navbar__right__search">
