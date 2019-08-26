@@ -15,6 +15,7 @@ class Event extends Model
             ->select('id', 'jp_name', 'name', 'image_link', 'sort_description', 'jp_sort_description', 'date_time','begin_time', 'end_time', 'position')
             ->orderByRaw('ISNULL(position), position ASC')
             ->orderByDesc('id')
+            ->orderBy('date_time','asc')
             ->paginate($limit);
     }
 
